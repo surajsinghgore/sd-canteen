@@ -1,21 +1,23 @@
+<!-- handle admin login -->
+<?php require('../api/AdminLogin.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php require('../modules/HeadTag.php'); ?>
+<link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
 
 <body>
 
+
     <?php
-    $status = "alert-warning";
-    $title = "WARNING";
+    
+    if ($warning_error == 'true') {
+        require('../components/Toast.php');
+    }
 
-    $message = "Please Enter Name";
-    require('../components/Toast.php');
-    // env file setup
-    $env = parse_ini_file('../.env');
-    $header = $env["ADMIN_PASSWORD"];
-    echo "$header";
+
+
     ?>
-
 
     <div class="login">
 
@@ -33,9 +35,10 @@
             </div>
             <h1>Sign in to Admin Panel</h1>
             <div class="form">
-                <form autocomplete="new-password">
-                    <input type="text" name="secret" placeholder="Enter Secret Id" required autocomplete="new-password" autoFocus />
-                    <input type="password" name="password" placeholder="Enter Password" required autocomplete="new-password" />
+
+                <form method="post" action="" autocomplete="off">
+                    <input type="text" name="secret" placeholder="Enter Secret Id" required autocomplete="off" value='<?php echo "$adminSecret"; ?>' autoFocus />
+                    <input type="password" name="password" placeholder="Enter Password" required value='<?php echo "$adminPassword"; ?>' autocomplete="off" />
                     <button onClick="LoginFunction">Click to login</button>
 
                     <a href="/">

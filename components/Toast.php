@@ -14,7 +14,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         <div class="progress mt-2 mb-2">
-            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <?php echo "100"; ?>%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
+            <div class="progress-bar progress-bar-striped <?php echo "$progress_status";?>" role="progressbar" style="width: <?php echo "100"; ?>%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
         </div>
     </div>
 
