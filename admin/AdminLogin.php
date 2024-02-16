@@ -7,9 +7,13 @@
     <?php
     $status = "alert-warning";
     $title = "WARNING";
-   
+
     $message = "Please Enter Name";
-    require('../components/Toast.php'); ?>
+    require('../components/Toast.php');
+    $env = parse_ini_file('../.env');
+    $header = $env["ADMIN_PASSWORD"];
+    echo "$header";
+    ?>
 
 
     <div class="login">
