@@ -10,6 +10,7 @@
 
     $message = "Please Enter Name";
     require('../components/Toast.php');
+    // env file setup
     $env = parse_ini_file('../.env');
     $header = $env["ADMIN_PASSWORD"];
     echo "$header";
