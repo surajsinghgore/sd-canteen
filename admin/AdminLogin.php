@@ -5,7 +5,12 @@
 <html lang="en">
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+<script>
 
+    if(window.history.replaceState){
+        window.history.replaceState(null,null,window.location.href)
+    }
+</script>
 <body>
 
 
