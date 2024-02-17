@@ -1,14 +1,32 @@
+<!-- handle admin logout -->
+<?php require('../api/AdminLogout.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <script>
+        // prevent reload post request
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href)
+        }
+    </script>
+
 </head>
 
 <body>
+    <?php
+    // verify admin login
+    require('../middleware/VerifyAdminLogin.php');
+    require('../modules/TopLoader.php');
+    if (isset($toast_status)) {
+
+        if ($toast_status == 'true') {
+            require('../components/Toast.php');
+        }
+    }
+
+    ?>
     <div class="leftPanel">
         <div class="logo_img">
             <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014809/ClientImages/logo_l0f3ug.png" layout="fill" alt="logo " />
@@ -17,30 +35,343 @@
 
         <!-- sub links -->
         <div class="menu_Links">
-            <li id="clicked">
-                <div class="styles">
+
+            <!-- home dashboard-->
+            <li onclick="enableDashboard()">
+                <div class="styles" id="ActiveDashboard">
                     <div class="icon">
-                        {item.icon}
+                        <i class="fa-solid fa-box"></i>
                     </div>
 
-                    <span class="title">Home</span>
+                    <span class="title">Dashboard</span>
 
                     <div class="arrows">
 
-                        <div class="top"> {item.close}</div>
-                        <!-- <div class="top"> {item.close}</div> :<div class={Styles.top}> {item.open}</div>        -->
+                        <div class="top" id="dashboardArrowIcon"> <i class="fa-solid fa-chevron-right"></i></div>
+
                     </div>
                 </div>
 
-                <ul id="shows">
-                    <li><a href="">add</a></li>
+                <ul id="dashboardSubMenu">
+                    <li><a href="">Home Dashboard</a></li>
+                    <li><a href="">Manage Comments</a></li>
+                    <li><a href="">Main Website</a></li>
 
 
                 </ul>
 
             </li>
+
+            <!-- food menu -->
+
+            <li onclick="enableFoodMenu()">
+                <div class="styles" id="ActiveFood">
+                    <div class="icon">
+                        <i class="fa-solid fa-bowl-food"></i>
+                    </div>
+
+                    <span class="title">Foods</span>
+
+                    <div class="arrows">
+
+                        <div class="top" id="foodArrowIcon"> <i class="fa-solid fa-chevron-right"></i></div>
+
+                    </div>
+                </div>
+
+                <ul id="foodSubMenu">
+                    <li><a href="">Add Food</a></li>
+                    <li><a href="">Update Food</a></li>
+                    <li><a href="">Delete Food</a></li>
+                    <li><a href="">View Food</a></li>
+                    <li><a href="">Manage Food Categories</a></li>
+
+
+                </ul>
+
+            </li>
+
+            <!-- coffee menu -->
+            <li onclick="enableCoffeeMenu()">
+                <div class="styles" id="ActiveCoffee">
+                    <div class="icon">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+
+                    <span class="title">Coffees</span>
+
+                    <div class="arrows">
+
+                        <div class="top" id="coffeeArrowIcon"> <i class="fa-solid fa-chevron-right"></i></div>
+
+                    </div>
+                </div>
+
+                <ul id="coffeeSubMenu">
+                    <li><a href="">Add Coffee</a></li>
+                    <li><a href="">Update Coffee</a></li>
+                    <li><a href="">Delete Coffee</a></li>
+                    <li><a href="">View Coffee</a></li>
+                    <li><a href="">Manage Coffee Categories</a></li>
+
+
+                </ul>
+
+            </li>
+
+            <!-- drink menu -->
+            <li onclick="enableDrinkMenu()">
+                <div class="styles" id="ActiveDrink">
+                    <div class="icon">
+                        <i class="fa-solid fa-martini-glass"></i>
+                    </div>
+
+                    <span class="title">Drinks</span>
+
+                    <div class="arrows">
+
+                        <div class="top" id="drinkArrowIcon"> <i class="fa-solid fa-chevron-right"></i></div>
+
+                    </div>
+                </div>
+
+                <ul id="drinkSubMenu">
+                    <li><a href="">Add Drink</a></li>
+                    <li><a href="">Update Drink</a></li>
+                    <li><a href="">Delete Drink</a></li>
+                    <li><a href="">View Drink</a></li>
+                    <li><a href="">Manage Drink Categories</a></li>
+
+
+                </ul>
+
+            </li>
+            <!-- juice menu -->
+            <li onclick="enableJuiceMenu()">
+                <div class="styles" id="ActiveJuice">
+                    <div class="icon">
+                        <i class="fa-solid fa-wine-glass"></i>
+                    </div>
+
+                    <span class="title">Juices</span>
+
+                    <div class="arrows">
+
+                        <div class="top" id="juiceArrowIcon"> <i class="fa-solid fa-chevron-right"></i></div>
+
+                    </div>
+                </div>
+
+                <ul id="juiceSubMenu">
+                    <li><a href="">Add Juice</a></li>
+                    <li><a href="">Update Juice</a></li>
+                    <li><a href="">Delete Juice</a></li>
+                    <li><a href="">View Juice</a></li>
+                    <li><a href="">Manage Juice Categories</a></li>
+
+
+                </ul>
+
+            </li>
+
+            <!-- orders -->
+            <li onclick="enableOrderMenu()">
+                <div class="styles" id="ActiveOrder">
+                    <div class="icon">
+                        <i class="fa-regular fa-rectangle-list"></i>
+                    </div>
+
+                    <span class="title">Orders</span>
+
+                    <div class="arrows">
+
+                        <div class="top" id="orderArrowIcon"> <i class="fa-solid fa-chevron-right"></i></div>
+
+                    </div>
+                </div>
+
+                <ul id="orderSubMenu">
+                    <li><a href="">Realtime orders</a></li>
+                    <li><a href="">All Orders</a></li>
+                    <li><a href="">Analysis Orders</a></li>
+
+
+
+                </ul>
+
+            </li>
+            <!-- payments -->
+            <li onclick="enablePaymentMenu()">
+                <div class="styles" id="ActivePayment">
+                    <div class="icon">
+                        <i class="fa-regular fa-credit-card"></i>
+                    </div>
+
+                    <span class="title">Payments</span>
+
+                    <div class="arrows">
+
+                        <div class="top" id="paymentArrowIcon"> <i class="fa-solid fa-chevron-right"></i></div>
+
+                    </div>
+                </div>
+
+                <ul id="paymentSubMenu">
+                    <li><a href="">All Payments</a></li>
+                    <li><a href="">Search Transactions</a></li>
+                    <li><a href="">Analysis Transactions</a></li>
+
+
+
+                </ul>
+
+            </li>
+
+            <!-- logout -->
+            <li>
+                <div class="styles" id="ActivePayment">
+                    <form method="post" action="" autocomplete="off"">
+                    <button>
+                    <div class=" icon">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </div>
+
+                <span class="title">Logout</span>
+
+                </button>
+                </form>
         </div>
+
+
+        </li>
     </div>
+    </div>
+
+
+
+
+    <!-- javascript -->
+    <script>
+        // dashboard menu
+        const enableDashboard = () => {
+            if (document.getElementById('dashboardSubMenu').style.display == "block") {
+                document.getElementById('dashboardSubMenu').style.display = "none";
+                document.getElementById('dashboardArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-right'></i>";
+                document.getElementById('ActiveDashboard').style.background = "none";
+
+            } else {
+                document.getElementById('ActiveDashboard').style.backgroundColor = "white";
+
+                document.getElementById('dashboardSubMenu').style.display = "block";
+                document.getElementById('dashboardArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-down'></i>";
+            }
+
+
+
+        }
+
+
+        // food menu
+
+        const enableFoodMenu = () => {
+            if (document.getElementById('foodSubMenu').style.display == "block") {
+                document.getElementById('foodSubMenu').style.display = "none";
+                document.getElementById('foodArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-right'></i>";
+                document.getElementById('ActiveFood').style.background = "none";
+
+            } else {
+                document.getElementById('ActiveFood').style.backgroundColor = "white";
+
+                document.getElementById('foodSubMenu').style.display = "block";
+                document.getElementById('foodArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-down'></i>";
+            }
+
+
+        }
+        // coffee menu
+
+        const enableCoffeeMenu = () => {
+            if (document.getElementById('coffeeSubMenu').style.display == "block") {
+                document.getElementById('coffeeSubMenu').style.display = "none";
+                document.getElementById('coffeeArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-right'></i>";
+                document.getElementById('ActiveCoffee').style.background = "none";
+
+            } else {
+                document.getElementById('ActiveCoffee').style.backgroundColor = "white";
+
+                document.getElementById('coffeeSubMenu').style.display = "block";
+                document.getElementById('coffeeArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-down'></i>";
+            }
+
+
+        }
+        // drink menu
+
+        const enableDrinkMenu = () => {
+            if (document.getElementById('drinkSubMenu').style.display == "block") {
+                document.getElementById('drinkSubMenu').style.display = "none";
+                document.getElementById('drinkArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-right'></i>";
+                document.getElementById('ActiveDrink').style.background = "none";
+
+            } else {
+                document.getElementById('ActiveDrink').style.backgroundColor = "white";
+
+                document.getElementById('drinkSubMenu').style.display = "block";
+                document.getElementById('drinkArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-down'></i>";
+            }
+
+
+        }
+        // juice menu
+        const enableJuiceMenu = () => {
+            if (document.getElementById('juiceSubMenu').style.display == "block") {
+                document.getElementById('juiceSubMenu').style.display = "none";
+                document.getElementById('juiceArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-right'></i>";
+                document.getElementById('ActiveJuice').style.background = "none";
+
+            } else {
+                document.getElementById('ActiveJuice').style.backgroundColor = "white";
+
+                document.getElementById('juiceSubMenu').style.display = "block";
+                document.getElementById('juiceArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-down'></i>";
+            }
+
+
+        }
+        // orders menu
+
+        const enableOrderMenu = () => {
+            if (document.getElementById('orderSubMenu').style.display == "block") {
+                document.getElementById('orderSubMenu').style.display = "none";
+                document.getElementById('orderArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-right'></i>";
+                document.getElementById('ActiveOrder').style.background = "none";
+
+            } else {
+                document.getElementById('ActiveOrder').style.backgroundColor = "white";
+
+                document.getElementById('orderSubMenu').style.display = "block";
+                document.getElementById('orderArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-down'></i>";
+            }
+
+
+        }
+        // payment menu
+        const enablePaymentMenu = () => {
+            if (document.getElementById('paymentSubMenu').style.display == "block") {
+                document.getElementById('paymentSubMenu').style.display = "none";
+                document.getElementById('paymentArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-right'></i>";
+                document.getElementById('ActivePayment').style.background = "none";
+
+            } else {
+                document.getElementById('ActivePayment').style.backgroundColor = "white";
+
+                document.getElementById('paymentSubMenu').style.display = "block";
+                document.getElementById('paymentArrowIcon').innerHTML = "<i class='fa-solid fa-chevron-down'></i>";
+            }
+
+
+        }
+    </script>
 </body>
 
 </html>
