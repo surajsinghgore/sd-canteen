@@ -17,7 +17,7 @@
 
 
     <?php
-
+ require('../modules/TopLoader.php');
     if ($toast_status == 'true') {
         require('../components/Toast.php');
     }
