@@ -4,6 +4,7 @@
   right: 2%;
   z-index: 99;
   width: 400px;
+  cursor: pointer;
   height: 90px;
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
@@ -35,12 +36,13 @@
   color: #fb0a0a;
 }
 .toast .toastParent .messageSection .message {
-  width: 70%;
+  width: 80%;
   text-align: left;
-  font-size: 20px;
+  font-size: 16px;
   color: rgb(104, 103, 103);
   font-weight: 500;
-  padding-top: 1.5%;
+  text-transform: uppercase;
+  padding-top: 2%;
 }
 
 .toast .toastParent .closeBtn {

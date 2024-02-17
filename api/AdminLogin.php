@@ -1,28 +1,27 @@
 <?php
+session_start();
 $adminSecret = null;
 $adminPassword = null;
-$warning_error = 'false';
+$toast_status = 'false';
 
 // The request is using the POST method
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $adminSecret = $_REQUEST['secret'];
     $adminPassword = $_REQUEST['password'];
+
     // check empty username field
-    if (strlen($adminPassword) == 0) {
-        $GLOBALS['progress_status'] = "bg-warning";
-        $warning_error = 'true';
-        $GLOBALS['title'] = "WARNING";
-        $GLOBALS['status'] = "alert-warning";
-        $GLOBALS['message'] = "Please Enter Secret ID";
+    if (empty($adminSecret)) {
+        $error_status = "warn";
+        $error_message = 'Please Provide Secret ID';
+        $toast_status = 'true';
     }
+
     // check empty password field
-    else if (strlen($adminPassword) == 0) {
-        $GLOBALS['progress_status'] = "bg-warning";
-        $warning_error = 'true';
-        $GLOBALS['title'] = "WARNING";
-        $GLOBALS['status'] = "alert-warning";
-        $GLOBALS['message'] = "Please Enter Admin Password";
+    else if (empty($adminPassword)) {
+        $error_status = "warn";
+        $error_message = 'Please Provide Admin Password';
+        $toast_status = 'true';
     }
     // validating
     else {
@@ -32,28 +31,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // checking password
             if ($env["ADMIN_PASSWORD"] == $adminPassword) {
                 // ! success
-                $warning_error = 'true';
-                $GLOBALS['title'] = "SUCCESS";
-                $GLOBALS['progress_status'] = "bg-success";
-                $GLOBALS['status'] = "alert-success";
-                $GLOBALS['message'] = "successfully login";
+                $_SESSION['admin_login_status'] = "true";
+                $error_status = "success";
+                $error_message = 'Successfully Login';
+                $toast_status = 'true';
             }
             // password is wrong
             else {
-                $warning_error = 'true';
-                $GLOBALS['title'] = "WARNING";
-                $GLOBALS['progress_status'] = "bg-warning";
-                $GLOBALS['status'] = "alert-warning";
-                $GLOBALS['message'] = "ADMIN PASSWORD IS INCORRECT";
+
+                $error_status = "warn";
+                $error_message = 'Invalid Password';
+                $toast_status = 'true';
             }
         }
         // secret is wrong
         else {
-            $warning_error = 'true';
-            $GLOBALS['progress_status'] = "bg-warning";
-            $GLOBALS['title'] = "WARNING";
-            $GLOBALS['status'] = "alert-warning";
-            $GLOBALS['message'] = "SECRET ID IS INCORRECT";
+
+            $error_status = "warn";
+            $error_message = 'Invalid secret ID';
+            $toast_status = 'true';
         }
 
 

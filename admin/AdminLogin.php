@@ -5,23 +5,23 @@
 <html lang="en">
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="../styles/admin/AdminLogin.css?v=1">
 <script>
-// prevent reload post request
-    if(window.history.replaceState){
-        window.history.replaceState(null,null,window.location.href)
+    // prevent reload post request
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href)
     }
 </script>
+
 <body>
 
 
     <?php
-    require('../components/Toast.php');
-    // if ($warning_error == 'true') {
-        // require('../components/Toast.php');
-    // }
-    // if ($warning_error == 'true') {
-        
-    // }
+
+    if ($toast_status == 'true') {
+        require('../components/Toast.php');
+    }
+
 
 
 
@@ -49,9 +49,9 @@
                     <input type="password" name="password" placeholder="Enter Password" required value='<?php echo "$adminPassword"; ?>' autocomplete="off" />
                     <button onClick="LoginFunction">Click to login</button>
 
-                    <a href="/">
-                        <h6>Click Here To Main Website</h6>
-                    </a>
+
+                    <h6> <a href="/">Click Here To Main Website </a></h6>
+
                 </form>
             </div>
         </div>

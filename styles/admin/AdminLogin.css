@@ -2,7 +2,6 @@ html,
 body {
   padding: 0;
   margin: 0;
- 
 }
 html {
   scroll-behavior: smooth;
@@ -12,11 +11,11 @@ a {
   text-decoration: none;
 }
 
-* { font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+* {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   box-sizing: border-box;
 }
-
 
 .login {
   width: 100%;
@@ -30,9 +29,13 @@ a {
   overflow: hidden;
 }
 .login h6 {
+  width: auto;
   font-size: 16px;
   color: blue;
   margin-top: 3%;
+}
+.login h6 a {
+  text-decoration: none;
   cursor: pointer;
 }
 .login .left_section .image {
@@ -73,8 +76,10 @@ a {
   outline: none;
   padding-left: 2%;
   margin-top: 2%;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
   height: 48px;
-  font-size: 16px;
+  font-size: 18px;
   border: 3px solid rgb(5, 125, 130);
   border-radius: 30px;
 }
@@ -91,7 +96,10 @@ a {
   height: 45px;
   border-radius: 15px;
 }
-
+.login .right_section button:hover {
+  color: rgb(82, 11, 0);
+  background-color: #2dd1c9;
+}
 
 @media only screen and (min-device-width: 0px) and (max-device-width: 1000px) {
   .login {

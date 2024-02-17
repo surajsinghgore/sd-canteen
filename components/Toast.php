@@ -15,14 +15,28 @@
         <div class="toastParent">
 
             <div class="messageSection">
-                <div class="icon error"><i class="fa-solid fa-circle-exclamation"></i></div>
-                <!-- <div class="icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div> -->
-                <!-- <div class="icon success"><i class="fa-solid fa-circle-check" ></i></div> -->
-                <div class="message">Wow so easy !</div>
+
+
+                <div class="icon <?php if (isset($error_status)) {
+                                        echo $error_status;
+                                    } ?>">
+                    <?php if ($error_status == "warn") {
+                        echo "<i class='fa-solid fa-triangle-exclamation'></i>";
+                    } else if ($error_status == "success") {
+                        echo "<i class='fa-solid fa-circle-check'></i>";
+                    } else if ($error_status == "error") {
+                        echo "<i class='fa-solid fa-circle-exclamation'></i>";
+                    }
+                    ?></div>
+                <div class="message"><?php if (isset($error_message)) {
+                                            echo $error_message;
+                                        } ?></div>
             </div>
-            <div class="closeBtn"><i class="fa-solid fa-xmark"></i></div>
+            <div class="closeBtn" onclick="closeToast()"><i class="fa-solid fa-xmark"></i></div>
             <div class="progressBar">
-                <div class="error" id="progress">
+                <div class="<?php if (isset($error_status)) {
+                                echo $error_status;
+                            } ?>" id="progress">
                 </div>
 
             </div>
@@ -44,6 +58,12 @@
             }
 
         }, 50)
+
+        function closeToast() {
+            document.getElementById('toast').style.transform = "translateX(999px)";
+            clearInterval(interval);
+
+        }
     </script>
 </body>
 
