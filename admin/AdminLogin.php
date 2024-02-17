@@ -6,7 +6,7 @@
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
 <script>
-
+// prevent reload post request
     if(window.history.replaceState){
         window.history.replaceState(null,null,window.location.href)
     }
@@ -15,10 +15,13 @@
 
 
     <?php
-    
-    if ($warning_error == 'true') {
-        require('../components/Toast.php');
-    }
+    require('../components/Toast.php');
+    // if ($warning_error == 'true') {
+        // require('../components/Toast.php');
+    // }
+    // if ($warning_error == 'true') {
+        
+    // }
 
 
 

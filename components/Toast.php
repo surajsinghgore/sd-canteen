@@ -4,30 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/toast.css">
+    <link rel="stylesheet" href="../styles/toast.css?v=1">
+    <script src="https://kit.fontawesome.com/7aa46b9c99.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="<?php echo "alert $status alert-dismissible fade show"; ?>" role="alert" id="toast">
-        <strong><?php echo "$title"; ?></strong> <?php echo "$message"; ?>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="progress mt-2 mb-2">
-            <div class="progress-bar progress-bar-striped <?php echo "$progress_status";?>" role="progressbar" style="width: <?php echo "100"; ?>%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
+
+
+    <div class="toast" id="toast">
+        <div class="toastParent">
+
+            <div class="messageSection">
+                <div class="icon error"><i class="fa-solid fa-circle-exclamation"></i></div>
+                <!-- <div class="icon warn"><i class="fa-solid fa-triangle-exclamation"></i></div> -->
+                <!-- <div class="icon success"><i class="fa-solid fa-circle-check" ></i></div> -->
+                <div class="message">Wow so easy !</div>
+            </div>
+            <div class="closeBtn"><i class="fa-solid fa-xmark"></i></div>
+            <div class="progressBar">
+                <div class="error" id="progress">
+                </div>
+
+            </div>
         </div>
     </div>
-
     <script>
         let percentage = 100;
         const interval = setInterval(() => {
-            console.log(percentage)
+            document.getElementById('toast').style.animation = "InAnimation  0.3s linear"
+
             document.getElementById('progress').style.width = percentage + "%";
             percentage -= 2;
-            if (percentage < -20) {
-                document.getElementById('toast').style.display = "none";
+
+
+            if (percentage < -5) {
                 clearInterval(interval);
+
+                document.getElementById('toast').style.transform = "translateX(999px)";
             }
+
         }, 50)
     </script>
 </body>

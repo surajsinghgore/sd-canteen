@@ -1,7 +1,94 @@
-.alert {
-  position: absolute;
-  bottom: 0;
+.toast {
+  position: fixed;
+  bottom: 3%;
   right: 2%;
   z-index: 99;
-  width: 30%;
+  width: 400px;
+  height: 90px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+  transition: all 2s;
+  box-shadow: 0px 0px 12px 5px rgb(201, 201, 201);
+}
+.toast .toastParent {
+  position: relative;
+}
+.toast .toastParent .messageSection {
+  height: 80px;
+  display: flex;
+  padding-top: 5%;
+}
+
+.toast .toastParent .messageSection .icon {
+  width: 10%;
+  font-size: 28px;
+  margin-left: 5%;
+}
+.toast .toastParent .messageSection .success {
+  color: #5cd126;
+}
+.toast .toastParent .messageSection .warn {
+  color: #fccd11;
+}
+.toast .toastParent .messageSection .error {
+  color: #fb0a0a;
+}
+.toast .toastParent .messageSection .message {
+  width: 70%;
+  text-align: left;
+  font-size: 20px;
+  color: rgb(104, 103, 103);
+  font-weight: 500;
+  padding-top: 1.5%;
+}
+
+.toast .toastParent .closeBtn {
+  position: absolute;
+  top: 2%;
+  cursor: pointer;
+  font-size: 20px;
+  color: rgb(197, 197, 197);
+  right: 2%;
+}
+.toast .toastParent .closeBtn:hover {
+  color: rgb(48, 48, 48);
+}
+
+.toast .toastParent .progressBar {
+  width: 100%;
+  height: 20px;
+}
+.toast .toastParent .progressBar .success {
+  background-color: #5cd126;
+  width: 80%;
+  height: 100%;
+}
+.toast .toastParent .progressBar .warn {
+  background-color: #fccd11;
+  width: 80%;
+  height: 100%;
+}
+.toast .toastParent .progressBar .error {
+  background-color: #fb0a0a;
+  width: 80%;
+  height: 100%;
+}
+
+@keyframes InAnimation {
+  0% {
+    transform: translateX(999px);
+  }
+  25% {
+    transform: translateX(59px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-25px);
+  }
+  100% {
+    transform: translateX(-15px);
+  }
 }
