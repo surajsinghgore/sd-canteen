@@ -1,10 +1,10 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if(!isset($_SESSION)){ 
+    if (!isset($_SESSION)) {
         session_start();
-    } 
-    
+    }
+
     unset($_SESSION['admin_login_status']);
     $error_status = "success";
     $error_message = 'Logout Success';

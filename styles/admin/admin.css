@@ -46,6 +46,7 @@
   width: 21.1%;
   height: auto;
   z-index: 90;
+
   padding-bottom: 6.7%;
   background-color: #e9e9e9;
   overflow: hidden;
@@ -155,17 +156,15 @@
   display: flex;
   cursor: pointer;
   border: none;
+  outline: none;
   background: none;
 }
-.leftPanel .menu_Links li button .icon{
-
+.leftPanel .menu_Links li button .icon {
   padding-top: 40%;
-
 
   margin-left: 115%;
 }
-.leftPanel .menu_Links li button .title{
- 
+.leftPanel .menu_Links li button .title {
   position: absolute;
   top: 0;
   left: 10%;
@@ -260,6 +259,11 @@
   background: none;
 }
 
+.rightsidebar {
+  position: relative;
+
+  width: 78.9;
+}
 @media only screen and (min-device-width: 0px) and (max-device-width: 1000px) {
   /* redirect page style */
   .redirect h1 {

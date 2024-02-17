@@ -25,6 +25,13 @@
 
         <!-- left side bar import -->
         <?php require('../components/LeftAdminHeader.php'); ?>
+
+        <!-- right top header -->
+        <div class="rightsidebar">
+            <?php require('../components/AdminTopHeader.php'); ?>
+
+        </div>
+
     </div>
 </body>
 
