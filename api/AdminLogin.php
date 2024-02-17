@@ -33,8 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // ! success
                 $_SESSION['admin_login_status'] = "true";
                 $error_status = "success";
-                $error_message = 'Successfully Login';
+                $error_message = 'Login Success';
                 $toast_status = 'true';
+                echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/admin.php'},3000)</script>";
             }
             // password is wrong
             else {

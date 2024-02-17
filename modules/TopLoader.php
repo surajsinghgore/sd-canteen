@@ -16,20 +16,22 @@
       <div class=" topLoaderPercentage" id="topLoaderPercentage"></div>
     </div>
     <script>
-        let percentage = 0;
-        const interval = setInterval(() => {
+        let LoaderPercentage = 0;
+        const TopLoaderInterval = setInterval(() => {
 
-            document.getElementById('topLoaderPercentage').style.width = percentage + "%";
+            document.getElementById('topLoaderPercentage').style.width = LoaderPercentage + "%";
             document.getElementById('topLoaderPercentage').style.height = "100%";
-            percentage += 4;
+            LoaderPercentage += 4;
 
 
-            if (percentage > 107) {
-                clearInterval(interval);
+            if (LoaderPercentage > 107) {
+                clearInterval(TopLoaderInterval);
                 document.getElementById('topLoader').style.display = "none";
             }
 
         }, 40)
+    
+
     </script>
 </body>
 

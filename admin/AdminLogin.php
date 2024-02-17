@@ -22,9 +22,6 @@
         require('../components/Toast.php');
     }
 
-
-
-
     ?>
 
     <div class="login">

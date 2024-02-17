@@ -36,7 +36,7 @@
             <div class="progressBar">
                 <div class="<?php if (isset($error_status)) {
                                 echo $error_status;
-                            } ?>" id="progress">
+                            } ?>" id="progressToast">
                 </div>
 
             </div>
@@ -44,15 +44,15 @@
     </div>
     <script>
         let percentage = 100;
-        const interval = setInterval(() => {
+        const ToastInterval = setInterval(() => {
             document.getElementById('toast').style.animation = "InAnimation  0.3s linear"
 
-            document.getElementById('progress').style.width = percentage + "%";
+            document.getElementById('progressToast').style.width = percentage + "%";
             percentage -= 2;
 
 
             if (percentage < -5) {
-                clearInterval(interval);
+                clearInterval(ToastInterval);
 
                 document.getElementById('toast').style.transform = "translateX(999px)";
             }
@@ -61,7 +61,7 @@
 
         function closeToast() {
             document.getElementById('toast').style.transform = "translateX(999px)";
-            clearInterval(interval);
+            clearInterval(ToastInterval);
 
         }
     </script>
