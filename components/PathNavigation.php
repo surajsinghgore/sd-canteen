@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="pathNavigation">
-<p><span class="parent"><a href="">admin</a></span> / <span class="child">ADD FOOD ITEM</span></p>
+<p><span class="parent"><a href="<?php echo $pathNavigationParentPath;?>"><?php echo $pathNavigationParent;?></a></span> / <span class="child"><?php echo $pathNavigationChild;?></span></p>
 
     </div>
 </body>

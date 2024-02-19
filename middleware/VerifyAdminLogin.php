@@ -5,9 +5,7 @@ if (!isset($_SESSION)) {
 }
 // checking 
 if (isset($_SESSION['admin_login_status'])) {
-    if ($_SESSION['admin_login_status'] == "true") {
-    } else {
-
+    if ($_SESSION['admin_login_status'] != "true") {
         $error_status = "error";
         $error_message = 'Please Login with admin credentials';
         $toast_status = 'true';
@@ -21,3 +19,4 @@ else {
     $toast_status = 'true';
     echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/AdminLogin.php'},2000)</script>";
 }
+?>

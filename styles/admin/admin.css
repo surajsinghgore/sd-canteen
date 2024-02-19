@@ -297,9 +297,216 @@ text-transform: capitalize;
 
 
 /* add food items page */
+.FoodPage{
+  margin-left: 2%;
+  padding-top: 3%;
+width: 1200px;
+}
+.Form {
+  margin-bottom: 5%;
+  margin-left: 5%;
+  width: 100%;
+height: auto;
+  padding-bottom: 3%;
+  border-radius: 5px;
+  box-shadow: 3px 1px 20px 1px rgb(204, 204, 204);
+}
 
+.Form .heading {
+  width: 100%;
+  box-sizing: border-box;
+  height: 70px;
+  border-bottom: 3px solid rgb(179, 179, 179);
 
+}
+.Form .heading h1 {
+  font-size: 25px;
+  padding-left: 2%;
+  line-height: 70px;
+  color: rgb(87, 87, 87);
+}
 
+.Form .form_element {
+  width: 100%;
+  height: auto;
+
+  padding-bottom: 6%;
+}
+
+.Form .form_element li {
+  width: 510px;
+  margin-top: 2%;
+  list-style: none;
+  margin-left: 2%;
+  float: left;
+  height: auto;
+}
+.Form .form_element li p span,
+.Form .form_element .Prices h6 span {
+  color: red;
+  font-size: 22px;
+  border: none;
+}
+.Form .form_element li p,
+.Form .form_element .Prices h6 {
+  width: 100%;
+  font-size: 25px;
+  padding-left: 7%;
+  font-weight: 450;
+}
+
+.Form .form_element .selects {
+  width: 91%;
+  margin-left: 2.6%;
+  height: auto;
+  text-align: left;
+}
+.Form .form_element .selects p{
+  margin-left: -4% !important;
+}
+
+.Form .form_element .Prices h4 {
+  text-align: center;
+  font-size: 20px;
+  color: Red;
+}
+.Form .form_element .Prices p {
+  display: flex;
+}
+.Form .form_element .Prices {
+  width: 96%;
+  margin-left: -1%;
+  height: auto;
+  text-align: left;
+}
+.Form .form_element .Prices .priceHeading {
+  width: 250px;
+  height: auto;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  border: 1px solid rgb(178, 178, 178);
+  margin-left: -1%;
+  font-size: 22px;
+  font-weight: 480;
+  color: purple;
+}
+
+.Form .form_element .btns {
+  text-align: left;
+}
+
+.Form .form_element .btns .react_switch1 {
+  margin-left: 5%;
+}
+
+.Form .form_element li .prices {
+  width: 100%;
+  float: right;
+  margin-right: 10%;
+}
+.Form .form_element li input {
+  width: 100%;
+  height: 45px;
+  outline: none;
+  padding-left: 2%;
+  font-size: 20px;
+  border: 1px solid rgb(178, 178, 178);
+  margin-left: 6%;
+}
+
+.Form .form_element li select {
+  width: 95%;
+  height: 45px;
+
+  cursor: pointer;
+  outline: none;
+  padding-left: 2%;
+  text-align: center;
+  background: none;
+  font-size: 22px;
+  margin-left: 2.5%;
+  border: 1px solid rgb(178, 178, 178);
+}
+
+.Form .form_element .description {
+  width: 86%;
+}
+.Form .form_element .description p {
+  width: 100%;
+  font-size: 22px;
+
+  padding-left: 4%;
+}
+.Form .form_element li textarea {
+  width: 100%;
+  height: 280px;
+  resize: none;
+  margin-left: 3.4%;
+  outline: none;
+  border: 1px solid rgb(178, 178, 178);
+  padding-left: 2%;
+  font-size: 20px;
+  padding-top: 2%;
+}
+
+.Form .form_element li input[type="number"]::-webkit-inner-spin-button,
+.Form .form_element li input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.Form .form_element li input:focus {
+  border: 1px solid red;
+}
+
+.Form .form_element li .preview_photo h1 {
+  font-size: 20px;
+  padding-left: 5%;
+  padding-top: 5%;
+}
+.Form .form_element li .preview_photo {
+  width: 500px;
+  height: 420px;
+  margin-top: 5%;
+
+  margin-left: 4%;
+  overflow: hidden;
+  margin-bottom: 5%;
+  background-color: rgb(235, 235, 235);
+}
+
+.Form .form_element li .preview_photo img {
+  width: 100%;
+  display: none;
+  height: 100%;
+ 
+}
+.Form .form_element button {
+  width: 400px;
+  height: 60px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 22px;
+  border: none;
+  background-color: rgb(246, 48, 48);
+  margin-top: 2%;
+  margin-left: 5%;
+  transition: all 0.3s;
+}
+.Form .form_element button:hover {
+  background-color: rgb(41, 39, 39);
+  color: white;
+  box-shadow: 0px 0px 32px 2px rgb(227, 94, 6);
+}
+.switch{
+  margin-left: 7%;
+}
+#FoodImage{
+  padding-top: 2%;
+  padding-bottom:9%;
+  width: 90%;
+}
 @media only screen and (min-device-width: 0px) and (max-device-width: 1000px) {
   /* redirect page style */
   .redirect h1 {

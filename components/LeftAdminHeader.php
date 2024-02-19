@@ -19,6 +19,7 @@
     // verify admin login
     require('../middleware/VerifyAdminLogin.php');
     require('../modules/TopLoader.php');
+
     if (isset($toast_status)) {
 
         if ($toast_status == 'true') {
@@ -53,7 +54,7 @@
                 </div>
 
                 <ul id="dashboardSubMenu">
-                    <li><a href="">Home Dashboard</a></li>
+                    <li><a href="/sd-canteen/admin/admin.php">Home Dashboard</a></li>
                     <li><a href="">Manage Comments</a></li>
                     <li><a href="">Main Website</a></li>
 
@@ -80,7 +81,7 @@
                 </div>
 
                 <ul id="foodSubMenu">
-                    <li><a href="../admin/addfooditem.php">Add Food</a></li>
+                    <li><a href="/sd-canteen/admin/addfooditem.php">Add Food</a></li>
                     <li><a href="">Update Food</a></li>
                     <li><a href="">Delete Food</a></li>
                     <li><a href="">View Food</a></li>
@@ -231,20 +232,20 @@
             <li>
                 <div class="styles" id="ActivePayment">
                     <form method="post" action="" autocomplete="off"">
-                    <button name="logout_click">
-                    <div class=" icon">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <button name=" logout_click">
+                        <div class=" icon">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </div>
+
+                        <span class="title">Logout</span>
+
+                        </button>
+                    </form>
                 </div>
 
-                <span class="title">Logout</span>
 
-                </button>
-                </form>
+            </li>
         </div>
-
-
-        </li>
-    </div>
     </div>
 
 
