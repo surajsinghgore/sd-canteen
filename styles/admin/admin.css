@@ -212,7 +212,7 @@
   left: 30%;
   font-size: 20px;
 }
-.leftPanel .menu_Links li .arrows .bottom {
+.leftPanel .menu_Links li input {
   display: none;
   position: absolute;
   top: 35%;

@@ -74,7 +74,7 @@ $inputStatus = $orderStatusFromDB;
             <h1>order controller: </h1>
             <label class="switch">
                 <form action="<?=($_SERVER['PHP_SELF'])?>" method="post">
-                    <button>
+                    <button name="on_off_click">
                         <?php if ($orderStatusFromDB == "true") {
                             echo " <input type='checkbox' name='orderStatus' checked  >";
                         } else { {
