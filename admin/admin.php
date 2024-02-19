@@ -28,7 +28,7 @@
 
         <!-- right top header -->
         <div class="rightsidebar">
-            <?php require('../components/AdminTopHeader.php'); ?>
+            <?php $AdminTopHeaderTitle="admin DASHBOARD";require('../components/AdminTopHeader.php'); ?>
 
         </div>
 

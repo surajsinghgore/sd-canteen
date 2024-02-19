@@ -1,5 +1,5 @@
 <!-- toggle event on btn toggle -->
-<?php require("../api/controlorderstatus.php");?>
+<?php require("../api/controlorderstatus.php"); ?>
 <?php
 
 // php 
@@ -66,14 +66,14 @@ $inputStatus = $orderStatusFromDB;
             <i class="Icons"><i class="fa-solid fa-crosshairs"></i></i>
 
 
-            <h1>admin DASHBOARD</h1>
+            <h1><?php echo $AdminTopHeaderTitle; ?></h1>
         </div>
 
 
         <div class="profile_section">
             <h1>order controller: </h1>
             <label class="switch">
-                <form action="<?=($_SERVER['PHP_SELF'])?>" method="post">
+                <form action="<?= ($_SERVER['PHP_SELF']) ?>" method="post">
                     <button name="on_off_click">
                         <?php if ($orderStatusFromDB == "true") {
                             echo " <input type='checkbox' name='orderStatus' checked  >";

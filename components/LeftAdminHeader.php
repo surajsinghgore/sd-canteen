@@ -80,7 +80,7 @@
                 </div>
 
                 <ul id="foodSubMenu">
-                    <li><a href="">Add Food</a></li>
+                    <li><a href="../admin/addfooditem.php">Add Food</a></li>
                     <li><a href="">Update Food</a></li>
                     <li><a href="">Delete Food</a></li>
                     <li><a href="">View Food</a></li>

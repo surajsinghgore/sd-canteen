@@ -264,6 +264,42 @@
 
   width: 78.9;
 }
+
+
+
+
+/* pathNavigation */
+.pathNavigation{
+  clear: both;
+  width: 100%;
+  padding-left: 8%;
+  display: flex;
+  margin-top: 110px;
+  height: 50px;
+  font-size: 23px;
+}
+.pathNavigation a{
+  color: rgb(150, 150, 150);
+  text-decoration: none;
+}
+.pathNavigation a:hover{
+  color: rgb(255, 68, 0);
+}
+.pathNavigation .parent{
+text-transform: capitalize;
+}
+.pathNavigation .child{
+  color: rgb(0, 0, 0);
+  font-weight: 550;
+  text-transform: uppercase;
+}
+
+
+
+/* add food items page */
+
+
+
 @media only screen and (min-device-width: 0px) and (max-device-width: 1000px) {
   /* redirect page style */
   .redirect h1 {
