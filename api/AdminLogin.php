@@ -30,12 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($env["ADMIN_SECRET_ID"] == $adminSecret) {
             // checking password
             if ($env["ADMIN_PASSWORD"] == $adminPassword) {
+
+
                 // ! success
                 $_SESSION['admin_login_status'] = "true";
                 $error_status = "success";
                 $error_message = 'Admin Login Successfully';
                 $toast_status = 'true';
-                echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/admin.php'},2000)</script>";
             }
             // password is wrong
             else {
@@ -52,11 +53,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error_message = 'Invalid secret ID';
             $toast_status = 'true';
         }
-
-
-
-
-
-
     }
 }
