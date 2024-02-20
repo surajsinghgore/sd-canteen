@@ -255,12 +255,26 @@ text-transform: capitalize;
       color: red;
       cursor: pointer;
     }
-    .display_List .card_container .dataCard .updateBtn:hover {
+  
 
-        color: rgb(45, 45, 45);
+    .display_List .card_container .dataCard .updateBtn button {
+      color: red;
+
+      outline: none;
+      border: none;
+      background:none;
+      cursor: pointer;
     }
+    .display_List .card_container .dataCard .updateBtn button i {
+      cursor: pointer;
 
-    
+        color: rgb(244, 9, 9);
+    }
+    .display_List .card_container .dataCard .updateBtn button i:hover {
+      cursor: pointer;
+
+        color: rgb(86, 85, 85);
+    }
   @media only screen and (min-device-width: 0px) and (max-device-width: 1000px) {
     .display_List {
       width: 94%;

@@ -1,6 +1,5 @@
 <!-- include add to food API -->
-<?php require('../api/AddFoodItem.php'); ?>
-
+<?php require('../api/deletefooditem.php'); ?>
 
 
 <!DOCTYPE html>
@@ -10,7 +9,7 @@
 <?php require('../modules/HeadTag.php'); ?>
 
 <link rel="stylesheet" href="../styles/admin/admin.css">
-<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=7">
+<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=8">
 
 <script>
     window.document.title = "SD CANTEEN | Delete Food Item";
@@ -21,6 +20,32 @@
 </script>
 
 <body>
+
+
+    
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor:pointer"> <i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+      Are you sure to delete this food item ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary">Yes Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+
+
+
 
 
     <div class="admin">
@@ -68,10 +93,10 @@
                 <div class="card_container">
                     <div class="cards">
                         <li class="Image_Section">Item Photo</li>
-                        <li class="Item_Name">Food Name</li>
-                        <li class="Item_Price">Price</li>
-                        <li class="Item_Price">Category</li>
-                        <li class="Item_Category">Action</li>
+                        <li class="Item_Name" style="margin-left:6%;">Food Name</li>
+                        <li class="Item_Price" style="margin-left:3%;">Price</li>
+                        <li class="Item_Price" style="width: 20%;text-align:right">Category</li>
+                        <li class="Item_Category" style="text-align:center;padding-left:5%">Action</li>
                     </div>
 
 
@@ -166,15 +191,19 @@ echo " <li class=\"Item_Price\">";
 
 
                             // delete
-                           echo " <li class='Item_Qty'>
-                            <p
+                           echo " <li class='Item_Qty' >";
+                           echo "<form method='POST' action=\"\">";
+                           echo "<input type='text' name=\"foodID\" value=\"";
+                           echo $FoodItemAllDataInAdmin['id'];
+                           echo "\" style=\"display:none\">";
+                            echo "<p
                                class='updateBtn'
                               title='Click To Delete'
                             >";
-                            echo "
-                            <i class='fa-solid fa-trash'></i>
-                            </p>
-                          </li>";
+                            echo "<button name=\"delete_food_item\"><i class='fa-solid fa-trash'></i>
+                            </button> </p>";
+                            echo"</form>";
+                         echo"</li>";
                             echo "</div>";
                         }
                     }
@@ -191,9 +220,17 @@ echo " <li class=\"Item_Price\">";
             </div>
 
 
-        </div>
 
 
+
+
+
+   
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 
 </html>
