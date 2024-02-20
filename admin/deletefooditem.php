@@ -9,7 +9,9 @@
 <?php require('../modules/HeadTag.php'); ?>
 
 <link rel="stylesheet" href="../styles/admin/admin.css">
-<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=8">
+<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=2">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script>
     window.document.title = "SD CANTEEN | Delete Food Item";
@@ -22,27 +24,26 @@
 <body>
 
 
-    
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor:pointer"> <i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div class="modal-body">
-      Are you sure to delete this food item ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary">Yes Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor:pointer"> <i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to delete this food item ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary">Yes Delete</button>
+                </div>
+            </div>
         </div>
+    </div>
 
 
 
@@ -84,7 +85,7 @@
                             <option>
                                 burger
                             </option>
-                            
+
 
                         </select>
                     </div>
@@ -127,58 +128,56 @@
                             // food name
                             echo " <li class=\"Item_Name\">
 <p>";
-echo $FoodItemAllDataInAdmin['foodname'];
-echo "</p></li>";
+                            echo $FoodItemAllDataInAdmin['foodname'];
+                            echo "</p></li>";
                             // food price
-         
-                            
 
-                            if($FoodItemAllDataInAdmin['normalprice']>0){
+
+
+                            if ($FoodItemAllDataInAdmin['normalprice'] > 0) {
 
                                 echo " <li class=\"Item_Price_Normal\"><p><b>Normal Size: </b>";
-                              
+
                                 echo $FoodItemAllDataInAdmin['normalprice'];
-                            
+
                                 echo "</p></li>";
+                            } else {
+                                echo " <li class=\"Item_Price\">";
+                                if ($FoodItemAllDataInAdmin['smallprice'] > 0) {
+                                    echo " <p><b>Small Size: </b>";
+
+                                    echo $FoodItemAllDataInAdmin['smallprice'];
+
+                                    echo "</p>";
+                                }
+
+                                if ($FoodItemAllDataInAdmin['mediumprice'] > 0) {
+
+                                    echo " <p><b>Medium Size: </b>";
+
+                                    echo $FoodItemAllDataInAdmin['mediumprice'];
+
+                                    echo "</p>";
+                                }
+
+                                if ($FoodItemAllDataInAdmin['largeprice'] > 0) {
+                                    echo " <p><b>Large Size: </b>";
+
+                                    echo $FoodItemAllDataInAdmin['largeprice'];
+
+                                    echo "</p>";
+                                }
+                                echo "</li>";
                             }
-else{
-echo " <li class=\"Item_Price\">";
-    if($FoodItemAllDataInAdmin['smallprice']>0){
-        echo " <p><b>Small Size: </b>";
-                              
-        echo $FoodItemAllDataInAdmin['smallprice'];
-    
-        echo "</p>";
-    }
-
-    if($FoodItemAllDataInAdmin['mediumprice']>0){
-
-        echo " <p><b>Medium Size: </b>";
-                              
-        echo $FoodItemAllDataInAdmin['mediumprice'];
-    
-        echo "</p>";
-    }
-
-    if($FoodItemAllDataInAdmin['largeprice']>0){
-        echo " <p><b>Large Size: </b>";
-                              
-        echo $FoodItemAllDataInAdmin['largeprice'];
-    
-        echo "</p>";
-
-    }
-    echo "</li>";  
-}
 
 
 
 
-                            
-                           
-        
 
-      
+
+
+
+
 
 
                             //  category 
@@ -187,23 +186,32 @@ echo " <li class=\"Item_Price\">";
                             <p>";
                             echo $FoodItemAllDataInAdmin['category'];
                             echo "</p></li>";
-                            
+
 
 
                             // delete
-                           echo " <li class='Item_Qty' >";
-                           echo "<form method='POST' action=\"\">";
-                           echo "<input type='text' name=\"foodID\" value=\"";
-                           echo $FoodItemAllDataInAdmin['id'];
-                           echo "\" style=\"display:none\">";
-                            echo "<p
+                            // echo " <li class='Item_Qty' >";
+                            // echo "<form method='POST' action=\"\">";
+                            // echo "<input type='text' name=\"foodID\" value=\"";
+                            // echo $FoodItemAllDataInAdmin['id'];
+                            // echo "\" style=\"display:none\">";
+                            // echo "<p
+                            //    class='updateBtn'
+                            //   title='Click To Delete'
+                            // >";
+                            // echo "<button name=\"delete_food_item\"><i class='fa-solid fa-trash'></i>
+                            // </button> </p>";
+                            // echo "</form>";
+                            // echo "</li>";
+
+
+
+                            echo "<li class='Item_Qty' ><p
                                class='updateBtn'
                               title='Click To Delete'
-                            >";
-                            echo "<button name=\"delete_food_item\"><i class='fa-solid fa-trash'></i>
-                            </button> </p>";
-                            echo"</form>";
-                         echo"</li>";
+                              data-toggle='modal' data-target='#exampleModal'
+                            ><i class='fa-solid fa-trash'></i></p></li>";
+
                             echo "</div>";
                         }
                     }
@@ -225,12 +233,12 @@ echo " <li class=\"Item_Price\">";
 
 
 
-   
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>
