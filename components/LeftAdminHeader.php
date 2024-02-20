@@ -85,7 +85,7 @@
                     <li><a href="">Update Food</a></li>
                     <li><a href="/sd-canteen/admin/deletefooditem.php">Delete Food</a></li>
                     <li><a href="/sd-canteen/admin/viewfoodItem.php">View Food</a></li>
-                    <li><a href="">Manage Food Categories</a></li>
+                    <li><a href="/sd-canteen/admin/ManageFoodCategory.php">Manage Food Categories</a></li>
 
 
                 </ul>

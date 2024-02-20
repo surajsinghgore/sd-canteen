@@ -270,12 +270,11 @@
 
 /* pathNavigation */
 .pathNavigation{
-  clear: both;
-  width: 100%;
+  width: 800px !important;
   padding-left: 8%;
-  display: flex;
+  display: block;
   margin-top: 110px;
-  height: 50px;
+  height: 150px;
   font-size: 23px;
 }
 .pathNavigation a{
@@ -289,8 +288,9 @@
 text-transform: capitalize;
 }
 .pathNavigation .child{
-  color: rgb(0, 0, 0);
+  color: rgb(211, 91, 91);
   font-weight: 550;
+  width: fit-content !important;
   text-transform: uppercase;
 }
 
