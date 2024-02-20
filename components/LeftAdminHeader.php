@@ -83,7 +83,7 @@
                 <ul id="foodSubMenu">
                     <li><a href="/sd-canteen/admin/addfooditem.php">Add Food</a></li>
                     <li><a href="">Update Food</a></li>
-                    <li><a href="">Delete Food</a></li>
+                    <li><a href="/sd-canteen/admin/deletefooditem.php">Delete Food</a></li>
                     <li><a href="/sd-canteen/admin/viewfoodItem.php">View Food</a></li>
                     <li><a href="">Manage Food Categories</a></li>
 

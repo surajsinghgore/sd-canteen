@@ -253,8 +253,14 @@ text-transform: capitalize;
   }
   .display_List .card_container .dataCard .updateBtn {
       color: red;
-       cursor: pointer;
-       }
+      cursor: pointer;
+    }
+    .display_List .card_container .dataCard .updateBtn:hover {
+
+        color: rgb(45, 45, 45);
+    }
+
+    
   @media only screen and (min-device-width: 0px) and (max-device-width: 1000px) {
     .display_List {
       width: 94%;
