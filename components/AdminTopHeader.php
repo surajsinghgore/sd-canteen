@@ -1,24 +1,6 @@
 <!-- toggle event on btn toggle -->
 <?php require("../api/controlorderstatus.php"); ?>
-<?php
 
-// php 
-
-function enable()
-{
-    echo "true";
-}
-function disable()
-{
-    echo "false";
-}
-if (isset($_GET['en'])) {
-    enable();
-}
-if (isset($_GET['ds'])) {
-    disable();
-}
-?>
 
 <!-- get toggle status for btn  -->
 

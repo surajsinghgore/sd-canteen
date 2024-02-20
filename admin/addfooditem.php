@@ -160,7 +160,6 @@
                                 <p>Photo Realtime Preview</p>
                                 <div class="preview_photo">
 
-
                                     <img alt="Food images" id="FoodImagePreview" layout="fill" />
 
 

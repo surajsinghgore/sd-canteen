@@ -20,12 +20,12 @@
     require('../middleware/VerifyAdminLogin.php');
     require('../modules/TopLoader.php');
 
-    if (isset($toast_status)) {
+    // if (isset($toast_status)) {
 
-        if ($toast_status == 'true') {
-            require('../components/Toast.php');
-        }
-    }
+    //     if ($toast_status == 'true') {
+    //         require('../components/Toast.php');
+    //     }
+    // }
 
     ?>
     <div class="leftPanel">
