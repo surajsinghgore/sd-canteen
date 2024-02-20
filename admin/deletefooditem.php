@@ -1,7 +1,3 @@
-<!-- include add to food API -->
-<?php require('../api/deletefooditem.php'); ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,25 +23,29 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="cursor:pointer"> <i class="fa-solid fa-xmark"></i></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"> <i class="fa-solid fa-xmark"></i></span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     Are you sure to delete this food item ?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-primary">Yes Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No </button>
+                    <button type="button" class="btn btn-primary" onclick="deleteFoodItem()">Yes Delete
+
+
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
-
 
 
 
@@ -194,17 +194,20 @@
 
 
                             echo " <li class='Item_Qty' >";
-                            echo "<form method='POST' action=\"\">";
-                            echo "<input type='text' name=\"foodID\" value=\"";
-                            echo $FoodItemAllDataInAdmin['id'];
-                            echo "\" style=\"display:none\">";
+
+
                             echo "<p
                                class='updateBtn'
                               title='Click To Delete'
+                              data-toggle=\"modal\" data-target=\"#exampleModal\"
+
+                              onclick=\"deleteItem(";
+                            echo $FoodItemAllDataInAdmin['id'];
+                            echo ")\";
                             >";
-                            echo "<button name=\"delete_food_item\"><i class='fa-solid fa-trash'></i>
-                            </button> </p>";
-                            echo "</form>";
+                            echo "<i class='fa-solid fa-trash'></i>
+                            </p>";
+
                             echo "</li>";
 
 
@@ -243,6 +246,38 @@
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <script>
+                function deleteItem(id) {
+                    sessionStorage.setItem('deleteFoodItemId', id);
+
+                }
+
+                function deleteFoodItem() {
+
+                 
+                    if (sessionStorage.getItem('deleteFoodItemId')) {
+                        let foodId = sessionStorage.getItem('deleteFoodItemId');
+                        $.ajax({
+                            type: "POST", //type of method
+                            url: "http://localhost/sd-canteen/api/deletefooditem.php", //your page
+                            data: {
+                                foodID: foodId
+
+                            }, // passing the values
+                            success: function(res) {
+                                window.location.reload();
+                                sessionStorage.removeItem('deleteFoodItemId')
+                            }
+                        });
+
+
+                    } else {
+
+
+                        alert('please try again')
+                    }
+                }
+
+
                 // search with category
                 function searchByCategory() {
                     let categorySelect = document.getElementById('foodCategoryName').value;
@@ -255,7 +290,8 @@
                             type: "POST", //type of method
                             url: "http://localhost/sd-canteen/api/searchFoodItemByCategory.php", //your page
                             data: {
-                                category: categorySelect,deletepage:"deletepage"
+                                category: categorySelect,
+                                deletepage: "deletepage"
                             }, // passing the values
                             success: function(res) {
                                 document.getElementById('resultData').innerHTML = res;
@@ -273,7 +309,8 @@
                         type: "POST", //type of method
                         url: "http://localhost/sd-canteen/api/searchFoodItemByName.php", //your page
                         data: {
-                            foodname: searchInput,deletepage:"deletepage"
+                            foodname: searchInput,
+                            deletepage: "deletepage"
                         }, // passing the values
                         success: function(res) {
                             document.getElementById('resultData').innerHTML = res;

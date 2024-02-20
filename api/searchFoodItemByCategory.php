@@ -84,13 +84,12 @@ if(isset($_REQUEST['deletepage'])) {
     <li class="Item_Category">
     <p><?php echo $dataSearch['category'] ?></p></li>
     
+ 
     <li class='Item_Qty'>
-    <form method='POST' action="">
-    <input type='text' name="foodID" value="<?php echo $dataSearch['id'];?>" style='display:none'>
-    <p class='updateBtn' title='Click To Delete'>
-    <button name="delete_food_item"><i class='fa-solid fa-trash'></i></button> 
-    </p>
-    </form>
+
+
+<p class='updateBtn' title='Click To Delete' data-toggle="modal" data-target="#exampleModal" onclick="deleteItem('<?php echo $dataSearch['id']; ?>')" >  <i class='fa-solid fa-trash'></i>
+                            </p>
     </li>
     
     
