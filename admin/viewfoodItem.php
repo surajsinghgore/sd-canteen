@@ -1,8 +1,3 @@
-<!-- include add to food API -->
-<?php require('../api/AddFoodItem.php'); ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +5,7 @@
 <?php require('../modules/HeadTag.php'); ?>
 
 <link rel="stylesheet" href="../styles/admin/admin.css">
-<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=7">
+<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=3">
 
 <script>
     window.document.title = "SD CANTEEN | Show Food Item";
@@ -52,37 +47,23 @@
                         <p>Details of all Food</p>
                     </div>
                     <div class="search">
-                        <input type="search" name="name" placeholder="Search By Food Name..." id="foodNameSearchs" />
-                        <select name="category" id="dropDown">
-                            <option value="">Search By Category ..</option>
+                        <input type="search" name="name" placeholder="Search By Food Name..." id="foodNameSearch" onkeyup="searchByName()" />
+                        <select name="category" id="foodCategoryName" onchange="searchByCategory()">
+                            <option value="no">Search By Category ..</option>
 
                             <option>
                                 burger
                             </option>
                             <option>
-                                burger
+                                sd special
                             </option>
-                            <option>
-                                burger
-                            </option>
-                            <option>
-                                burger
-                            </option>
-                            <option>
-                                burger
-                            </option>
-                            <option>
-                                burger
-                            </option>
-                            <option>
-                                burger
-                            </option>
+
 
                         </select>
                     </div>
                 </div>
 
-                <div class="card_container">
+                <div class="card_container" id="resultData">
                     <div class="cards">
                         <li class="Image_Section">Item Photo</li>
                         <li class="Item_Name">Food Name</li>
@@ -95,7 +76,7 @@
 
 
 
-
+                    <!-- food item gets -->
                     <?php
                     // connection established
                     // established connection
@@ -112,7 +93,7 @@
                         // row wise printing
                         while ($FoodItemAllDataInAdmin = mysqli_fetch_array($resFoodItem)) {
 
-                            echo "<div class=\"dataCard\" key=\"index\">";
+                            echo "<div class=\"dataCard\" >";
                             // image load
                             echo "<li class=\"Image_Section\">
         <img src=\"", $FoodItemAllDataInAdmin['imagepath'], "\" alt=\"item.Image\"  />
@@ -120,49 +101,47 @@
                             // food name
                             echo " <li class=\"Item_Name\">
 <p>";
-echo $FoodItemAllDataInAdmin['foodname'];
-echo "</p></li>";
+                            echo $FoodItemAllDataInAdmin['foodname'];
+                            echo "</p></li>";
                             // food price
-         
-                            
 
-                            if($FoodItemAllDataInAdmin['normalprice']>0){
+
+
+                            if ($FoodItemAllDataInAdmin['normalprice'] > 0) {
 
                                 echo " <li class=\"Item_Price_Normal\"><p><b>Normal Size: </b>";
-                              
+
                                 echo $FoodItemAllDataInAdmin['normalprice'];
-                            
+
                                 echo "</p></li>";
+                            } else {
+                                echo " <li class=\"Item_Price\">";
+                                if ($FoodItemAllDataInAdmin['smallprice'] > 0) {
+                                    echo " <p><b>Small Size: </b>";
+
+                                    echo $FoodItemAllDataInAdmin['smallprice'];
+
+                                    echo "</p>";
+                                }
+
+                                if ($FoodItemAllDataInAdmin['mediumprice'] > 0) {
+
+                                    echo " <p><b>Medium Size: </b>";
+
+                                    echo $FoodItemAllDataInAdmin['mediumprice'];
+
+                                    echo "</p>";
+                                }
+
+                                if ($FoodItemAllDataInAdmin['largeprice'] > 0) {
+                                    echo " <p><b>Large Size: </b>";
+
+                                    echo $FoodItemAllDataInAdmin['largeprice'];
+
+                                    echo "</p>";
+                                }
+                                echo "</li>";
                             }
-else{
-echo " <li class=\"Item_Price\">";
-    if($FoodItemAllDataInAdmin['smallprice']>0){
-        echo " <p><b>Small Size: </b>";
-                              
-        echo $FoodItemAllDataInAdmin['smallprice'];
-    
-        echo "</p>";
-    }
-
-    if($FoodItemAllDataInAdmin['mediumprice']>0){
-
-        echo " <p><b>Medium Size: </b>";
-                              
-        echo $FoodItemAllDataInAdmin['mediumprice'];
-    
-        echo "</p>";
-    }
-
-    if($FoodItemAllDataInAdmin['largeprice']>0){
-        echo " <p><b>Large Size: </b>";
-                              
-        echo $FoodItemAllDataInAdmin['largeprice'];
-    
-        echo "</p>";
-
-    }
-    echo "</li>";  
-}
 
 
 
@@ -173,26 +152,26 @@ echo " <li class=\"Item_Price\">";
                             <p>";
                             echo $FoodItemAllDataInAdmin['qty'];
                             echo "</p></li>";
-                           
-        
+
+
 
 
 
 
                             // visibility
-if($FoodItemAllDataInAdmin['active']=="on"){
-    echo " <li class=\"Item_Visibilty\">
+                            if ($FoodItemAllDataInAdmin['active'] == "on") {
+                                echo " <li class=\"Item_Visibilty\">
 
     <div class=\"ON\">on</div>
 </li>";
-}else{
-    echo " <li class=\"Item_Visibilty\">
+                            } else {
+                                echo " <li class=\"Item_Visibilty\">
 
     <div class=\"OFF\">off</div>
 </li>";
-}
-                           
-                           
+                            }
+
+
 
 
                             //  category 
@@ -201,7 +180,7 @@ if($FoodItemAllDataInAdmin['active']=="on"){
                             <p>";
                             echo $FoodItemAllDataInAdmin['category'];
                             echo "</p></li>";
-                            
+
 
                             echo "</div>";
                         }
@@ -218,9 +197,50 @@ if($FoodItemAllDataInAdmin['active']=="on"){
                 </div>
             </div>
 
-
         </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            // search with category
+            function searchByCategory() {
+                let categorySelect = document.getElementById('foodCategoryName').value;
+                if (categorySelect == "no") {
+                    window.location.reload();
+                } else {
+
+
+                    $.ajax({
+                        type: "POST", //type of method
+                        url: "http://localhost/sd-canteen/api/searchFoodItemByCategory.php", //your page
+                        data: {
+                            category: categorySelect
+                        }, // passing the values
+                        success: function(res) {
+                            document.getElementById('resultData').innerHTML = res;
+                        }
+                    });
+                }
+
+            }
+
+            // search with name
+            function searchByName() {
+                let searchInput = document.getElementById('foodNameSearch').value;
+
+                $.ajax({
+                    type: "POST", //type of method
+                    url: "http://localhost/sd-canteen/api/searchFoodItemByName.php", //your page
+                    data: {
+                        foodname: searchInput
+                    }, // passing the values
+                    success: function(res) {
+                        document.getElementById('resultData').innerHTML = res;
+                    }
+                });
+
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 </body>
 

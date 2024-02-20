@@ -275,6 +275,12 @@ text-transform: capitalize;
 
         color: rgb(86, 85, 85);
     }
+
+    h6{
+      margin-left: 2%;
+      color: red;
+      font-size: 30px;
+    }
   @media only screen and (min-device-width: 0px) and (max-device-width: 1000px) {
     .display_List {
       width: 94%;

@@ -134,7 +134,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $error_status = "success";
                     $error_message = "$FoodName Successfully Added";
                     $toast_status = 'true';
-                    echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/viewfoodItem.php'},2000)</script>";
+                    header('Location: /sd-canteen/admin/viewfoodItem.php');
+                    // echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/viewfoodItem.php'},2000)</script>";
                 }
                 // failed to send
                 else{

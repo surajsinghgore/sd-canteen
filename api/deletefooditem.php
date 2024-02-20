@@ -41,7 +41,8 @@ $deleteFoodRess = mysqli_query($connection, $sql_query);
         $error_status = "success";
         $error_message = "Food Item Successfully deleted";
         $toast_status = 'true';
-        echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/deletefooditem.php'},2000)</script>";
+        header('Location: /sd-canteen/admin/deletefooditem.php');
+ 
     }     
 }
 

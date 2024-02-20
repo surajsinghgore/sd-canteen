@@ -78,12 +78,15 @@
                         <p>Details of all Food</p>
                     </div>
                     <div class="search">
-                        <input type="search" name="name" placeholder="Search By Food Name..." id="foodNameSearchs" />
-                        <select name="category" id="dropDown">
-                            <option value="">Search By Category ..</option>
+                        <input type="search" name="name" placeholder="Search By Food Name..." id="foodNameSearch" onkeyup="searchByName()" />
+                        <select name="category" id="foodCategoryName" onchange="searchByCategory()">
+                            <option value="no">Search By Category ..</option>
 
                             <option>
                                 burger
+                            </option>
+                            <option>
+                                sd special
                             </option>
 
 
@@ -91,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="card_container">
+                <div class="card_container" id="resultData">
                     <div class="cards">
                         <li class="Image_Section">Item Photo</li>
                         <li class="Item_Name" style="margin-left:6%;">Food Name</li>
@@ -189,28 +192,23 @@
 
 
 
-                            // delete
-                            // echo " <li class='Item_Qty' >";
-                            // echo "<form method='POST' action=\"\">";
-                            // echo "<input type='text' name=\"foodID\" value=\"";
-                            // echo $FoodItemAllDataInAdmin['id'];
-                            // echo "\" style=\"display:none\">";
-                            // echo "<p
-                            //    class='updateBtn'
-                            //   title='Click To Delete'
-                            // >";
-                            // echo "<button name=\"delete_food_item\"><i class='fa-solid fa-trash'></i>
-                            // </button> </p>";
-                            // echo "</form>";
-                            // echo "</li>";
 
-
-
-                            echo "<li class='Item_Qty' ><p
+                            echo " <li class='Item_Qty' >";
+                            echo "<form method='POST' action=\"\">";
+                            echo "<input type='text' name=\"foodID\" value=\"";
+                            echo $FoodItemAllDataInAdmin['id'];
+                            echo "\" style=\"display:none\">";
+                            echo "<p
                                class='updateBtn'
                               title='Click To Delete'
-                              data-toggle='modal' data-target='#exampleModal'
-                            ><i class='fa-solid fa-trash'></i></p></li>";
+                            >";
+                            echo "<button name=\"delete_food_item\"><i class='fa-solid fa-trash'></i>
+                            </button> </p>";
+                            echo "</form>";
+                            echo "</li>";
+
+
+
 
                             echo "</div>";
                         }
@@ -239,6 +237,52 @@
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script>
+                // search with category
+                function searchByCategory() {
+                    let categorySelect = document.getElementById('foodCategoryName').value;
+                    if (categorySelect == "no") {
+                        window.location.reload();
+                    } else {
+
+
+                        $.ajax({
+                            type: "POST", //type of method
+                            url: "http://localhost/sd-canteen/api/searchFoodItemByCategoryForDelete.php", //your page
+                            data: {
+                                category: categorySelect
+                            }, // passing the values
+                            success: function(res) {
+                                document.getElementById('resultData').innerHTML = res;
+                            }
+                        });
+                    }
+
+                }
+
+                // search with name
+                function searchByName() {
+                    let searchInput = document.getElementById('foodNameSearch').value;
+
+                    $.ajax({
+                        type: "POST", //type of method
+                        url: "http://localhost/sd-canteen/api/searchFoodItemByNameForDelete.php", //your page
+                        data: {
+                            foodname: searchInput
+                        }, // passing the values
+                        success: function(res) {
+                            document.getElementById('resultData').innerHTML = res;
+                        }
+                    });
+
+                }
+            </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>
