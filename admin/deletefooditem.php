@@ -253,9 +253,9 @@
 
                         $.ajax({
                             type: "POST", //type of method
-                            url: "http://localhost/sd-canteen/api/searchFoodItemByCategoryForDelete.php", //your page
+                            url: "http://localhost/sd-canteen/api/searchFoodItemByCategory.php", //your page
                             data: {
-                                category: categorySelect
+                                category: categorySelect,deletepage:"deletepage"
                             }, // passing the values
                             success: function(res) {
                                 document.getElementById('resultData').innerHTML = res;
@@ -271,9 +271,9 @@
 
                     $.ajax({
                         type: "POST", //type of method
-                        url: "http://localhost/sd-canteen/api/searchFoodItemByNameForDelete.php", //your page
+                        url: "http://localhost/sd-canteen/api/searchFoodItemByName.php", //your page
                         data: {
-                            foodname: searchInput
+                            foodname: searchInput,deletepage:"deletepage"
                         }, // passing the values
                         success: function(res) {
                             document.getElementById('resultData').innerHTML = res;

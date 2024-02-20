@@ -80,7 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error_status = "error";
             $error_message = 'Please Login with admin credentials';
             $toast_status = 'true';
-            echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/AdminLogin.php'},2000)</script>";
+
+            header("Refresh: 5;url=http://localhost/sd-canteen/admin/AdminLogin.php");
+
         }
 
         // order status -->ON-->On else OFF

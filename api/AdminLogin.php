@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $error_status = "success";
                 $error_message = 'Admin Login Successfully';
                 $toast_status = 'true';
+                header("Refresh:5; url=http://localhost/sd-canteen/admin/admin.php");
             }
             // password is wrong
             else {
