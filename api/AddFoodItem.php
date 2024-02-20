@@ -5,14 +5,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['SendFoodItem'])) {
         // validate Data
 
-        $FoodName = $_REQUEST['FoodName'];
+        $FoodName = strip_tags($_REQUEST['FoodName']);
         $FoodQty = intval($_REQUEST['FoodQty']);
         $FoodCategory = $_REQUEST['FoodCategory'];
         $normalPrice = intval($_REQUEST['normalPrice']);
         $smallPrice = intval($_REQUEST['smallPrice']);
         $mediumPrice = intval($_REQUEST['mediumPrice']);
         $largePrice = intval($_REQUEST['largePrice']);
-        $description = $_REQUEST['description'];
+        $description =strip_tags( $_REQUEST['description']);
       
 
 
@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $error_status = "success";
                     $error_message = "$FoodName Successfully Added";
                     $toast_status = 'true';
-                    echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/admin.php'},2000)</script>";
+                    echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/viewfoodItem.php'},2000)</script>";
                 }
                 // failed to send
                 else{
@@ -223,7 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $error_status = "success";
                             $error_message = "$FoodName Successfully Added";
                             $toast_status = 'true';
-                            echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/admin.php'},2000)</script>";
+                            echo "<script>setTimeout(()=>{window.location.href='http://localhost/sd-canteen/admin/viewfoodItem.php'},2000)</script>";
                         }
                         // failed to send
                         else{
