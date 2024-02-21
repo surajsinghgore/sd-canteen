@@ -1,0 +1,42 @@
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    if (isset($_POST['add_food_category'])) {
+        // validate Data
+        $foodcategoryname = strip_tags($_REQUEST['foodcategoryname']);
+
+
+
+        // empty food name
+        if (strlen($foodcategoryname) == 0) {
+            $error_status = "warn";
+            $error_message = 'Please Enter Food Category Name';
+            $toast_status = 'true';
+            return;
+        }
+
+
+
+
+        // verify admin login
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if ($_SESSION['admin_login_status'] != "true") {
+
+            $error_status = "error";
+            $error_message = 'Please Login with admin credentials';
+            $toast_status = 'true';
+
+            header("Refresh: 5;url=http://localhost/sd-canteen/admin/AdminLogin.php");
+        }
+
+
+        // check weather food category is already exits or not
+
+        
+// send data
+        // require('../middleware/ConnectToDatabase.php');
+    }
+}

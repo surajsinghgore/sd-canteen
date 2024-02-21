@@ -40,6 +40,7 @@
   .profile_section h1 {
     font-size: 22px;
     margin-top: 0.5%;
+    text-transform: capitalize;
     color: red;
   }
  
