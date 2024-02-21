@@ -3,7 +3,9 @@
         "atleast",
         "deletefooditem",
         "foodcategories",
+        "foodcategoryid",
         "foodcategoryname",
+        "foodcategoryupdatename",
         "fooditems",
         "foodname",
         "largeprice",
@@ -12,6 +14,7 @@
         "rightsidebar",
         "smallprice",
         "toploader",
+        "updatefooditemid",
         "viewfood",
         "Visibilty"
     ]

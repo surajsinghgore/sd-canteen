@@ -93,10 +93,10 @@
                   </div>
 
                   <div class="DropDown" id="dropdownmenu<?php echo $FoodCategory['id']; ?>" style="display:none;">
-                    <li class="Update"><i>
+                    <li class="Update" onclick='updateFoodCategory("<?php echo $FoodCategory['id']; ?>")'><i>
                         <FaRegEdit />
                       </i>Update</li>
-                    <li class="delete"><i>
+                    <li class="delete"   ><i>
                         <AiOutlineDelete />
                       </i> Delete</li>
                   </div>
@@ -126,12 +126,24 @@
   </div>
 
   <script>
+
+
+
     document.getElementById('totalcategorysize').value = document.getElementsByClassName('DataLists').length;
 
+
+    // update food category
+    function updateFoodCategory(id){
+
+sessionStorage.setItem('updatefooditemid',id);
+window.location.href="http://localhost/sd-canteen/admin/updatefoodcategory.php";
+    }
+
+    // enable dropdown menu btn
     function enableOptions(id) {
       let dropdownmenu = 'dropdownmenu' + id;
       let menuIcon = 'menuIcons' + id;
-      sessionStorage.setItem('updatefoodcategory', id);
+
       if (document.getElementById(dropdownmenu).style.display == "block") {
         document.getElementById(dropdownmenu).style.display = "none";
         document.getElementById(menuIcon).innerHTML = "<i class='fa-solid fa-bars cursor_icon'></i>";

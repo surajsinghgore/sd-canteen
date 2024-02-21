@@ -1,6 +1,6 @@
 <?php
 require('../middleware/ConnectToDatabase.php');
-// delete food item page
+// search by food  name
 if (isset($_REQUEST['foodcategoryname'])) {
 
     $foodcategoryname = $_REQUEST['foodcategoryname'];
@@ -43,5 +43,29 @@ if (isset($_REQUEST['foodcategoryname'])) {
     }
 }
 
+// search by food category id
 
+if (isset($_REQUEST['foodcategoryid'])) {
+
+    $foodcategoryid = $_REQUEST['foodcategoryid'];
+
+    $sql_query = "select * from foodcategories where id=$foodcategoryid";
+
+    $resFoodCategory = mysqli_query($connection, $sql_query);
+
+
+    $length = mysqli_num_rows($resFoodCategory);
+
+    if ($length == 0) {
+        echo "<script>sessionStorage.removeItem('updatefooditemid')</script>";
+        header('Location: /sd-canteen/admin/ManageFoodCategory.php');
+
+    } else {
+$foodcategoryname="";
+        while ($FoodCategory = mysqli_fetch_array($resFoodCategory)) { 
+                     $foodcategoryname=$FoodCategory['foodcategoryname']; 
+        }
+        echo $foodcategoryname;
+    }
+}
 ?>
