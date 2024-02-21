@@ -5,10 +5,12 @@
 <?php require('../modules/HeadTag.php'); ?>
 
 <link rel="stylesheet" href="../styles/admin/admin.css">
-<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=13">
+<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=2">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <script>
-    window.document.title = "SD CANTEEN | Show Food Item";
+    window.document.title = "SD CANTEEN | Update Food Item";
     // prevent reload post request
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href)
@@ -16,6 +18,10 @@
 </script>
 
 <body>
+
+
+
+
 
 
     <div class="admin">
@@ -26,12 +32,12 @@
 
         <!-- right top header -->
         <div class="rightsidebar">
-            <?php $AdminTopHeaderTitle = "View Food Item Page";
+            <?php $AdminTopHeaderTitle = "Update Food Item Page";
             require('../components/AdminTopHeader.php'); ?>
             <!-- path navigation -->
             <?php $pathNavigationParentPath = "/sd-canteen/admin/viewfoodItem.php";
             $pathNavigationParent = "Foods";
-            $pathNavigationChild = "View food item";
+            $pathNavigationChild = "update food item";
             require('../components/PathNavigation.php'); ?>
 
 
@@ -66,17 +72,16 @@
                 <div class="card_container" id="resultData">
                     <div class="cards">
                         <li class="Image_Section">Item Photo</li>
-                        <li class="Item_Name">Food Name</li>
-                        <li class="Item_Price">Price</li>
-                        <li class="Item_Qty">Qty</li>
-                        <li class="Item_Visibilty">Visibility</li>
-                        <li class="Item_Category">Category</li>
+                        <li class="Item_Name" style="margin-left:6%;">Food Name</li>
+                        <li class="Item_Price" style="margin-left:3%;">Price</li>
+                        <li class="Item_Price" style="width: 20%;text-align:right">Category</li>
+                        <li class="Item_Category" style="text-align:center;padding-left:5%">Action</li>
                     </div>
 
 
 
 
-                    <!-- food item gets -->
+
                     <?php
                     // connection established
                     // established connection
@@ -93,7 +98,7 @@
                         // row wise printing
                         while ($FoodItemAllDataInAdmin = mysqli_fetch_array($resFoodItem)) {
 
-                            echo "<div class=\"dataCard\" >";
+                            echo "<div class=\"dataCard\" key=\"index\">";
                             // image load
                             echo "<li class=\"Image_Section\">
         <img src=\"", $FoodItemAllDataInAdmin['imagepath'], "\" alt=\"item.Image\"  />
@@ -146,30 +151,9 @@
 
 
 
-                            // qty
-
-                            echo " <li class=\"Item_Qty\">
-                            <p>";
-                            echo $FoodItemAllDataInAdmin['qty'];
-                            echo "</p></li>";
 
 
 
-
-
-
-                            // visibility
-                            if ($FoodItemAllDataInAdmin['active'] == "on") {
-                                echo " <li class=\"Item_Visibilty\">
-
-    <div class=\"ON\">on</div>
-</li>";
-                            } else {
-                                echo " <li class=\"Item_Visibilty\">
-
-    <div class=\"OFF\">off</div>
-</li>";
-                            }
 
 
 
@@ -180,6 +164,27 @@
                             <p>";
                             echo $FoodItemAllDataInAdmin['category'];
                             echo "</p></li>";
+
+
+
+
+                            echo " <li class='Item_Qty' >";
+
+
+                            echo "<p
+                               class='updateBtn'
+                              title='Click To Update'
+                              
+                              onclick=\"updateItem(";
+                            echo $FoodItemAllDataInAdmin['id'];
+                            echo ")\";
+                            >";
+                            echo "<i class='fa-regular fa-pen-to-square'></i>
+                            </p>";
+
+                            echo "</li>";
+
+
 
 
                             echo "</div>";
@@ -197,51 +202,72 @@
                 </div>
             </div>
 
-        </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script>
-            // search with category
-            function searchByCategory() {
-                let categorySelect = document.getElementById('foodCategoryName').value;
-                if (categorySelect == "no") {
-                    window.location.reload();
-                } else {
 
+
+
+
+
+
+
+
+       
+
+
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script>
+                function updateItem(id) {
+                 
+                    sessionStorage.setItem('updateFoodItemId', id);
+window.location.href="http://localhost/sd-canteen/admin/updatefooditemForm.php"
+                }
+
+               
+
+
+                // search with category
+                function searchByCategory() {
+                    let categorySelect = document.getElementById('foodCategoryName').value;
+                    if (categorySelect == "no") {
+                        window.location.reload();
+                    } else {
+
+
+                        $.ajax({
+                            type: "POST", //type of method
+                            url: "http://localhost/sd-canteen/api/searchFoodItemByCategory.php", //your page
+                            data: {
+                                category: categorySelect,
+                                updatepage: "updatepage"
+                            }, // passing the values
+                            success: function(res) {
+                                document.getElementById('resultData').innerHTML = res;
+                            }
+                        });
+                    }
+
+                }
+
+                // search with name
+                function searchByName() {
+                    let searchInput = document.getElementById('foodNameSearch').value;
 
                     $.ajax({
                         type: "POST", //type of method
-                        url: "http://localhost/sd-canteen/api/searchFoodItemByCategory.php", //your page
+                        url: "http://localhost/sd-canteen/api/searchFoodItemByName.php", //your page
                         data: {
-                            category: categorySelect
+                            foodname: searchInput,
+                            updatepage: "updatepage"
                         }, // passing the values
                         success: function(res) {
                             document.getElementById('resultData').innerHTML = res;
                         }
                     });
+
                 }
-
-            }
-
-            // search with name
-            function searchByName() {
-                let searchInput = document.getElementById('foodNameSearch').value;
-
-                $.ajax({
-                    type: "POST", //type of method
-                    url: "http://localhost/sd-canteen/api/searchFoodItemByName.php", //your page
-                    data: {
-                        foodname: searchInput
-                    }, // passing the values
-                    success: function(res) {
-                        document.getElementById('resultData').innerHTML = res;
-                    }
-                });
-
-            }
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+            </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>

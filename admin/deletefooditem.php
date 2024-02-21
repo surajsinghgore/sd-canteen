@@ -60,8 +60,8 @@
             <?php $AdminTopHeaderTitle = "Delete Food Item Page";
             require('../components/AdminTopHeader.php'); ?>
             <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/admin.php";
-            $pathNavigationParent = "Admin";
+            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewfoodItem.php";
+            $pathNavigationParent = "Foods";
             $pathNavigationChild = "Delete food item";
             require('../components/PathNavigation.php'); ?>
 

@@ -35,8 +35,8 @@
 
 
             <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/admin.php";
-            $pathNavigationParent = "Admin";
+            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewfoodItem.php";
+            $pathNavigationParent = "Foods";
             $pathNavigationChild = "add food item";
             require('../components/PathNavigation.php'); ?>
 
