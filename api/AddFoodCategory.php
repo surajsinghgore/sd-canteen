@@ -35,8 +35,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // check weather food category is already exits or not
 
-        
-// send data
+        require('../middleware/ConnectToDatabase.php');
+        $resultGet = mysqli_query($connection, "SELECT * FROM foodcategories where foodcategoryname  ='$foodcategoryname'");
+        $rows = mysqli_num_rows($resultGet);
+
+        // duplicate data entry 
+        if ($rows > 0) {
+            $error_status = "error";
+            $error_message = "Food Category Already Exits ";
+            $toast_status = 'true';
+            return;
+        } else {
+
+            $sql_query = "insert into foodcategories(foodcategoryname) values('$foodcategoryname')";
+            $res = mysqli_query($connection, $sql_query);
+            if ($res) {
+
+
+
+                $error_status = "success";
+                $error_message = "$foodcategoryname Successfully Added";
+                $toast_status = 'true';
+                header('Location:  /sd-canteen/admin/ManageFoodCategory.php');
+            }
+        }
+        // send data
         // require('../middleware/ConnectToDatabase.php');
     }
 }
