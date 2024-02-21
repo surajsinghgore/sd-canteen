@@ -11,6 +11,34 @@
 
 <body>
 
+
+
+  <!-- Modal -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"> <i class="fa-solid fa-xmark"></i></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure to delete this food category ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No </button>
+          <button type="button" class="btn btn-primary" onclick="deleteFoodCategoryFromDB()">Yes Delete
+
+
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <?php
 
   if (isset($toast_status)) {
@@ -93,12 +121,13 @@
                   </div>
 
                   <div class="DropDown" id="dropdownmenu<?php echo $FoodCategory['id']; ?>" style="display:none;">
-                    <li class="Update" onclick='updateFoodCategory("<?php echo $FoodCategory['id']; ?>")'><i>
-                        <FaRegEdit />
-                      </i>Update</li>
-                    <li class="delete"   ><i>
-                        <AiOutlineDelete />
-                      </i> Delete</li>
+                    <li class="Update" onclick='updateFoodCategory("<?php echo $FoodCategory['id']; ?>")'>
+                      <i class="fa-solid fa-pen-to-square"></i>Update
+                    </li>
+
+                    <li class="delete" data-toggle="modal" data-target="#exampleModal" onclick='deleteFoodCategory("<?php echo $FoodCategory['id']; ?>")'>
+                      <i class="fa-solid fa-trash"></i>Delete
+                    </li>
                   </div>
                 </div>
 
@@ -124,19 +153,17 @@
     </div>
 
   </div>
+ 
 
   <script>
-
-
-
     document.getElementById('totalcategorysize').value = document.getElementsByClassName('DataLists').length;
 
 
     // update food category
-    function updateFoodCategory(id){
+    function updateFoodCategory(id) {
 
-sessionStorage.setItem('updatefooditemid',id);
-window.location.href="http://localhost/sd-canteen/admin/updatefoodcategory.php";
+      sessionStorage.setItem('updatefooditemid', id);
+      window.location.href = "http://localhost/sd-canteen/admin/updatefoodcategory.php";
     }
 
     // enable dropdown menu btn
@@ -179,9 +206,41 @@ window.location.href="http://localhost/sd-canteen/admin/updatefoodcategory.php";
         }
       });
 
+
+
+    }
+
+    // delete food category
+
+    function deleteFoodCategory(id) {
+      sessionStorage.setItem('updatefooditemid', id);
+    }
+
+
+    // delete food item api
+    const deleteFoodCategoryFromDB = () => {
+      let foodId = sessionStorage.getItem('updatefooditemid');
+      $.ajax({
+        type: "POST",
+        url: "http://localhost/sd-canteen/api/deletefoodcategory.php", 
+        data: {
+          foodcategoryid: foodId
+
+        }, // passing the values
+        success: function(res) {
+          sessionStorage.removeItem('updatefooditemid');
+          window.location.reload();
+        }
+      });
     }
   </script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- bootstrap js -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>

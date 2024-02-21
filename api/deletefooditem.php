@@ -3,7 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $foodId = intval($_REQUEST['foodID']);
-    echo "foodId";
+  
     if (empty($foodId)) {
 
         $error_status = "warn";
