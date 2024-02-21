@@ -4,7 +4,7 @@ require('../middleware/ConnectToDatabase.php');
 // delete food item page
 if(isset($_REQUEST['deletepage'])) {
     $foodname = $_REQUEST['foodname'];
-    $array = array();
+    
     $sql_query = "select * from fooditems where foodname like '%$foodname%'";
     $resFoodItem = mysqli_query($connection, $sql_query);
     
@@ -110,7 +110,7 @@ else{
 
 
 $foodname = $_REQUEST['foodname'];
-$array = array();
+
 $sql_query = "select * from fooditems where foodname like '%$foodname%'";
 $resFoodItem = mysqli_query($connection, $sql_query);
 

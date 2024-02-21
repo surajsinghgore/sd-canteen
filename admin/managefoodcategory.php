@@ -53,10 +53,10 @@
         <div class="Subtop">
           <div class="showData">
             Show Data
-            <input type="number" name="sort" />
+            <input type="number" name="sort" id="totalcategorysize" readonly />
           </div>
           <div class="searchBar">
-            <input type="search" name="searchdata" id="searchdata" placeholder="Search ..." />
+            <input type="search" name="searchdata" id="foodCategoryNameSearch" onkeyup="searchByName()" placeholder="Search ..." />
           </div>
         </div>
         <div class="ListData">
@@ -69,43 +69,45 @@
 
 
           <!-- fetching food category data -->
-
-          <?php
-          //  established connection
-          require('../middleware/ConnectToDatabase.php');
-          $sql_query = "select * from foodcategories";
-          $resFoodCategory = mysqli_query($connection, $sql_query);
-          $length = mysqli_num_rows($resFoodCategory);
-          if ($length == 0) {
-            echo "<h5 class='noItemFound'>No Food Category Found</h5>";
-          } else {
-            while ($FoodCategory = mysqli_fetch_array($resFoodCategory)) { ?>
-              <div class="DataLists" id="parent<?php echo $FoodCategory['id']; ?>">
-
-                <div class="DataList">
-                  <li><?php echo $FoodCategory['foodcategoryname']; ?></li>
-
-                  <li id="menuIcons<?php echo $FoodCategory['id']; ?>" onclick='enableOptions("<?php echo $FoodCategory['id']; ?>")'><i class="fa-solid fa-bars cursor_icon"></i></li>
+          <div class="mainData" id="mainData">
 
 
+            <?php
+            //  established connection
+            require('../middleware/ConnectToDatabase.php');
+            $sql_query = "select * from foodcategories";
+            $resFoodCategory = mysqli_query($connection, $sql_query);
+            $length = mysqli_num_rows($resFoodCategory);
+            if ($length == 0) {
+              echo "<h5 class='noItemFound'>No Food Category Found</h5>";
+            } else {
+              while ($FoodCategory = mysqli_fetch_array($resFoodCategory)) { ?>
+                <div class="DataLists" id="parent<?php echo $FoodCategory['id']; ?>">
+
+                  <div class="DataList">
+                    <li><?php echo $FoodCategory['foodcategoryname']; ?></li>
+
+                    <li id="menuIcons<?php echo $FoodCategory['id']; ?>" onclick='enableOptions("<?php echo $FoodCategory['id']; ?>")'><i class="fa-solid fa-bars cursor_icon"></i></li>
+
+
+                  </div>
+
+                  <div class="DropDown" id="dropdownmenu<?php echo $FoodCategory['id']; ?>" style="display:none;">
+                    <li class="Update"><i>
+                        <FaRegEdit />
+                      </i>Update</li>
+                    <li class="delete"><i>
+                        <AiOutlineDelete />
+                      </i> Delete</li>
+                  </div>
                 </div>
 
-                <div class="DropDown" id="dropdownmenu<?php echo $FoodCategory['id']; ?>" style="display:none;">
-                  <li class="Update"><i>
-                      <FaRegEdit />
-                    </i>Update</li>
-                  <li class="delete"><i>
-                      <AiOutlineDelete />
-                    </i> Delete</li>
-                </div>
-              </div>
-
-          <?php
+            <?php
+              }
             }
-          }
 
-          ?>
-
+            ?>
+          </div>
 
 
 
@@ -124,10 +126,12 @@
   </div>
 
   <script>
+    document.getElementById('totalcategorysize').value = document.getElementsByClassName('DataLists').length;
+
     function enableOptions(id) {
       let dropdownmenu = 'dropdownmenu' + id;
       let menuIcon = 'menuIcons' + id;
-
+      sessionStorage.setItem('updatefoodcategory', id);
       if (document.getElementById(dropdownmenu).style.display == "block") {
         document.getElementById(dropdownmenu).style.display = "none";
         document.getElementById(menuIcon).innerHTML = "<i class='fa-solid fa-bars cursor_icon'></i>";
@@ -143,28 +147,29 @@
 
 
     }
+
+
+
+    function searchByName() {
+
+      let searchInput = document.getElementById('foodCategoryNameSearch').value;
+
+      $.ajax({
+        type: "POST", //type of method
+        url: "http://localhost/sd-canteen/api/searchfoodcategorybyname.php", //your page
+        data: {
+          foodcategoryname: searchInput,
+
+        }, // passing the values
+        success: function(res) {
+          document.getElementById('mainData').innerHTML = res;
+          document.getElementById('totalcategorysize').value = document.getElementsByClassName('DataLists').length;
+        }
+      });
+
+    }
   </script>
-  <!-- <script>
-    document.getElementById('dropdownmenu').style.display="none";
-const enableOptions=(this)=>{
- 
-console.log(this)
-
-  if(document.getElementById('dropdownmenu').style.display=="block"){
-    document.getElementById('dropdownmenu').style.display="none";
-  document.getElementById('menuIcons').innerHTML="<i class='fa-solid fa-bars cursor_icon'></i>";
-
-  }else{
-
-    document.getElementById('dropdownmenu').style.display="block";
-  document.getElementById('menuIcons').innerHTML="<i class='fa-regular fa-rectangle-xmark'></i>";
-
-  }
- 
-
-}
-    
-  </script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>
