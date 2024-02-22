@@ -112,7 +112,7 @@ else if (isset($_REQUEST['foodId'])) {
 
     if ($length == 0) {
         echo "<script>sessionStorage.removeItem('updatefooditemid')</script>";
-        header('Location: /sd-canteen/admin/ManageFoodCategory.php');
+        header('Location: /sd-canteen/admin/ManageCoffeeCategory.php');
     } else {
         $data = "";
         while ($FoodData = mysqli_fetch_array($resFoodData)) {
