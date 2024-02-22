@@ -212,7 +212,7 @@
 
         // delete food category
 
-        function deleteFoodCategory(id) {
+        function deleteDrinkCategory(id) {
             sessionStorage.setItem('updatedrinkitemid', id);
         }
 

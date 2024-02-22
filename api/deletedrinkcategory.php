@@ -1,8 +1,8 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $foodId = intval($_REQUEST['drinkcategoryid']);
+    echo $foodId;
 
     if (empty($foodId)) {
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $error_status = "success";
                 $error_message = "Drink Category Successfully deleted";
                 $toast_status = 'true';
-                header('Location: /sd-canteen/admin/ManageFoodCategory.php');
+                header('Location: /sd-canteen/admin/ManageDrinkCategory.php');
             }
         }
     }
