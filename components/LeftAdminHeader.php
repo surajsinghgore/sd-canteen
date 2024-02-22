@@ -105,7 +105,7 @@
                 <ul id="coffeeSubMenu">
                     <li><a href="/sd-canteen/admin/addcoffeeitem.php">Add Coffee</a></li>
                     <li><a href="/sd-canteen/admin/updatefooditem.php">Update Coffee</a></li>
-                    <li><a href="/sd-canteen/admin/deletefooditem.php">Delete Coffee</a></li>
+                    <li><a href="/sd-canteen/admin/deletecoffeeitem.php">Delete Coffee</a></li>
                     <li><a href="/sd-canteen/admin/viewcoffeeItem.php">View Coffee</a></li>
                     <li><a href="/sd-canteen/admin/managecoffeecategory.php">Manage Coffee Categories</a></li>
 
