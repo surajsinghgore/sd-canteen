@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../styles/admin/admin.css?v=1">
 <link rel="stylesheet" href="../styles/admin/ItemCategory.css?v=13">
 <script>
-  window.document.title = "Manage Food Category";
+  window.document.title = "SD CANTEEN | Manage Food Category";
 </script>
 
 <body>

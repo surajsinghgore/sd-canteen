@@ -30,13 +30,15 @@ if (isset($_REQUEST['foodcategoryname'])) {
                 </div>
 
                 <div class="DropDown" id="dropdownmenu<?php echo $FoodCategory['id']; ?>" style="display:none;">
-                    <li class="Update"><i>
-                            <FaRegEdit />
-                        </i>Update</li>
-                    <li class="delete"><i>
-                            <AiOutlineDelete />
-                        </i> Delete</li>
-                </div>
+                                        <li class="Update" onclick='updateFoodCategory("<?php echo $FoodCategory['id']; ?>")'>
+                                            <i class="fa-solid fa-pen-to-square"></i>Update
+                                        </li>
+
+                                        <li class="delete" data-toggle="modal" data-target="#exampleModal" onclick='deleteFoodCategory("<?php echo $FoodCategory['id']; ?>")'>
+                                            <i class="fa-solid fa-trash"></i>Delete
+                                        </li>
+                                    </div>
+
             </div>
 <?php
         }
