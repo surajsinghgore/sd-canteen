@@ -71,7 +71,7 @@
 
             <div class="ListView">
                 <div class="addCategory">
-                    <a href="/sd-canteen/admin/addcoffeecategory.php">
+                    <a href="/sd-canteen/admin/addjuicecategory.php">
                         <button>
                             <i class="fa-solid fa-plus"></i>
                             Add New Juice Category

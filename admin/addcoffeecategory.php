@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="../styles/admin/admin.css?v=14">
 
 <script>
-    window.document.title = "SD CANTEEN | Add Coffee Item";
     // prevent reload post request
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href)
@@ -31,7 +30,7 @@
             require('../components/AdminTopHeader.php'); ?>
             <!-- path navigation -->
             <?php $pathNavigationParentPath = "/sd-canteen/admin/viewcoffeeItem.php";
-            $pathNavigationParent = "Coffees/ Manage Food category";
+            $pathNavigationParent = "Coffee / Manage Coffee category";
             $pathNavigationChild = "add coffee category";
             require('../components/PathNavigation.php'); ?>
 

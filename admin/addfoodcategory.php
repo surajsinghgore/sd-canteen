@@ -9,12 +9,11 @@
 <link rel="stylesheet" href="../styles/admin/admin.css?v=14">
 
 <script>
-   window.document.title = "SD CANTEEN | Add Food Item";
+   window.document.title = "SD CANTEEN | Add Food Category";
     // prevent reload post request
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href)
     }
-  window.document.title = "Add Food Category";
 </script>
 
 <body>

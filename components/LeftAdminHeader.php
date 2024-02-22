@@ -99,7 +99,7 @@
                         <i class="fa-solid fa-mug-hot"></i>
                     </div>
 
-                    <span class="title">Coffees</span>
+                    <span class="title">Coffee</span>
 
                     <div class="arrows">
 

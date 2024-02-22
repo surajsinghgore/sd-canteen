@@ -61,7 +61,7 @@
             require('../components/AdminTopHeader.php'); ?>
             <!-- path navigation -->
             <?php $pathNavigationParentPath = "/sd-canteen/admin/viewcoffeeItem.php";
-            $pathNavigationParent = "Coffees";
+            $pathNavigationParent = "Coffee";
             $pathNavigationChild = "Manage Coffee Category";
             require('../components/PathNavigation.php'); ?>
 

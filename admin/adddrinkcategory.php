@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="../styles/admin/admin.css?v=14">
 
 <script>
-    window.document.title = "SD CANTEEN | Add Drink Item";
     // prevent reload post request
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href)
