@@ -36,6 +36,7 @@
         "updatefooditemid",
         "updatejuiceitemid",
         "viewcoffee",
+        "viewdrink",
         "viewfood",
         "viewjuice",
         "Visibilty"
