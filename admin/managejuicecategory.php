@@ -121,7 +121,7 @@
                                     </div>
 
                                     <div class="DropDown" id="dropdownmenu<?php echo $FoodCategory['id']; ?>" style="display:none;">
-                                        <li class="Update" onclick='updateFoodCategory("<?php echo $FoodCategory['id']; ?>")'>
+                                        <li class="Update" onclick='updateJuiceCategory("<?php echo $FoodCategory['id']; ?>")'>
                                             <i class="fa-solid fa-pen-to-square"></i>Update
                                         </li>
 
@@ -160,7 +160,7 @@
 
 
         // update food category
-        function updateFoodCategory(id) {
+        function updateJuiceCategory(id) {
 
             sessionStorage.setItem('updatejuiceitemid', id);
             window.location.href = "http://localhost/sd-canteen/admin/updatejuicecategory.php";
