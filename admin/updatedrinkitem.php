@@ -32,12 +32,12 @@
 
         <!-- right top header -->
         <div class="rightsidebar">
-            <?php $AdminTopHeaderTitle = "Update Food Item Page";
+            <?php $AdminTopHeaderTitle = "Update Drink Item Page";
             require('../components/AdminTopHeader.php'); ?>
             <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewfoodItem.php";
-            $pathNavigationParent = "Foods";
-            $pathNavigationChild = "update food item";
+            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewdrinkItem.php";
+            $pathNavigationParent = "Drinks";
+            $pathNavigationChild = "update Drink item";
             require('../components/PathNavigation.php'); ?>
 
 
@@ -49,11 +49,11 @@
             <div class="display_List">
                 <div class="top">
                     <div class="deatils">
-                        <h1>All Food Items</h1>
-                        <p>Details of all Food</p>
+                        <h1>All Drink Items</h1>
+                        <p>Details of all Drink</p>
                     </div>
                     <div class="search">
-                        <input type="search" name="name" placeholder="Search By Food Name..." id="foodNameSearch" onkeyup="searchByName()" />
+                        <input type="search" name="name" placeholder="Search By Drink Name..." id="foodNameSearch" onkeyup="searchByName()" />
                         <select name="category" id="foodCategoryName" onchange="searchByCategory()">
                             <option value="no">Search By Category ..</option>
 
@@ -61,7 +61,7 @@
                                  <?php
 
 require('../middleware/ConnectToDatabase.php');
-$sql_query = "select * from foodcategories";
+$sql_query = "select * from drinkcategories";
 $resFoodItem = mysqli_query($connection, $sql_query);
 
 $length = mysqli_num_rows($resFoodItem);
@@ -71,7 +71,7 @@ if ($length == 0) {
 } else {
     while ($dataSearch = mysqli_fetch_array($resFoodItem)) {
         echo "<option>";
-        echo $dataSearch['foodcategoryname'];
+        echo $dataSearch['drinkcategoryname'];
         echo "</option>";
     }
 }
@@ -85,7 +85,7 @@ if ($length == 0) {
                 <div class="card_container" id="resultData">
                     <div class="cards">
                         <li class="Image_Section">Item Photo</li>
-                        <li class="Item_Name" style="margin-left:6%;">Food Name</li>
+                        <li class="Item_Name" style="margin-left:6%;">Drink Name</li>
                         <li class="Item_Price" style="margin-left:3%;">Price</li>
                         <li class="Item_Price" style="width: 20%;text-align:right">Category</li>
                         <li class="Item_Category" style="text-align:center;padding-left:5%">Action</li>
@@ -99,7 +99,7 @@ if ($length == 0) {
                     // connection established
                     // established connection
                     require('../middleware/ConnectToDatabase.php');
-                    $sql_query = "select * from fooditems";
+                    $sql_query = "select * from drinkitems";
                     $resFoodItem = mysqli_query($connection, $sql_query);
 
                     $length = mysqli_num_rows($resFoodItem);
@@ -119,7 +119,7 @@ if ($length == 0) {
                             // food name
                             echo " <li class=\"Item_Name\">
 <p>";
-                            echo $FoodItemAllDataInAdmin['foodname'];
+                            echo $FoodItemAllDataInAdmin['drinkname'];
                             echo "</p></li>";
                             // food price
 
@@ -232,8 +232,8 @@ if ($length == 0) {
             <script>
                 function updateItem(id) {
                  
-                    sessionStorage.setItem('updateFoodItemId', id);
-window.location.href="http://localhost/sd-canteen/admin/updatefooditemForm.php"
+                    sessionStorage.setItem('updateDrinkItemId', id);
+window.location.href="http://localhost/sd-canteen/admin/updatedrinkitemForm.php"
                 }
 
                
@@ -249,7 +249,7 @@ window.location.href="http://localhost/sd-canteen/admin/updatefooditemForm.php"
 
                         $.ajax({
                             type: "POST", //type of method
-                            url: "http://localhost/sd-canteen/api/searchFoodItemByCategory.php", //your page
+                            url: "http://localhost/sd-canteen/api/searchDrinkItemByCategory.php", //your page
                             data: {
                                 category: categorySelect,
                                 updatepage: "updatepage"
@@ -268,7 +268,7 @@ window.location.href="http://localhost/sd-canteen/admin/updatefooditemForm.php"
 
                     $.ajax({
                         type: "POST", //type of method
-                        url: "http://localhost/sd-canteen/api/searchFoodItemByName.php", //your page
+                        url: "http://localhost/sd-canteen/api/searchDrinkItemByName.php", //your page
                         data: {
                             foodname: searchInput,
                             updatepage: "updatepage"

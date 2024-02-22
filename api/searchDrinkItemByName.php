@@ -112,11 +112,11 @@ else if (isset($_REQUEST['foodId'])) {
 
     if ($length == 0) {
         echo "<script>sessionStorage.removeItem('updatefooditemid')</script>";
-        header('Location: /sd-canteen/admin/ManageFoodCategory.php');
+        header('Location: /sd-canteen/admin/ManageDrinkCategory.php');
     } else {
         $data = "";
         while ($FoodData = mysqli_fetch_array($resFoodData)) {
-            $foodname = $FoodData['foodname'];
+            $foodname = $FoodData['drinkname'];
             $qty = $FoodData['qty'];
             $category = $FoodData['category'];
             $active = $FoodData['active'];
