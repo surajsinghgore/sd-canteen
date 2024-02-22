@@ -133,7 +133,7 @@
                 <ul id="drinkSubMenu">
                     <li><a href="/sd-canteen/admin/adddrinkitem.php">Add Drink</a></li>
                     <li><a href="">Update Drink</a></li>
-                    <li><a href="">Delete Drink</a></li>
+                    <li><a href="/sd-canteen/admin/deletedrinkitem.php">Delete Drink</a></li>
                     <li><a href="/sd-canteen/admin/viewdrinkItem.php">View Drink</a></li>
                     <li><a href="/sd-canteen/admin/managedrinkcategory.php">Manage Drink Categories</a></li>
 

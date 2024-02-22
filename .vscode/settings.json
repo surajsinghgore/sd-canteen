@@ -12,6 +12,7 @@
         "coffeeitems",
         "coffeename",
         "deletecoffeeitem",
+        "deletedrinkitem",
         "deletefooditem",
         "drinkcategories",
         "drinkcategoryid",
