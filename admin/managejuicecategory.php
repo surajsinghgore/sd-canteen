@@ -222,9 +222,9 @@
             let foodId = sessionStorage.getItem('updatejuiceitemid');
             $.ajax({
                 type: "POST",
-                url: "http://localhost/sd-canteen/api/juicecategory.php",
+                url: "http://localhost/sd-canteen/api/deletejuicecategory.php",
                 data: {
-                    foodcategoryid: foodId
+                    juicecategoryid: foodId
 
                 }, // passing the values
                 success: function(res) {
