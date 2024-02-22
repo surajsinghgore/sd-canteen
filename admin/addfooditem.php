@@ -72,38 +72,27 @@
                                 </p>
                                 <select name="FoodCategory">
 
-                                    <?php if (isset($FoodCategory)) {
-                                        if($FoodCategory=="no"){
+                                           
+                            <option value="no">Select food category</option>
 
-                                            echo "<option value='no'>
-                                            Select Food Category
-                                        </option>";
-                                        }
-                                        else{
 
-                                            echo "<option>
-                                            $FoodCategory
-                                        </option>";
-                                        }
-                                    }  else{
-                                        echo "<option value='no'>
-                                        Select Food Category
-                                    </option>";
+<!-- load category name -->
+                            <?php 
 
-                                    }            
-                                                  ?>
-                                      
-                                    
-                                    <option>
-                                        Burger
-                                    </option>
-                                    <option>
-                                        Noodles
-                                    </option>
-                                    <option>
-                                        SD Special
-                                    </option>
+require('../middleware/ConnectToDatabase.php');
+    $sql_query = "select * from foodcategories";
+    $resFoodItem = mysqli_query($connection, $sql_query);
 
+    $length = mysqli_num_rows($resFoodItem);
+
+    if ($length == 0) {
+        echo "<h6>No Item Found</h6>";
+    } else {
+        while ($dataSearch = mysqli_fetch_array($resFoodItem)) { 
+echo "<option>";echo $dataSearch['foodcategoryname'];echo"</option>";
+ 
+        }}
+ ?>
 
                                 </select>
                             </li>

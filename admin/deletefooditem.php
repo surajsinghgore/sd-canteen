@@ -82,13 +82,25 @@
                         <select name="category" id="foodCategoryName" onchange="searchByCategory()">
                             <option value="no">Search By Category ..</option>
 
-                            <option>
-                                burger
-                            </option>
-                            <option>
-                                sd special
-                            </option>
+                              <!-- load category name -->
+                              <?php
 
+require('../middleware/ConnectToDatabase.php');
+$sql_query = "select * from foodcategories";
+$resFoodItem = mysqli_query($connection, $sql_query);
+
+$length = mysqli_num_rows($resFoodItem);
+
+if ($length == 0) {
+    echo "<h6>No Item Found</h6>";
+} else {
+    while ($dataSearch = mysqli_fetch_array($resFoodItem)) {
+        echo "<option>";
+        echo $dataSearch['foodcategoryname'];
+        echo "</option>";
+    }
+}
+?>
 
                         </select>
                     </div>
