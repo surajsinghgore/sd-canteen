@@ -51,7 +51,9 @@
                             <p>
                                 Enter Coffee Category Name <span>*</span>
                             </p>
-                            <input type="text" name="coffeecategoryname" style="width:1130px;height:55px" value="<?php if (isset($coffeecategoryname)) {
+                            <input type="text" name="coffeecategoryname"
+                            autofocus
+                            style="width:1130px;height:55px" value="<?php if (isset($coffeecategoryname)) {
                                                                                                                         echo $coffeecategoryname;
                                                                                                                     } ?>" required>
                         </li>

@@ -60,7 +60,7 @@
                                 Enter New Juice Category Name <span>*</span>
                             </p>
                             <input type="Number" name="juicecategoryid" id="updatejuiceitemid" style="display:none" />
-                            <input type="text" name="juicecategoryupdatename" style="width:1130px;height:55px" id="juicecategoryupdatename" required>
+                            <input type="text" name="juicecategoryupdatename" style="width:1130px;height:55px"  autofocus id="juicecategoryupdatename" required>
                         </li>
                         <button id="categoryBtn" name="update_juice_category">
 

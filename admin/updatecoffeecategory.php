@@ -59,8 +59,8 @@
                             <p>
                                 Enter New Coffee Category Name <span>*</span>
                             </p>
-                            <input type="Number" name="coffeecategoryid" id="updatecoffeeitemid" style="display:none"/>
-                            <input type="text" name="coffeecategoryupdatename" style="width:1130px;height:55px"  id="foodcategoryupdatename" required>
+                            <input type="Number" name="coffeecategoryid" id="updatecoffeeitemid"       style="display:none"/>
+                            <input type="text" name="coffeecategoryupdatename" style="width:1130px;height:55px"   autofocus id="foodcategoryupdatename" required>
                         </li>
                         <button id="categoryBtn" name="update_food_category">
 

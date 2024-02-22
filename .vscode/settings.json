@@ -2,6 +2,7 @@
     "cSpell.words": [
         "addcoffeecategory",
         "adddrinkcategory",
+        "adddrinkitem",
         "atleast",
         "coffeecategories",
         "coffeecategoryid",
@@ -13,6 +14,8 @@
         "drinkcategoryid",
         "drinkcategoryname",
         "drinkcategoryupdatename",
+        "drinkitems",
+        "drinkname",
         "fcoffeecategoryname",
         "foodcategories",
         "foodcategoryid",

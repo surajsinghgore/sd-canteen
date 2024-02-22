@@ -131,7 +131,7 @@
                 </div>
 
                 <ul id="drinkSubMenu">
-                    <li><a href="">Add Drink</a></li>
+                    <li><a href="/sd-canteen/admin/adddrinkitem.php">Add Drink</a></li>
                     <li><a href="">Update Drink</a></li>
                     <li><a href="">Delete Drink</a></li>
                     <li><a href="">View Drink</a></li>

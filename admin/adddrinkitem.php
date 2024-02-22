@@ -1,5 +1,5 @@
 <!-- include add to food API -->
-<?php require('../api/AddCoffeeItem.php'); ?>
+<?php require('../api/AddDrinkItem.php'); ?>
 
 
 
@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="../styles/admin/admin.css?v=5">
 <script>
-    window.document.title = "SD CANTEEN | Add Coffee Item";
+    window.document.title = "SD CANTEEN | Add Drink Item";
     // prevent reload post request
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href)
@@ -29,15 +29,15 @@
 
         <!-- right top header -->
         <div class="rightsidebar">
-            <?php $AdminTopHeaderTitle = "Add Coffee Page";
+            <?php $AdminTopHeaderTitle = "Add Drink Page";
             require('../components/AdminTopHeader.php'); ?>
 
 
 
             <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewcoffeeItem.php";
-            $pathNavigationParent = "Coffee";
-            $pathNavigationChild = "add coffee item";
+            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewdrinkItem.php";
+            $pathNavigationParent = "Drink";
+            $pathNavigationChild = "add drink item";
             require('../components/PathNavigation.php'); ?>
 
             <div class="FoodPage">
@@ -46,42 +46,42 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="heading">
                             <h1>
-                                Enter New CoffeeItem Item For Website
+                                Enter New DrinkItem Item For Website
                             </h1>
                         </div>
                         <div class="form_element">
                             <li>
                                 <p>
-                                    Enter Coffee Name <span>*</span>
+                                    Enter Drink Name <span>*</span>
                                 </p>
-                                <input type="text" name="CoffeeName" value="<?php if (isset($CoffeeName)) {
-                                                                                echo $CoffeeName;
+                                <input type="text" name="DrinkName" value="<?php if (isset($DrinkName)) {
+                                                                                echo $DrinkName;
                                                                             } ?>"
                                                                             autofocus required>
                             </li>
 
                             <li>
                                 <p>
-                                    Enter Coffee Qty
+                                    Enter Drink Qty
                                 </p>
-                                <input type="Number" name="CoffeeQty" value="1" required>
+                                <input type="Number" name="DrinkQty" value="1" required>
                             </li>
 
                             <li class="selects">
                                 <p>
-                                    Enter Coffee Category <span>*</span>
+                                    Enter Drink Category <span>*</span>
                                 </p>
-                                <select name="CoffeeCategory">
+                                <select name="DrinkCategory">
 
 
-                                    <option value="no">Select coffee category</option>
+                                    <option value="no">Select drink category</option>
 
 
                                     <!-- load category name -->
                                     <?php
 
                                     require('../middleware/ConnectToDatabase.php');
-                                    $sql_query = "select * from coffeecategories";
+                                    $sql_query = "select * from drinkcategories";
                                     $resFoodItem = mysqli_query($connection, $sql_query);
 
                                     $length = mysqli_num_rows($resFoodItem);
@@ -91,7 +91,7 @@
                                     } else {
                                         while ($dataSearch = mysqli_fetch_array($resFoodItem)) {
                                             echo "<option>";
-                                            echo $dataSearch['coffeecategoryname'];
+                                            echo $dataSearch['drinkcategoryname'];
                                             echo "</option>";
                                         }
                                     }
@@ -144,15 +144,15 @@
                                                                                             } ?></textarea>
                             </li>
                             <li>
-                                <p> Upload Coffee Photo <span>*</span>
+                                <p> Upload Drink Photo <span>*</span>
                                 </p>
-                                <input type="file" name="CoffeeImage" id="CoffeeImage" onchange="loadFile(event)">
+                                <input type="file" name="DrinkImage" id="CoffeeImage" onchange="loadFile(event)">
                             </li>
                             <li>
                                 <p>Photo Realtime Preview</p>
                                 <div class="preview_photo">
 
-                                    <img alt="Coffee images" id="CoffeeImagePreview" layout="fill" />
+                                    <img alt="Drink images" id="CoffeeImagePreview" layout="fill" />
 
 
                                 </div>
@@ -170,8 +170,8 @@
 
                                 </label>
                             </li>
-                            <button name="SendCoffeeItem">
-                                ADD COFFEE
+                            <button name="SendDrinkItem">
+                                ADD Drink
                             </button>
                         </div>
                     </form>

@@ -60,9 +60,9 @@
                                 <p>
                                     Update FoodItem Name <span>*</span>
                                 </p>
-<input type="number" name="FoodId" id="foodId" style="display:none;">
+<input type="number" name="FoodId"  id="foodId" style="display:none;">
 
-                                <input type="text" name="FoodName" id="FoodName" value="<?php if (isset($FoodName)) {
+                                <input type="text" name="FoodName"  autofocus id="FoodName" value="<?php if (isset($FoodName)) {
                                                                                             echo $FoodName;
                                                                                         } ?>" required>
                             </li>

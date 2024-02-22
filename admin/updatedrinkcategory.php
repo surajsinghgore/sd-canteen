@@ -60,7 +60,7 @@
                                 Enter New Drink Category Name <span>*</span>
                             </p>
                             <input type="Number" name="drinkcategoryid" id="updatedrinkitemid" style="display:none" />
-                            <input type="text" name="drinkcategoryupdatename" style="width:1130px;height:55px" id="drinkcategoryupdatename" required>
+                            <input type="text" name="drinkcategoryupdatename"       autofocus style="width:1130px;height:55px" id="drinkcategoryupdatename" required>
                         </li>
                         <button id="categoryBtn" name="update_drink_category">
 

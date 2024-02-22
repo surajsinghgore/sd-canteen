@@ -51,7 +51,9 @@
                             <p>
                                 Enter Drink Category Name <span>*</span>
                             </p>
-                            <input type="text" name="drinkcategoryname" style="width:1130px;height:55px" value="<?php if (isset($drinkcategoryname)) {
+                            <input type="text" name="drinkcategoryname" 
+                            autofocus
+                            style="width:1130px;height:55px" value="<?php if (isset($drinkcategoryname)) {
                                                                                                                         echo $drinkcategoryname;
                                                                                                                     } ?>" required>
                         </li>

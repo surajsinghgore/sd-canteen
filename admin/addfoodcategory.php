@@ -51,7 +51,7 @@
               <p>
                 Enter Food Category Name <span>*</span>
               </p>
-              <input type="text" name="foodcategoryname" style="width:1130px;height:55px" value="<?php if(isset($foodcategoryname)){echo $foodcategoryname;}?>" required>
+              <input type="text" name="foodcategoryname"       autofocus style="width:1130px;height:55px" value="<?php if(isset($foodcategoryname)){echo $foodcategoryname;}?>" required>
             </li>
             <button id="categoryBtn" name="add_food_category">
 

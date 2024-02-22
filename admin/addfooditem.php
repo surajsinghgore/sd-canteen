@@ -56,7 +56,7 @@
                                 </p>
                                 <input type="text" name="FoodName" value="<?php if (isset($FoodName)) {
                                                                                 echo $FoodName;
-                                                                            } ?>" required>
+                                                                            } ?>" autofocus required>
                             </li>
 
                             <li>
