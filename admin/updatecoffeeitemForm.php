@@ -1,5 +1,5 @@
 <!-- include add to food API -->
-<?php require('../api/updatefooditem.php'); ?>
+<?php require('../api/updatecoffeeitem.php'); ?>
 
 
 
@@ -194,7 +194,7 @@
 
                                 </label>
                             </li>
-                            <button name="update_food_item">
+                            <button name="update_coffee_item">
                                 UPDATE COFFEE
                             </button>
                         </div>
