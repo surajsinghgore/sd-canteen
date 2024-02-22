@@ -49,7 +49,7 @@
 
                 <ul id="dashboardSubMenu">
                     <li><a href="/sd-canteen/admin/admin.php">Home Dashboard</a></li>
-                    <li><a href="">Manage Comments</a></li>
+                    <li><a href="/sd-canteen/admin/managecomments.php">Manage Comments</a></li>
                     <li><a href="">Main Website</a></li>
 
 

@@ -5,7 +5,7 @@
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=2">
 <script>
-    window.document.title = "Admin Panel";
+    window.document.title = "SD CANTEEN | Admin Panel";
 </script>
 
 <body>
