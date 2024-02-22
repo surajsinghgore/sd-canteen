@@ -1,5 +1,5 @@
 <!-- include add to food API -->
-<?php require('../api/updatefooditem.php'); ?>
+<?php require('../api/updatejuiceitem.php'); ?>
 
 
 
