@@ -20,12 +20,6 @@
     require('../middleware/VerifyAdminLogin.php');
     require('../modules/TopLoader.php');
 
-    // if (isset($toast_status)) {
-
-    //     if ($toast_status == 'true') {
-    //         require('../components/Toast.php');
-    //     }
-    // }
 
     ?>
     <div class="leftPanel">
@@ -109,10 +103,10 @@
                 </div>
 
                 <ul id="coffeeSubMenu">
-                    <li><a href="">Add Coffee</a></li>
+                    <li><a href="/sd-canteen/admin/addcoffeeitem.php">Add Coffee</a></li>
                     <li><a href="">Update Coffee</a></li>
                     <li><a href="">Delete Coffee</a></li>
-                    <li><a href="">View Coffee</a></li>
+                    <li><a href="/sd-canteen/admin/viewcoffeeItem.php">View Coffee</a></li>
                     <li><a href="/sd-canteen/admin/managecoffeecategory.php">Manage Coffee Categories</a></li>
 
 

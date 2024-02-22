@@ -6,6 +6,8 @@
         "coffeecategories",
         "coffeecategoryid",
         "coffeecategoryname",
+        "coffeeitems",
+        "coffeename",
         "deletefooditem",
         "drinkcategories",
         "drinkcategoryid",

@@ -97,11 +97,11 @@ if (isset($_REQUEST['deletepage'])) {
         <?php
         }
     }
-} 
+}
 // search by Id
 else if (isset($_REQUEST['foodId'])) {
     $FoodId = $_REQUEST['foodId'];
-   
+
 
     $sql_query = "select * from fooditems where id=$FoodId";
 
@@ -124,20 +124,17 @@ else if (isset($_REQUEST['foodId'])) {
             $smallprice = $FoodData['smallprice'];
             $mediumprice = $FoodData['mediumprice'];
             $largeprice = $FoodData['largeprice'];
-            $description = trim( str_replace( PHP_EOL, ' ', $FoodData['description'] ) );;
+            $description = trim(str_replace(PHP_EOL, ' ', $FoodData['description']));;
             $imagepath = $FoodData['imagepath'];
-       
-           
+
+
             $data = "{\"foodname\":\"$foodname\",\"qty\":$qty,\"category\":\"$category\",\"active\":\"$active\",\"normalprice\":$normalprice,\"smallprice\":$smallprice,\"mediumprice\":$mediumprice,\"largeprice\":$largeprice,\"description\":\"$description\",\"imagepath\":\"$imagepath\"}";
             echo $data;
         }
     }
 
     // update Page data
-}
-
-
-else if (isset($_REQUEST['updatepage'])) {
+} else if (isset($_REQUEST['updatepage'])) {
 
     $foodname = $_REQUEST['foodname'];
 
