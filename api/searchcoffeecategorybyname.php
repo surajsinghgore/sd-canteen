@@ -29,17 +29,17 @@ if (isset($_REQUEST['coffeecategoryname'])) {
 
                 </div>
 
-           
+
 
                 <div class="DropDown" id="dropdownmenu<?php echo $CoffeeCategory['id']; ?>" style="display:none;">
-                                        <li class="Update" onclick='updateCoffeeCategory("<?php echo $CoffeeCategory['id']; ?>")'>
-                                            <i class="fa-solid fa-pen-to-square"></i>Update
-                                        </li>
+                    <li class="Update" onclick='updateCoffeeCategory("<?php echo $CoffeeCategory['id']; ?>")'>
+                        <i class="fa-solid fa-pen-to-square"></i>Update
+                    </li>
 
-                                        <li class="delete" data-toggle="modal" data-target="#exampleModal" onclick='deleteCoffeeCategory("<?php echo $CoffeeCategory['id']; ?>")'>
-                                            <i class="fa-solid fa-trash"></i>Delete
-                                        </li>
-                                    </div>
+                    <li class="delete" data-toggle="modal" data-target="#exampleModal" onclick='deleteCoffeeCategory("<?php echo $CoffeeCategory['id']; ?>")'>
+                        <i class="fa-solid fa-trash"></i>Delete
+                    </li>
+                </div>
             </div>
 <?php
         }
@@ -48,11 +48,11 @@ if (isset($_REQUEST['coffeecategoryname'])) {
 
 // search by coffee category id
 
-if (isset($_REQUEST['foodcategoryid'])) {
+if (isset($_REQUEST['coffeecategoryid'])) {
 
     $coffeecategories = $_REQUEST['coffeecategoryid'];
 
-    $sql_query = "select * from foodcategories where id=$coffeecategories";
+    $sql_query = "select * from coffeecategories where id=$coffeecategories";
 
     $resCoffeeCategory = mysqli_query($connection, $sql_query);
 
