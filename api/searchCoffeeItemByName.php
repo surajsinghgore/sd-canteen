@@ -116,7 +116,7 @@ else if (isset($_REQUEST['foodId'])) {
     } else {
         $data = "";
         while ($FoodData = mysqli_fetch_array($resFoodData)) {
-            $foodname = $FoodData['foodname'];
+            $foodname = $FoodData['coffeename'];
             $qty = $FoodData['qty'];
             $category = $FoodData['category'];
             $active = $FoodData['active'];
@@ -134,7 +134,9 @@ else if (isset($_REQUEST['foodId'])) {
     }
 
     // update Page data
-} else if (isset($_REQUEST['updatepage'])) {
+} 
+
+else if (isset($_REQUEST['updatepage'])) {
 
     $foodname = $_REQUEST['foodname'];
 
