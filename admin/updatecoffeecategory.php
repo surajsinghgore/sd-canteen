@@ -35,7 +35,7 @@
             <?php $AdminTopHeaderTitle = "Update coffee category";
             require('../components/AdminTopHeader.php'); ?>
             <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewcoffeeItem.php";
+            <?php $pathNavigationParentPath = "/sd-canteen/admin/ManageCoffeeCategory.php";
             $pathNavigationParent = "Coffee/ Manage Coffee Category";
             $pathNavigationChild = "Update Coffee category";
             require('../components/PathNavigation.php'); ?>

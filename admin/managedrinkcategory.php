@@ -160,10 +160,10 @@
 
 
         // update food category
-        function updateFoodCategory(id) {
+        function updateDrinkCategory(id) {
 
             sessionStorage.setItem('updatedrinkitemid', id);
-            window.location.href = "http://localhost/sd-canteen/admin/updatecoffeecategory.php";
+            window.location.href = "http://localhost/sd-canteen/admin/updatedrinkcategory.php";
         }
 
         // enable dropdown menu btn
