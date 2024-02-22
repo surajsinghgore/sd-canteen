@@ -160,7 +160,7 @@
                 <ul id="juiceSubMenu">
                     <li><a href="/sd-canteen/admin/addjuiceitem.php">Add Juice</a></li>
                     <li><a href="">Update Juice</a></li>
-                    <li><a href="">Delete Juice</a></li>
+                    <li><a href="/sd-canteen/admin/deletejuiceitem.php">Delete Juice</a></li>
                     <li><a href="/sd-canteen/admin/viewjuiceItem.php">View Juice</a></li>
                     <li><a href="/sd-canteen/admin/managejuicecategory.php">Manage Juice Categories</a></li>
 
