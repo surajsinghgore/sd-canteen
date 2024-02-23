@@ -1,8 +1,8 @@
 .orders {
     width: 1339px;
     margin-left: 2%;
-    height: 500px;
-    margin-top: -4%;
+    height: auto;
+    overflow: hidden;
     position: relative;
   }
   

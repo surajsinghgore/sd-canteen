@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=14">
-<link rel="stylesheet" href="../styles/admin/realtimeorder.css?v=4">
+<link rel="stylesheet" href="../styles/admin/realtimeorder.css?v=6">
 
 <script>
     // prevent reload post request
@@ -243,112 +243,9 @@
           </div>
         </div>
 
-        <div class="tables_section">
-
-
+   
          
-<div >
-  <div class="tableheading">
-    <div class="div1">Token Id</div>
-    <div class="div2">Customer Name</div>
-    <div class="div3">PickUp Time</div>
-    <div class="div4">Total Amount</div>
-    <div class="div5">Payment Mode</div>
-    <div class="div6">Email</div>
-    <div class="div7">Mobile</div>
-  </div>
-  <div class="contain">
-    <div class="tableheaddata">
-      <div class="div1">
-      V9OPGQ
-      </div>
-      <div class="div2">
-      SURAJ SINGH
-      </div>
-      <div class="div3">
-      2.00-PM
-      </div>
-      <div class="div4">
-        50
-      </div>
-      <div class="div5">
-      ONLINE
-      </div>
-      <div class="div6">SURAJTHAKURRS45@GMAIL.COM</div>
-      <div class="div7">
-      6239522303
-      </div>
-    </div>
-    
-    <div class="tableheadingsub">
-      <div class="div1">Item Name</div>
-      <div class="div2">
-        Product Price
-      </div>
-      <div class="div3">Qty</div>
-      <div class="div4">Category</div>
-      <div class="div5">Total Amount</div>
-      <div class="div6">
-        Amount Received
-      </div>
-      <div class="div7">Order Status</div>
-      <div class="div8">Action</div>
-    </div>
 
-
-
-<!-- data -->
-    <div>
-<div class="tableheaddatasub">
-<div class="div1">burger</div>
-<div class="div2">50</div>
-<div class="div3">1</div>
-<div class="div4">burger
-<span>
-[S]
-</div>
-<div class="div5">50</div>
-<div class="div6">50</div>
-<div class="div7">
-<div class="pen">pending</div> 
-</div>
-
-
-<div class="div8">
-<i class="fa-solid fa-bars"></i>
-</div>
-
-<div class="options">
-<div><span class="icon1" >
-<i class="fa-solid fa-spinner"></i></span> <span class="icon_1">Process</span> 
-</div>
-
-<div><span class="icon2"><i class="fa-solid fa-trash-can"></i></span> <span class="icon_2" >Reject</span> </div>
-</div>
-
-
-
-
-<!-- <div class={options}>
-<div><span class={icon1} >
-<BiLoader /></span> <span class={icon_1}>Process</span> 
-</div>
-
-<div><span class={icon2} ><RiDeleteBin7Line /></span> <span class={icon_2} >Reject</span> </div>
-</div>  -->
-
-
-
-
-</div>
-    </div>
-</div>
-
-
-
-
-
-</div>
 </div>
 
 
