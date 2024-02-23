@@ -70,7 +70,8 @@ width: 130% !important;
   /* payment Anaylsis css styling page*/
   
   .payment {
-    width: 100%;
+    width: 1390px;
+
     height: auto;
     margin-top: 9%;
   }
@@ -83,8 +84,9 @@ width: 130% !important;
   .payment h4 {
     color: red;
     padding-top: 2%;
-    font-size: 20px;
+    font-size: 22px;
     margin-left: 3%;
+    padding-bottom: 2%;
   }
   .payment .filters li {
     width: 35%;
@@ -98,7 +100,8 @@ width: 130% !important;
     outline: none;
     padding-bottom: 2%;
     text-align: center;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 21px;
   }
   
   .payment .chartSection {
@@ -123,15 +126,30 @@ width: 130% !important;
     color: rgb(116, 116, 116);
   }
   .payment .chartSection .chartSigle .chartARea {
-    margin-left: 10%;
+    margin-left: 15%;
     height: auto;
     height: 400px;
   }
   
+  .payment .chartSection .chartSigle .chartARea canvas{
+    height: 340px !important;
+width: 80% !important;
+margin-top: 10%;
+  }
+
+
   .payment .chartSection .chartSigle .chartARea1 {
-    margin-left: 30%;
+    margin-left: 10%;
     height: 400px;
   }
+
+  .payment .chartSection .chartSigle .chartARea1 canvas{
+    height: 380px !important;
+width: 70% !important;
+margin-top: 2%;
+margin-left: 8%;
+  }
+
   .payment .chartSection .chartSigle .allDatas {
     width: 100%;
     list-style: none;

@@ -188,7 +188,7 @@
                 <ul id="orderSubMenu">
                     <li><a href="/sd-canteen/admin/realtimeorder.php">Realtime orders</a></li>
                     <li><a href="/sd-canteen/admin/Allorders.php">All Orders</a></li>
-                    <li><a href="">Analysis Orders</a></li>
+                    <li><a href="/sd-canteen/admin/analysisorders.php">Analysis Orders</a></li>
 
 
 
