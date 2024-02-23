@@ -52,7 +52,7 @@
                     <button onClick="LoginFunction">Click to login</button>
 
 
-                    <h6> <a href="/">Click Here To Main Website </a></h6>
+                    <h6> <a href="/sd-canteen">Click Here To Main Website </a></h6>
 
                 </form>
             </div>
