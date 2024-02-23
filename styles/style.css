@@ -665,6 +665,22 @@ background-color: #fff;
 }
 
 
+
+/* swiper bottom */
+.bottomSwiper {
+    width: 100%;
+    height: auto;
+  }
+  
+  .bottomSwiper .BottomInner {
+    width: 400px;
+    height: 250px;
+  }
+  .bottomSwiper .BottomInner .imageBottom img{
+    width: 100%;
+    height: 100%;
+  }
+
 /* cooking image section */
 
 .cookingMain{

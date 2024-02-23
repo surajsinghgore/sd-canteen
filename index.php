@@ -138,6 +138,194 @@
 
 
 
+<!-- bottom swiper -->
+  <!-- Swiper -->
+  <div class="bottomSwiper">
+  <div class="swiper mySwiper1">
+    <div class="swiper-wrapper">
+        <!-- photo 1 -->
+      <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014800/1_gwamyw.jpg"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+      <!-- photo 2 -->
+      <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014801/2_ws3au4.jpg"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+        <!-- photo 3-->
+        <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014800/3_vmdw99.jpg"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+
+        <!-- photo 4 -->
+        <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014801/4_v3h2fj.webp"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+
+        <!-- photo 5 -->
+        <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014802/5_wwh9i7.png"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+
+
+        <!-- photo 6 -->
+        <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014802/6_weopcm.webp"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+
+       <!-- photo 7 -->
+       <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014807/7_vul7ru.webp"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+
+       <!-- photo 8 -->
+       <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014801/8_rydkxc.jpg"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+
+       <!-- photo 9 -->
+       <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014802/9_nqr95e.jpg"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+       <!-- photo 10 -->
+       <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014800/10_aopxta.jpg"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+       <!-- photo 11 -->
+       <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014800/11_ufuqlf.jpg"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+
+       <!-- photo 12 -->
+       <div class="swiper-slide">
+      <div class="BottomInner">
+              <div class="imageBottom">
+                <img
+                  src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014801/12_wlbp1e.jpg"
+                  alt="img1"
+                  
+                />
+              </div>
+            </div>
+
+      </div>
+    </div>
+    
+  </div>
+  </div>
+
+
+
+
+
+
 
 
 
@@ -165,6 +353,18 @@
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
       },
+    });
+
+
+    // bottom swiper
+
+    var swiper = new Swiper(".mySwiper1", {
+      slidesPerView: 3,
+      spaceBetween: -582,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      }
     });
   </script>
 </body>
