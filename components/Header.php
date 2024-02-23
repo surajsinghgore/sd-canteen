@@ -77,7 +77,7 @@
     </div>
         <div class="page">
     <h1>Extra Pages</h1>
-    <li><a href="/admin/Login">Admin Login</a></li>
+    <li><a href="/sd-canteen/admin/adminlogin.php">Admin Login</a></li>
     <li><a href="/HelpAndSupport">Help Center</a></li>
     </div>
     </div>
@@ -110,6 +110,71 @@
 
     </header>
 
+
+
+
+
+
+
+    <script>
+
+let states=false;
+let states1=false;
+let page=document.getElementById('pages');
+let heading=document.getElementById('heading');
+let user=document.getElementById('user');
+let clientOption=document.getElementById('clientOption');
+
+heading.addEventListener('mouseenter',()=>{
+page.style.display="flex";
+
+})
+
+if(user){
+user.addEventListener('mouseenter',()=>{
+clientOption.style.display="block";
+})
+clientOption.addEventListener('mouseenter',()=>{
+clientOption.style.display="block";
+states1=true;
+})
+
+clientOption.addEventListener('mouseleave',()=>{
+clientOption.style.display="none";
+states1=false;
+})
+
+
+user.addEventListener('mouseleave',()=>{
+setTimeout(disable,300);
+
+function disable(){
+if(states1==false){
+clientOption.style.display="none";
+}
+}
+})
+}
+
+page.addEventListener('mouseenter',()=>{
+page.style.display="flex";
+states=true;
+})
+
+page.addEventListener('mouseleave',()=>{
+page.style.display="none";
+states=false;
+})
+
+heading.addEventListener('mouseleave',()=>{
+setTimeout(disable,300);
+function disable(){
+if(states==false){
+page.style.display="none";
+}
+}
+})
+    </script>
 </body>
 
 </html>
