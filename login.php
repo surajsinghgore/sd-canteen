@@ -39,7 +39,7 @@
 
 </form>
 <div class="path">
-<h4><a href="/Signup">Register New User?</a></h4>
+<h4><a href="/sd-canteen/signup.php">Register New User?</a></h4>
 <h4><a href="/sd-canteen/admin/adminlogin.php">Admin Login </a></h4>
 </div>
 </div>
