@@ -5,6 +5,7 @@
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" href="./styles/style.css?v=2">
+<link rel="stylesheet" href="./styles/client/Home.css?v=2">
 
 <body >
 <!-- header -->
@@ -14,7 +15,7 @@
 
 
 
- <!-- Swiper -->
+ <!-- Banner Swiper -->
  <div class="swiper mySwiper">
     <div class="swiper-wrapper">
         <!-- order food -->
@@ -135,6 +136,32 @@
     <div class="swiper-button-prev"></div>
   </div>
 
+
+
+<!-- we accept payments -->
+
+      <div class="payment">
+        <div class="icons">
+          <div class="imgPayment">
+            <img
+              src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014246/p2_g5k0gk.svg"
+              alt="accept"
+           
+            />
+          </div>
+        </div>
+        <div class="titles">We Accept Online Payment</div>
+        <div class="accept">
+          <div class="img">
+            <img
+              src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014245/p1_pvhtmu.png"
+              alt="accept"
+              layout='fill'
+        
+            />
+          </div>
+        </div>
+      </div>
 
 
 

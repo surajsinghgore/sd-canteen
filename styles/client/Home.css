@@ -124,13 +124,14 @@
     padding-bottom: 1%;
     display: flex;
     margin-top: 5%;
+    margin-bottom: 5%;
     user-select: none;
   }
   .payment .icons {
     width: 30%;
     height: 300px;
   }
-  .payment .icons .imgPayment {
+  .payment .icons .imgPayment img{
     position: relative;
     width: 58%;
     height: 20vw;
@@ -139,11 +140,11 @@
     float: right;
   }
   .payment .titles {
-    font-size: 35px;
+    font-size: 40px;
     font-weight: 700;
     width: 40%;
     color: rgb(6, 93, 208);
-    line-height: 280px;
+    line-height: 360px;
     text-align: center;
   }
   .payment .accept {
@@ -151,11 +152,11 @@
     height: 300px;
   }
   
-  .payment .accept .img {
+  .payment .accept .img img{
     position: relative;
-    width: 90%;
-    height: 10vw;
-    margin-top: 20%;
+    width: 100%;
+    height: 8vw;
+    margin-top: 30%;
   }
   
  
