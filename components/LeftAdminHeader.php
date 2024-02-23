@@ -213,7 +213,7 @@
 
                 <ul id="paymentSubMenu">
                     <li><a href="/sd-canteen/admin/allpayment.php">All Payments</a></li>
-                    <li><a href="">Search Transactions</a></li>
+                    <li><a href="/sd-canteen/admin/searchpayment.php">Search Transactions</a></li>
                     <li><a href="">Analysis Transactions</a></li>
 
 
