@@ -5,7 +5,7 @@
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" href="./styles/style.css?v=2">
-<link rel="stylesheet" href="./styles/client/Home.css?v=2">
+<link rel="stylesheet" href="./styles/client/Home.css?v=3">
 
 <body >
 <!-- header -->
@@ -136,6 +136,56 @@
     <div class="swiper-button-prev"></div>
   </div>
 
+
+
+
+<!-- fun facts -->
+
+<div class="f">
+        <h1> FUN FACTS </h1>
+      </div>
+
+        <div class="facts">
+          <div class="fact">
+            <div class="icons">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M3 2h2v20H3zm7 4h7v2h-7zm0 4h7v2h-7z"></path><path d="M19 2H6v20h13c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zm0 18H8V4h11v16z"></path></svg>
+            </div>
+            <h5>Delicacy Of Items</h5>
+            <p>
+              23
+            </p>
+          </div>
+
+          <div class="fact">
+            <div class="icons">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M19 5v14H5V5h14m0-2H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3zm0-4c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm6 10H6v-1.53c0-2.5 3.97-3.58 6-3.58s6 1.08 6 3.58V18zm-9.69-2h7.38c-.69-.56-2.38-1.12-3.69-1.12s-3.01.56-3.69 1.12z"></path></svg>
+            </div>
+            <h5>Total Visits </h5>
+            <p>23</p>
+          </div>
+
+          <div class="fact">
+            <div class="icons">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M9 18H4v-8h5v8zm6 0h-5V6h5v12zm6 0h-5V2h5v16zm1 4H3v-2h19v2z"></path></g></svg>
+            </div>
+            <h5>Orders Placed</h5>
+            <p>
+             16
+            </p>
+          </div>
+
+          <div class="fact">
+            <div class="icons">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><circle cx="8.5" cy="10.5" r="1.5"></circle><circle cx="15.493" cy="10.493" r="1.493"></circle><path d="M12 18c4 0 5-4 5-4H7s1 4 5 4z"></path></svg>
+            </div>
+            <h5> Happy clients</h5>
+            <p>
+             
+              23
+            </p>
+          </div>
+        </div>
+     
 
 
 <!-- we accept payments -->
