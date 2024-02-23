@@ -22,7 +22,7 @@ a {
 /* header */
 
 header{
-z-index: 99;
+z-index: 98;
 position: relative;
 position: fixed;
 display: flex;

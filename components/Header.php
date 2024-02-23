@@ -2,10 +2,11 @@
 <html lang="en">
 <!-- global css added -->
 <link rel="stylesheet" href="./styles/style.css?v=4">
+<link rel="stylesheet" href="./styles/toploader.css?v=4">
 <body>
-
-
-
+<?php 
+require('./modules/TopLoader.php');
+?>
 <header>
     <div class="logo" id="Header">
    <a href="/">
@@ -45,7 +46,7 @@
    
    <!-- login link -->
 
-      <li id="login"> <i class="fa-solid fa-arrow-right-to-bracket"></i><a href="/ClientLogin" ><span id='heading2'>Login</span></a></li> 
+      <li id="login"> <i class="fa-solid fa-arrow-right-to-bracket"></i><a href="/sd-canteen/login.php" ><span id='heading2'>Login</span></a></li> 
 
 
       <!-- cart -->
