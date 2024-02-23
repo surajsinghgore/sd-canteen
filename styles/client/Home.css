@@ -15,15 +15,25 @@
     margin-top: 3%;
     color: rgb(96, 96, 96);
     width: 100%;
+    font-weight: 600;
     text-align: center;
     margin-bottom: 3%;
   }
+  .homeCards .card a{
+
+    text-decoration: none;
+  }
+  .homeCards .card a:hover{
+    color: white;
+  }
+
   .homeCards .card {
-    width: 380px;
+    width: 480px;
     height: auto;
+    background-color: rgb(255, 255, 255);
     float: left;
     margin-bottom: 4%;
-    margin-left: 4%;
+    margin-left: 4.4%;
     transition: all 0.4s;
   }
   
@@ -33,6 +43,12 @@
   
     height: 18vw;
   }
+  .homeCards .card a div .imgMain img{
+
+    width: 100%;
+  
+    height: 100%;
+  }
   .homeCards .card .data {
     height: 180px;
     text-align: center; word-break: break-all;
@@ -40,15 +56,16 @@
     padding-bottom: 1%;
   }
   .homeCards .card .data h4 {
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 400;
     text-transform: uppercase;
     margin-top: 3%;
   }
   .homeCards .card .data p {
+    font-size: 18px;
     width: 90%;
     margin-left: 5%;
-    margin-top: -6%;
+    margin-top: 2%;
   }
   
   .homeCards .card:hover {
