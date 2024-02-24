@@ -10,7 +10,7 @@ require('./clientApi/login.php');?>
 
 <!-- Link Swiper's CSS -->
 
-<link rel="stylesheet" href="./styles/client/ClientLogin.css?v=2">
+<link rel="stylesheet" href="./styles/client/ClientLogin.css?v=3">
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
          // prevent reload post request

@@ -22,9 +22,9 @@ color: black;
     }
     .clientLogin .form p{
     position: absolute;
-    bottom: 17%;
+    bottom: 24%;
     color:red;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 600;
     cursor: pointer;
     right: 20%;
@@ -33,7 +33,7 @@ color: black;
     text-align: center;
     padding-top: 5%;
     color: rgb(243, 41, 14);
-    font-size: 35px;
+    font-size: 30px;font-weight: 700;
     }
     
     .clientLogin .form li{
@@ -47,24 +47,25 @@ color: black;
     
     .clientLogin .form li h6{
     position: absolute;
-    top: 27%;
+    top: 32%;
     color: rgb(104, 104, 104);
     left: 10%;
-    font-size: 22px;
+    font-weight: 700;
+    font-size: 16px;
     }
     .clientLogin .form li .icon{
     position: absolute;
     top: 72%;
     color: rgb(68, 68, 68);
     right: 13%;
-    font-size: 24px;
+    font-size: 16px;
     }
     .clientLogin .form li input{
     width: 80%;
-    font-size: 22px;
+    font-size: 17px;
     padding-left: 2%;
     border: 2px solid rgb(187, 187, 187);
-    height: 55px;
+    height: 45px;
     margin-left: 10%;
     outline: none;
     }
@@ -78,7 +79,7 @@ color: black;
     height: auto;
     margin-top: 5%;
     border: none;
-    padding: 1.5% 10% 1.5% 10%;
+    padding: 1% 10% 1% 10%;
     border-radius: 30px;
     outline: none;
     cursor: pointer;
@@ -94,12 +95,14 @@ color: black;
     width: 100%;
     margin-top: 5%;
     display: flex;
-    padding-left: 19%;
+    padding-left: 21%;
     padding-top: 1%;
     }
     
     .clientLogin .form .path h4{
+    font-size: 16px;
     margin-right: 29%;
+    font-weight: 700;
     cursor: pointer;
     color: rgb(247, 108, 1);
     transition: all 0.4s;
@@ -113,10 +116,15 @@ color: black;
     
     .clientLogin .image{
         position: relative;
-    width: 21%;
+    width: 22%;
     height: 24vw;
     margin-top: 7%;
     margin-left: 4%;
+    }
+    .clientLogin .image img{
+
+        width: 100%;
+        height: 100%;
     }
     
     
