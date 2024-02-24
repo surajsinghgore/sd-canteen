@@ -4,8 +4,8 @@
 
 <!-- Link Swiper's CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<link rel="stylesheet" href="./styles/style.css?v=2">
-<link rel="stylesheet" href="./styles/client/Home.css?v=3">
+<link rel="stylesheet" href="./styles/style.css?v=9">
+<link rel="stylesheet" href="./styles/client/Home.css?v=4">
 
 <body>
     <!-- header -->

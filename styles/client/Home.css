@@ -8,6 +8,7 @@
     clear: both;
     width: 100%;
     height: auto;
+    padding-left: 2%;
     margin-bottom: 5%;
   }
   
@@ -15,7 +16,8 @@
     margin-top: 3%;
     color: rgb(96, 96, 96);
     width: 100%;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 35px;
     text-align: center;
     margin-bottom: 3%;
   }
@@ -28,12 +30,12 @@
   }
 
   .homeCards .card {
-    width: 480px;
+    width: 380px;
     height: auto;
     background-color: rgb(255, 255, 255);
     float: left;
     margin-bottom: 4%;
-    margin-left: 4.4%;
+    margin-left: 4%;
     transition: all 0.4s;
   }
   
@@ -56,19 +58,21 @@
     padding-bottom: 1%;
   }
   .homeCards .card .data h4 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 400;
     text-transform: uppercase;
-    margin-top: 3%;
+    margin-top: 0%;
+    padding-top: 4%;
   }
   .homeCards .card .data p {
-    font-size: 18px;
+    font-size: 15px;
     width: 90%;
+text-transform: capitalize;
     margin-left: 5%;
     margin-top: 2%;
   }
   
-  .homeCards .card:hover {
+  .homeCards .card:hover .data{
     cursor: pointer;
     background-color: rgb(246, 85, 85);
     color: white;
@@ -140,10 +144,11 @@
     height: auto;
     position: relative;
     padding-top: 1%;
-    padding-bottom: 1%;
+    padding-bottom: 0%;
     display: flex;
+    background-color: #fff;
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 0%;
     user-select: none;
   }
   .payment .icons {
@@ -159,11 +164,11 @@
     float: right;
   }
   .payment .titles {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 700;
     width: 40%;
     color: rgb(6, 93, 208);
-    line-height: 360px;
+    line-height: 310px;
     text-align: center;
   }
   .payment .accept {

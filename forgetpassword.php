@@ -1,5 +1,5 @@
 <!-- forget password api -->
-<!-- <?php require('./clientApi/forgetpassword.php'); ?> -->
+<?php require('./clientApi/forgetpassword.php'); ?>
 
 
 <!DOCTYPE html>

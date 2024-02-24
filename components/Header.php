@@ -9,7 +9,8 @@ require('./middleware/clientProfilePhotoRedirect.php');
 <!DOCTYPE html>
 <html lang="en">
 <!-- global css added -->
-<link rel="stylesheet" href="./styles/style.css?v=5">
+<link rel="stylesheet" href="./styles/style.css?v=3">
+
 
 <body>
 <?php 
@@ -137,10 +138,10 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
 <!-- client options -->
     <div class="clinetOption" id="clientOption">
 <div>
-<a href="/OrderComplete"><a>
+<a href="/sd-canteen/ordercomplete.php">
 <i class="fa-solid fa-calendar-day"></i>
 <h1>Today&#39;s Order</h1>
-</a></a>
+</a>
 </div>
 
 <div>

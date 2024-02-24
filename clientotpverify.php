@@ -86,11 +86,7 @@ else{
 
             <div class="path" >
             
-                <!-- <h4 style="padding-left:80px">Resend Otp Again</h4> -->
-             
-                  <h4>
-                  New Otp request available in 5 minutes
-                </h4> 
+               
            
 
               <h4>
