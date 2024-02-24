@@ -65,7 +65,7 @@ $clientId=$_SESSION['activeClientId'];
     $DataFromDB = mysqli_fetch_assoc($resultGet);
     $profileImage;
 if($DataFromDB['profileimage']==""){
-if($DataFromDB['gender']=='male'){
+if($DataFromDB['gender']=='Male'){
 $profileImage="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014242/men_uuulzd.png";
 }
 else{
@@ -90,7 +90,7 @@ else{
 
 }else{
 
-echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a href=\"sd-canteen/login.php\" ><span id='heading2'>Login</span></a></li> ";
+echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a href=\"/sd-canteen/login.php\" ><span id='heading2'>Login</span></a></li> ";
 }
 ?>
       <!-- 

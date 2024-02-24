@@ -66,7 +66,7 @@ require('./clientApi/login.php');?>
 <input type="password" name="password" placeholder="Password"  value="<?php if(isset($password)){echo $password;}?>" autocomplete="off" required/>
 <i class="fa-solid fa-lock icon"></i>
 </li>
-<p><a href="/ForgetPassword">Forget Password ?</a></p>
+<p><a href="/sd-canteen/forgetpassword.php">Forget Password ?</a></p>
 
 <button name="client_login">Login</button>
 
