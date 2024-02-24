@@ -26,11 +26,14 @@
 
 
 
-
-
-
-    <!-- header -->
-    <?php require('./components/Header.php'); ?>
+        
+        
+        <!-- header -->
+        <?php require('./components/Header.php');
+    
+    // <!-- validate client login -->
+    require('./middleware/VerifyClientLogin.php');
+    ?>
 
 
 
