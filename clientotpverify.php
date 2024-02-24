@@ -6,6 +6,21 @@
 
 <link rel="stylesheet" href="./styles/client/signup.css?v=3">
 <link rel="stylesheet" href="./styles/admin/admin.css">
+
+<?php 
+if (!isset($_SESSION)) {
+  session_start();
+}
+    // redirect page to signup
+    if(isset($_SESSION['client_email_AccountTemp'])){
+      
+    }
+else{
+
+  header('Location: /sd-canteen/signup.php');
+}
+
+?>
 <script>
     window.document.title="SD CANTEEN | Client Otp Verify ";
 </script>
@@ -14,7 +29,11 @@
 
 
     <!-- header -->
-    <?php require('./components/Header.php'); ?>
+    <?php require('./components/Header.php'); 
+    
+
+    
+    ?>
 
 
 
@@ -23,7 +42,7 @@
           <div class="form">
             <h3>SD CANTEEN</h3>
             <h2 style="text-align:center;margin-top:52px">
-              Otp Successfully send to <span>surajthakurrs45@gmail.com</span>
+              Otp Successfully send to <span><?php if(isset($_SESSION['client_email_AccountTemp'])){ echo $_SESSION['client_email_AccountTemp'];}?></span>
             </h2>
             <form>
               <li style="margin-top:30px">

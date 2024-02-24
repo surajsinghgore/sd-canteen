@@ -2,14 +2,20 @@
 <html lang="en">
 <!-- global css added -->
 <link rel="stylesheet" href="./styles/style.css?v=4">
-<link rel="stylesheet" href="./styles/toploader.css?v=4">
+
 <body>
 <?php 
 // top progress loader
-require('./modules/TopLoader.php');
+require('./modules/clientTopLoader.php');
 // cooking loader
 require('./components/Loader.php');
+// toast
+if (isset($toast_status)) {
 
+    if ($toast_status == 'true') {
+        require('./components/ClientToast.php');
+    }
+}
 ?>
 <header>
     <div class="logo" id="Header">
