@@ -226,7 +226,7 @@
             <li>
                 <div class="styles" id="ActivePayment">
                     <form method="post" action="" autocomplete="off"">
-                    <button name=" logout_click">
+                    <button name="logout_click">
                         <div class=" icon">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         </div>

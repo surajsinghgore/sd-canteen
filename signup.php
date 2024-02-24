@@ -4,7 +4,8 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<?php require('./modules/clientHeadTag.php'); ?>
+<?php  require('./middleware/DisabledPageOnClientLogin.php');
+         require('./modules/clientHeadTag.php'); ?>
 
 <!-- Link Swiper's CSS -->
 

@@ -340,6 +340,14 @@ cursor: pointer;
 list-style: none;
 }
 
+header .clinetOption div button{
+
+  background: none;
+margin-left: 0%;
+border: none;
+  outline: none;width: 120px;
+  cursor: pointer;
+}
 
 header .clinetOption div i{
 font-size: 30px;
@@ -348,6 +356,16 @@ transition: all 0.3s;
 padding-left: 35%;
 padding-bottom: 12%;
 }
+
+header .clinetOption div button i{
+  font-size: 30px;
+  color: rgb(255, 123, 0);
+  transition: all 0.3s;
+  padding-left: 1%;
+  padding-bottom: 12%;
+
+}
+
 header .clinetOption div h1{
 font-size: 18px;
 font-weight: 500;

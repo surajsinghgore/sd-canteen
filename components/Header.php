@@ -1,7 +1,15 @@
+<!-- client logout -->
+<?php 
+require('./clientApi/clientlogout.php');
+// profile photo redirect
+require('./middleware/clientProfilePhotoRedirect.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- global css added -->
-<link rel="stylesheet" href="./styles/style.css?v=4">
+<link rel="stylesheet" href="./styles/style.css?v=5">
 
 <body>
 <?php 
@@ -19,7 +27,7 @@ if (isset($toast_status)) {
 ?>
 <header>
     <div class="logo" id="Header">
-   <a href="/">
+   <a href="/sd-canteen">
     
     <Image src="./images/logo.png" alt="sd logo " />
     
@@ -51,10 +59,15 @@ if (!isset($_SESSION)) {
     session_start();
 }
 if (isset($_SESSION['activeClientId'])) {
+
+ 
+
    echo"<li id=\"user\"><i class=\"fa-solid fa-caret-down\"></i><div>
    <div class=\"profileImg\">  
    <img src=\"./images/user.png\" alt=\"profile\" > </div>
    <span id='heading1' style=\"margin-left:40px\">Hi, ";
+
+
    echo mb_strimwidth($_SESSION['activeClientFullname'], 0, 5, "");
    
    echo" </span></div>
@@ -69,9 +82,7 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
     -->
    
    
-   <!-- login link -->
 
-      
 
 
       <!-- cart -->
@@ -128,8 +139,13 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
 <h1>Past Order</h1></a></a>
 </div>
 <div >
-<i class="fa-solid fa-right-from-bracket"></i>
-<h1>Logout</h1>
+    <form action="" method="post">
+<button name="client_logout_click">
+
+    <i class="fa-solid fa-right-from-bracket"></i>
+    <h1>Logout</h1>
+</button>
+    </form>
 </div>
 </div> 
 

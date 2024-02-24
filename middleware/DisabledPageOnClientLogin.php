@@ -5,8 +5,8 @@ if (!isset($_SESSION)) {
 }
 // checking 
 if (isset($_SESSION['activeClientId'])) {
-    if ($_SESSION['activeClientId'] == "true") {
+  
        header("Location: /sd-canteen");
-    }
+    
 }
 ?>

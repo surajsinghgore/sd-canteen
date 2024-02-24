@@ -1,5 +1,7 @@
 <!-- client login api -->
-<?php require('./clientApi/login.php');?>
+<?php 
+     require('./middleware/DisabledPageOnClientLogin.php');
+require('./clientApi/login.php');?>
 
 
 <!DOCTYPE html>
@@ -36,7 +38,10 @@
 
 
     <!-- header -->
-    <?php require('./components/Header.php'); ?>
+    <?php require('./components/Header.php');
+    
+    
+    ?>
 
 
 
