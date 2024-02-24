@@ -28,7 +28,7 @@ position: fixed;
 display: flex;
 width: 100%;
 height: auto;
-background-color: #ffffff ;
+background-color: #fefefe ;
 }
 /* header .logo */
 header .logo{
@@ -150,13 +150,10 @@ background-color: rgb(255, 255, 255);
 }
 header .links li{
 position: relative;
-margin-right: 4%;
 width: auto;
 cursor: pointer;
 height: 70px;
-padding-top: 0%;
-margin-left: 0%;
-
+margin-right: 3%;
 }
 header .links li a{
 
@@ -190,7 +187,7 @@ margin-left: 2%;
 
 header .links #login i{
   margin-left: 10%;
-  font-size: 30px;
+  font-size: 10px;
 }
 
 
@@ -223,11 +220,11 @@ margin-top: 27%;
 
 header .links li #heading2{
 position: absolute;
-top: -38%;
+top: -42%;
 left: 40%;
 color: rgb(255, 98, 0);
 font-weight: 600;
-font-size: 25px;
+font-size: 21px;
 margin-top: 27%;
 }
 

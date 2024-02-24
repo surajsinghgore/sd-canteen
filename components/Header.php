@@ -9,7 +9,7 @@ require('./middleware/clientProfilePhotoRedirect.php');
 <!DOCTYPE html>
 <html lang="en">
 <!-- global css added -->
-<link rel="stylesheet" href="./styles/style.css?v=3">
+<link rel="stylesheet" href="./styles/style.css?v=4">
 
 
 <body>

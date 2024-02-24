@@ -8,7 +8,7 @@
 
 <!-- Link Swiper's CSS -->
 
-<link rel="stylesheet" href="./styles/client/forgetpassword.css?v=2">
+<link rel="stylesheet" href="./styles/client/forgetpassword.css?v=3">
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
     // prevent reload post request

@@ -9,7 +9,7 @@
 
 <!-- Link Swiper's CSS -->
 
-<link rel="stylesheet" href="./styles/client/signup.css?v=3">
+<link rel="stylesheet" href="./styles/client/signup.css?v=4">
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
          // prevent reload post request
