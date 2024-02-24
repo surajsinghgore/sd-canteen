@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<link rel="stylesheet" href="../styles/admin/admin.css?v=2">
+<link rel="stylesheet" href="../styles/admin/admin.css?v=3">
 <link rel="stylesheet" href="../styles/admin/analysis.css?v=4">
 <script>
     window.document.title = "SD CANTEEN | Admin Panel";

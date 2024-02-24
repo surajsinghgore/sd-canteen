@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- global css added -->
-<link rel="stylesheet" href="./styles/style.css?v=2">
+<link rel="stylesheet" href="./styles/style.css?v=3">
 <body>
 
 

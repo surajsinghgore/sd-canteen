@@ -5,7 +5,7 @@
 <html lang="en">
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="../styles/admin/AdminLogin.css?v=1">
+<link rel="stylesheet" href="../styles/admin/AdminLogin.css?v=2">
 <script>
     // prevent reload post request
     if (window.history.replaceState) {
