@@ -49,11 +49,11 @@
               
             </form>
 
-            <div class="path" style="padding-left:120px">
+            <div class="path" >
             
-                <!-- <h4>Resend Otp Again</h4> -->
+                <!-- <h4 style="padding-left:80px">Resend Otp Again</h4> -->
              
-                 <h4>
+                  <h4>
                   New Otp request available in 5 minutes
                 </h4> 
            
