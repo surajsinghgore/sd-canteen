@@ -29,7 +29,7 @@ if (isset($toast_status)) {
     <div class="logo" id="Header">
    <a href="/sd-canteen">
     
-    <Image src="./images/logo.png" alt="sd logo " />
+    <img src="./images/logo.png" alt="sd logo " />
     
     </a> </div>
 
@@ -59,12 +59,27 @@ if (!isset($_SESSION)) {
     session_start();
 }
 if (isset($_SESSION['activeClientId'])) {
+$clientId=$_SESSION['activeClientId'];
+    require('./middleware/ConnectToDatabase.php');
+    $resultGet = mysqli_query($connection, "SELECT * FROM clientdata where id =$clientId");
+    $DataFromDB = mysqli_fetch_assoc($resultGet);
+    $profileImage;
+if($DataFromDB['profileimage']==""){
+if($DataFromDB['gender']=='male'){
+$profileImage="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014242/men_uuulzd.png";
+}
+else{
 
- 
-
+    $profileImage="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014244/girl_vzok8n.png";
+}
+}
+else{
+    $profileImage=$DataFromDB['profileimage'];
+}
    echo"<li id=\"user\"><i class=\"fa-solid fa-caret-down\"></i><div>
    <div class=\"profileImg\">  
-   <img src=\"./images/user.png\" alt=\"profile\" > </div>
+   <img src=\"".
+   $profileImage."\" alt=\"profile\" > </div>
    <span id='heading1' style=\"margin-left:40px\">Hi, ";
 
 
