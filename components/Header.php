@@ -5,7 +5,11 @@
 <link rel="stylesheet" href="./styles/toploader.css?v=4">
 <body>
 <?php 
+// top progress loader
 require('./modules/TopLoader.php');
+// cooking loader
+require('./components/Loader.php');
+
 ?>
 <header>
     <div class="logo" id="Header">
