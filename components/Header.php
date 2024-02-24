@@ -45,18 +45,33 @@ if (isset($toast_status)) {
 
       <!-- user profile -->
  
-    
-      <!-- <li id="user"><i class="fa-solid fa-caret-down"></i><div>
-   <div class="profileImg">  
-   <img src="./images/user.png" alt="profile" > </div>
-   <span id='heading1' style="margin-left:40px">Hi, suraj</span></div>
-</li> 
+    <?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_SESSION['activeClientId'])) {
+   echo"<li id=\"user\"><i class=\"fa-solid fa-caret-down\"></i><div>
+   <div class=\"profileImg\">  
+   <img src=\"./images/user.png\" alt=\"profile\" > </div>
+   <span id='heading1' style=\"margin-left:40px\">Hi, ";
+   echo mb_strimwidth($_SESSION['activeClientFullname'], 0, 5, "");
+   
+   echo" </span></div>
+</li> "; 
+
+}else{
+
+echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a href=\"sd-canteen/login.php\" ><span id='heading2'>Login</span></a></li> ";
+}
+?>
+      <!-- 
     -->
    
    
    <!-- login link -->
 
-      <li id="login"> <i class="fa-solid fa-arrow-right-to-bracket"></i><a href="/sd-canteen/login.php" ><span id='heading2'>Login</span></a></li> 
+      
 
 
       <!-- cart -->
@@ -143,10 +158,10 @@ page.style.display="flex";
 
 if(user){
 user.addEventListener('mouseenter',()=>{
-clientOption.style.display="block";
+clientOption.style.display="flex";
 })
 clientOption.addEventListener('mouseenter',()=>{
-clientOption.style.display="block";
+clientOption.style.display="flex";
 states1=true;
 })
 

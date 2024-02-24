@@ -38,10 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // success
                 if (password_verify($password, $data['password'])) {
                     session_start();
-                    $_SESSION['activeUserId'] = $data['id'];
-                    $_SESSION['activeUserEmail'] = $data['email'];
-                    $_SESSION['activeUserMobile'] = $data['mobile'];
-                    $_SESSION['activeUserFullname'] = $data['fullname'];
+                    $_SESSION['activeClientId'] = $data['id'];
+                    $_SESSION['activeClientEmail'] = $data['email'];
+                    $_SESSION['activeClientMobile'] = $data['mobile'];
+                    $_SESSION['activeClientFullname'] = $data['fullname'];
                     $error_status = "success";
                     $error_message = 'successfully login';
                     $toast_status = 'true';
@@ -169,10 +169,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // success
                 if (password_verify($password, $data['password'])) {
                     session_start();
-                    $_SESSION['activeUserId'] = $data['id'];
-                    $_SESSION['activeUserEmail'] = $data['email'];
-                    $_SESSION['activeUserMobile'] = $data['mobile'];
-                    $_SESSION['activeUserFullname'] = $data['fullname'];
+                    $_SESSION['activeClientId'] = $data['id'];
+                    $_SESSION['activeClientEmail'] = $data['email'];
+                    $_SESSION['activeClientMobile'] = $data['mobile'];
+                    $_SESSION['activeClientFullname'] = $data['fullname'];
                     $error_status = "success";
                     $error_message = 'successfully login';
                     $toast_status = 'true';
