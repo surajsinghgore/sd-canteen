@@ -1,3 +1,7 @@
+<!-- client login api -->
+<?php require('./clientApi/login.php');?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <?php require('./modules/clientHeadTag.php'); ?>
@@ -7,10 +11,28 @@
 <link rel="stylesheet" href="./styles/client/ClientLogin.css?v=2">
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
+         // prevent reload post request
+         if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href)
+        }
     window.document.title="SD CANTEEN | Client Login";
 </script>
 <body>
     <div class="admin">
+
+
+
+
+
+    <!-- email template -->
+<?php
+
+
+
+?>
+
+
+
 
 
     <!-- header -->
@@ -21,21 +43,27 @@
 
 <div class="clientLogin">
 <div class="form">
-<h3>SD CANTEEN</h3>
-<form onSubmit="Login">
+<h3>SD CANTEEN 
+    
+   </h3>
+
+
+<form method="post" action="">
 <li>
 <h6>Enter Email/Mobile To Login</h6>
-<input type="text" name="" placeholder="Email / Mobile" autocomplete="off" autoFocus/>
+<input type="text" name="username" placeholder="Email / Mobile" value="<?php if(isset($username)){echo $username;}?>" autocomplete="off" autofocus required/>
+
+<input type="text" name="ipAddress" placeholder="" autocomplete="off" autofocus required/value="<?php  $client_ip = $_SERVER['REMOTE_ADDR']; echo $client_ip;?>" style="display: none;">
 <i class="fa-solid fa-at icon"></i>
 </li>
 <li>
 <h6>Enter Password To Login</h6>
-<input type="password" name="" placeholder="Password"   autocomplete="off" />
+<input type="password" name="password" placeholder="Password"  value="<?php if(isset($password)){echo $password;}?>" autocomplete="off" required/>
 <i class="fa-solid fa-lock icon"></i>
 </li>
 <p><a href="/ForgetPassword">Forget Password ?</a></p>
 
-<button onClick="Login">Login</button>
+<button name="client_login">Login</button>
 
 </form>
 <div class="path">
