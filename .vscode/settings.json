@@ -84,6 +84,7 @@
         "updatefooditemid",
         "updatejuiceitem",
         "updatejuiceitemid",
+        "userid",
         "verifystatus",
         "viewcoffee",
         "viewdrink",
