@@ -150,9 +150,9 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
 </div>
 
 <div>
-<a href="/PastOrder"><a>
+<a href="/sd-canteen/pastorder.php">
 <i class="fa-solid fa-clipboard"></i>
-<h1>Past Order</h1></a></a>
+<h1>Past Order</h1></a>
 </div>
 <div >
     <form action="" method="post">
