@@ -9,20 +9,20 @@
     height: 90px;
   }
   .topHeader .heading_section {
-    width: 40%;
+    width: 60%;
     display: flex;
   }
   .topHeader .heading_section i {
-    font-size: 50px;
-    padding-top: 2%;
+    font-size: 34px;
+    padding-top: 2.6%;
     color: rgb(251, 154, 42);
     padding-left: 8%;
   }
   .topHeader .heading_section h1 {
-    font-size: 30px;
+    font-size: 23px;
     padding-left: 8%;
     padding-top: 5%;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     color: rgb(28, 28, 28);
   }
@@ -38,7 +38,7 @@
     margin-right: 5%;
   }
   .profile_section h1 {
-    font-size: 22px;
+    font-size: 21px;
     margin-top: 0.5%;
     text-transform: capitalize;
     color: red;

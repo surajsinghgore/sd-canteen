@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=2">
-<link rel="stylesheet" href="../styles/admin/managecomments.css?v=13">
+<link rel="stylesheet" href="../styles/admin/managecomments.css?v=2">
 <script>
     window.document.title = "SD CANTEEN | MANAGE COMMENTS";
 </script>

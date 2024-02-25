@@ -1,7 +1,7 @@
 .mainComments {
-    width: 1390px;
+    width: 90;
     height: auto;
-    margin-top: 10%;
+    margin-top: 12%;
   }
   .mainComments h1 {
     text-align: center;
@@ -13,13 +13,14 @@
     margin-left: 15%;
     margin-bottom: 2%;
     height: auto;
+
     box-shadow: 0px 0px 12px rgb(228, 228, 228);
     padding-bottom: 3%;
     width: 70%;
   }
   .mainComments .section h3 {
     padding-left: 4%;
-    padding-top: 3%;
+    padding-top: 3%;    font-size: 18px;
     padding-bottom: 2%;
   }
   .mainComments .section h3 span {
@@ -29,7 +30,7 @@
     width: 92%;
     margin-left: 4%;
     padding-left: 2%;
-    font-size: 22px;
+    font-size: 18px;
     padding-top: 2%;
     padding-bottom: 2%;
     border: 2px solid rgb(230, 230, 230);
@@ -53,7 +54,7 @@
     cursor: pointer;
     color: white;
     background-color: red;
-    font-size: 25px;
+    font-size: 19px;
   }
   .mainComments .section .options .div2 button {
     border: none;
@@ -63,7 +64,7 @@
     padding: 2% 18%;
     color: white;
     background-color: rgb(3, 161, 40);
-    font-size: 25px;
+    font-size: 19px;
   }
   .mainComments .section .options .div2 button:hover,
   .mainComments .section .options .div1 button:hover {
