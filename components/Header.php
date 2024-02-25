@@ -65,6 +65,11 @@ $clientId=$_SESSION['activeClientId'];
     $resultGet = mysqli_query($connection, "SELECT * FROM clientdata where id =$clientId");
     $DataFromDB = mysqli_fetch_assoc($resultGet);
     $profileImage;
+    $clientAge=$DataFromDB['age'];
+    $clientMobile=$DataFromDB['mobile'];
+    $clientEmail=$DataFromDB['email'];
+    $clientGender=$DataFromDB['gender'];
+    $clientAddress=$DataFromDB['fulladdress'];
 if($DataFromDB['profileimage']==""){
 if($DataFromDB['gender']=='Male'){
 $profileImage="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014242/men_uuulzd.png";
@@ -145,8 +150,8 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
 </div>
 
 <div>
-<a href="/ClientManage"><a><i class="fa-regular fa-circle-user"></i>
-<h1>Manage Info</h1></a></a>
+<a href="/sd-canteen/clientpanel.php"><i class="fa-regular fa-circle-user"></i>
+<h1>Manage Info</h1></a>
 </div>
 
 <div>
