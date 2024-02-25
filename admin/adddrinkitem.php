@@ -187,7 +187,7 @@ if ($length == 0) {
             </li>
             <li>
               <p>
-                Upload Food
+                Upload Drink
                 Photo <span>*</span>
               </p>
               <input type="file" name="DrinkImage" id="CoffeeImage" onchange="loadFile(event)">
