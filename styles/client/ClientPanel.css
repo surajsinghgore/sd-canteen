@@ -252,7 +252,7 @@
     z-index: 90;
     width: 98.8vw;
     
-    height: 110vh;
+    height: 112vh;
   }
   .updateGeneral .shadow {
     position: relative;
@@ -267,7 +267,7 @@
   .updateGeneral .form {
     width: 80%;
     position: absolute;
-    top: 14%;
+    top: 11%;
     left: 12%;
     height: auto;
     list-style: none;
@@ -321,6 +321,7 @@
     width: 40%;
     margin-left: 7%;
     float: left;
+    margin-bottom: 1%;
     height: auto;
   }
   .updateGeneral .form li .tt {

@@ -183,7 +183,7 @@
                   <div class="tt">Gender</div>
                   <div class="dd">
                     <select  disabled>
-                    value="<?php  if(isset($clientGender)){echo "<option selected>$clientGender</option>";}?>"
+                   <?php  if(isset($clientGender)){echo "<option selected>$clientGender</option>";}?>
                       
                       <option >Male</option>
                       <option>Female</option>
@@ -197,10 +197,7 @@
                   <div class="dd">
                     
                     <textarea
-                      placeholder="Address"
-                     
-                      readOnly
-                    ><?php  if(isset($clientAddress)){echo $clientAddress;}?></textarea>
+                      placeholder="Address" readOnly  ><?php  if(isset($clientAddress)){echo $clientAddress;}?></textarea>
                   </div>
                 </li>
               </div>

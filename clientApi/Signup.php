@@ -111,7 +111,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             return;
         }
 
-
+        if(($age<0)||($age> 200)) {
+            $error_status = "warn";
+            $error_message = 'Enter age is Not valid';
+            $toast_status = 'true';
+            return;
+        
+        }
+        
 
         // split email account
         $parts = explode("@", $email);
@@ -120,10 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ((strcmp($parts[1], "gmail.com") == 0) or (strcmp($parts[1], "outlook.com") == 0) or (strcmp($parts[1], "yahoo.com") == 0) or (strcmp($parts[1], "ggdsd.ac.in.com") == 0)) {
 
             require('./middleware/ConnectToDatabase.php');
-
-
-
-
 
 
             // check weather email id already used or not

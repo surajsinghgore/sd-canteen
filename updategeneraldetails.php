@@ -1,6 +1,7 @@
 <!-- client login api -->
 <?php 
      require('./middleware/VerifyClientLogin.php');
+     require('./clientApi/updateclientgeneraldetails.php');
 
 ?>
 
@@ -43,6 +44,7 @@
 
     <div class="updateGeneral" >
             <div class="shadow"></div>
+            <form method="post" action="">
             <div class="form">
               <div class="general">
                 <div class="top">
@@ -58,13 +60,15 @@
            
 
                 <div class="forms">
+                
                   <li>
                     <div class="tt">Name</div>
                     <div class="dd">
                       <input
                         type="text"
                         placeholder="Your Fullname"
-                      
+                        name="fullname"
+                        value="<?php  if(isset($_SESSION['activeClientFullname'])){echo $_SESSION['activeClientFullname'];}?>"
                       />
                     </div>
                   </li>
@@ -75,7 +79,9 @@
                       <input
                         type="number"
                         placeholder="Your Age"
-                       
+                       name="age"
+                       value="<?php  if(isset($clientAge)){echo $clientAge;}?>"
+                    
                       />
                     </div>
                   </li>
@@ -86,7 +92,8 @@
                       <input
                         type="email"
                         placeholder="Your Email Id"
-                       
+                       name="email"
+                       value="<?php  if(isset($clientEmail)){echo $clientEmail;}?>"
                       />
                     </div>
                   </li>
@@ -97,7 +104,8 @@
                       <input
                         type="number"
                         placeholder="Your Mobile Number"
-                     
+                     name="mobile"
+                     value="<?php  if(isset($clientMobile)){echo $clientMobile;}?>"
                       />
                     </div>
                   </li>
@@ -106,8 +114,9 @@
                     <div class="tt">Gender</div>
                     <div class="dd">
                       <select
-                        
+                        name="gender"
                       >
+                      <?php  if(isset($clientGender)){echo "<option selected>$clientGender</option>";}?>
                         <option>Male</option>
                         <option>Female</option>
                         <option>Transgender</option>
@@ -120,15 +129,19 @@
                     <div class="dd">
                       <textarea
                         placeholder="Address"
-                       
-                      ></textarea>
+                       name="fulladdress"
+                       value="<?php if(isset($clientAddress)){echo $clientAddress;}?>"
+                       ><?php  if(isset($clientAddress)){echo $clientAddress;}?>
+                    </textarea>
                     </div>
                   </li>
+                
                 </div>
               </div>
 
-              <button >Update Details</button>
+              <button name="update_client_details">Update Details</button>
             </div>
+            </form>
           </div>
 
 
