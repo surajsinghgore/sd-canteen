@@ -5,12 +5,14 @@
     padding-bottom: 3%;
     }
     .term h1{
+        margin-top: 2%;
     font-size: 40px;
+    font-weight: 700;
     color: rgb(74, 74, 74);
     text-align: center;}
     
     .term p{
-    margin-top: -1%;
+    margin-top: 0%;
     font-size: 18px;
     word-break: keep-all;
     text-align: left;
@@ -19,6 +21,7 @@
     
     .term h3{
     font-size: 25px;
+    font-weight: 700;
     text-align: left;
     color: rgb(74, 74, 74);
     }

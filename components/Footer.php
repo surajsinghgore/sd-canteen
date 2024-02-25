@@ -11,8 +11,8 @@
     <div class="footer">
     <div class="legal">
 <h1>Legal </h1>
-<li><a href="/HelpAndSupport"><i class="fa-solid fa-caret-right"></i>Help & Support</a></li>
-<li><a href="/TermsAndCondition"><i class="fa-solid fa-caret-right"></i>Terms & Conditions</a></li>
+<li><a href="/sd-canteen/helpandsupport.php"><i class="fa-solid fa-caret-right"></i>Help & Support</a></li>
+<li><a href="/sd-canteen/termandcondition.php"><i class="fa-solid fa-caret-right"></i>Terms & Conditions</a></li>
 <li><a href="/RefundAndCancellation"><i class="fa-solid fa-caret-right"></i>Refund & Cancellation</a></li>
 <li><a href="/Privacy"><i class="fa-solid fa-caret-right"></i>Privacy Policy</a></li>
 <li><a href="/OfferTerm"><i class="fa-solid fa-caret-right"></i>Offer Terms</a></li>

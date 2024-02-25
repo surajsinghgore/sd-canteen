@@ -6,7 +6,7 @@
 
 
 <link rel="stylesheet" href="./styles/client/helpandsupport.css?v=2">
-<link rel="stylesheet" href="./styles/client/terms.css?v=1">
+<link rel="stylesheet" href="./styles/client/terms.css?v=2">
 
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
