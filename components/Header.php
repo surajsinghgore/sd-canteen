@@ -138,7 +138,7 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
         <div class="page">
     <h1>Extra Pages</h1>
     <li><a href="/sd-canteen/admin/adminlogin.php">Admin Login</a></li>
-    <li><a href="/HelpAndSupport">Help Center</a></li>
+    <li><a href="/sd-canteen/helpandsupport.php">Help Center</a></li>
     </div>
     </div>
 
