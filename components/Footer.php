@@ -13,7 +13,7 @@
 <h1>Legal </h1>
 <li><a href="/sd-canteen/helpandsupport.php"><i class="fa-solid fa-caret-right"></i>Help & Support</a></li>
 <li><a href="/sd-canteen/termandcondition.php"><i class="fa-solid fa-caret-right"></i>Terms & Conditions</a></li>
-<li><a href="/RefundAndCancellation"><i class="fa-solid fa-caret-right"></i>Refund & Cancellation</a></li>
+<li><a href="/sd-canteen/refundandcancellation.php"><i class="fa-solid fa-caret-right"></i>Refund & Cancellation</a></li>
 <li><a href="/Privacy"><i class="fa-solid fa-caret-right"></i>Privacy Policy</a></li>
 <li><a href="/OfferTerm"><i class="fa-solid fa-caret-right"></i>Offer Terms</a></li>
 <li><a href="https://surajsingh.vercel.app"><i class="fa-solid fa-caret-right"></i>Developer</a></li>
