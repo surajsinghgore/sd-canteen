@@ -645,7 +645,14 @@ font-weight: 500;
 margin-left: 2%;
 
 }
+footer a{
+  
+  text-decoration: none;
+}
+footer a:hover{
 
+  color: #0ac0ee;
+}
 
 footer .copyright{
 width: 100%;
@@ -665,6 +672,11 @@ footer .copyright span{
 color: rgb(5, 177, 215);
 padding-left: 0.5%;
 }
+footer .copyright a{
+  text-decoration: none;
+}
+
+
 /* loader */
 
 .loader_Container{

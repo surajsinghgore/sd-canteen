@@ -383,6 +383,8 @@
             <h5>Orders Placed</h5>
             <p>
                 16
+                <?php 
+               echo "The time is " . date("h:i:sa");?>
             </p>
         </div>
 

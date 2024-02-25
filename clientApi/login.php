@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = mysqli_fetch_assoc($resultGet);
 
             // data find
+            date_default_timezone_set("Asia/Calcutta");
             $currentDate = date("d-m-Y");
             $currentTime = date("h:i:s A");
             if ($rows > 0) {
@@ -162,6 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = mysqli_fetch_assoc($resultGet);
 
             // data find
+            date_default_timezone_set("Asia/Calcutta");
             $currentDate = date("d-m-Y");
             $currentTime = date("h:i:s A");
             if ($rows > 0) {
