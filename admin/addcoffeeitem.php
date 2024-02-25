@@ -40,9 +40,9 @@
             $pathNavigationChild = "add coffee item";
             require('../components/PathNavigation.php'); ?>
 
-            <div class="FoodPage">
 
-                <div class="Form" style="margin-top:-8%">
+
+                <div class="Form">
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="heading">
                             <h1>
@@ -179,7 +179,6 @@
 
                 </div>
 
-            </div>
         </div>
 
     </div>
