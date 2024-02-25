@@ -499,9 +499,17 @@
     font-size: 38px;
     cursor: pointer;
   }
-  .profile .form .top .topicons span:hover {
-    color: red;
-  }
+  .profile .form .top .topicons span a{
+      
+      text-decoration: none;
+    }
+    .profile .form .top .topicons span a:hover{
+
+        color: red;
+
+    }
+
+ 
   
   .profile .upsection {
     width: 100%;

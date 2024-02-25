@@ -12,7 +12,7 @@ require('./clientApi/clientprofileupdate.php');
 
 <!-- Link Swiper's CSS -->
 
-<link rel="stylesheet" href="./styles/client/ClientPanel.css?v=4">
+<link rel="stylesheet" href="./styles/client/ClientPanel.css?v=5">
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
     // prevent reload post request
@@ -50,7 +50,7 @@ require('./clientApi/clientprofileupdate.php');
                         <div class="top">
                             <div class="headingTop">Upload New Profile </div>
                             <div class="topicons" title="Close Details">
-                                <span>x</span>
+                                <span><a href="/sd-canteen/clientpanel.php">x</a>   </span>
                             </div>
                         </div>
 
