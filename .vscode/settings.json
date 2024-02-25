@@ -89,6 +89,7 @@
         "updatedrinkitemid",
         "updatefooditem",
         "updatefooditemid",
+        "updategeneraldetails",
         "updatejuiceitem",
         "updatejuiceitemid",
         "updatepassword",

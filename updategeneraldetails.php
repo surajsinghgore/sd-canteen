@@ -11,14 +11,14 @@
 
 <!-- Link Swiper's CSS -->
 
-<link rel="stylesheet" href="./styles/client/ClientPanel.css?v=2">
+<link rel="stylesheet" href="./styles/client/ClientPanel.css?v=7">
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
          // prevent reload post request
          if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href)
         }
-    window.document.title="SD CANTEEN | Client General Details ";
+    window.document.title="SD CANTEEN | Update General Details ";
 </script>
 <body>
     <div class="admin">
@@ -35,10 +35,13 @@
 
 
 
-    <div class="clientPanel">
-   <!-- update general details -->
- 
-<div class="updateGeneral">
+
+
+
+
+
+
+    <div class="updateGeneral" >
             <div class="shadow"></div>
             <div class="form">
               <div class="general">
@@ -47,22 +50,21 @@
                   <div
                     class="topicons"
                     title="Close Details"
-                   
+                  
                   >
-                    <span>x</span>
+                    <span><a href="/sd-canteen/clientpanel.php">X</a></span>
                   </div>
                 </div>
-          
+           
 
-                <div class="forms}>
+                <div class="forms">
                   <li>
                     <div class="tt">Name</div>
                     <div class="dd">
                       <input
                         type="text"
                         placeholder="Your Fullname"
-                        value=""
-                        
+                      
                       />
                     </div>
                   </li>
@@ -73,7 +75,7 @@
                       <input
                         type="number"
                         placeholder="Your Age"
-                        
+                       
                       />
                     </div>
                   </li>
@@ -95,8 +97,7 @@
                       <input
                         type="number"
                         placeholder="Your Mobile Number"
-                       
-                       
+                     
                       />
                     </div>
                   </li>
@@ -105,7 +106,7 @@
                     <div class="tt">Gender</div>
                     <div class="dd">
                       <select
-                       
+                        
                       >
                         <option>Male</option>
                         <option>Female</option>
@@ -129,13 +130,6 @@
               <button >Update Details</button>
             </div>
           </div>
-    
-      </div>
-
-
-
-
-
 
 
 
