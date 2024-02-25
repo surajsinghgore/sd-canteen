@@ -63,7 +63,9 @@ if (isset($_SESSION['activeClientId'])) {
 $clientId=$_SESSION['activeClientId'];
     require('./middleware/ConnectToDatabase.php');
     $resultGet = mysqli_query($connection, "SELECT * FROM clientdata where id =$clientId");
+    
     $DataFromDB = mysqli_fetch_assoc($resultGet);
+
     $profileImage;
     $clientAge=$DataFromDB['age'];
     $clientMobile=$DataFromDB['mobile'];

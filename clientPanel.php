@@ -39,7 +39,10 @@
         <div class="left">
           <div class="imageSection">
             <img
-              src="<?php echo $profileImage;?>"
+              src="<?php if(isset($profileImage)){echo $profileImage;} else{
+
+                header('Location: /sd-canteen/login.php');
+              }?>"
               alt="profile"
              
               class="imgs"
@@ -51,11 +54,12 @@
               title="Update Profile"
         
             >
-
-
+<a href="/sd-canteen/updateclientprofile.php">
             <svg lass="edit" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="ClientPanel_edit__tcXM5" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 000-1.41l-2.34-2.34a.996.996 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>
          
               Edit
+              </a>
+
             </div>
           </div>
           <div class="title">
