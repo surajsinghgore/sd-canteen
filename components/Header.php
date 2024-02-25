@@ -47,7 +47,7 @@ if (isset($toast_status)) {
     </div>
     </div>
     <div class="links">
-    <li> <i class="fa-solid fa-utensils"></i> <span class='heading'><a href="/OrderNow">Order Now</a> </span></li>
+    <li> <i class="fa-solid fa-utensils"></i> <span class='heading'><a href="/sd-canteen/ordernow.php">Order Now</a> </span></li>
 
 
       <li id="heading"> <i class="fa-solid fa-caret-down"></i> <span class='heading' >Pages</span></li>
