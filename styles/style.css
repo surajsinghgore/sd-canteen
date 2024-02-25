@@ -552,7 +552,7 @@ list-style: none;
 }
 footer .footer .legal h1{
 margin-top: 15%;
-font-size: 40px;
+font-size: 30px;
 color: white;
 margin-left: 2%;
 margin-bottom: 6%;
@@ -560,7 +560,7 @@ margin-bottom: 6%;
 footer .footer .legal li{
 margin-top: 4%;
 text-align: left;
-font-size: 23px;
+font-size: 18px;
 color: white;
 margin-bottom: 2%;
 }
@@ -590,7 +590,7 @@ footer .footer i{
 }
 footer .footer .menu h1{
 margin-top: 15%;
-font-size: 40px;
+font-size: 30px;
 color: white;
 margin-left: 2%;
 margin-bottom: 6%;
@@ -598,7 +598,7 @@ margin-bottom: 6%;
 footer .footer .menu li{
 margin-top: 4%;
 text-align: left;
-font-size: 23px;
+font-size: 18px;
 color: white;
 margin-bottom: 2%;
 }
@@ -619,7 +619,7 @@ list-style: none;
 }
 footer .footer .timing h1{
 margin-top: 12%;
-font-size: 40px;
+font-size: 30px;
 color: white;
 margin-bottom: 4%;
 }
@@ -627,7 +627,7 @@ footer .footer .timing li{
 display: block;
 margin-top: 2%;
 text-align: left;
-font-size: 23px;
+font-size: 18px;
 color: white;
 margin-bottom: 2%;
 }
@@ -651,7 +651,7 @@ footer .copyright{
 width: 100%;
 margin-top: 2%;
 display: flex;
-font-size: 23px;
+font-size: 17px;
 font-weight: 600;
 color: white;
 }

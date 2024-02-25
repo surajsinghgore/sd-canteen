@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" href="./styles/style.css?v=4">
+<link rel="stylesheet" href="./styles/style.css?v=5">
 </head>
 <body>
     
@@ -30,7 +30,6 @@
 </div>
 
 
-{/* timing */}
 <div class="timing">
 <h1>Opening Hours</h1>
 <li><span>Monday:</span>8.00 AM - 6.00 PM</li>
