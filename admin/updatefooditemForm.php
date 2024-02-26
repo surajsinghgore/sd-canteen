@@ -203,7 +203,7 @@
                                 <p>Product Visibility Status </p>
                                 <label class="switch">
 
-                                    <input type='checkbox' name='orderStatus' id="visibiltyStatus" checked>
+                                    <input type='checkbox' name='orderStatus' id="visibiltyStatus">
 
 
 
@@ -267,7 +267,7 @@ document.getElementById('foodId').value=FoodId;
                 document.getElementById('largePrice').value = data.largeprice;
                 document.getElementById('description').value = data.description;
                 document.getElementById('FoodImagePreview').src = data.imagepath;
-                document.getElementById('FoodCategory').innerHTML += `<option selected>${data.category}</option>`;
+        
                 // order is off
                 if (data.active == "off") {
                     document.getElementById('visibiltyStatus').checked = false

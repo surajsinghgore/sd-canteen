@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
 
-<link rel="stylesheet" href="../styles/admin/admin.css?v=5">
+<link rel="stylesheet" href="../styles/admin/admin.css?v=18">
 <script>
     window.document.title = "SD CANTEEN | Update Drink Item";
     // prevent reload post request
@@ -33,54 +33,67 @@
         <!-- left side bar import -->
         <?php require('../components/LeftAdminHeader.php'); ?>
 
-        <!-- right top header -->
+
+
         <div class="rightsidebar">
-            <?php $AdminTopHeaderTitle = "Update Drink Page";
+
+        <?php $AdminTopHeaderTitle = "Update Drink Page";
             require('../components/AdminTopHeader.php'); ?>
 
 
 
-            <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewdrinkItem.php";
+         <!-- path navigation -->
+         <?php $pathNavigationParentPath = "/sd-canteen/admin/viewdrinkItem.php";
             $pathNavigationParent = "Drinks";
             $pathNavigationChild = "Update Drink item";
             require('../components/PathNavigation.php'); ?>
 
-            <div class="FoodPage">
+            <div class="Form" style="margin-bottom:50px">
+                <div class="heading">
+                    <h1>
+                        Update New Drink Item For Website
+                    </h1>
+                </div>
+                <form method="post" action="" enctype="multipart/form-data">
+                    <div class="form_element">
+                        <li>
+                            <p>
+                                Update
+                                Drink
+                                Name <span>*</span>
+                            </p>
 
-                <div class="Form" style="margin-top:-8%">
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <div class="heading">
-                            <h1>
-                                Update New DrinkItem Item For Website
-                            </h1>
-                        </div>
-                        <div class="form_element">
-                            <li>
-                                <p>
-                                    Update DrinkItem Name <span>*</span>
-                                </p>
-<input type="number" name="FoodId"  id="foodId" style="display:none;">
+                            <input type="number" name="FoodId"  id="foodId" style="display:none;">
 
-                                <input type="text" name="DrinkName"  autofocus id="FoodName" value="<?php if (isset($DrinkName)) {
+
+                            <input type="text" name="DrinkName"  autofocus id="FoodName" value="<?php if (isset($DrinkName)) {
                                                                                             echo $DrinkName;
                                                                                         } ?>" required>
-                            </li>
 
-                            <li>
-                                <p>
-                                    Update Drink Qty
-                                </p>
-                                <input type="Number" name="DrinkQty" id="qty" value="1" required>
-                            </li>
 
-                            <li class="selects">
-                                <p>
-                                    Update Drink Category <span>*</span>
-                                </p>
-                                <select name="DrinkCategory" id="FoodCategory">
+                        </li>
 
-                                    <?php if (isset($DrinkCategory)) {
+                        <li>
+                            <p>
+                                Update Drink
+                                Qty
+                            </p>
+                            <input type="Number" name="DrinkQty" id="qty" value="1" required>
+                        </li>
+
+                        
+                        <li class="selects">
+              <p style="margin-left:-35px">
+                Enter
+                Drink
+                Category <span>*</span>
+              </p>
+              <select
+                name="DrinkCategory"
+             
+                
+              >
+              <?php if (isset($DrinkCategory)) {
                                         if ($DrinkCategory == "no") {
 
                                             echo "<option value='no'>
@@ -116,63 +129,64 @@
 
                                     }
                                     ?>
+              </select>
+            </li>
 
 
 
 
-
-                                </select>
-                            </li>
-
-
-                            <li class="Prices">
-                                <h6>
-                                    Update Price <span>*</span>
-                                </h6>
-                                <p>
-                                    <input type="text" name="normalPriceName" class="priceHeading" " value=" Normal Size Price" readonly>
-                                    <input type="Number" name="normalPrice" id="normalPrice" class="prices" value="<?php if (isset($normalPrice)) {
+                        <li class="Pricess">
+                            <h6>
+                                Enter Price <span>*</span>
+                            </h6>
+                            <p>
+                                <input type="text" name="normalPriceName" class="priceHeading" value="Normal Size Price" readonly>
+                                <input type="Number" name="normalPrice" id="normalPrice" class="prices" value="<?php if (isset($normalPrice)) {
                                                                                                                         echo $normalPrice;
                                                                                                                     } ?>">
-                                </p>
-                                <h4>Or</h4>
-                                <p>
-                                    <input type="text" name="smallPriceName" class="priceHeading" value="Small Size Price" readonly>
-                                    <input type="Number" id="smallPrice" name="smallPrice" class="prices" value="<?php if (isset($smallPrice)) {
+                            </p>
+                            <h4>Or</h4>
+                            <p>
+                                <input type="text" name="smallPriceName" class="priceHeading" value="Small Size Price" readonly>
+                                <input type="Number" id="smallPrice" name="smallPrice" class="prices" value="<?php if (isset($smallPrice)) {
                                                                                                                         echo $smallPrice;
                                                                                                                     } ?>">
-                                </p>
+                            </p>
 
-                                <p>
-                                    <input type="text" name="mediumPriceName" class="priceHeading" value="Medium Size Price" readonly>
-                                    <input type="Number" id="mediumPrice" name="mediumPrice" class="prices" value="<?php if (isset($mediumPrice)) {
+                            <p>
+                                <input type="text" name="mediumPriceName" class="priceHeading" value="Medium Size Price" readonly />
+                                <input type="Number" id="mediumPrice" name="mediumPrice" class="prices" value="<?php if (isset($mediumPrice)) {
                                                                                                                         echo $mediumPrice;
                                                                                                                     } ?>">
-                                </p>
+                            </p>
 
-                                <p>
-                                    <input type="text" name="largePriceName" class="priceHeading" value="Large Size Price" readonly>
-                                    <input type="Number" id="largePrice" name="largePrice" class="prices" value="<?php if (isset($largePrice)) {
+                            <p>
+                                <input type="text" name="largePriceName" class="priceHeading" value="Large Size Price" readonly />
+                                <input type="Number" id="largePrice" name="largePrice" class="prices" value="<?php if (isset($largePrice)) {
                                                                                                                         echo $largePrice;
                                                                                                                     } ?>">
-                                </p>
-                            </li>
+                            </p>
+                        </li>
 
 
-                            <li class="description">
-                                <p>
-                                    Update Description Category<span>*</span>
-                                </p>
-                                <textarea value="description" id="description" name="description" required><?php if (isset($description)) {
+
+
+                        <li class="description">
+                            <p>
+                                Enter Description Category<span>*</span>
+                            </p>
+                            <textarea value="description" id="description" name="description" required><?php if (isset($description)) {
                                                                                                                 echo $description;
                                                                                                             } ?></textarea>
-                            </li>
-                            <li>
-                                <p> Upload Drink Photo <span>*</span>
-                                </p>
-                                <input type="file" name="DrinkImage" id="FoodImageInput" onchange="loadFile(event)">
-                            </li>
-                            <li>
+                        </li>
+                        <li>
+                            <p>
+                                Upload Drink
+                                Photo <span>*</span>
+                            </p>
+                            <input type="file" name="DrinkImage" id="FoodImageInput" onchange="loadFile(event)">
+                        </li>
+                        <li>
                                 <p>Photo Realtime Preview</p>
                                 <div class="preview_photo">
 
@@ -182,11 +196,12 @@
                                 </div>
                             </li>
 
+                    
                             <li class="btns">
                                 <p>Product Visibility Status </p>
                                 <label class="switch">
 
-                                    <input type='checkbox' name='orderStatus' id="visibiltyStatus" checked>
+                                    <input type='checkbox' name='orderStatus' id="visibiltyStatus" >
 
 
 
@@ -194,17 +209,20 @@
 
                                 </label>
                             </li>
-                            <button name="update_drink_item">
-                                UPDATE DRINK
-                            </button>
-                        </div>
-                    </form>
-
-
-                </div>
-
+                        <button name="update_drink_item">
+                            UPDATE DRINK
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
+
+
+
+
+
+
+
 
     </div>
 
@@ -247,7 +265,7 @@ document.getElementById('foodId').value=FoodId;
                 document.getElementById('largePrice').value = data.largeprice;
                 document.getElementById('description').value = data.description;
                 document.getElementById('FoodImagePreview').src = data.imagepath;
-                document.getElementById('FoodCategory').innerHTML += `<option selected>${data.category}</option>`;
+                
                 // order is off
                 if (data.active == "off") {
                     document.getElementById('visibiltyStatus').checked = false
