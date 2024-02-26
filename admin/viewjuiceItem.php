@@ -5,7 +5,7 @@
 <?php require('../modules/HeadTag.php'); ?>
 
 <link rel="stylesheet" href="../styles/admin/admin.css">
-<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=13">
+<link rel="stylesheet" href="../styles/admin/ShowFoodItem.css?v=15">
 
 <script>
     window.document.title = "SD CANTEEN | Show Juice Item";
