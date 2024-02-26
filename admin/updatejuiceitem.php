@@ -106,7 +106,7 @@ if ($length == 0) {
 
 
                     if ($length == 0) {
-                        echo "<h1 class='noItemFound'>No Item Available</h1>";
+                        echo "<h1 class='noItemFound' style='font-size:23px;padding-left:15px;padding-top:14px;padding-bottom:50px'>No Item Available</h1>";
                     } else {
                         // row wise printing
                         while ($FoodItemAllDataInAdmin = mysqli_fetch_array($resFoodItem)) {
