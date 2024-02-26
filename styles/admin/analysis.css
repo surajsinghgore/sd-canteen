@@ -69,9 +69,10 @@ width: 90% !important;
   
   /* payment Anaylsis css styling page*/
   
-  .payment {
-    width: 1390px;
-
+  .rightsidebar .payment {
+    width: 94%;
+margin-left: 2%;
+background-color: #fff;
     height: auto;
     margin-top: 9%;
   }
@@ -84,7 +85,7 @@ width: 90% !important;
   .payment h4 {
     color: red;
     padding-top: 2%;
-    font-size: 22px;
+    font-size: 20px;
     margin-left: 3%;
     padding-bottom: 2%;
   }
@@ -100,8 +101,8 @@ width: 90% !important;
     outline: none;
     padding-bottom: 2%;
     text-align: center;
-    font-weight: 600;
-    font-size: 21px;
+    font-weight: 500;
+    font-size: 18px;
   }
   
   .payment .chartSection {
@@ -128,26 +129,26 @@ width: 90% !important;
   .payment .chartSection .chartSigle .chartARea {
     margin-left: 15%;
     height: auto;
-    height: 400px;
+    height: 300px;
   }
   
   .payment .chartSection .chartSigle .chartARea canvas{
-    height: 340px !important;
+    height: 300px !important;
 width: 80% !important;
-margin-top: 10%;
+margin-top: 5%;
   }
 
 
   .payment .chartSection .chartSigle .chartARea1 {
     margin-left: 10%;
-    height: 400px;
+    height: 300px;
   }
 
   .payment .chartSection .chartSigle .chartARea1 canvas{
-    height: 380px !important;
-width: 70% !important;
+    height: 280px !important;
+width: 60% !important;
 margin-top: 2%;
-margin-left: 8%;
+margin-left: 13%;
   }
 
   .payment .chartSection .chartSigle .allDatas {
