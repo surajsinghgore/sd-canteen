@@ -1,146 +1,252 @@
+<!-- add category api -->
+<?php require('../api/AddCoffeeCategory.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
-<link rel="stylesheet" href="../styles/admin/admin.css?v=1">
-<link rel="stylesheet" href="../styles/admin/ItemCategory.css?v=13">
+<link rel="stylesheet" href="../styles/admin/admin.css?v=14">
+<link rel="stylesheet" href="../styles/admin/realtimeorder.css?v=6">
+
 <script>
-  window.document.title = "SD CANTEEN | Manage Food Category";
+    // prevent reload post request
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href)
+    }
+    window.document.title = "SD CANTEEN | Realtime Orders";
 </script>
 
 <body>
 
+    <div class="admin">
 
 
-  <!-- Modal -->
+        <!-- left side bar import -->
+        <?php require('../components/LeftAdminHeader.php'); ?>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true"> <i class="fa-solid fa-xmark"></i></span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Are you sure to delete this food category ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No </button>
-          <button type="button" class="btn btn-primary" onclick="deleteFoodCategoryFromDB()">Yes Delete
-
-
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <?php
-
-  if (isset($toast_status)) {
-
-    if ($toast_status == 'true') {
-      require('../components/Toast.php');
-    }
-  }
-
-  ?>
-  <div class="admin">
-
-
-    <!-- left side bar import -->
-    <?php require('../components/LeftAdminHeader.php'); ?>
-
-    <!-- right top header -->
-    <div class="rightsidebar">
-      <?php $AdminTopHeaderTitle = "manage Food Category";
-      require('../components/AdminTopHeader.php'); ?>
-      <!-- path navigation -->
-      <?php $pathNavigationParentPath = "/sd-canteen/admin/viewfoodItem.php";
-      $pathNavigationParent = "Foods";
-      $pathNavigationChild = "Manage Food Category";
-      require('../components/PathNavigation.php'); ?>
+        <!-- right top header -->
+        <div class="rightsidebar">
+            <?php $AdminTopHeaderTitle = "Realtime Order Panel";
+            require('../components/AdminTopHeader.php'); ?>
+            <!-- path navigation -->
+            <?php $pathNavigationParentPath = "/sd-canteen/admin/realtimeorder.php";
+            $pathNavigationParent = "Orders";
+            $pathNavigationChild = "add coffee category";
+            require('../components/PathNavigation.php'); ?>
 
 
 
+<div class="orders">
+          <h1>Filter Records</h1>
+          <h5>
+            Todays Collection : <span>₹ 23</span>
+          </h5>
 
-
-      <div class="ListView">
-        <div class="addCategory">
-          <a href="/sd-canteen/admin/addfoodcategory.php">
-            <button>
-              <i class="fa-solid fa-plus"></i>
-              Add New Food Category
-            </button>
-          </a>
-        </div>
-        <div class="Subtop">
-          <div class="showData">
-            Show Data
-            <input type="number" name="sort" id="totalcategorysize" readonly />
-          </div>
+   
           <div class="searchBar">
-            <input type="search" name="searchdata" id="foodCategoryNameSearch" onkeyup="searchByName()" placeholder="Search ..." />
+            <input
+              type="search"
+              name="token"
+         
+              placeholder="Search Token Id ..."
+              id="token"
+            />
+            <input
+              type="search"
+              name="curstomername"
+             
+              placeholder="Search Customer Name..."
+             
+              id="names"
+            />
+            <select  name="time" id="time">
+              <option value="null">Search Time Slot...</option>
+              <option value="8.00-Am">8.00 Am</option>
+              <option value="8.15-Am">8.15 Am</option>
+              <option value="8.30-Am">8.30 Am</option>
+              <option value="8.45-Am">8.45 Am</option>
+              <option value="9.00-AM">9.00 Am</option>
+              <option value="9.15-AM">9.15 Am</option>
+              <option value="9.30-AM">9.30 Am</option>
+              <option value="9.45-AM">9.45 Am</option>
+              <option value="10.00-Am">10.00 Am</option>
+              <option value="10.15-Am">10.15 Am</option>
+              <option value="10.30-Am">10.30 Am</option>
+              <option value="10.45-Am">10.45 Am</option>
+              <option value="11.00-Am">11.00 Am</option>
+              <option value="11.15-Am">11.15 Am</option>
+              <option value="11.30-Am">11.30 Am</option>
+              <option value="11.45-Am">11.45 Am</option>
+              <option value="12.00-Pm">12.00 Pm</option>
+              <option value="12.15-Pm">12.15 Pm</option>
+              <option value="12.30-Pm">12.30 Pm</option>
+              <option value="12.45-Pm">12.45 Pm</option>
+              <option value="1.00-Pm">1.00 Pm</option>
+              <option value="1.15-Pm">1.15 Pm</option>
+              <option value="1.30-Pm">1.30 Pm</option>
+              <option value="1.45-Pm">1.45 Pm</option>
+              <option value="2.00-Pm">2.00 Pm</option>
+              <option value="2.15-Pm">2.15 Pm</option>
+              <option value="2.30-Pm">2.30 Pm</option>
+              <option value="2.45-Pm">2.45 Pm</option>
+              <option value="3.00-Pm">3.00 Pm</option>
+              <option value="3.15-Pm">3.15 Pm</option>
+              <option value="3.30-Pm">3.30 Pm</option>
+              <option value="3.45-Pm">3.45 Pm</option>
+              <option value="4.00-Pm">4.00 Pm</option>
+              <option value="4.15-Pm">4.15 Pm</option>
+              <option value="4.30-Pm">4.30 Pm</option>
+              <option value="4.45-Pm">4.45 Pm</option>
+              <option value="5.00-Pm">5.00 Pm</option>
+              <option value="5.15-Pm">5.15 Pm</option>
+              <option value="5.30-Pm">5.30 Pm</option>
+              <option value="5.45-Pm">5.45 Pm</option>
+              <option value="6.00-Pm">6.00 Pm</option>
+            </select>
+            <select
+              name="category"
+              id="category"
+            >
+              <option value="null">Select Category..</option>
+              <option value="foodcategory">Food Category</option>
+              <option value="coffeecategory">Coffee Category</option>
+              <option value="drinkcategory">Drink Category</option>
+              <option value="juicecategory">Juice Category</option>
+            </select>
+          </div>
+
+    
+          <div class="analysis">
+            <div class="div1" >
+              Total Orders : 34
+            </div>
+            <div class="div2">
+              Complete Orders: 23
+            </div>
+            <div class="div3">
+              Pending Orders: 23
+            </div>
+            <div class="div4" >
+              Reject Orders : 23
+            </div>
+            <div class="div5">
+              Orders Not On Time: 23
+            </div>
+          </div>
+
+          <div class="tables_section">
+
+
+         
+                    <div >
+                      <div class="tableheading">
+                        <div class="div1">Token Id</div>
+                        <div class="div2">Customer Name</div>
+                        <div class="div3">PickUp Time</div>
+                        <div class="div4">Total Amount</div>
+                        <div class="div5">Payment Mode</div>
+                        <div class="div6">Email</div>
+                        <div class="div7">Mobile</div>
+                      </div>
+                      <div class="contain">
+                        <div class="tableheaddata">
+                          <div class="div1">
+                          V9OPGQ
+                          </div>
+                          <div class="div2">
+                          SURAJ SINGH
+                          </div>
+                          <div class="div3">
+                          2.00-PM
+                          </div>
+                          <div class="div4">
+                            50
+                          </div>
+                          <div class="div5">
+                          ONLINE
+                          </div>
+                          <div class="div6">SURAJTHAKURRS45@GMAIL.COM</div>
+                          <div class="div7">
+                          6239522303
+                          </div>
+                        </div>
+                        
+                        <div class="tableheadingsub">
+                          <div class="div1">Item Name</div>
+                          <div class="div2">
+                            Product Price
+                          </div>
+                          <div class="div3">Qty</div>
+                          <div class="div4">Category</div>
+                          <div class="div5">Total Amount</div>
+                          <div class="div6">
+                            Amount Received
+                          </div>
+                          <div class="div7">Order Status</div>
+                          <div class="div8">Action</div>
+                        </div>
+
+
+
+<!-- data -->
+                        <div>
+<div class="tableheaddatasub">
+<div class="div1">burger</div>
+<div class="div2">50</div>
+<div class="div3">1</div>
+<div class="div4">burger
+<span>
+    [S]
+</div>
+<div class="div5">50</div>
+<div class="div6">50</div>
+<div class="div7">
+ <div class="pen">pending</div> 
+</div>
+
+
+<div class="div8">
+<i class="fa-solid fa-bars"></i>
+</div>
+
+<div class="options">
+<div><span class="icon1" >
+<i class="fa-solid fa-spinner"></i></span> <span class="icon_1">Process</span> 
+</div>
+
+<div><span class="icon2"><i class="fa-solid fa-trash-can"></i></span> <span class="icon_2" >Reject</span> </div>
+</div>
+
+
+
+
+<!-- <div class={options}>
+<div><span class={icon1} >
+<BiLoader /></span> <span class={icon_1}>Process</span> 
+</div>
+
+<div><span class={icon2} ><RiDeleteBin7Line /></span> <span class={icon_2} >Reject</span> </div>
+</div>  -->
+
+
+
+
+</div>
+                        </div>
+              </div>
+            
+
+
+             
+         
           </div>
         </div>
-        <div class="ListData">
-          <div class="Heading">
-            <li>Food Categories Name</li>
-            <li>Action</li>
-          </div>
 
+   
+         
 
-
-
-          <!-- fetching food category data -->
-          <div class="mainData" id="mainData">
-
-
-            <?php
-            //  established connection
-            require('../middleware/ConnectToDatabase.php');
-            $sql_query = "select * from foodcategories";
-            $resFoodCategory = mysqli_query($connection, $sql_query);
-            $length = mysqli_num_rows($resFoodCategory);
-            if ($length == 0) {
-              echo "<h5 class='noItemFound'>No Food Category Found</h5>";
-            } else {
-              while ($FoodCategory = mysqli_fetch_array($resFoodCategory)) { ?>
-                <div class="DataLists" id="parent<?php echo $FoodCategory['id']; ?>">
-
-                  <div class="DataList">
-                    <li><?php echo $FoodCategory['foodcategoryname']; ?></li>
-
-                    <li id="menuIcons<?php echo $FoodCategory['id']; ?>" onclick='enableOptions("<?php echo $FoodCategory['id']; ?>")'><i class="fa-solid fa-bars cursor_icon"></i></li>
-
-
-                  </div>
-
-                  <div class="DropDown" id="dropdownmenu<?php echo $FoodCategory['id']; ?>" style="display:none;">
-                    <li class="Update" onclick='updateFoodCategory("<?php echo $FoodCategory['id']; ?>")'>
-                      <i class="fa-solid fa-pen-to-square"></i>Update
-                    </li>
-
-                    <li class="delete" data-toggle="modal" data-target="#exampleModal" onclick='deleteFoodCategory("<?php echo $FoodCategory['id']; ?>")'>
-                      <i class="fa-solid fa-trash"></i>Delete
-                    </li>
-                  </div>
-                </div>
-
-            <?php
-              }
-            }
-
-            ?>
-          </div>
-
-
-
-
+</div>
 
 
 
@@ -148,99 +254,8 @@
 
 
         </div>
-      </div>
 
     </div>
-
-  </div>
- 
-
-  <script>
-    document.getElementById('totalcategorysize').value = document.getElementsByClassName('DataLists').length;
-
-
-    // update food category
-    function updateFoodCategory(id) {
-
-      sessionStorage.setItem('updatefooditemid', id);
-      window.location.href = "http://localhost/sd-canteen/admin/updatefoodcategory.php";
-    }
-
-    // enable dropdown menu btn
-    function enableOptions(id) {
-      let dropdownmenu = 'dropdownmenu' + id;
-      let menuIcon = 'menuIcons' + id;
-
-      if (document.getElementById(dropdownmenu).style.display == "block") {
-        document.getElementById(dropdownmenu).style.display = "none";
-        document.getElementById(menuIcon).innerHTML = "<i class='fa-solid fa-bars cursor_icon'></i>";
-
-      } else {
-
-        document.getElementById(dropdownmenu).style.display = "block";
-
-        document.getElementById(menuIcon).innerHTML = "<i class='fa-regular fa-rectangle-xmark'></i>";
-
-      }
-
-
-
-    }
-
-
-
-    function searchByName() {
-
-      let searchInput = document.getElementById('foodCategoryNameSearch').value;
-
-      $.ajax({
-        type: "POST", //type of method
-        url: "http://localhost/sd-canteen/api/searchfoodcategorybyname.php", //your page
-        data: {
-          foodcategoryname: searchInput,
-
-        }, // passing the values
-        success: function(res) {
-          document.getElementById('mainData').innerHTML = res;
-          document.getElementById('totalcategorysize').value = document.getElementsByClassName('DataLists').length;
-        }
-      });
-
-
-
-    }
-
-    // delete food category
-
-    function deleteFoodCategory(id) {
-      sessionStorage.setItem('updatefooditemid', id);
-    }
-
-
-    // delete food item api
-    const deleteFoodCategoryFromDB = () => {
-      let foodId = sessionStorage.getItem('updatefooditemid');
-      $.ajax({
-        type: "POST",
-        url: "http://localhost/sd-canteen/api/deletefoodcategory.php", 
-        data: {
-          foodcategoryid: foodId
-
-        }, // passing the values
-        success: function(res) {
-          sessionStorage.removeItem('updatefooditemid');
-          window.location.reload();
-        }
-      });
-    }
-  </script>
-
-  <!-- bootstrap js -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>

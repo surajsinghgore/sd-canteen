@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=14">
-<link rel="stylesheet" href="../styles/admin/realtimeorder.css?v=6">
+<link rel="stylesheet" href="../styles/admin/realtimeorder.css?v=7">
 
 <script>
     // prevent reload post request
@@ -29,12 +29,7 @@
         <div class="rightsidebar">
             <?php $AdminTopHeaderTitle = "Realtime Order Panel";
             require('../components/AdminTopHeader.php'); ?>
-            <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/realtimeorder.php";
-            $pathNavigationParent = "Orders";
-            $pathNavigationChild = "add coffee category";
-            require('../components/PathNavigation.php'); ?>
-
+    
 
 
 <div class="orders">
