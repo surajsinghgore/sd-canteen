@@ -1,8 +1,8 @@
-.ListView{
-    width: 1420px;
+.rightsidebar .ListView{
+    width:94%;
+    margin-left: 3%;
     height: auto;
-    padding-top: -2%;
-    margin-top: -5%;
+    margin-top: 2%;
     }
     
     .ListView .addCategory{
@@ -15,7 +15,7 @@
     }
 
     .ListView .addCategory button{
-    width: 28%;
+    width: 30%;
     border: none;
     outline: none;
     background-color: rgb(32, 176, 234);
@@ -25,7 +25,7 @@
     cursor: pointer;
     display: flex;
     padding:1.2% 1% 1% 1%;
-    font-size: 22px;
+    font-size: 19px;
     border-radius: 4px;
     color: white;
     transition: all 0.3s;
@@ -56,15 +56,15 @@
     .ListView .Subtop .showData{
     width: 40%;
     margin-left: 5%;
-    font-size: 23px;
+    font-size: 16px;
     }
     .ListView .Subtop .showData input{
-    width: 23%;
+    width: 17%;
     margin-left: 6%;
     outline: none;
     text-align: center;
-    font-size: 22px;
-    height: 45px;
+    font-size:19px;
+    height: 30px;
     border: 1px solid rgb(220, 220, 220);
     transition: all 0.3s;
     }
@@ -78,12 +78,11 @@
     }
     
     .ListView .Subtop .searchBar input{
-    width: 60%;
-    margin-top: -0%;
-    margin-left:35%;
-    height: 50px;
+    width: 65%;
+    margin-left:30%;
+    height: 40px;
     outline: none;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
     padding-left: 2%;
     border: 1px solid rgb(220, 220, 220);
@@ -120,7 +119,7 @@
     .ListView .ListData .Heading li{
     
     width: 50%;
-    font-size: 22px;
+    font-size:19px;
     height: 50px;
     font-weight: 600;
     }
@@ -140,14 +139,14 @@
     }
     .ListView .ListData .DataList li{
     width: 50%;
-    font-size: 22px;
+    font-size: 20px;
     height: 44px;
     
     }
     .ListView .ListData .DataList .cursor_icon{
     color: rgb(66, 66, 66);
     cursor: pointer;
-    font-size: 25px;
+    font-size: 21px;
     z-index: -1;
     }
     .ListView .ListData .DataLists .DropDown{

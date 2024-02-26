@@ -1,222 +1,142 @@
-<!-- include add to food API -->
-<?php require('../api/updatecoffeeitem.php'); ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
-
-<link rel="stylesheet" href="../styles/admin/admin.css?v=18">
+<link rel="stylesheet" href="../styles/admin/admin.css?v=1">
+<link rel="stylesheet" href="../styles/admin/ItemCategory.css?v=13">
 <script>
-    window.document.title = "SD CANTEEN | Update Coffee Item";
-    // prevent reload post request
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href)
-    }
-
-    // getting food id
-    if (!sessionStorage.getItem('updateCoffeeItemId')) {
-        window.location.href = "http://localhost/sd-canteen/admin/updatecoffeeitem.php";
-
-    }
+  window.document.title = "SD CANTEEN | Manage Food Category";
 </script>
 
 <body>
 
 
-    <div class="admin">
 
+  <!-- Modal -->
 
-        <!-- left side bar import -->
-        <?php require('../components/LeftAdminHeader.php'); ?>
-
-
-
-        <div class="rightsidebar">
-
-        <?php $AdminTopHeaderTitle = "Update Food Page";
-            require('../components/AdminTopHeader.php'); ?>
-
-
-
-         <!-- path navigation -->
-         <?php $pathNavigationParentPath = "/sd-canteen/admin/viewcoffeeItem.php";
-            $pathNavigationParent = "Coffee";
-            $pathNavigationChild = "Update coffee item";
-            require('../components/PathNavigation.php'); ?>
-
-
-            <div class="Form" style="margin-bottom:50px">
-                <div class="heading">
-                    <h1>
-                        Update New Coffee Item For Website
-                    </h1>
-                </div>
-                <form method="post" action="" enctype="multipart/form-data">
-                    <div class="form_element">
-                        <li>
-                            <p>
-                                Update
-                                Coffee
-                                Name <span>*</span>
-                            </p>
-
-                            <input type="number" name="FoodId"  id="foodId" style="display:none;">
-
-
-                            <input type="text" name="CoffeeName"  autofocus id="FoodName" value="<?php if (isset($CoffeeName)) {
-                                                                                            echo $CoffeeName;
-                                                                                        } ?>" required>
-
-
-                        </li>
-
-                        <li>
-                            <p>
-                                Update Coffee
-                                Qty
-                            </p>
-                            <input type="Number" name="CoffeeQty" id="qty" value="1" required>
-                        </li>
-
-                        
-                        <li class="selects">
-              <p style="margin-left:-35px">
-                Enter
-                Coffee
-                Category <span>*</span>
-              </p>
-              <select
-                name="CoffeeCategory"
-             
-                
-              >
-              <?php if (isset($FoodCategory)) {
-                                        if ($FoodCategory == "no") {
-
-                                            echo "<option value='no'>
-                                            Select Coffee Category
-                                        </option>";
-                                        } else {
-
-                                            echo "<option>
-                                            $FoodCategory
-                                        </option>";
-                                        }
-                                    } else {
-                                       
-
-
-            
-                                        require('../middleware/ConnectToDatabase.php');
-                                        $sql_query = "select * from coffeecategories";
-                                        $resFoodItem = mysqli_query($connection, $sql_query);
-            
-                                        $length = mysqli_num_rows($resFoodItem);
-            
-                                        if ($length == 0) {
-                                            echo "<h6>No Item Found</h6>";
-                                        } else {
-                                            while ($dataSearch = mysqli_fetch_array($resFoodItem)) {
-                                                echo "<option>";
-                                                echo $dataSearch['coffeecategoryname'];
-                                                echo "</option>";
-                                            }
-                                        }
-                                       
-
-                                    }
-                                    ?>
-              </select>
-            </li>
-
-
-
-
-                        <li class="Pricess">
-                            <h6>
-                                Enter Price <span>*</span>
-                            </h6>
-                            <p>
-                                <input type="text" name="normalPriceName" class="priceHeading" value="Normal Size Price" readonly>
-                                <input type="Number" name="normalPrice" id="normalPrice" class="prices" value="<?php if (isset($normalPrice)) {
-                                                                                                                        echo $normalPrice;
-                                                                                                                    } ?>">
-                            </p>
-                            <h4>Or</h4>
-                            <p>
-                                <input type="text" name="smallPriceName" class="priceHeading" value="Small Size Price" readonly>
-                                <input type="Number" id="smallPrice" name="smallPrice" class="prices" value="<?php if (isset($smallPrice)) {
-                                                                                                                        echo $smallPrice;
-                                                                                                                    } ?>">
-                            </p>
-
-                            <p>
-                                <input type="text" name="mediumPriceName" class="priceHeading" value="Medium Size Price" readonly />
-                                <input type="Number" id="mediumPrice" name="mediumPrice" class="prices" value="<?php if (isset($mediumPrice)) {
-                                                                                                                        echo $mediumPrice;
-                                                                                                                    } ?>">
-                            </p>
-
-                            <p>
-                                <input type="text" name="largePriceName" class="priceHeading" value="Large Size Price" readonly />
-                                <input type="Number" id="largePrice" name="largePrice" class="prices" value="<?php if (isset($largePrice)) {
-                                                                                                                        echo $largePrice;
-                                                                                                                    } ?>">
-                            </p>
-                        </li>
-
-
-
-
-                        <li class="description">
-                            <p>
-                                Enter Description Category<span>*</span>
-                            </p>
-                            <textarea value="description" id="description" name="description" required><?php if (isset($description)) {
-                                                                                                                echo $description;
-                                                                                                            } ?></textarea>
-                        </li>
-                        <li>
-                            <p>
-                                Upload Coffee
-                                Photo <span>*</span>
-                            </p>
-                            <input type="file" name="CoffeeImage" id="FoodImageInput" onchange="loadFile(event)">
-                        </li>
-                        <li>
-                                <p>Photo Realtime Preview</p>
-                                <div class="preview_photo">
-
-                                    <img alt="Food images" id="FoodImagePreview" layout="fill" />
-
-
-                                </div>
-                            </li>
-
-                    
-                            <li class="btns">
-                                <p>Product Visibility Status </p>
-                                <label class="switch">
-
-                                    <input type='checkbox' name='orderStatus' id="visibiltyStatus" >
-
-
-
-                                    <span class="slider round"></span>
-
-                                </label>
-                            </li>
-                        <button name="update_coffee_item">
-                            UPDATE COFFEE
-                        </button>
-                    </div>
-                </form>
-            </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm to Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"> <i class="fa-solid fa-xmark"></i></span>
+          </button>
         </div>
+        <div class="modal-body">
+          Are you sure to delete this food category ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No </button>
+          <button type="button" class="btn btn-primary" onclick="deleteFoodCategoryFromDB()">Yes Delete
+
+
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <?php
+
+  if (isset($toast_status)) {
+
+    if ($toast_status == 'true') {
+      require('../components/Toast.php');
+    }
+  }
+
+  ?>
+  <div class="admin">
+
+
+    <!-- left side bar import -->
+    <?php require('../components/LeftAdminHeader.php'); ?>
+
+    <!-- right top header -->
+    <div class="rightsidebar">
+      <?php $AdminTopHeaderTitle = "manage Food Category";
+      require('../components/AdminTopHeader.php'); ?>
+      <!-- path navigation -->
+      <?php $pathNavigationParentPath = "/sd-canteen/admin/viewfoodItem.php";
+      $pathNavigationParent = "Foods";
+      $pathNavigationChild = "Manage Food Category";
+      require('../components/PathNavigation.php'); ?>
+
+
+
+
+
+      <div class="ListView">
+        <div class="addCategory">
+          <a href="/sd-canteen/admin/addfoodcategory.php">
+            <button>
+              <i class="fa-solid fa-plus"></i>
+              Add New Food Category
+            </button>
+          </a>
+        </div>
+        <div class="Subtop">
+          <div class="showData">
+            Show Data
+            <input type="number" name="sort" id="totalcategorysize" readonly />
+          </div>
+          <div class="searchBar">
+            <input type="search" name="searchdata" id="foodCategoryNameSearch" onkeyup="searchByName()" placeholder="Search ..." />
+          </div>
+        </div>
+        <div class="ListData">
+          <div class="Heading">
+            <li>Food Categories Name</li>
+            <li>Action</li>
+          </div>
+
+
+
+
+          <!-- fetching food category data -->
+          <div class="mainData" id="mainData">
+
+
+            <?php
+            //  established connection
+            require('../middleware/ConnectToDatabase.php');
+            $sql_query = "select * from foodcategories";
+            $resFoodCategory = mysqli_query($connection, $sql_query);
+            $length = mysqli_num_rows($resFoodCategory);
+            if ($length == 0) {
+              echo "<h5 class='noItemFound'>No Food Category Found</h5>";
+            } else {
+              while ($FoodCategory = mysqli_fetch_array($resFoodCategory)) { ?>
+                <div class="DataLists" id="parent<?php echo $FoodCategory['id']; ?>">
+
+                  <div class="DataList">
+                    <li><?php echo $FoodCategory['foodcategoryname']; ?></li>
+
+                    <li id="menuIcons<?php echo $FoodCategory['id']; ?>" onclick='enableOptions("<?php echo $FoodCategory['id']; ?>")'><i class="fa-solid fa-bars cursor_icon"></i></li>
+
+
+                  </div>
+
+                  <div class="DropDown" id="dropdownmenu<?php echo $FoodCategory['id']; ?>" style="display:none;">
+                    <li class="Update" onclick='updateFoodCategory("<?php echo $FoodCategory['id']; ?>")'>
+                      <i class="fa-solid fa-pen-to-square"></i>Update
+                    </li>
+
+                    <li class="delete" data-toggle="modal" data-target="#exampleModal" onclick='deleteFoodCategory("<?php echo $FoodCategory['id']; ?>")'>
+                      <i class="fa-solid fa-trash"></i>Delete
+                    </li>
+                  </div>
+                </div>
+
+            <?php
+              }
+            }
+
+            ?>
+          </div>
 
 
 
@@ -224,65 +144,103 @@
 
 
 
+
+
+
+        </div>
+      </div>
 
     </div>
 
-    <script>
-        var loadFile = function(event) {
-            var reader = new FileReader();
-            reader.onload = function() {
-                document.getElementById('FoodImagePreview').style.display = "block";
-                var preview = document.getElementById('FoodImagePreview');
-                preview.src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
+  </div>
+ 
 
-        };
-    </script>
+  <script>
+    document.getElementById('totalcategorysize').value = document.getElementsByClassName('DataLists').length;
 
 
+    // update food category
+    function updateFoodCategory(id) {
+
+      sessionStorage.setItem('updatefooditemid', id);
+      window.location.href = "http://localhost/sd-canteen/admin/updatefoodcategory.php";
+    }
+
+    // enable dropdown menu btn
+    function enableOptions(id) {
+      let dropdownmenu = 'dropdownmenu' + id;
+      let menuIcon = 'menuIcons' + id;
+
+      if (document.getElementById(dropdownmenu).style.display == "block") {
+        document.getElementById(dropdownmenu).style.display = "none";
+        document.getElementById(menuIcon).innerHTML = "<i class='fa-solid fa-bars cursor_icon'></i>";
+
+      } else {
+
+        document.getElementById(dropdownmenu).style.display = "block";
+
+        document.getElementById(menuIcon).innerHTML = "<i class='fa-regular fa-rectangle-xmark'></i>";
+
+      }
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        document.getElementById('FoodImagePreview').style.display = "block";
-        let FoodId = sessionStorage.getItem('updateCoffeeItemId');
-document.getElementById('foodId').value=FoodId;
-        $.ajax({
-            type: "POST",
-            url: "http://localhost/sd-canteen/api/searchCoffeeItemByName.php",
-            data: {
-                foodId: FoodId,
 
-            },
-            success: function(res) {
-                let data = JSON.parse(res);
-                document.getElementById('FoodName').value = data.foodname;
-                document.getElementById('qty').value = data.qty;
-                document.getElementById('normalPrice').value = data.normalprice;
-                document.getElementById('normalPrice').value = data.normalprice;
-                document.getElementById('smallPrice').value = data.smallprice;
-                document.getElementById('mediumPrice').value = data.mediumprice;
-                document.getElementById('largePrice').value = data.largeprice;
-                document.getElementById('description').value = data.description;
-                document.getElementById('FoodImagePreview').src = data.imagepath;
-              
-                // order is off
-                if (data.active == "off") {
-                    document.getElementById('visibiltyStatus').checked = false
+    }
 
-                }
-                // order is on
-                else {
-                    document.getElementById('visibiltyStatus').checked = true;
 
-                }
 
-       
+    function searchByName() {
 
-            }
-        });
-    </script>
+      let searchInput = document.getElementById('foodCategoryNameSearch').value;
+
+      $.ajax({
+        type: "POST", //type of method
+        url: "http://localhost/sd-canteen/api/searchfoodcategorybyname.php", //your page
+        data: {
+          foodcategoryname: searchInput,
+
+        }, // passing the values
+        success: function(res) {
+          document.getElementById('mainData').innerHTML = res;
+          document.getElementById('totalcategorysize').value = document.getElementsByClassName('DataLists').length;
+        }
+      });
+
+
+
+    }
+
+    // delete food category
+
+    function deleteFoodCategory(id) {
+      sessionStorage.setItem('updatefooditemid', id);
+    }
+
+
+    // delete food item api
+    const deleteFoodCategoryFromDB = () => {
+      let foodId = sessionStorage.getItem('updatefooditemid');
+      $.ajax({
+        type: "POST",
+        url: "http://localhost/sd-canteen/api/deletefoodcategory.php", 
+        data: {
+          foodcategoryid: foodId
+
+        }, // passing the values
+        success: function(res) {
+          sessionStorage.removeItem('updatefooditemid');
+          window.location.reload();
+        }
+      });
+    }
+  </script>
+
+  <!-- bootstrap js -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>
