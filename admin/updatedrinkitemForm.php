@@ -90,7 +90,7 @@
               </p>
               <select
                 name="DrinkCategory"
-             
+             id="DrinkCategory"
                 
               >
               <?php if (isset($DrinkCategory)) {
@@ -257,6 +257,7 @@ document.getElementById('foodId').value=FoodId;
             success: function(res) {
                 let data = JSON.parse(res);
                 document.getElementById('FoodName').value = data.foodname;
+                document.getElementById('DrinkCategory').value = data.category;
                 document.getElementById('qty').value = data.qty;
                 document.getElementById('normalPrice').value = data.normalprice;
                 document.getElementById('normalPrice').value = data.normalprice;

@@ -91,7 +91,7 @@
               </p>
               <select
                 name="JuiceCategory"
-             id=""
+             id="JuiceCategory"
                 
               >
               
@@ -261,9 +261,11 @@
 
             },
             success: function(res) {
-                console.log(res)
+              console.log(res)
                 let data = JSON.parse(res);
 
+                document.getElementById('FoodName').value = data.foodname;
+                document.getElementById('JuiceCategory').value = data.category;
                 document.getElementById('FoodName').value = data.foodname;
                 document.getElementById('qty').value = data.qty;
                 document.getElementById('normalPrice').value = data.normalprice;
