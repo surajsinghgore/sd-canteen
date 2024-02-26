@@ -1,5 +1,5 @@
 <!-- include add to food API -->
-<?php require('../api/updatefooditem.php'); ?>
+<?php require('../api/updatecoffeeitem.php'); ?>
 
 
 
@@ -9,17 +9,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
 
-<link rel="stylesheet" href="../styles/admin/admin.css?v=18">
+<link rel="stylesheet" href="../styles/admin/admin.css?v=5">
 <script>
-    window.document.title = "SD CANTEEN | Update Food Item";
+    window.document.title = "SD CANTEEN | Update Coffee Item";
     // prevent reload post request
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href)
     }
 
     // getting food id
-    if (!sessionStorage.getItem('updateFoodItemId')) {
-        window.location.href = "http://localhost/sd-canteen/admin/updatefooditem.php";
+    if (!sessionStorage.getItem('updateCoffeeItemId')) {
+        window.location.href = "http://localhost/sd-canteen/admin/updatecoffeeitem.php";
 
     }
 </script>
@@ -33,78 +33,63 @@
         <!-- left side bar import -->
         <?php require('../components/LeftAdminHeader.php'); ?>
 
-
-
+        <!-- right top header -->
         <div class="rightsidebar">
-
             <?php $AdminTopHeaderTitle = "Update Food Page";
             require('../components/AdminTopHeader.php'); ?>
 
 
 
             <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewfoodItem.php";
-            $pathNavigationParent = "Foods";
-            $pathNavigationChild = "Update food item";
+            <?php $pathNavigationParentPath = "/sd-canteen/admin/viewcoffeeItem.php";
+            $pathNavigationParent = "Coffee";
+            $pathNavigationChild = "Update coffee item";
             require('../components/PathNavigation.php'); ?>
 
+            <div class="FoodPage">
 
+                <div class="Form" style="margin-top:-8%">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="heading">
+                            <h1>
+                                Update New CoffeeItem Item For Website
+                            </h1>
+                        </div>
+                        <div class="form_element">
+                            <li>
+                                <p>
+                                    Update CoffeeItem Name <span>*</span>
+                                </p>
+<input type="number" name="FoodId"  id="foodId" style="display:none;">
 
-            <div class="Form">
-                <div class="heading">
-                    <h1>
-                        Update New Food Item For Website
-                    </h1>
-                </div>
-                <form method="post" action="" enctype="multipart/form-data">
-                    <div class="form_element">
-                        <li>
-                            <p>
-                                Update
-                                Food
-                                Name <span>*</span>
-                            </p>
-
-                            <input type="number" name="FoodId"  id="foodId" style="display:none;">
-
-
-                            <input type="text" name="FoodName"  autofocus id="FoodName" value="<?php if (isset($FoodName)) {
-                                                                                            echo $FoodName;
+                                <input type="text" name="CoffeeName"  autofocus id="FoodName" value="<?php if (isset($CoffeeName)) {
+                                                                                            echo $CoffeeName;
                                                                                         } ?>" required>
+                            </li>
 
+                            <li>
+                                <p>
+                                    Update Coffee Qty
+                                </p>
+                                <input type="Number" name="CoffeeQty" id="qty" value="1" required>
+                            </li>
 
-                        </li>
+                            <li class="selects">
+                                <p>
+                                    Update Coffee Category <span>*</span>
+                                </p>
+                                <select name="CoffeeCategory" id="FoodCategory">
 
-                        <li>
-                            <p>
-                                Update Food
-                                Qty
-                            </p>
-                            <input type="Number" name="FoodQty" id="qty" value="1" required>
-                        </li>
-
-                        
-                        <li class="selects">
-              <p style="margin-left:-35px">
-                Enter
-                Food
-                Category <span>*</span>
-              </p>
-              <select
-                name="FoodCategory"
-             
-                
-              >
-              <?php if (isset($FoodCategory)) {
-                                        if ($FoodCategory == "no") {
+                                    <?php if (isset($CoffeeCategory)) {
+                                        if ($CoffeeCategory == "no") {
 
                                             echo "<option value='no'>
-                                            Select Food Category
+                                            Select Coffee Category
                                         </option>";
                                         } else {
 
                                             echo "<option>
-                                            $FoodCategory
+                                            $CoffeeCategory
                                         </option>";
                                         }
                                     } else {
@@ -113,7 +98,7 @@
 
             
                                         require('../middleware/ConnectToDatabase.php');
-                                        $sql_query = "select * from foodcategories";
+                                        $sql_query = "select * from coffeecategories";
                                         $resFoodItem = mysqli_query($connection, $sql_query);
             
                                         $length = mysqli_num_rows($resFoodItem);
@@ -123,7 +108,7 @@
                                         } else {
                                             while ($dataSearch = mysqli_fetch_array($resFoodItem)) {
                                                 echo "<option>";
-                                                echo $dataSearch['foodcategoryname'];
+                                                echo $dataSearch['coffeecategoryname'];
                                                 echo "</option>";
                                             }
                                         }
@@ -131,74 +116,72 @@
 
                                     }
                                     ?>
-              </select>
-            </li>
 
 
 
 
-                        <li class="Pricess">
-                            <h6>
-                                Enter Price <span>*</span>
-                            </h6>
-                            <p>
-                                <input type="text" name="normalPriceName" class="priceHeading" value="Normal Size Price" readonly>
-                                <input type="Number" name="normalPrice" id="normalPrice" class="prices" value="<?php if (isset($normalPrice)) {
+
+                                </select>
+                            </li>
+
+
+                            <li class="Prices">
+                                <h6>
+                                    Update Price <span>*</span>
+                                </h6>
+                                <p>
+                                    <input type="text" name="normalPriceName" class="priceHeading" " value=" Normal Size Price" readonly>
+                                    <input type="Number" name="normalPrice" id="normalPrice" class="prices" value="<?php if (isset($normalPrice)) {
                                                                                                                         echo $normalPrice;
                                                                                                                     } ?>">
-                            </p>
-                            <h4>Or</h4>
-                            <p>
-                                <input type="text" name="smallPriceName" class="priceHeading" value="Small Size Price" readonly>
-                                <input type="Number" id="smallPrice" name="smallPrice" class="prices" value="<?php if (isset($smallPrice)) {
+                                </p>
+                                <h4>Or</h4>
+                                <p>
+                                    <input type="text" name="smallPriceName" class="priceHeading" value="Small Size Price" readonly>
+                                    <input type="Number" id="smallPrice" name="smallPrice" class="prices" value="<?php if (isset($smallPrice)) {
                                                                                                                         echo $smallPrice;
                                                                                                                     } ?>">
-                            </p>
+                                </p>
 
-                            <p>
-                                <input type="text" name="mediumPriceName" class="priceHeading" value="Medium Size Price" readonly />
-                                <input type="Number" id="mediumPrice" name="mediumPrice" class="prices" value="<?php if (isset($mediumPrice)) {
+                                <p>
+                                    <input type="text" name="mediumPriceName" class="priceHeading" value="Medium Size Price" readonly>
+                                    <input type="Number" id="mediumPrice" name="mediumPrice" class="prices" value="<?php if (isset($mediumPrice)) {
                                                                                                                         echo $mediumPrice;
                                                                                                                     } ?>">
-                            </p>
+                                </p>
 
-                            <p>
-                                <input type="text" name="largePriceName" class="priceHeading" value="Large Size Price" readonly />
-                                <input type="Number" id="largePrice" name="largePrice" class="prices" value="<?php if (isset($largePrice)) {
+                                <p>
+                                    <input type="text" name="largePriceName" class="priceHeading" value="Large Size Price" readonly>
+                                    <input type="Number" id="largePrice" name="largePrice" class="prices" value="<?php if (isset($largePrice)) {
                                                                                                                         echo $largePrice;
                                                                                                                     } ?>">
-                            </p>
-                        </li>
+                                </p>
+                            </li>
 
 
-
-
-                        <li class="description">
-                            <p>
-                                Enter Description Category<span>*</span>
-                            </p>
-                            <textarea value="description" id="description" name="description" required><?php if (isset($description)) {
+                            <li class="description">
+                                <p>
+                                    Update Description Category<span>*</span>
+                                </p>
+                                <textarea value="description" id="description" name="description" required><?php if (isset($description)) {
                                                                                                                 echo $description;
                                                                                                             } ?></textarea>
-                        </li>
-                        <li>
-                            <p>
-                                Upload Food
-                                Photo <span>*</span>
-                            </p>
-                            <input type="file" name="FoodImage" id="FoodImageInput" onchange="loadFile(event)">
-                        </li>
-                        <li>
+                            </li>
+                            <li>
+                                <p> Upload Coffee Photo <span>*</span>
+                                </p>
+                                <input type="file" name="CoffeeImage" id="FoodImageInput" onchange="loadFile(event)">
+                            </li>
+                            <li>
                                 <p>Photo Realtime Preview</p>
                                 <div class="preview_photo">
 
-                                    <img alt="Food images" id="FoodImagePreview" layout="fill" />
+                                    <img alt="Coffee images" id="FoodImagePreview" layout="fill" />
 
 
                                 </div>
                             </li>
 
-                    
                             <li class="btns">
                                 <p>Product Visibility Status </p>
                                 <label class="switch">
@@ -211,20 +194,17 @@
 
                                 </label>
                             </li>
-                        <button name="update_food_item">
-                            UPDATE FOOD
-                        </button>
-                    </div>
-                </form>
+                            <button name="update_coffee_item">
+                                UPDATE COFFEE
+                            </button>
+                        </div>
+                    </form>
+
+
+                </div>
+
             </div>
         </div>
-
-
-
-
-
-
-
 
     </div>
 
@@ -247,11 +227,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         document.getElementById('FoodImagePreview').style.display = "block";
-        let FoodId = sessionStorage.getItem('updateFoodItemId');
+        let FoodId = sessionStorage.getItem('updateCoffeeItemId');
 document.getElementById('foodId').value=FoodId;
         $.ajax({
             type: "POST",
-            url: "http://localhost/sd-canteen/api/searchFoodItemByName.php",
+            url: "http://localhost/sd-canteen/api/searchCoffeeItemByName.php",
             data: {
                 foodId: FoodId,
 
