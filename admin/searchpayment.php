@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=14">
-<link rel="stylesheet" href="../styles/admin/payment.css?v=1">
+<link rel="stylesheet" href="../styles/admin/payment.css?v=2">
 
 <script>
     // prevent reload post request
@@ -29,13 +29,7 @@
         <div class="rightsidebar">
             <?php $AdminTopHeaderTitle = "Search Payments";
             require('../components/AdminTopHeader.php'); ?>
-            <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/searchpayment.php";
-            $pathNavigationParent = "Payments ";
-            $pathNavigationChild = "Search Payments";
-            require('../components/PathNavigation.php'); ?>
-
-
+       
 
 
 
