@@ -166,7 +166,7 @@ width: 50%;
   }
   .div h4 {
     position: absolute;
-    top: 10%;
+    top: 13%;
     left: 8%;
   }
   .div input[type="radio"] {
@@ -273,27 +273,42 @@ width: 50%;
     box-shadow: 0px 0px 10px 4px rgb(105, 105, 105);
   }
   
+
+
+
+
+
   /* order complete page */
   
   .order {
     position: relative;
     margin-top: 3%;
     width: 100%;
-    height: auto;
+height: auto;
+    background-color: #fff;
   }
   /* order failed */
   .order .failed {
     width: 100%;
     overflow: hidden;
     height: auto;
-    background-color: #eff1f3;
+    background-color: #f1f1f1;
   }
+
+
+  .order .failed img{
+
+    width: 350px;
+    height: 270px;
+  }
+
   .order .failed button {
     margin-bottom: 5%;
     padding: 1% 6% 1% 6%;
     font-size: 20px;
     margin-left: 40%;
     color: white;
+    margin-top: 2%;
     cursor: pointer;
     border-radius: 0px;
     border: none;
@@ -330,7 +345,7 @@ width: 50%;
   }
   .order .failed h3 {
     text-align: center;
-    padding-top: 5%;
+    padding-top: 1%;
     font-size: 40px;
     color: rgb(3, 69, 110);
   }
@@ -340,12 +355,17 @@ width: 50%;
   .order .failed h4 {
     text-align: center;
     font-size: 35px;
+    margin-top: 1%;
     color: rgb(3, 69, 110);
   }
   .order .failed h4 span {
     color: rgb(254, 33, 3);
   }
-  
+  #reject{
+    margin-left: 20%;
+    width: 460px;
+    height: 300px;
+  }
   .order .orders {
     height: auto;
     padding-bottom: 3%;
@@ -702,6 +722,11 @@ width: 50%;
     font-weight: 500;
     color: rgb(55, 55, 55);
   }
+
+
+
+
+  
   
   @media only screen and (min-device-width: 0px) and (max-device-width: 1000px) {
     /* order details page css */
