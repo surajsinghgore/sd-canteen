@@ -53,7 +53,7 @@
                             </p>
                             <input type="text" name="drinkcategoryname" 
                             autofocus
-                            style="width:900px;height:45px value="<?php if (isset($drinkcategoryname)) {
+                            style="width:900px;height:45px" value="<?php if (isset($drinkcategoryname)) {
                                                                                                                         echo $drinkcategoryname;
                                                                                                                     } ?>" required>
                         </li>

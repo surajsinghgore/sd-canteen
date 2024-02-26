@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
-<link rel="stylesheet" href="../styles/admin/admin.css?v=14">
+<link rel="stylesheet" href="../styles/admin/admin.css?v=16">
 
 <script>
     // prevent reload post request
@@ -43,7 +43,7 @@
 
 
 
-            <div class="Form" style="width:1230px;margin-top:-5%">
+            <div class="Form"  style="height:280px">
                 <form action="" method="POST">
 
                     <div class="heading">
@@ -60,7 +60,7 @@
                                 Enter New Food Category Name <span>*</span>
                             </p>
                             <input type="Number" name="foodcategoryid" id="foodcategoryid" style="display:none"/>
-                            <input type="text" name="foodcategoryupdatename" style="width:1130px;height:55px"  autofocus  id="foodcategoryupdatename" required>
+                            <input type="text" name="foodcategoryupdatename"  style="width:900px;height:45px"  autofocus  id="foodcategoryupdatename" required>
                         </li>
                         <button id="categoryBtn" name="update_food_category">
 

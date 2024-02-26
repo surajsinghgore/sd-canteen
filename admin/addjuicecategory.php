@@ -51,7 +51,7 @@
                             <p>
                                 Enter Juice Category Name <span>*</span>
                             </p>
-                            <input type="text" name="juicecategoryname"       autofocus style="width:900px;height:45px value="<?php if (isset($juicecategoryname)) {
+                            <input type="text" name="juicecategoryname"       autofocus style="width:1130px;height:55px" value="<?php if (isset($juicecategoryname)) {
                                                                                                                     echo $juicecategoryname;
                                                                                                                 } ?>" required>
                         </li>
