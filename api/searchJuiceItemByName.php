@@ -125,6 +125,7 @@ else if (isset($_REQUEST['foodId'])) {
             $mediumprice = $FoodData['mediumprice'];
             $largeprice = $FoodData['largeprice'];
             $description = trim(str_replace(PHP_EOL, ' ', $FoodData['description']));;
+      
             $imagepath = $FoodData['imagepath'];
 
 
@@ -134,7 +135,8 @@ else if (isset($_REQUEST['foodId'])) {
     }
 
     // update Page data
-} else if (isset($_REQUEST['updatepage'])) {
+}
+ else if (isset($_REQUEST['updatepage'])) {
 
     $foodname = $_REQUEST['foodname'];
 

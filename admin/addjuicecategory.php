@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
-<link rel="stylesheet" href="../styles/admin/admin.css?v=16">
+<link rel="stylesheet" href="../styles/admin/admin.css?v=17">
 
 <script>
     // prevent reload post request
@@ -51,7 +51,7 @@
                             <p>
                                 Enter Juice Category Name <span>*</span>
                             </p>
-                            <input type="text" name="juicecategoryname"       autofocus style="width:1130px;height:55px" value="<?php if (isset($juicecategoryname)) {
+                            <input type="text" name="juicecategoryname"       autofocus style="width:900px;height:45px" value="<?php if (isset($juicecategoryname)) {
                                                                                                                     echo $juicecategoryname;
                                                                                                                 } ?>" required>
                         </li>

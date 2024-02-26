@@ -67,7 +67,7 @@
                             <input type="number" name="FoodId"  id="foodId" style="display:none;">
 
 
-                            <input type="text" name="JuiceName"  autofocus id="FoodName" value="<?php if (isset($JuiceName)) {
+                            <input type="text" name="JuiceName" autofocus id="FoodName" value="<?php if (isset($JuiceName)) {
                                                                                             echo $JuiceName;
                                                                                         } ?>" required>
 
@@ -261,7 +261,9 @@
 
             },
             success: function(res) {
+                console.log(res)
                 let data = JSON.parse(res);
+
                 document.getElementById('FoodName').value = data.foodname;
                 document.getElementById('qty').value = data.qty;
                 document.getElementById('normalPrice').value = data.normalprice;
