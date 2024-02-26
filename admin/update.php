@@ -50,7 +50,7 @@
 
 
 
-            <div class="Form" style="margin-bottom:50px">
+            <div class="Form">
                 <div class="heading">
                     <h1>
                         Update New Food Item For Website
