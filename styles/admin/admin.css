@@ -514,6 +514,20 @@ margin-left: -4.1%;
   box-shadow: 0px 0px 32px 2px rgb(227, 94, 6);
 }
 
+#categoryBtn{
+  width: 250px;
+  height: 45px;
+
+  border: none;
+
+  transition: all 0.3s;
+  margin-top: 13%;
+  margin-left: -44%;
+  font-size: 18px;
+  position: relative;
+  background-color: rgb(58, 58, 58);
+}
+
 /* toggle button */
 
 .profile_section {

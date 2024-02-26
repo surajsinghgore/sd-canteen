@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
-<link rel="stylesheet" href="../styles/admin/admin.css?v=14">
+<link rel="stylesheet" href="../styles/admin/admin.css?v=16">
 
 <script>
    window.document.title = "SD CANTEEN | Add Food Category";
@@ -37,7 +37,7 @@
 
 
 
-      <div class="Form" style="width:1230px;margin-top:-5%">
+      <div class="Form" style="height:280px">
         <form action="" method="POST">
           <div class="heading">
             <h1>
@@ -51,7 +51,7 @@
               <p>
                 Enter Food Category Name <span>*</span>
               </p>
-              <input type="text" name="foodcategoryname"       autofocus style="width:1130px;height:55px" value="<?php if(isset($foodcategoryname)){echo $foodcategoryname;}?>" required>
+              <input type="text" name="foodcategoryname"       autofocus style="width:900px;height:45px" value="<?php if(isset($foodcategoryname)){echo $foodcategoryname;}?>" required>
             </li>
             <button id="categoryBtn" name="add_food_category">
 
