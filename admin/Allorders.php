@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=14">
-<link rel="stylesheet" href="../styles/admin/realtimeorder.css?v=5">
+<link rel="stylesheet" href="../styles/admin/realtimeorder.css?v=7">
 
 <script>
     // prevent reload post request
@@ -30,16 +30,11 @@
             <?php $AdminTopHeaderTitle = "All Order Details";
             require('../components/AdminTopHeader.php'); ?>
             <!-- path navigation -->
-            <?php $pathNavigationParentPath = "/sd-canteen/admin/Allorders.php";
-            $pathNavigationParent = "Orders";
-            $pathNavigationChild = "All Orders";
-            require('../components/PathNavigation.php'); ?>
-
-
+           
 
 
             <div class="orders">
-                <h1>Filter Records</h1>
+                <h1 >Filter Records</h1>
                 <h5>Total Orders : <span>23</span></h5>
                 <div class="searchBar1">
                     <select name="time" id="time">

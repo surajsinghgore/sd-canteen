@@ -77,27 +77,28 @@ rightsidebar .orders {
   
   /* all orders search bar */
   .orders .searchBar1 {
-    width: 100%;
+    width: 80%;
     height: auto;
     display: flex;
   }
   .orders .searchBar1 input {
     width: 72%;
   
-    height: 55px;
+    height: 45px;
     padding-left: 2%;
+    border: 1px solid rgb(78, 78, 78);
     margin-bottom: 2%;
-    font-size: 25px;
+    font-size: 20px;
     outline: none;
   }
   .orders .searchBar1 select {
     width: 25%;
-    height: 55px;
+    height: 45px;
     cursor: pointer;
     margin-left: 1%;
     text-align: center;
     margin-bottom: 2%;
-    font-size: 25px;
+    font-size: 20px;
     outline: none;
   }
   
