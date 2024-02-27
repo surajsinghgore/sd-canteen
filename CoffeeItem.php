@@ -455,12 +455,16 @@ setTimeout(()=>{
     let cartData1=localStorage.getItem('cartItem');
 let cartDataConvert1=JSON.parse(cartData1);
 for(let i=0;i<cartDataConvert1.items.length;i++){
+
+    if(cartDataConvert1.items[i].itemMainCategory=="coffee"){
+
     document.getElementById(`removeToCartBtn${cartDataConvert1.items[i].id}`).style.display="block";
     document.getElementById(`addToCartBtn${cartDataConvert1.items[i].id}`).style.display="none";
     
     document.getElementById(`currentSizeSelect${cartDataConvert1.items[i].id}`).innerText=cartDataConvert1.items[i].size;
     
     document.getElementById(`price${cartDataConvert1.items[i].id}`).innerHTML=`<h4>₹${cartDataConvert1.items[i].price}</h4>`;
+    }
 }
 },500)
 
