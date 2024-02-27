@@ -14,7 +14,7 @@ if (isset($_REQUEST['loadPage'])) {
 if($AllCategoryLen>0){
 
 ?>
-  <li><span class="heading">
+  <li onclick='loadAllItems()'><span class="heading">
     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M192 128l128 128-128 128z"></path></svg> All</span>
   <span class="length"><?php echo $FoodItemsCount?></span></li>
 <?php
@@ -22,7 +22,7 @@ if($AllCategoryLen>0){
     while ($allCategoryData = mysqli_fetch_array($resAllCategory)) { ?>
 
 
- <li><span class="heading">
+ <li  onclick='loadParticularCategory("<?php echo $allCategoryData['foodcategoryname'];?>")'><span class="heading">
     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M192 128l128 128-128 128z"></path></svg>  
     <?php echo $allCategoryData['foodcategoryname'];?></span>
 

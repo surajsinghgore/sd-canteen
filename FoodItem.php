@@ -7,7 +7,7 @@
 
 <!-- Link Swiper's CSS -->
 
-<link rel="stylesheet" href="./styles/client/fooditem.css?v=3">
+<link rel="stylesheet" href="./styles/client/fooditem.css?v=6">
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
     // prevent reload post request
@@ -93,7 +93,7 @@
 </div>
 
 <!-- food data -->
- <div class="cards">
+ <div class="cards" id="loadItems">
 
 
  <div class="card" loading="lazy">
@@ -127,8 +127,10 @@
  </div>
  </div>
 
-  <div class="listPopUp">
+  <div class="listPopUp" id="listPopUp">
 <!-- pop up category -->
+ <div><li>normal price</li></div>
+ <div><li>normal price</li></div>
  <div><li>normal price</li></div>
  
  
@@ -177,9 +179,7 @@
       <script>
     //  loading left side category
 const pageLoadData=()=>{
-// loading category
-
-// load data
+// loading category data
 $.ajax({
                     type: "POST", //type of method
                     url: "http://localhost/sd-canteen/clientApi/searchFoodCategory.php", //your page
@@ -191,13 +191,26 @@ $.ajax({
                     }
                 });
 
-//  document.getElementById('categoryMenu').innerHTML+=`
-//   <li><span class="heading">
-//   <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M192 128l128 128-128 128z"></path></svg>  
-//   Burger </span>
-//   <span class="length">  16 </span></li>
-// `;
+
+
+
+                // load food data
+                $.ajax({
+                    type: "POST", //type of method
+                    url: "http://localhost/sd-canteen/clientApi/searchFoodItems.php", //your page
+                    data: {
+                        loadPage: 'pageLoad'
+                    }, // passing the values
+                    success: function(res) {
+                        document.getElementById('loadItems').innerHTML=res;
+                    }
+                });
+
+              
+
 }
+
+
 
 
 
@@ -217,6 +230,24 @@ $.ajax({
                 });
 
             }
+
+
+
+
+            // load all category
+            function loadAllItems(){
+                console.log('all')
+            }
+
+
+            // load particular category food Items
+            function loadParticularCategory(itemName){
+                console.log(itemName)
+            }
+
+
+
+
         </script>
 
       <!-- ajax added -->

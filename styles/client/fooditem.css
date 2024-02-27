@@ -325,12 +325,13 @@
   }
   .main_food .right .cards .card .deatils {
     width: 100%;
+    position: relative;
     height: auto;
   }
   .main_food .right .cards .card .deatils h1 {
     text-align: left;
     padding-left: 4%;
-    margin-top: 1%;
+    margin-top: 5%;
     cursor: pointer;
     text-transform: capitalize;
     font-size: 24px;
@@ -356,18 +357,20 @@
     padding-left: 4%;
     font-size: 18px;
     margin-top: 1%;
+   
     color: rgb(62, 62, 62);
     font-weight: 500;
   }
   .main_food .right .cards .card .deatils h6 span {
     color: rgb(7, 66, 117);
-    padding-left: 5%;
+    padding-left: 5%; text-transform: capitalize;
   }
   .main_food .right .cards .card .deatils .sizes {
     width: 100%;
     height: auto;
     margin-bottom: 1%;
     position: relative;
+
     margin-top: 4%;
     display: flex;
   }
@@ -379,6 +382,7 @@
     border-radius: 40px;
     overflow: hidden;
     height: 35px;
+    margin-top: 2%;
     cursor: pointer;
   }
   .main_food .right .cards .card .deatils .sizes .dropBtn .span {
@@ -386,7 +390,6 @@
     font-size: 22px;
     user-select: none;
     padding-right: 20%;
-    margin-top: 1%;
   }
   .main_food .right .cards .card .deatils .sizes .dropBtn .arrow {
     position: absolute;
@@ -402,9 +405,22 @@
     text-align: center;
     margin-top: -8%;
   }
+
+
+  .main_food .right .cards .card  .price1 {
+position: absolute;
+top: 51%;
+left: 40%;
+    width: auto;
+    margin-top: 1%;
+    margin-left:40%;
+    font-size: 14px;
+    color: red;
+  }
   .main_food .right .cards .card .deatils .sizes .listPopUp {
     width: 55%;
     height: auto;
+    display: none;
     background-color: rgb(254, 141, 41);
     position: absolute;
     padding-top: 3%;
@@ -438,16 +454,7 @@
     background-color: black;
     color: white;
   }
-  .main_food .right .cards .card .deatils .sizes .price {
-    position: absolute;
-    top: 100%;
-    left: 90%;
-    width: 300px;
-    margin-top: 1%;
-    margin-left:40%;
-    font-size: 14px;
-    color: red;
-  }
+
   
   .main_food .right .cards .card .deatils .btnSection {
     display: flex;
