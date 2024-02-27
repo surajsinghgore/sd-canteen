@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password = strip_tags($_REQUEST['password']);
         $confirmpassword = strip_tags($_REQUEST['confirmpassword']);
         $email = strip_tags($_REQUEST['email']);
-        $otp = intval($_REQUEST['otp']);
+        $otp = $_REQUEST['otp'];
 
         //    Email
         if (strlen($email) == 0) {
@@ -41,9 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             return;
         }
 
-        // check 10 digit mobile number
-        $otpDigit = (string) $otp;
-        if ((strlen($otpDigit) < 6) or (strlen($otpDigit) > 6)) {
+      
+        if ((strlen($otp) < 6) or (strlen($otp) > 6)) {
 
             $error_status = "warn";
             $error_message = 'Enter 6 Digit OTP';

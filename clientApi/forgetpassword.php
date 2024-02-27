@@ -79,7 +79,7 @@ $data = mysqli_fetch_assoc($resultGet);
 
 // already exits
 if($DataCount>0){
-$query1="update forgetpassword set otp=$SixDigitOtp where email='$email'";
+$query1="update forgetpassword set otp='$SixDigitOtp' where email='$email'";
 $result = mysqli_query($connection, $query1);
 if($result){
     header("Location: /sd-canteen/resetpassword.php");
@@ -90,7 +90,7 @@ if($result){
 // new data
 else{
 
-    $query2="insert into forgetpassword(email,userid,otp) values('$email',$userId,$SixDigitOtp)";
+    $query2="insert into forgetpassword(email,userid,otp) values('$email',$userId,'$SixDigitOtp')";
     $result = mysqli_query($connection, $query2);
     if($result){
         session_start();

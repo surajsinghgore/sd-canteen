@@ -160,6 +160,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // 6 digit otp generate
             $SixDigitOtp = sprintf("%06d", mt_rand(1, 999999));
+
+
             $encodePassword = password_hash($password, PASSWORD_BCRYPT);
 
 
@@ -221,7 +223,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($result == true) {
 
 
-                    $sql_query = "update clientregistertemp set fullname='$fullname',age=$age,email='$email',mobile=$mobile,gender='$gender',fulladdress='$address',password='$encodePassword',verifystatus='false',otp=$SixDigitOtp where email like '$email'";
+                    $sql_query = "update clientregistertemp set fullname='$fullname',age=$age,email='$email',mobile=$mobile,gender='$gender',fulladdress='$address',password='$encodePassword',verifystatus='false',otp='$SixDigitOtp' where email like '$email'";
 
                     $res = mysqli_query($connection, $sql_query);
                     if ($res) {
@@ -308,7 +310,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($result == true) {
 
 
-                    $sql_query = "insert into clientregistertemp(fullname,age,email,mobile,gender,fulladdress,password,verifystatus,otp) values('$fullname',$age,'$email',$mobile,'$gender','$address','$encodePassword','false',$SixDigitOtp)";
+                    $sql_query = "insert into clientregistertemp(fullname,age,email,mobile,gender,fulladdress,password,verifystatus,otp) values('$fullname',$age,'$email',$mobile,'$gender','$address','$encodePassword','false','$SixDigitOtp')";
 
                     $res = mysqli_query($connection, $sql_query);
                     if ($res) {
