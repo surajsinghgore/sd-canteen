@@ -41,22 +41,23 @@
   <h1>Food Items</h1>
   </div></a>
 
-
+  <a href="/sd-canteen/coffeeitem.php">
   <div class="food" >
   <div class="imgs">
   <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014251/coffee_i2cfjf.webp" alt="food"  l />
   </div>
   <h1>Coffee Items</h1>
-  </div>
+  </div></a>
 
-
+  <a href="/sd-canteen/juiceitem.php">
    <div class="food" >
   <div class="imgs" >
   <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014245/juice_rafk8s.png" alt="food"  />
   </div>
   <h1 style="padding-top:2%">Juice Items</h1>
-  </div>
+  </div></a>
 
+  <a href="/sd-canteen/drinkitem.php">
  <div class="food" >
   <div class="imgs">
   <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014243/drink_eekwf6.webp" alt="food" />
@@ -65,7 +66,7 @@
   </div>
   </div>   </div>
 
-    
+</a>
 
 
 
