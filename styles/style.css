@@ -471,58 +471,6 @@ box-shadow: 0px 0px 20px 7px rgb(56, 56, 56);
 
 
 
-/* swiper customized */
-
- .swiper-button-next {
-  color: rgb(0, 0, 0);
-  right: -1.1%;
-  height: 10vh;
-  width: 6.8vw;
-  transform: rotate(90deg);
-  border-bottom-left-radius: 60px;
-  border-bottom-right-radius: 60px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 20px 1px rgb(0, 0, 0);
-  transition: all 0.4s;
-}
-
-
-
- .swiper-button-prev {
-color: rgb(0, 0, 0);
-  left: -1%;
-  height: 10vh;
-  width: 6.8vw;
-  transform: rotate(90deg);
-  border-top-left-radius: 60px;
-  border-top-right-radius: 60px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 20px 1px rgb(0, 0, 0);
-  transition: all 0.4s;
-
-}
- .swiper-button-next:hover, .swiper-button-prev:hover {
-  background-color: rgb(248, 53, 4);
-color: white;
-}
- .swiper-button-next::after,  .swiper-button-prev::after {
-    content: "";
-}
-
-
- .swiper-button-next::before{
-    content: "NEXT";
-    margin-top: -16%;
-    font-size: 1.4vw;
-  word-spacing: 2cm;
-}
-.swiper-button-prev::before {
-    content: "PREV";
-    margin-top: 16%;
-       font-size: 1.4vw;
-
-  word-spacing: 2cm;
-}
 
 
 

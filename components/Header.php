@@ -122,7 +122,7 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
     <li><a href="/">Home</a></li>
     <li><a href="/sd-canteen/contact.php">Contact</a> </li>
     <li><a href="/sd-canteen/about.php">About Us</a></li>
-    <li><a href="/Gallery">Gallery</a></li>
+    <li><a href="/sd-canteen/gallery.php">Gallery</a></li>
     </div>
 <div class="page">
     <h1>Menu</h1>

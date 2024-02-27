@@ -49,7 +49,7 @@
                 <form method="post" action="" autocomplete="off">
                     <input type="text" name="secret" placeholder="Enter Secret Id" required autocomplete="off" value='<?php echo "$adminSecret"; ?>' autoFocus />
                     <input type="password" name="password" placeholder="Enter Password" required value='<?php echo "$adminPassword"; ?>' autocomplete="off" />
-                    <button onClick="LoginFunction">Click to login</button>
+                    <button >Click to login</button>
 
 
                     <h6> <a href="/sd-canteen">Click Here To Main Website </a></h6>
