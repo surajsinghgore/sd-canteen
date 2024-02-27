@@ -1,4 +1,3 @@
-<!-- forget password api -->
 
 
 <!DOCTYPE html>
@@ -14,7 +13,7 @@
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href)
     }
-    window.document.title = "SD CANTEEN | Food Item";
+    window.document.title = "SD CANTEEN | Drink Item";
 </script>
 
 <body onload="pageLoadData()">
@@ -27,7 +26,7 @@
 
 <div class="Status">
       <div class="banner1">
-        <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014250/banner_bln578.jpg" alt="Food Item Banner"  />
+        <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014251/banner4_upvf40.jpg" alt="Drink Item Banner"  />
       </div>
   
       
@@ -37,7 +36,7 @@
 
             <p>
               <a href="/sd-canteen">Home </a>
-            - Food Item - 
+            - Drink Item - 
               <span>Page</span>
             </p>
           </div>
@@ -100,7 +99,6 @@
 
 
 
-
  <h1 class="match" style="margin-top:30px">No Item Found</h1>
 
 
@@ -126,15 +124,14 @@
 let searchInput=document.getElementById('itemSearchBar').value;
 $.ajax({
                     type: "POST", //type of method
-                    url: "http://localhost/sd-canteen/clientApi/searchFoodItems.php", //your page
+                    url: "http://localhost/sd-canteen/clientApi/searchDrinkItems.php", //your page
                     data: {
                         itemName: searchInput
                     }, // passing the values
                     success: function(res) {
   
                         document.getElementById('loadItems').innerHTML=res;
-document.getElementById('currentDisplayData').innerText=document.getElementById('loadItems').children.length;
-
+                        document.getElementById('currentDisplayData').innerText=document.getElementById('loadItems').children.length;
                         let cartData1=localStorage.getItem('cartItem');
 let cartDataConvert1=JSON.parse(cartData1);
 for(let i=0;i<cartDataConvert1.items.length;i++){
@@ -158,7 +155,7 @@ const pageLoadData=()=>{
 // loading category data
 $.ajax({
                     type: "POST", //type of method
-                    url: "http://localhost/sd-canteen/clientApi/searchFoodCategory.php", //your page
+                    url: "http://localhost/sd-canteen/clientApi/searchDrinkCategory.php", //your page
                     data: {
                         loadPage: 'pageLoad'
                     }, // passing the values
@@ -173,7 +170,7 @@ $.ajax({
                 // load food data
                 $.ajax({
                     type: "POST", //type of method
-                    url: "http://localhost/sd-canteen/clientApi/searchFoodItems.php", //your page
+                    url: "http://localhost/sd-canteen/clientApi/searchDrinkItem.php", //your page
                     data: {
                         loadPage: 'pageLoad'
                     }, // passing the values
@@ -202,7 +199,7 @@ $.ajax({
             function loadParticularCategory(itemName){
                   $.ajax({
                     type: "POST", //type of method
-                    url: "http://localhost/sd-canteen/clientApi/searchFoodCategory.php", //your page
+                    url: "http://localhost/sd-canteen/clientApi/searchDrinkCategory.php", //your page
                     data: {
                         category: itemName
                     }, // passing the values
@@ -334,7 +331,7 @@ $.ajax({
                     type: "POST", //type of method
                     url: "http://localhost/sd-canteen/clientApi/calculatePrices.php", //your page
                     data: {
-                        id: itemId,category:'FoodItem',size:currentCategorySelected
+                        id: itemId,category:'DrinkItem',size:currentCategorySelected
                     }, 
                     // return data
                     success: function(res) {
