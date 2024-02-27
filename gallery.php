@@ -5,7 +5,7 @@
 
 
 
-<link rel="stylesheet" href="./styles/client/gallery.css?v=7">
+<link rel="stylesheet" href="./styles/client/gallery.css?v=8">
 <link rel="stylesheet" href="./styles/style.css">
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -66,10 +66,10 @@
  <!-- full screen -->
 
 
- <div class="full">
+ <div class="full" id="full">
 <div class="blur">
 </div>
-<div class="close1"  title="close">
+<div class="close1"  title="close" onclick="closeMenu()">
 x
 </div>
 
@@ -77,30 +77,11 @@ x
   
 
 <div class="swiper mySwiper" id="mySwiper1">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-      <div class="inner">
-           <div class="imageSection">
-           <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014643/21_qnivmg.jpg" alt="img" layout="fill"/>
-           </div>
-          <div class="ps">
-      testig
-          </div>
-            </div>
+    <div class="swiper-wrapper" id="swiperItemAdd">
+      
 
 
-      </div>
-      <div class="swiper-slide">
-        
-      <div class="inner">
-           <div class="imageSection">
-           <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014643/21_qnivmg.jpg" alt="img" layout="fill"/>
-           </div>
-          <div class="ps">
-      testig
-          </div>
-            </div>
-      </div>
+      
   
     </div>
     <div class="swiper-button-next"></div>
@@ -135,7 +116,14 @@ x
 
 <!-- Initialize Swiper -->
 <script>
+
+
+const closeMenu=()=>{
+
+    document.getElementById('full').style.display="none";
+}
   var swiper = new Swiper(".mySwiper", {
+   
     slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
@@ -161,6 +149,19 @@ x
 
 import data from './data/Gallery.js';
 data.map((item)=>{
+document.getElementById('swiperItemAdd').innerHTML+=`<div class="swiper-slide">
+      <div class="inner">
+           <div class="imageSection">
+           <img src="${item.ImagePath}" alt="img" layout="fill"/>
+           </div>
+          <div class="ps">
+          ${item.title}
+          </div>
+            </div>
+
+
+      </div>`;
+
     document.getElementById('GalleryData').innerHTML+=`
     <div class="card" >
  <div class="fulls">
