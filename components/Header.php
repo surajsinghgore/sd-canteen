@@ -132,7 +132,7 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
     <li><a href="/sd-canteen/juiceitem.php">Juice Menu</a></li>
     </div>
     <div class="page">
-    <li><a href="/Items/sd special">SD Special</a></li>
+    <li><a href="/sd-canteen/category.php?category=sd special">SD Special</a></li>
     <li> <a href="/sd-canteen/fooditem.php"> Instant Food </a></li>
     </div>
         <div class="page">

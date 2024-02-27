@@ -21,12 +21,12 @@
 <!-- menu as -->
 <div class="menu">
 <h1>Hot Menu</h1>
-<li><a href="/Items/burger"><i class="fa-solid fa-caret-right"></i> Burger</a></li>
-<li><a href="/Items/sandwich"><i class="fa-solid fa-caret-right"></i> Sandwich</a></li>
-<li><a href="/Items/cold coffee"><i class="fa-solid fa-caret-right"></i> Cold Coffee</a></li>
-<li><a href="/Items/fast food"><i class="fa-solid fa-caret-right"></i> Fast Food</a></li>
-<li><a href="/JuiceItem"><i class="fa-solid fa-caret-right"></i> Juices</a></li>
-<li><a href="/CoffeeItem"><i class="fa-solid fa-caret-right"></i>Cold Drink</a></li>
+<li><a href="/sd-canteen/category.php?category=burger"><i class="fa-solid fa-caret-right"></i> Burger</a></li>
+<li><a href="/sd-canteen/category.php?category=sandwich"><i class="fa-solid fa-caret-right"></i> Sandwich</a></li>
+<li><a href="/sd-canteen/category.php?category=cold coffee"><i class="fa-solid fa-caret-right"></i> Cold Coffee</a></li>
+<li><a href="/sd-canteen/category.php?category=fast food"><i class="fa-solid fa-caret-right"></i> Fast Food</a></li>
+<li><a href="/sd-canteen/JuiceItem.php"><i class="fa-solid fa-caret-right"></i> Juices</a></li>
+<li><a href="/sd-canteen/category.php?category=cold drink"><i class="fa-solid fa-caret-right"></i>Cold Drink</a></li>
 </div>
 
 
