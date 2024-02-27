@@ -28,23 +28,55 @@ if($FoodItemsCount>0){
 
 <h6>Category: <span><?php echo $allFoodData['category'];?></span></h6>
 
-<!-- <h6>Category: <span>No</span></h6> -->
-<div class="price1">
-   <h4>₹ <?php echo $allFoodData['normalprice'];?></h4>
+<div class="price1" id="price<?php echo $allFoodData['id']?>">
+   <h4>₹ 
+    
+   <?php 
+if($allFoodData['smallprice']!=0){
+    
+echo $allFoodData['smallprice'];
+        
+}
+
+        else{
+
+            echo $allFoodData['normalprice'];
+        }
+?>
+
+</h4>
  </div>
 <!-- sizes -->
  <div class="sizes">
- <div class="dropBtn">
- <div class="span">normal price</div>
+ <div class="dropBtn" onclick='showPopUpMenu("<?php echo $allFoodData['id'];?>")'>
+ <div class="span" id="currentSizeSelect<?php echo $allFoodData['id'];?>">
+    <?php if($allFoodData['smallprice']!=0){
+        ?>
+ small size
+        
+        <?php }
+
+        else{
+
+ ?>
+
+normal size
+            <?php
+        }
+?>
+ 
+
+
+</div>
  <div class="arrow">
 
- <svg stroke="currentColor" class="arrowIcon" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="FoodItem_arrowIcon__eZSbD" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 14l-4-4h8z"></path></g></svg>
+ <svg stroke="currentColor" id="arrowDownArrow<?php echo $allFoodData['id'];?>" class="arrowIcon" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="FoodItem_arrowIcon__eZSbD" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 14l-4-4h8z"></path></g></svg>
 
 
  
 
 
- <!-- <svg stroke="currentColor" class="arrowIcon" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="FoodItem_arrowIcon__eZSbD" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 10l4 4H8z"></path></g></svg> -->
+ <svg id="arrowUpArrow<?php echo $allFoodData['id'];?>"  stroke="currentColor" class="arrowIcon" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="FoodItem_arrowIcon__eZSbD" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M12 10l4 4H8z"></path></g></svg>
 
 
 
@@ -52,11 +84,36 @@ if($FoodItemsCount>0){
  
  </div>
 
-  <div class="listPopUp" id="listPopUp">
+  <div class="listPopUp" id="listPopUp<?php echo $allFoodData['id'];?>">
 <!-- pop up category -->
- <div><li>normal price</li></div>
- <div><li>normal price</li></div>
- <div><li>normal price</li></div>
+
+<?php if($allFoodData['normalprice']!=0){
+?>
+<div onclick='changeSize("<?php echo $allFoodData['id'];?>","<?php echo $allFoodData['normalprice'];?>","normal")'><li>normal size</li></div>
+<?php
+}
+if($allFoodData['smallprice']!=0){
+
+    ?>
+    <div onclick='changeSize("<?php echo $allFoodData['id'];?>","<?php echo $allFoodData['smallprice'];?>","small")'><li>small size</li></div>
+    <?php
+}
+if($allFoodData['mediumprice']!=0){
+    ?>
+    <div onclick='changeSize("<?php echo $allFoodData['id'];?>","<?php echo $allFoodData['mediumprice'];?>","medium")'><li>medium size</li></div>
+    <?php
+
+}
+
+if($allFoodData['largeprice']!=0){
+    ?>
+    <div onclick='changeSize("<?php echo $allFoodData['id'];?>","<?php echo $allFoodData['largeprice'];?>","large")'><li>large size</li></div>
+    <?php
+
+}
+?>
+ 
+
  
  
 
@@ -66,13 +123,15 @@ if($FoodItemsCount>0){
    <div class="btnSection">
 
 <!-- if add to cart then removve -->
-<!-- <button>Remove Item</button> -->
+<button id="removeToCartBtn<?php echo $allFoodData['id'];?>" style="display:none"
+onclick='removeFromCart("<?php echo $allFoodData['id'];?>","<?php echo $allFoodData['foodname'];?>")'
+>Remove Item</button>
 
 <!-- add to cart -->
-<button >Add To Cart</button>
+<button onclick='addToCart("<?php echo $allFoodData['id'];?>","<?php echo $allFoodData['foodname'];?>")' id="addToCartBtn<?php echo $allFoodData['id'];?>">Add To Cart</button>
 
 <!-- buy now button -->
-<button class="buy" >Buy Now</button>
+<button class="buy" onclick='addToCartAndBuy("<?php echo $allFoodData['id'];?>","<?php echo $allFoodData['foodname'];?>")'>Buy Now</button>
 </div>
 
 </div>

@@ -239,6 +239,16 @@ page.style.display="none";
 }
 }
 })
+
+// setting cart
+if(localStorage.getItem('cartItem')==undefined){
+    localStorage.setItem("cartItem",'{"items":[],"isEmpty":true,"totalItems":0,"totalUniqueItems":0,"cartTotal":0}')
+}
+
+
+let cartData=localStorage.getItem('cartItem');
+let cartDataConvert=JSON.parse(cartData);
+document.getElementById('count').innerText=cartDataConvert.totalUniqueItems;
     </script>
 </body>
 

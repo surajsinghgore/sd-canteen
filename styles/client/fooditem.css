@@ -410,11 +410,11 @@
   .main_food .right .cards .card  .price1 {
 position: absolute;
 top: 51%;
-left: 40%;
+left: 37%;
     width: auto;
     margin-top: 1%;
     margin-left:40%;
-    font-size: 14px;
+    font-size: 1px !important;
     color: red;
   }
   .main_food .right .cards .card .deatils .sizes .listPopUp {
@@ -429,6 +429,7 @@ left: 40%;
     border-top-left-radius: 30px;
     list-style: none;
     border-top-right-radius: 30px;
+    bottom: 86%;
     left: 8%;
   }
   .main_food .right .cards .card .deatils .sizes .listPopUp li {
