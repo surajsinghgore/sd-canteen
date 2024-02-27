@@ -111,6 +111,7 @@
     position: fixed;
     z-index: 99;
     width: 100vw;
+    display: none;
     height: 100vh;
   }
   .full .blur {
