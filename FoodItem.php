@@ -17,7 +17,7 @@
     window.document.title = "SD CANTEEN | Food Item";
 </script>
 
-<body>
+<body onload="pageLoadData()">
     <div class="admin">
 
         <!-- header -->
@@ -65,18 +65,12 @@
 <div class="left">
 <h2>Categories</h2>
 <hr />
-<div class="menu">
-  <li><span class="heading">
-    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M192 128l128 128-128 128z"></path></svg> All</span>
-  <span class="length">(4)</span></li>
+<div class="menu" id="categoryMenu">
+
 
 
   
-<!-- fetch category -->
-  <li><span class="heading">
-  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M192 128l128 128-128 128z"></path></svg>  
-  Burger </span>
-  <span class="length">  16 </span></li>
+
 
 </div>
 </div>
@@ -179,6 +173,54 @@
       <!-- footer -->
       <?php require('./components/Footer.php'); ?>
 
+
+      <script>
+    //  loading left side category
+const pageLoadData=()=>{
+// loading category
+
+// load data
+$.ajax({
+                    type: "POST", //type of method
+                    url: "http://localhost/sd-canteen/clientApi/searchFoodCategory.php", //your page
+                    data: {
+                        loadPage: 'pageLoad'
+                    }, // passing the values
+                    success: function(res) {
+                        document.getElementById('categoryMenu').innerHTML=res;
+                    }
+                });
+
+//  document.getElementById('categoryMenu').innerHTML+=`
+//   <li><span class="heading">
+//   <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M192 128l128 128-128 128z"></path></svg>  
+//   Burger </span>
+//   <span class="length">  16 </span></li>
+// `;
+}
+
+
+
+            // search with name
+            function searchByName() {
+                let searchInput = document.getElementById('foodNameSearch').value;
+
+                $.ajax({
+                    type: "POST", //type of method
+                    url: "http://localhost/sd-canteen/api/searchDrinkItemByName.php", //your page
+                    data: {
+                        foodname: searchInput
+                    }, // passing the values
+                    success: function(res) {
+                        document.getElementById('resultData').innerHTML = res;
+                    }
+                });
+
+            }
+        </script>
+
+      <!-- ajax added -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>
