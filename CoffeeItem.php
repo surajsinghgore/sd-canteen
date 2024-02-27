@@ -6,7 +6,7 @@
 
 <!-- Link Swiper's CSS -->
 
-<link rel="stylesheet" href="./styles/client/fooditem.css?v=8">
+<link rel="stylesheet" href="./styles/client/fooditem.css?v=9">
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
     // prevent reload post request
@@ -31,7 +31,7 @@
   
       
   
-          <div class="path">
+          <div class="pathCoffee">
             <h1>Menu</h1>
 
             <p>

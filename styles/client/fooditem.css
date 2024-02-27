@@ -119,15 +119,15 @@
   }
   
   .Status .pathCoffee h1 {
-    padding-top: 10%;
-    font-size: 60px;
+    padding-top: 13%;
+    font-size: 60px;font-weight: 700;
     text-align: right;
     padding-right: 20%;
     text-shadow: 0px 0px 10px rgb(70, 70, 70);
     color: rgb(255, 255, 255);
   }
   .Status .pathCoffee p {
-    margin-top: -2%;
+    margin-top: 1%;
     font-size: 25px;
     text-align: right;
     padding-right: 16%;
@@ -144,6 +144,45 @@
     color: rgb(255, 106, 0);
   }
   
+
+  /* drinks page banner */
+  .Status .pathDrink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .Status .pathDrink h1 {
+    padding-top: 10%;
+    font-size: 60px;
+    margin-top: 5%;
+    font-weight: 700;
+    text-align: right;
+    padding-right: 20%;
+    text-shadow: 0px 0px 10px rgb(70, 70, 70);
+    color: rgb(255, 255, 255);
+  }
+  .Status .pathDrink p {
+    margin-top: 1%;
+    font-size: 25px;
+    text-align: right;
+    padding-right: 16%;
+    text-shadow: 0px 0px 5px rgb(40, 40, 40);
+    color: rgb(211, 211, 211);
+  }
+  .Status .pathDrink p span {
+    color: rgb(255, 106, 0);
+  }
+  .Status .pathDrink p a {
+    transition: all 0.3s;
+  }
+  .Status .pathDrink p a:hover {
+    color: rgb(255, 106, 0);
+  }
+  
+
+
 
   /* main page styling */
   .main_food {
