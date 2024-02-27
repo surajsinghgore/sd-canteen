@@ -231,14 +231,14 @@ margin-top: 27%;
 
 
 
-header .links .cart{
+header .links .cart1{
 position: absolute;
-top: 1%;
+top: 14%;
 right: 2%;
 cursor: pointer;
 }
-header .links .cart i{
-  font-size: 36px !important;
+header .links .cart1 i svg{
+  font-size: 36px ;
     color: rgb(255, 0, 0);
 
 }
@@ -964,7 +964,7 @@ header .links #login i{
   font-size: 4vw;
   margin-top: 27%;
   }
-  header .links .cart{
+  header .links .cart1{
   position: absolute;
   top: 20%;
   right: 1%;
