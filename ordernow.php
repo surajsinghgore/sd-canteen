@@ -5,7 +5,7 @@
 
 
 
-<link rel="stylesheet" href="./styles/client/ordernow.css?v=2">
+<link rel="stylesheet" href="./styles/client/ordernow.css?v=3">
 
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
@@ -33,13 +33,13 @@
  
   
   <div class="cardSection">
-  
+  <a href="/sd-canteen/fooditem.php">
   <div class="food" >
   <div class="imgs">
   <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014247/food_jxjsba.png" alt="food"  />
   </div>
   <h1>Food Items</h1>
-  </div>
+  </div></a>
 
 
   <div class="food" >

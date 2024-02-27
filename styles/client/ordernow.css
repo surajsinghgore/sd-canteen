@@ -5,6 +5,11 @@
   margin-top: 5%;
   margin-bottom: 5%;
 }
+
+.order a{
+  text-decoration: none;
+}
+
 .order h1 {
   width: 100%;
   text-align: center;
