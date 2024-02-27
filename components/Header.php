@@ -126,10 +126,10 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
     </div>
 <div class="page">
     <h1>Menu</h1>
-    <li><a href="/FoodItem">Food Menu</a></li>
-    <li><a href="/DrinkItem">Drink Menu</a></li>
-    <li><a href="/CoffeeItem">Coffee Menu</a></li>
-    <li><a href="/JuiceItem">Juice Menu</a></li>
+    <li><a href="/sd-canteen/fooditem.php">Food Menu</a></li>
+    <li><a href="/sd-canteen/drinkitem.php">Drink Menu</a></li>
+    <li><a href="/sd-canteen/coffeeitem.php">Coffee Menu</a></li>
+    <li><a href="/sd-canteen/juiceitem.php">Juice Menu</a></li>
     </div>
     <div class="page">
     <li><a href="/Items/sd special">SD Special</a></li>
