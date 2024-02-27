@@ -301,7 +301,8 @@ let cartDataConvert1=JSON.parse(cartData1);
 //    removing item from cart
 for(let i=0;i<cartDataConvert1.items.length;i++){
 if(cartDataConvert1.items[i].id==id && cartDataConvert1.items[i].itemName==name){
-   let newItemsArray = cartDataConvert1.items.filter(item => item.id!=id && item.itemName!=name);
+   let newItemsArray = cartDataConvert1.items.filter(item => item.itemName!=name);
+
    cartDataConvert1.items=newItemsArray;
 
 }
