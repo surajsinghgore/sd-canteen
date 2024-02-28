@@ -3,13 +3,12 @@
 require('./clientApi/clientlogout.php');
 // profile photo redirect
 require('./middleware/clientProfilePhotoRedirect.php');
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <!-- global css added -->
-<link rel="stylesheet" href="./styles/style.css?v=6">
+<link rel="stylesheet" href="./styles/style.css?v=17">
 
 
 <body>
@@ -36,12 +35,9 @@ if (isset($toast_status)) {
 
         <div class="search">
         <i class="fa-solid fa-magnifying-glass"></i>
-    <input type="search" name="search" id="search" placeholder='Search Items...'/>
-    <div class="suggestion" id="suggestion">
-<a href="s"><li><i class="fa-solid fa-magnifying-glass fixed" ></i>BURGER</li></a>
-<a href="s"><li><i class="fa-solid fa-magnifying-glass fixed" ></i>BURGER</li></a>
-<a href="s"><li><i class="fa-solid fa-magnifying-glass fixed" ></i>BURGER</li></a>
-<a href="s"><li><i class="fa-solid fa-magnifying-glass fixed" ></i>BURGER</li></a>
+    <input type="search" name="search" id="searchBarMain" onkeyup="searchMainBar()" placeholder='Search Items...'/>
+    <div class="suggestion" id="suggestionBar">
+
 
     <!-- <h1 id="searchHeading">No Item Match</h1> -->
     </div>
@@ -183,6 +179,38 @@ echo"<li id=\"login\"> <i class=\"fa-solid fa-arrow-right-to-bracket\"></i><a hr
 
     <script>
 
+// search bar client_logout_click
+function searchMainBar(){
+let searchInput=document.getElementById('searchBarMain').value;
+
+console.log(searchInput)
+if(searchInput==""){
+    document.getElementById('suggestionBar').style.display="none";
+
+
+}else{
+
+
+
+$.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/clientApi/MainSearchBar.php", //your page
+                data: {
+                    searchBarInput: searchInput
+                }, // passing the values
+                success: function(res) {
+                    document.getElementById('suggestionBar').style.display="block";
+                    document.getElementById('suggestionBar').innerHTML=res;
+                    
+                }
+            });
+
+        }
+        }
+
+
+
+
 let states=false;
 let states1=false;
 let page=document.getElementById('pages');
@@ -250,6 +278,12 @@ let cartData=localStorage.getItem('cartItem');
 let cartDataConvert=JSON.parse(cartData);
 document.getElementById('count').innerText=cartDataConvert.totalUniqueItems;
     </script>
+
+
+
+
+    <!-- ajax added -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>
