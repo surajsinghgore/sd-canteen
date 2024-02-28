@@ -29,9 +29,9 @@
                                 You can &#39;t make everyone happy. You &#39;re not pizza
                             </h1>
 
-                            <button>
-                                <Link href="/FoodItem"> Order Food Now</Link>
-                            </button>
+                            <a href="/sd-canteen/fooditem.php" style="text-decoration:none;color:white">  <button >
+                               Order Food Now
+                            </button></a>
                         </div>
                     </div>
                 </div>
@@ -47,9 +47,9 @@
                             <h1 id="hh1">
                                 I don &#39;t drink coffee to wake up. I wake up to drink coffee.
                             </h1>
-                            <button>
-                                <Link href="/CoffeeItem">Order Coffee Now</Link>
-                            </button>
+                            <a href="/sd-canteen/coffeeitem.php" style="text-decoration:none;color:white"> <button>
+                               Order Coffee Now
+                            </button></a>
                         </div>
                     </div>
                 </div>
@@ -65,9 +65,9 @@
                             <h1 id="hh1">
                                 Breakfast isn &#39;t complete without quality juice.
                             </h1>
-                            <button>
-                                <Link href="/JuiceItem">Order Juice Now</Link>
-                            </button>
+                            <a href="/sd-canteen/juiceitem.php" style="text-decoration:none;color:white"><button>
+                               Order Juice Now
+                            </button></a>
                         </div>
                     </div>
 
@@ -86,7 +86,9 @@
                                 After a good dinner one can forgive anybody, even one &#39;s own
                                 relatives.
                             </h1>
-                            <button>Order Food Now</button>
+                            <a href="/sd-canteen/fooditem.php" style="text-decoration:none;color:white">   <button>
+                              
+                            Order Food Now</button></a>
                         </div>
                     </div>
 
