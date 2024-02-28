@@ -92,8 +92,10 @@ $juiceCount = mysqli_num_rows($juiceCountRes);
 // load data
 if ($foodCount > 0) {
     $totals=1;
-
-    while ($data = mysqli_fetch_array($foodCountRes)) { ?>
+    while ($data = mysqli_fetch_array($foodCountRes)) {
+      var_dump($foodCount);
+      
+      ?>
 
    <div class="searchSection">
 
@@ -116,7 +118,7 @@ if ($foodCount > 0) {
 
 
 <div class="right">
-  <h1>
+  <h1 id="itemNameCurrent">
   <?php 
     echo $data['foodname'];?>
     <span
@@ -759,10 +761,10 @@ if(document.getElementById('largesize').checked){
             let cartDataConvert1 = JSON.parse(cartData1);
             for (let i = 0; i < cartDataConvert1.items.length; i++) {
                 if (cartDataConvert1.items[i].itemMainCategory == "food") {
-
-
-
-                    document.getElementById(`removeToCartBtn${cartDataConvert1.items[i].id}`).style.display = "flex";
+if(document.getElementById('itemNameCurrent')){
+let currentItemNameCheck=document.getElementById('itemNameCurrent').innerText.toLowerCase();
+if(cartDataConvert1.items[i].itemName==currentItemNameCheck){
+  document.getElementById(`removeToCartBtn${cartDataConvert1.items[i].id}`).style.display = "flex";
                     document.getElementById(`addToCartBtn${cartDataConvert1.items[i].id}`).style.display = "none";
 
                  let category=(cartDataConvert1.items[i].size).replaceAll(' ','');
@@ -771,6 +773,9 @@ if(document.getElementById('largesize').checked){
     document.getElementById(`${category}`).checked=true;
 
 document.getElementById('price').innerText =cartDataConvert1.items[i].price;
+}
+
+                }             
                 }
             }
         }, 500)

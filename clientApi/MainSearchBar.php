@@ -33,7 +33,7 @@ $row4=mysqli_num_rows($res4);
 // food data fetch
 while ($FoodData = mysqli_fetch_array($res1)) { ?>
 
-<a href="/sd-canteen/items.php?item=<?php echo $FoodData['foodname'];?>"><li><i class="fa-solid fa-magnifying-glass fixed" ></i><?php echo $FoodData['foodname'];?></li></a>
+<a href="/sd-canteen/items.php?itemname=<?php echo $FoodData['foodname'];?>"><li><i class="fa-solid fa-magnifying-glass fixed" ></i><?php echo $FoodData['foodname'];?></li></a>
 
 
 <?php
