@@ -5,7 +5,7 @@
 
 
 
-<link rel="stylesheet" href="./styles/client/orderdetails.css?v=4">
+<link rel="stylesheet" href="./styles/client/orderdetails.css?v=10">
 <link rel="stylesheet" href="./styles/client/cart.css?v=3">
 
 <link rel="stylesheet" href="./styles/admin/admin.css">
@@ -90,461 +90,68 @@
               </div>
             
           </div>
-          <div class="TimeBox">
+
+
+
+          <!-- check weather order is allowed from backend or not -->
+
+          <?php 
+        require('./middleware/ConnectToDatabase.php');
+          
+
+        $query="select*from orderonoffstatus";
+       $res= mysqli_query($connection,$query);
+$data=mysqli_fetch_assoc($res);
+
+
+
+if($data['status']=="true"){
+
+?>
+
+
+          <div class="TimeBox" id="TimingBox">
           
        
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-         
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
+              
+              
 
 
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
-
-
-              <div class="box" >
-                <div class="btn">
-                
-                    <input
-                      type="radio"
-                      name="time"
-                      id=""
-                   
-                    />
-                
-                 
-            
-                </div>
-
-                <div class="time">
-                  <h4>
-                    <label for="time">
-                      12:30 PM
-                    </label>
-                  </h4>
-                </div>
-              </div>
+      
           </div>
+          <?php 
+}
 
-          <div class="BottomMessage">
+
+          ?>
+          <div class="BottomMessage" id="BottomMessage">
+           <?php 
            
-              <!-- <div class="message">
-                Order is Not allowed to Placed after <span>5.51 PM</span> from
-                <span>Monday</span> To <span>Saturday.</span> Closed On
-                <span>Sunday</span> and on <span>Holidays</span>
-              </div> -->
+           if($data["status"]== "true"){
+
+
+            ?>
+<h6>Note: Order Can&#39;t Cancelled Once Placed.</h6>
+            <?php
+           }
+
+           else{
+
+
+            ?>
+
+<div class="message">
+Orders are not allowed to be placed after <span>5.51 PM</span> from <span>Monday</span> to <span>Saturday.</span> . We are closed on <span>Sundays</span> and <span>Holidays</span>.
+               
+              </div>
+            <?php
+
+           }
+             ?>
+              
            
           
-              <h6>Note: Order Can&#39;t Cancelled Once Placed.</h6>
+              
             
           </div>
 
@@ -553,17 +160,14 @@
             <Link href="/Cart">
               <button class="more">Cart Page</button>
             </Link>
-            <div class="subtotal">
+            <div class="subtotal" id="BottomBtns">
     
-                <button>Continue Order</button>
+            
+
+
+               
              
-                <!-- <button
-                  style={{ cursor: "not-allowed" }}
-                  onClick={() => getTime()}
-                  disabled
-                >
-                  Continue Order
-                </button> -->
+                
             </div>
           </div>
         </div>
@@ -582,6 +186,125 @@
     <?php require('./components/Footer.php'); ?>
 
    
-</body>
+
+    <!-- loading timing dynamic -->
+    <script type="module"> 
+
+import data from './data/Timing.js';
+
+if(document.getElementById('TimingBox')){
+
+let Dates=new Date();
+
+let m = parseInt(Dates.getMinutes());
+    let h = parseInt(Dates.getHours());
+
+m = m + 10;
+    if (m <= 9) {
+      m = "0" + m;
+    }
+    if (m > 59) {
+      m = 0;
+      h = h + 1;
+      m = m + 10;
+    }
+
+    let times = `${h}.${m}`;
+
+// check weather today is sunday or not
+// 0 means sunday
+if(Dates.getDay()==0){
+
+}
+
+// means not sunday
+else{
+
+ 
+  let datass=data.filter((items)=>{
+return items.time>=times;
+
+})
+
+if(datass.length==0){
+  document.getElementById('BottomMessage').innerHTML=`<div class="message">
+Orders are not allowed to be placed after <span>5.51 PM</span> from <span>Monday</span> to <span>Saturday.</span> . We are closed on <span>Sundays</span> and <span>Holidays</span>.`;
+
+document.getElementById('BottomBtns').innerHTML=`
+  <button
+                  style="cursor: not-allowed;"
+                  
+                  disabled
+                >
+                  Order Is Off
+                </button>
+  `;
+}
+
+else{
+  document.getElementById('BottomBtns').innerHTML=`
+  <a href="/sd-canteen/paymentmethod.php"><button>Continue Order</button></a>`;
+}
+datass.map((item,index)=>{
+
+
+  document.getElementById('TimingBox').innerHTML+=`
+<div class="box" >
+                <div class="btn">
+                
+                    <input
+                      type="radio"
+                      name="time"
+                      id="box${item.time1}"
+                   onclick='setTimeForOrder("${item.time}","${item.time1}")'
+                    />
+                
+                 
+            
+                </div>
+
+                <div class="time">
+                  <h4>
+                    <label for="box${item.time1}">
+                      ${item.time1} AM
+                    </label>
+                  </h4>
+                </div>
+              </div>
+`;
+})
+
+
+}
+
+}
+else{
+
+  document.getElementById('BottomBtns').innerHTML=`
+  <button
+                  style="cursor: not-allowed;"
+                  
+                  disabled
+                >
+                  Order Is Off
+                </button>
+  `;
+}
+
+
+    </script>
+
+
+
+
+<script>
+
+  function setTimeForOrder(time,time1){
+
+    console.log(time,time1)
+    localStorage.setItem('orderTime',time1)
+  }
+</script>
+  </body>
 
 </html>
