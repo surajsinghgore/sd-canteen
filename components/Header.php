@@ -11,6 +11,8 @@ require('./middleware/clientProfilePhotoRedirect.php');
 <link rel="stylesheet" href="./styles/style.css?v=17">
 
 
+    <!-- ajax added -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <body>
 <?php 
 // top progress loader
@@ -277,13 +279,66 @@ if(localStorage.getItem('cartItem')==undefined){
 let cartData=localStorage.getItem('cartItem');
 let cartDataConvert=JSON.parse(cartData);
 document.getElementById('count').innerText=cartDataConvert.totalUniqueItems;
+
+
+
+
+
+// website counter
+
+if(!sessionStorage.getItem('visit')){
+sessionStorage.setItem('visit','true');
+
+let browser;
+if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) 
+    {
+        browser='opera';
+    }
+    else if(navigator.userAgent.indexOf("Edg") != -1 )
+    {
+        browser='edge';
+    }
+    else if(navigator.userAgent.indexOf("Chrome") != -1 )
+    {
+        browser='chrome';
+    }
+    else if(navigator.userAgent.indexOf("Safari") != -1)
+    {
+        browser='safari';
+    }
+    else if(navigator.userAgent.indexOf("Firefox") != -1 ) 
+    {
+         browser='firefox';
+    }
+    else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) 
+    {
+      browser='IE'; 
+    }  
+    else 
+    {
+       browser='other Browser';
+    }
+
+
+    $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/clientApi/websitecounter.php", //your page
+                data: {
+                    browser: browser
+                }, 
+                success: function(res) {
+                   
+                    
+                }
+            });
+
+}
+
     </script>
 
 
 
 
-    <!-- ajax added -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>

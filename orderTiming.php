@@ -190,8 +190,7 @@ Orders are not allowed to be placed after <span>5.51 PM</span> from <span>Monday
     <!-- loading timing dynamic -->
     <script type="module"> 
 
-import data from './data/Timing.js';
-
+import data from './data/Timing2.js';
 if(document.getElementById('TimingBox')){
 
 let Dates=new Date();
@@ -266,7 +265,7 @@ datass.map((item,index)=>{
                 <div class="time">
                   <h4>
                     <label for="box${item.time1}">
-                      ${item.time1} AM
+                      ${item.time1} 
                     </label>
                   </h4>
                 </div>
@@ -301,7 +300,7 @@ else{
 
   function setTimeForOrder(time,time1){
 
-    console.log(time,time1)
+  
     localStorage.setItem('orderTime',time1)
   }
 </script>
