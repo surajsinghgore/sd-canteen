@@ -124,7 +124,7 @@
 let searchInput=document.getElementById('itemSearchBar').value;
 $.ajax({
                     type: "POST", //type of method
-                    url: "http://localhost/sd-canteen/clientApi/searchDrinkItems.php", //your page
+                    url: "http://localhost/sd-canteen/clientApi/searchDrinkItem.php", //your page
                     data: {
                         itemName: searchInput
                     }, // passing the values
