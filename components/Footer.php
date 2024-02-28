@@ -25,7 +25,7 @@
 <li><a href="/sd-canteen/category.php?category=sandwich"><i class="fa-solid fa-caret-right"></i> Sandwich</a></li>
 <li><a href="/sd-canteen/category.php?category=cold coffee"><i class="fa-solid fa-caret-right"></i> Cold Coffee</a></li>
 <li><a href="/sd-canteen/category.php?category=fast food"><i class="fa-solid fa-caret-right"></i> Fast Food</a></li>
-<li><a href="/sd-canteen/JuiceItem.php"><i class="fa-solid fa-caret-right"></i> Juices</a></li>
+<li><a href="/sd-canteen/category.php?category=hot coffee"><i class="fa-solid fa-caret-right"></i> Hot Coffee</a></li>
 <li><a href="/sd-canteen/category.php?category=cold drink"><i class="fa-solid fa-caret-right"></i>Cold Drink</a></li>
 </div>
 
