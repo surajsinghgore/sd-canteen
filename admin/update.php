@@ -1,6 +1,24 @@
-<script>
+<div class="reviewSection">
+                        <div class="topSection">
+                          <div class="starSection">
+                           stars 
+                         
+                            <p> 5 / 5</p>
+                          </div>
+                          <div class="userDetails">
+                            <h2>By : admin</h2>
+                          </div>
 
-    let js={"items":[{"id":"643385ca6c338ad0e3fcf531","price":25,"FoodName":"Aloo tikki burger","Qty":"1","Image":"http://res.cloudinary.com/dnxv21hr0/image/upload/v1681098186/7a9a7566e6a62fb27b0e6de1e173680d2023-04-10T03-43-04.928Z-2023-01-02T10-20-48.785Z-17.jpg.jpg","Size":"normalsize","subId":"643385ca6c338ad0e3fcf532","Category":"burger","QtyBook":1,"totalAmount":25,"quantity":1,"itemTotal":25},{"id":"643386336c338ad0e3fcf53b","price":40,"FoodName":"Veggie burger","Qty":"1","Image":"http://res.cloudinary.com/dnxv21hr0/image/upload/v1681098290/3cd84286d4906afca65e52adb4bd84ef2023-04-10T03-44-49.259Z-2023-01-07T13-50-00.921Z-32.jpg.jpg","Size":"mediumsize","subId":"643386336c338ad0e3fcf53d","Category":"burger","QtyBook":1,"totalAmount":40,"quantity":1,"itemTotal":40}],"isEmpty":false,"totalItems":2,"totalUniqueItems":2,"cartTotal":65,"metadata":{}}
+                          <div class="icons">
+                          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="icon" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg>
+                           
+                            <p> -</p>
+                            <svg stroke="currentColor"class="icon" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6h6v-2h-4z"></path></svg> <p>- </p>
+                          </div>
+                        </div>
 
-    console.log(js)
-</script>
+                        <div class="commentStyle">
+                          <p>No Comments yet on this Product</p>
+                        </div>
+                      </div>
+                 -->
