@@ -96,6 +96,8 @@ require('./middleware/VerifyClientLogin.php');?>
               <div class="div">
 
               <input type="text" id="orderId"name="ORDERID" style="display:none">
+              <input type="text" id="orderTime" name="orderTime" style="display:none">
+              <input type="text" id="cartDataSend" name="cartDataSend" style="display:none">
               <input type="text" id="TXN_AMOUNT" name="TXN_AMOUNT" style="display:none">
                 <input
                   type="radio"
@@ -200,9 +202,16 @@ function generateUniqueToken() {
 
 
 const uniqueToken = generateUniqueToken();
+let cartDataRes=localStorage.getItem('cartItem');
+let cartDataGet=JSON.parse(cartDataRes);
 
+let cartDataSends=JSON.stringify(cartDataGet.items);
+
+let pickupTime=localStorage.getItem('orderTime');
               document.getElementById('orderId').value=uniqueToken;
-              document.getElementById('TXN_AMOUNT').value=40;
+              document.getElementById('TXN_AMOUNT').value=parseInt(cartDataGet.cartTotal);
+              document.getElementById('orderTime').value=pickupTime;
+              document.getElementById('cartDataSend').value=cartDataSends;
 
     </script>
 

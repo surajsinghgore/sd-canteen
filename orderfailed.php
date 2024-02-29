@@ -33,40 +33,63 @@
 
  
     <div class="order">
+<?php 
 
-<!-- failed page -->
+// payment rejected
+if(isset($_GET['tokenReject'])){
 
-  <!-- <div class="failed">
-<h2>Sorry Payment Pending</h2>
-<div class="Div1">
-<img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014247/pending_sxghrh.gif" alt="payment pending" />
-</div>
+    
 
-
-<h3>Bank Transaction Id : <span>23243543</span></h3>
-<h4>Payment Status: <span>Pending</span></h4>
-<button>Go Back</button>
-    </div> -->
-
-<!-- reject order -->
-
- <!-- <div class="failed">
+    ?>
+<div class="failed">
 <h2>Sorry Payment Failed</h2>
 <div class="PaymentFailed" >
 <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014248/paymentFailed_qngsej.gif" alt="payment reject" id="reject"/>
 </div>
 
 
-<h3>Bank Transaction Id : <span>34554</span></h3>
+<h3>Transaction Token : <span><?php echo $_GET['tokenReject'];?></span></h3>
 <h4>Payment Status: <span>Failed</span></h4>
-<button>Go Back</button>
-    </div> -->
-
-<!-- temp res -->
- <div class="failed">
-<h2 >Sorry Something Went Wrong </h2>
-<button>Go Back</button>
+<a href="/sd-canteen/"><button>Go Back</button></a>
     </div>
+
+<?php
+}
+
+// order pending
+else if(isset($_GET['tokenPending'])){
+
+
+?>
+  <div class="failed">
+<h2>Sorry Payment Pending</h2>
+<div class="Div1">
+<img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014247/pending_sxghrh.gif" alt="payment pending" />
+</div>
+
+
+<h3>Transaction Token : <span><?php echo $_GET['tokenReject'];?></span></h3>
+<h4>Payment Status: <span>Pending</span></h4>
+<a href="/sd-canteen/"><button>Go Back</button></a>
+    </div>
+
+
+<?php
+}else{
+
+
+?>
+<div class="failed">
+<h2 >Sorry Something Went Wrong </h2>
+<a href="/sd-canteen/"><button>Go Back</button></a>
+    </div>
+
+<?php
+
+}
+
+?>
+
    
 
     </div> 

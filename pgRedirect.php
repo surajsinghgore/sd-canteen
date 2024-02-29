@@ -8,13 +8,24 @@ if (!isset($_SESSION)) {
 if (isset($_SESSION['activeClientId'])) {
 
 	$CUST_ID=$_SESSION['activeClientId'] ;
-	$email=$_SESSION['activeClientEmail'] ;
-	$mobile=$_SESSION['activeClientMobile'] ;
-	$fullname=$_SESSION['activeClientFullname'] ;
-	
+      //   connection
+	  require('./middleware/ConnectToDatabase.php');
+$query="select*from clientdata where id=$CUST_ID";
+$resultGet = mysqli_query($connection, $query);
+$data=mysqli_fetch_assoc( $resultGet );
+if (!isset($_SESSION)) {
+    session_start();
+}
+	$email=$data['email'] ;
+	$fullname=$data['fullname'] ;
+	$mobile=$data['mobile'] ;
+	$address=$data['fulladdress'] ;
 	$payment=$_POST['payment'];
-
-
+	$pickUpTime=$_POST['orderTime'];
+	$cartData=$_POST['cartDataSend'];
+	date_default_timezone_set("Asia/Calcutta");
+	$currentDate = date("d-m-Y");
+	$currentTime = date("h:i:s A");
 	$ORDER_ID=$_POST['ORDERID'];
 	$TXN_AMOUNT=$_POST['TXN_AMOUNT'];
 
@@ -35,8 +46,29 @@ if($payment=="Online"){
 	
 	$INDUSTRY_TYPE_ID = "Retail";
 	$CHANNEL_ID ="WEB";
-
 	// Create an array having all required parameters for creating checksum.
+	// generate orderId
+	$length = 6;
+	$characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $orderId = '';
+    $max = strlen($characters) - 1;
+
+    for ($i = 0; $i < $length; $i++) {
+        $orderId .= $characters[mt_rand(0, $max)];
+    }
+
+	
+
+
+	$insertInDb="insert into paymentdata(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,itemsorder,address,pickuptime,ordertime,orderdate,paymentmethod,orderstatus) values($CUST_ID,'$fullname','$email',$mobile,$TXN_AMOUNT,'pending',0,'$orderId','$ORDER_ID','','$cartData','$address','$pickUpTime','$currentTime','$currentDate','online','pending')";
+           
+	$resultGet = mysqli_query($connection, $insertInDb);
+
+
+
+
+
+
 	$paramList["MID"] = PAYTM_MERCHANT_MID;
 	$paramList["ORDER_ID"] = $ORDER_ID;
 	$paramList["CUST_ID"] = $CUST_ID;
