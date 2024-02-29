@@ -64,10 +64,16 @@ unset($_SESSION["orderComplete"]);
           </h2>
         </div>
         <div class="orderToday">
-          <h5>24/2/2024</h5>
-          <h6 id="clock">23:34:34 PM</h6>
+          <h5><?php  date_default_timezone_set("Asia/Calcutta");
+            $currentDate = date("d-m-Y");
+      echo $currentDate;
+            ?></h5>
+          <h6 id="clock"></h6>
         </div>
  
+
+
+
                     <div class="orders" >
                       <div class="top">
                         <div class="left">
@@ -250,6 +256,40 @@ unset($_SESSION["orderComplete"]);
     <?php require('./components/Footer.php'); ?>
 
     </div>
+
+
+    <script>
+
+
+function updateTime() {
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+    
+    // Add leading zeros if the value is less than 10
+    hours1 = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // If hours is 0, set it to 12
+    
+    // Add leading zeros if the value is less than 10
+    hours = hours < 10 ? '0' + hours : hours;
+    var timeString = ""
+    if(hours1>=12){
+      timeString=hours + ':' + minutes + ':' + seconds+" PM";
+    }else{
+      timeString=hours + ':' + minutes + ':' + seconds+" AM";
+
+    }
+    document.getElementById('clock').innerText = timeString;
+}
+
+// Call updateTime every second
+setInterval(updateTime, 1000);
+    </script>
 </body>
 
 </html>
