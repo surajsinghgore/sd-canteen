@@ -15,7 +15,7 @@
     window.document.title = "SD CANTEEN | order complete";
 </script>
 
-<body>
+<body >
     <div class="admin">
 
 
@@ -33,7 +33,7 @@
 
     
 
-<div class="order">
+<div class="order" oncanplay="CountDown('s','ddd')">
         <div class="titleSection">
           <h1>All Today&#39;s Pending Order 
             
@@ -71,27 +71,53 @@ unset($_SESSION["orderComplete"]);
           <h6 id="clock"></h6>
         </div>
  
+<!-- fetch todays order -->
+<?php 
+
+ // <!-- validate client login -->
+ require('./middleware/VerifyClientLogin.php');
+ 
+ // require connection for table
+ require('./middleware/ConnectToDatabase.php');
+ if (!isset($_SESSION)) {
+  session_start();
+}
+$activeUserId=$_SESSION['activeClientId'];
+ 
+
+// $currentDate 
+$query="select* from orderitems where userId=$activeUserId and orderdate like '$currentDate'";
+$res=mysqli_query($connection,$query);
+$countRecord=mysqli_num_rows($res);
+// todays orders
+if($countRecord>0){
 
 
+  while($data=mysqli_fetch_array($res)){
 
-                    <div class="orders" >
+    ?>
+
+<div class="orders">
                       <div class="top">
                         <div class="left">
-                          <h3>
+                          <h3  >
                             ORDER TOKEN:
                             <span
-                             
+                             class="orderIds"
                             
                             >
-                            LF1LZ8
+                            <?php echo $data['orderId'];?>
                             </span>
                           </h3>
                           <p>Estimated Delivery time</p>
                         </div>
-                        <!-- <CountDownTimer
-                          date={item.OrderDate}
-                          time={item.PickUpTime2}
-                        /> -->
+                        <div class="right">
+<div class="hours" id="hours<?php echo $data['orderId'];?>" >4</div>
+<div class="mins" id="mins<?php echo $data['orderId'];?>">4</div>
+<div class="sec" id="sec<?php echo $data['orderId'];?>">34</div>
+
+<!-- CountDown -->
+</div>
                       </div>
                       <hr class="hr" />
                       <h3>Order Details</h3>
@@ -100,34 +126,34 @@ unset($_SESSION["orderComplete"]);
                           <h3>Personal Details:</h3>
                           <div class="detailsInner">
                             <div class="title">User Name : </div>
-                            <div class="data">suraj singh</div>
+                            <div class="data">       <?php echo $data['fullname'];?></div>
                           </div>
                           <div class="detailsInner">
                             <div class="title">User Email : </div>
-                            <div class="data">surajthakurrs45@gmail.com</div>
+                            <div class="data">       <?php echo $data['email'];?></div>
                           </div>
                           <div class="detailsInner">
                             <div class="title">User Mobile:</div>
-                            <div class="data">+91-2345678987</div>
+                            <div class="data">+91-       <?php echo $data['mobile'];?></div>
                           </div>
                         </div>
                         <div class="orderRelated">
                           <h3>Order Details:</h3>
                           <div class="detailsInner">
-                            <div class="title">
+                            <div class="title ">
                               Order Pickup Time:
                             </div>
-                            <div class="data">3.15-pm</div>
+                            <div class="data pickuptime">       <?php echo $data['pickuptime'];?></div>
                           </div>
                           <div class="detailsInner">
                             <div class="title">Order Date: </div>
-                            <div class="data">24.2.2024</div>
+                            <div class="data">       <?php echo $data['orderdate'];?></div>
                           </div>
 
                           <div class="detailsInner">
                             <div class="title">Order status: </div>
                             <div class="data">
-                              Pending
+                            <?php echo $data['orderstatus'];?>
                             </div>
                           </div>
                         </div>
@@ -148,25 +174,48 @@ unset($_SESSION["orderComplete"]);
                         </div>
 
                        <!-- data items order -->
-                                <div >
+
+
+                       <?php 
+                       $item = json_decode($data['itemsorder'],true);
+
+                       $countLength=count($item);
+// iterating items
+                       for ($i=0; $i <$countLength ; $i++) { 
+                       
+?>
+
+
+<div >
                                   <hr class="hr1" />
                                   <div class="Itemcard">
                                     <li class="foodName">
                                       
-                                    Aloo tikki burger
+                                    <?php echo $item[$i]['itemName'];?>
                                     </li>
-                                    <li class="size"> normalsize</li>
+                                    <li class="size">  <?php echo $item[$i]['size'];?></li>
                                     <li class="price">
                                      
-                                      30
+                                    <?php echo $item[$i]['price'];?>
                                     </li>
-                                    <li class="qty">1</li>
+                                    <li class="qty"> <?php echo $item[$i]['qtyBook'];?></li>
                                     <li class="rupee">
                                      
-                                      ₹ 30
+                                      ₹  <?php echo $item[$i]['total'];?>
                                     </li>
                                   </div>
                                 </div>
+
+
+<?php
+
+
+                       }
+                  
+
+                    
+                       ?>
+                             
                              
                       </div>
 
@@ -178,29 +227,51 @@ unset($_SESSION["orderComplete"]);
                           <h3>Payment Method:</h3>
 
                           <!-- online -->
-                          
-                            <div class="detailsInner">
+                          <!-- order status -->
+
+                          <?php 
+                          // if online
+                          if($data['paymentmethod']=="online"){
+?>
+  <div class="detailsInner">
                             <svg class="card"stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="OrderDetails_card__5Pubz" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M928 160H96c-17.7 0-32 14.3-32 32v160h896V192c0-17.7-14.3-32-32-32zM64 832c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V440H64v392zm579-184c0-4.4 3.6-8 8-8h165c4.4 0 8 3.6 8 8v72c0 4.4-3.6 8-8 8H651c-4.4 0-8-3.6-8-8v-72z"></path></svg>
                             <div class="title1">
-                            online
+                            Online
                               </div>
                             </div>
+
+<?php
+
+                            
+                          }
+                          
+                          // if cod
+                          else
+                          {
+?>
+  <div class="detailsInner">
+  <i class="fa-solid fa-money-bill card"></i>
+                            <div class="title1">
+                            Cod
+                              </div>
+                            </div>
+
+<?php
+
+
+
+                          }?>
+                           
                           
 
-                            <!-- cod -->
-                            <!-- <div class="detailsInner">
-                              <BsCashStack class="card" />
-                              <div class="title1">
-                                COD
-                              </div>
-                            </div> -->
+                          
                         
                         </div>
                         <div class="orderRelated">
                           <div class="detailsInner">
                             <div class="title">Total Amount: </div>
                             <div class="data">
-                              ₹ 30
+                              ₹ <?php echo $data['totalamount'];?>
                             </div>
                           </div>
                           <div class="detailsInner">
@@ -217,7 +288,7 @@ unset($_SESSION["orderComplete"]);
                             </div>
                             <div class="data">
                               
-                              ₹ 30
+                              ₹ <?php echo $data['amountreceived'];?>
                             </div>
                           </div>
                           <hr class="hr2" />
@@ -225,7 +296,7 @@ unset($_SESSION["orderComplete"]);
                             <div class="title">Total: </div>
                             <div class="data1">
                               
-                              ₹ 30
+                              ₹ <?php echo $data['totalamount'];?>
                             </div>
                           </div>
                         </div>
@@ -233,13 +304,32 @@ unset($_SESSION["orderComplete"]);
                     </div>
                  
 
+<?php
+
+
+  }
+
+
+}
+
+// no records found
+else{
+
+?>
+<div class="notFood">
+                <h3 style="margin-bottom:20px">No Order Placed Today</h3>
+              
+                  <a href="/sd-canteen/fooditem.php"><button>Buy Now Food</button></a>
+              
+              </div>
+<?php
+}
+?>
+
+                   
+
                     <!-- no order today -->
-              <!-- <div class="notFood">
-                <h3>No Order Placed Today</h3>
-                <Link href="/FoodItem">
-                  <button>Buy Now Food</button>
-                </Link>
-              </div> -->
+              
             
       </div>
 
@@ -261,7 +351,67 @@ unset($_SESSION["orderComplete"]);
     <script>
 
 
+
+
+      for (let index = 0; index < document.getElementsByClassName('orders').length; index++) {
+
+        let getIdsMainName=document.getElementsByClassName('orderIds')[index].innerText;
+let time=document.getElementsByClassName('pickuptime')[index].innerText;
+
+getTodayWithTime(12,45,0,getIdsMainName)
+
+  
+
+
+}
+
+
+function getTodayWithTime(hours, minutes, seconds,id) {
+  var today = new Date();
+  today.setHours(hours);
+  today.setMinutes(minutes);
+  today.setSeconds(seconds);
+
+
+// Set the target time for today (e.g., 18:00:00)
+var targetTime = getTodayWithTime(21, 0, 0);
+
+// Update the countdown every 1 second
+var x = setInterval(function() {
+
+  // Get the current date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the target time
+  var distance = targetTime - now;
+
+  // Calculate time units
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+
+
+  document.getElementById(`hours${id}`).innerText=hours;
+  document.getElementById(`hours${id}`).innerText=minutes;
+  document.getElementById(`hours${id}`).innerText=seconds;
+  // If the countdown is over, display a message
+  if (distance < 0) {
+    clearInterval(x);
+
+  }
+}, 1000);
+}
+
+
+
 function updateTime() {
+
+
+ 
+
+
     var now = new Date();
     var hours = now.getHours();
     var minutes = now.getMinutes();
