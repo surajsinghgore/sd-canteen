@@ -130,15 +130,15 @@ require('./middleware/VerifyClientLogin.php');?>
           <div class="PaymentBottomMessage">
             <h4>
               Total Payable Amount:
-              <span>2</span>
+              <span id="payableAmount">0</span>
             </h4>
             <div class="bottomItem">
            
               <h4>
-                Total Items Booked: <span>2</span>
+                Total Items Booked: <span id="ItemBook">0</span>
               </h4>
               <h3>
-                <Link href="/Cart">Click to view Items List</Link>
+                <a href="/sd-canteen/cart.php" style="text-decoration:none">Click to view Items List</a>
               </h3>
             </>
           
@@ -181,6 +181,14 @@ require('./middleware/VerifyClientLogin.php');?>
    
 
     <script>
+let cartDataRes=localStorage.getItem('cartItem');
+let cartDataGet=JSON.parse(cartDataRes);
+
+// payable Amount
+document.getElementById('payableAmount').innerText=cartDataGet.cartTotal;
+document.getElementById('ItemBook').innerText=cartDataGet.totalUniqueItems;
+
+
 // fixing style of cart in payment page
 document.getElementById('count').style.top="1%"
      
@@ -209,8 +217,7 @@ function generateUniqueToken() {
 
 
 const uniqueToken = generateUniqueToken();
-let cartDataRes=localStorage.getItem('cartItem');
-let cartDataGet=JSON.parse(cartDataRes);
+
 
 let cartDataSends=JSON.stringify(cartDataGet.items);
 
