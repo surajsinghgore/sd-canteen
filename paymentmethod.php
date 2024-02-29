@@ -1,3 +1,8 @@
+<?php
+
+
+require('./middleware/VerifyClientLogin.php');?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +82,7 @@
 
 
 
-
+        <form action="./pgRedirect.php" method="post">
         <div class="orderDetails">
           <div class="orderTable">
             <div>
@@ -87,16 +92,19 @@
           </div>
 
           <div class="payment">
-            <form>
+
               <div class="div">
+
+              <input type="text" id="orderId"name="ORDERID" style="display:none">
+              <input type="text" id="TXN_AMOUNT" name="TXN_AMOUNT" style="display:none">
                 <input
                   type="radio"
                   name="payment"
-                  id="Online"
+                  id="online"
                   value="Online"
-                  defaultChecked
+           checked
                 />
-                <label for="Online" style="cursor:pointer">
+                <label for="online" style="cursor:pointer">
                 
                   <h4> Online Payment</h4>
                 </label>
@@ -110,7 +118,7 @@
                   </label>
                 </div>
            
-            </form>
+  
           </div>
 
           <div class="PaymentBottomMessage">
@@ -141,12 +149,13 @@
               <button class="more">Update Pickup Time</button>
             </a>
             <div class="subtotal">
-                <button>Placed Order</button>
+                <button onclick="placeOrder()">Placed Order</button>
              
                 <!-- <button disabled>Placed Order</button> -->
              
             </div>
           </div>
+  </form>
         </div>
 
 
@@ -164,6 +173,44 @@
     <?php require('./components/Footer.php'); ?>
 
    
+
+    <script>
+function generateUniqueToken() {
+    // Get current timestamp
+    const timestamp = Date.now().toString();
+
+    // Generate random number between 1000 and 9999 (4 digits)
+    const randomNumber = Math.floor(Math.random() * 9000) + 1000;
+
+    // Concatenate timestamp and random number
+    const token = timestamp + randomNumber;
+
+    // Ensure token length is 16 digits
+    if (token.length < 16) {
+        const remainingLength = 16 - token.length;
+        const additionalRandom = Math.floor(Math.random() * Math.pow(10, remainingLength)).toString();
+        return token + additionalRandom;
+    } else if (token.length > 16) {
+        // Trim excess length
+        return token.slice(0, 16);
+    } else {
+        return token;
+    }
+}
+
+
+const uniqueToken = generateUniqueToken();
+
+              document.getElementById('orderId').value=uniqueToken;
+              document.getElementById('TXN_AMOUNT').value=40;
+
+    </script>
+
+
+
+
+
+  
 </body>
 
 </html>

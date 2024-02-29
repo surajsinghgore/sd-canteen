@@ -1,3 +1,8 @@
+<?php
+
+
+require('./middleware/VerifyClientLogin.php');?>
+
 
 <!DOCTYPE html>
 <html lang="en">
