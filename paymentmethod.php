@@ -30,6 +30,10 @@ require('./middleware/VerifyClientLogin.php');?>
 
         <!-- header -->
         <?php require('./components/Header.php'); ?>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
         <div class="admin">
 
 
@@ -177,6 +181,9 @@ require('./middleware/VerifyClientLogin.php');?>
    
 
     <script>
+// fixing style of cart in payment page
+document.getElementById('count').style.top="1%"
+     
 function generateUniqueToken() {
     // Get current timestamp
     const timestamp = Date.now().toString();
@@ -212,6 +219,8 @@ let pickupTime=localStorage.getItem('orderTime');
               document.getElementById('TXN_AMOUNT').value=parseInt(cartDataGet.cartTotal);
               document.getElementById('orderTime').value=pickupTime;
               document.getElementById('cartDataSend').value=cartDataSends;
+
+
 
     </script>
 
