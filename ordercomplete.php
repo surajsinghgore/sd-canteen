@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <?php require('./modules/clientHeadTag.php'); ?>
@@ -36,7 +35,30 @@
 
 <div class="order">
         <div class="titleSection">
-          <h1>All Today&#39;s Pending Order </h1>
+          <h1>All Today&#39;s Pending Order 
+            
+<!-- clear cart if just book items -->
+       
+            <?php 
+if(isset($_SESSION['orderComplete'])){
+
+if($_SESSION['orderComplete']=="true"){
+
+
+
+?>
+<script>
+  localStorage.setItem("cartItem", '{"items":[],"isEmpty":true,"totalItems":0,"totalUniqueItems":0,"cartTotal":0}');
+  window.document.location.reload();
+</script>
+<?php
+
+unset($_SESSION["orderComplete"]);
+}
+}
+
+
+?></h1>
           <h2>
             Total Order Placed : <span>23</span>
           </h2>

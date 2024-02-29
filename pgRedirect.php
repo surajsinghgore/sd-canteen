@@ -161,8 +161,7 @@ $insertInDb="insert into orderitems(userId,fullname,email,mobile,totalamount,pay
 	   
 $resultGet = mysqli_query($connection, $insertInDb);
 
-
-
+$_SESSION['orderComplete']="true";
 header("Location: /sd-canteen/ordercomplete.php");
 
 }

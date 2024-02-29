@@ -1,6 +1,8 @@
 <?php
         require('./middleware/ConnectToDatabase.php');
-
+		if (!isset($_SESSION)) {
+			session_start();
+		}
 
 
 header("Pragma: no-cache");
@@ -88,7 +90,7 @@ $row=mysqli_num_rows($resultGet);
 
 if($row>0){
 
-
+	$_SESSION['orderComplete']="true";
 	header("Location: /sd-canteen/ordercomplete.php");
 	return;
 }else{
@@ -101,7 +103,7 @@ if($row>0){
 	$fetchFromDb1="delete from paymentdata where id=$id";
 	$resultGet1 = mysqli_query($connection, $fetchFromDb1);
 
-	
+	$_SESSION['orderComplete']="true";
 	header("Location: /sd-canteen/ordercomplete.php");
 }
 
