@@ -58,11 +58,17 @@ if($payment=="Online"){
     }
 
 	
+// check weather go back and request entery
+$q1="select*from paymentdata where txn_token='$ORDER_ID'";
+$resultGets = mysqli_query($connection, $q1);
+$rowCount=mysqli_num_rows($resultGets);
 
-
+if($rowCount==0){
 	$insertInDb="insert into paymentdata(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,itemsorder,address,pickuptime,ordertime,orderdate,paymentmethod,orderstatus) values($CUST_ID,'$fullname','$email',$mobile,$TXN_AMOUNT,'pending',0,'$orderId','$ORDER_ID','','$cartData','$address','$pickUpTime','$currentTime','$currentDate','online','pending')";
            
 	$resultGet = mysqli_query($connection, $insertInDb);
+}
+	
 
 
 
