@@ -49,6 +49,8 @@ if($_SESSION['orderComplete']=="true"){
 ?>
 <script>
   localStorage.setItem("cartItem", '{"items":[],"isEmpty":true,"totalItems":0,"totalUniqueItems":0,"cartTotal":0}');
+
+  localStorage.removeItem('orderTime');
   window.document.location.reload();
 </script>
 <?php
