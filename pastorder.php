@@ -1,4 +1,9 @@
+<?php 
 
+ // <!-- validate client login -->
+ require('./middleware/VerifyClientLogin.php');
+ 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +89,10 @@ $.ajax({
                 // return data
                 success: function(res) {
 document.getElementById('dataHandle').innerHTML=res;
+setTimeout(()=>{
+  document.getElementById('totalRecords').innerText=document.getElementsByClassName('data').length;
 
+},100)
                 }
 
 
@@ -102,7 +110,10 @@ $.ajax({
                 // return data
                 success: function(res) {
 document.getElementById('dataHandle').innerHTML=res;
+setTimeout(()=>{
+  document.getElementById('totalRecords').innerText=document.getElementsByClassName('data').length;
 
+},100)
                 }
 
 
@@ -126,7 +137,10 @@ function complete(){
                 // return data
                 success: function(res) {
 document.getElementById('dataHandle').innerHTML=res;
+setTimeout(()=>{
+  document.getElementById('totalRecords').innerText=document.getElementsByClassName('data').length;
 
+},100)
                 }
 
 
@@ -150,7 +164,12 @@ $.ajax({
                 },
                 // return data
                 success: function(res) {
+                
 document.getElementById('dataHandle').innerHTML=res;
+setTimeout(()=>{
+  document.getElementById('totalRecords').innerText=document.getElementsByClassName('data').length;
+  console.log(document.getElementsByClassName('data'))
+},100)
 
                 }
 
@@ -172,7 +191,10 @@ function pending(){
                 // return data
                 success: function(res) {
 document.getElementById('dataHandle').innerHTML=res;
+setTimeout(()=>{
+  document.getElementById('totalRecords').innerText=document.getElementsByClassName('data').length;
 
+},100)
                 }
 
 

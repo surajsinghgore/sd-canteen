@@ -44,7 +44,7 @@ if(isset($_SESSION['redirect'])) {
     ?> 
   <script>
   localStorage.setItem("cartItem", '{"items":[],"isEmpty":true,"totalItems":0,"totalUniqueItems":0,"cartTotal":0}');
-
+  browser.history.deleteAll()
 localStorage.removeItem('orderTime');
 window.document.location.reload(); 
    </script>
