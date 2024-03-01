@@ -523,7 +523,7 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
          
 <!-- user message -->
                <form>
-                 <input type="text" placeholder="Client Name" value="userName"  />
+                 <input type="text" placeholder="Client Name"   />
                  <textarea
                    name="message"
                    value="userMessage"
