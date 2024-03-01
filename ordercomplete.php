@@ -499,6 +499,11 @@ document.getElementById('totalItems').innerText=document.getElementsByClassName(
     </script>
 
     
+
+
+
+
+  
 </body>
 
 </html>
