@@ -36,7 +36,7 @@
         <div class="titleSection">
           <h1>All Today&#39;s Pending Order 
 
-
+<!-- remove elements for cart after order placed -->
        
 <?php 
 
@@ -111,6 +111,7 @@ if($countRecord>0){
     ?>
 
 <div class="orders">
+<div class="pickuptime" style="display:none"> <?php echo $data['pickuptime24'];?></div>
                       <div class="top">
                         <div class="left">
                           <h3  >
@@ -156,8 +157,10 @@ if($countRecord>0){
                             <div class="title ">
                               Order Pickup Time:
                             </div>
-                            <div class="data pickuptime">    
-                                 <?php echo $data['pickuptime'];?></div>
+                            <div class="data">    
+                                 <?php echo $data['pickuptime'];?>
+                               
+                                </div>
                           </div>
                           <div class="detailsInner">
                             <div class="title">Order Date: </div>
@@ -188,8 +191,45 @@ if($countRecord>0){
                         </div>
 
                        <!-- data items order -->
+<!-- data here -->
+<?php
+
+$orderToken=$data['orderId'];
+$txn_token=$data['txn_token'];
+$dataQuery="select*from itemlist where userId=$activeUserId and ordertoken='$orderToken' and txn_token='$txn_token'";
+
+$resItemList=mysqli_query($connection,$dataQuery);
 
 
+while($itemData=mysqli_fetch_array($resItemList)){
+  ?>
+<div >
+                                  <hr class="hr1" />
+                                  <div class="Itemcard">
+                                    <li class="foodName">
+                                      
+                                    <?php echo $itemData['itemName'];?>
+                                    </li>
+                                    <li class="size">  <?php echo $itemData['size'];?></li>
+                                    <li class="price">
+                                     
+                                    <?php  echo $itemData['itemPrice'];?>
+                                    </li>
+                                    <li class="qty"> <?php echo $itemData['qty'];?></li>
+                                    <li class="rupee">
+                                     
+                                      ₹  <?php  $calulateTotal=$itemData['itemPrice']*$itemData['qty'];
+                                      echo $calulateTotal;
+                                      ?>
+                                    </li>
+                                  </div>
+                                </div>
+
+  <?php
+}
+
+
+?>
                       
                              
                              
@@ -340,14 +380,88 @@ else{
 let time=document.getElementsByClassName('pickuptime')[index].innerText;
 
 
-
+countDown(time,getIdsMainName);
   
 
 
 }
 
 
+// countdown timer
 
+function countDown(time,id){
+
+
+let date=new Date();
+Dd=date.getDate();
+Mm=parseInt(date.getMonth());
+++Mm;
+Yy=date.getFullYear();
+
+let arrayOfTime = time.split(':');
+
+let hoursInt=parseInt(arrayOfTime[0])
+Hou=hoursInt;
+let minutesInt=parseFloat(arrayOfTime[1])
+Min=minutesInt;
+
+let Sec=0;
+
+
+
+
+
+
+const target=new Date(`${Mm}/${Dd}/${Yy} ${Hou}:${Min}:${Sec}`);
+
+
+
+var x = setInterval(function() {
+
+// Get the current date and time
+var now = new Date().getTime();
+
+// Find the distance between now and the target time
+var distance = target - now;
+if(distance>=0){
+
+
+
+
+
+// Calculate time units
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+if(parseInt(document.getElementById(`hours${id}`).innerText)>=0){
+  document.getElementById(`hours${id}`).innerText=hours;
+
+}
+// minutes
+if(parseInt(document.getElementById(`mins${id}`).innerText)>=0){
+  document.getElementById(`mins${id}`).innerText=minutes;
+}
+
+
+// seconds
+if(parseInt(document.getElementById(`sec${id}`).innerText)>=0){
+  document.getElementById(`sec${id}`).innerText=seconds;
+}
+
+
+}else{
+  document.getElementById(`sec${id}`).innerText="0";
+  document.getElementById(`mins${id}`).innerText="0";
+  document.getElementById(`hours${id}`).innerText="0";
+}
+}, 1000);
+
+
+
+
+
+}
 
 
 

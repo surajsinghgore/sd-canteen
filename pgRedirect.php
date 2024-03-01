@@ -185,7 +185,6 @@ for ($i=0; $i <$countLength ; $i++) {
 	$cartItemName=$item[$i]['itemName'];
 	$cartItemPrice=$item[$i]['price'];
 	$cartItemQtyBook=$item[$i]['qtyBook'];
-	$cartItemTotal=$item[$i]['total'];
 	$cartItemSize=$item[$i]['size'];
 	$cartItemMainCategory=$item[$i]['itemMainCategory'];
 	$cartItemCategory=$item[$i]['category'];
