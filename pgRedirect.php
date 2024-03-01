@@ -157,9 +157,43 @@ $resultGets = mysqli_query($connection, $q1);
 $rowCount=mysqli_num_rows($resultGets);
 
 if($rowCount==0){
-$insertInDb="insert into orderitems(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,itemsorder,address,pickuptime,ordertime,orderdate,paymentmethod,orderstatus) values($CUST_ID,'$fullname','$email',$mobile,$TXN_AMOUNT,'pending',0,'$orderId','$ORDER_ID','','$cartData','$address','$pickUpTime','$currentTime','$currentDate','cod','pending')";
+$insertInDb="insert into orderitems(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,address,pickuptime,ordertime,orderdate,paymentmethod,orderstatus) values($CUST_ID,'$fullname','$email',$mobile,$TXN_AMOUNT,'pending',0,'$orderId','$ORDER_ID','pending','$address','$pickUpTime','$currentTime','$currentDate','cod','pending')";
 	   
 $resultGet = mysqli_query($connection, $insertInDb);
+
+$last_id = mysqli_insert_id($connection);
+
+
+// fetching just insert data
+$q2="select*from orderitems where id=$last_id";
+$DataGetsRes = mysqli_query($connection, $q2);
+$lastInsertData=mysqli_fetch_assoc( $DataGetsRes);
+
+// set cart items
+
+$item = json_decode($cartData,true);
+$countLength=count($item);
+$userId=$lastInsertData['userId'];
+$mainOrderId=$last_id;
+$orderToken=$lastInsertData['orderId'];
+$txn_token=$lastInsertData['txn_token'];
+for ($i=0; $i <$countLength ; $i++) { 
+	$cartItemName=$item[$i]['itemName'];
+	$cartItemPrice=$item[$i]['price'];
+	$cartItemQtyBook=$item[$i]['qtyBook'];
+	$cartItemTotal=$item[$i]['total'];
+	$cartItemSize=$item[$i]['size'];
+	$cartItemMainCategory=$item[$i]['itemMainCategory'];
+	$cartItemCategory=$item[$i]['category'];
+
+	// insert all items in itemslist
+	$insertItemsQuery="insert into itemlist(userId,mainOrderId,itemName,qty,size,maincategory,itemPrice,amountreceived,paymentstatus,orderstatus,category,txn_token,ordertoken) values($userId,$mainOrderId,'$cartItemName','$cartItemQtyBook','$cartItemSize','$cartItemMainCategory','$cartItemPrice','0','pending','pending','$cartItemCategory','$txn_token','$orderToken')";
+
+$DataGetsRes = mysqli_query($connection, $insertItemsQuery);
+
+}
+
+
 
 $_SESSION['orderComplete']="true";
 header("Location: /sd-canteen/ordercomplete.php");
