@@ -43,7 +43,7 @@ require('./middleware/clientProfilePhotoRedirect.php');
             <div class="suggestion" id="suggestionBar">
 
 
-                <!-- <h1 id="searchHeading">No Item Match</h1> -->
+             
             </div>
         </div>
         <div class="links">
@@ -176,14 +176,41 @@ require('./middleware/clientProfilePhotoRedirect.php');
 
 
     </header>
+<?php
+if(isset($_SESSION['activeClientId'])){
 
-
+// check weather today order is placed or not
+date_default_timezone_set("Asia/Calcutta");
+            $currentDate = date("d-m-Y");
+$activeUserId=$_SESSION['activeClientId'];
+$mainQuery="select* from orderitems where userId=$activeUserId and orderdate like '$currentDate' and orderstatus like 'pending'";
+$resMain=mysqli_query($connection,$mainQuery);
+$mainCount=mysqli_num_rows($resMain);
+if($mainCount>0){
+   ?> <div class='cookingMain' id="cooking">
+    <div class='cookingSection'>
+    <a href="/sd-canteen/ordercomplete.php"><h6>Order Cooking</h6></a>
+      <button title='Hide' onclick="sessionStorage.setItem('cooking','disabled');document.location.reload()">x</button>
+      <a href="/sd-canteen/ordercomplete.php"><div class="cookImage">
+      <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014402/cooking_ggqydy.gif"  alt="cooking image" />
+      </div>
+          </div></a>
+      </div>
+      <?php
+}
+}
+?>
+   
 
 
 
 
 
     <script>
+        if(sessionStorage.getItem('cooking')){
+
+            document.getElementById('cooking').style.display="none";
+        }
         // search bar client_logout_click
         function searchMainBar() {
             let searchInput = document.getElementById('searchBarMain').value;

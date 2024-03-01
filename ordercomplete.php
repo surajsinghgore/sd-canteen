@@ -41,12 +41,13 @@
 <?php 
 
 if(isset($_SESSION['redirect'])) {
+  var_dump($_SESSION['redirect']);
     ?> 
   <script>
   localStorage.setItem("cartItem", '{"items":[],"isEmpty":true,"totalItems":0,"totalUniqueItems":0,"cartTotal":0}');
-  browser.history.deleteAll()
+
 localStorage.removeItem('orderTime');
-window.document.location.reload(); 
+document.location.reload(); 
    </script>
 
 <?php

@@ -237,7 +237,7 @@ let total=0;
                         total += cartD.items[i].price * cartD.items[i].qtyBook;
                     }
                     cartD.cartTotal = total;
-                    console.log(cartD)
+                 
                     let JsonToString = JSON.stringify(cartD);
                     localStorage.setItem('cartItem', JsonToString)
 
@@ -276,7 +276,7 @@ let total=0;
                         total += cartD.items[i].price * cartD.items[i].qtyBook;
                     }
                     cartD.cartTotal = total;
-                    console.log(cartD)
+                
                     let JsonToString = JSON.stringify(cartD);
                     localStorage.setItem('cartItem', JsonToString)
 

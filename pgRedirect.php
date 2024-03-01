@@ -7,7 +7,7 @@ if (!isset($_SESSION)) {
 
 if (isset($_SESSION['activeClientId'])) {
 
-	$_SESSION['redirect']="trues";
+	$_SESSION['redirect']="true";
 	$CUST_ID=$_SESSION['activeClientId'] ;
       //   connection
 	  require('./middleware/ConnectToDatabase.php');
