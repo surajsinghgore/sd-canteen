@@ -1,4 +1,6 @@
-
+<?php if (!isset($_SESSION)) {
+  session_start();
+}?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require('./modules/clientHeadTag.php'); ?>
@@ -8,10 +10,7 @@
 <link rel="stylesheet" href="./styles/client/orderdetails.css?v=1">
 <link rel="stylesheet" href="./styles/admin/admin.css">
 <script>
-    // prevent reload post request
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href)
-    }
+   
     window.document.title = "SD CANTEEN | order complete";
 </script>
 
@@ -33,29 +32,34 @@
 
     
 
-<div class="order" oncanplay="CountDown('s','ddd')">
+<div class="order">
         <div class="titleSection">
           <h1>All Today&#39;s Pending Order 
+            <?php
+         
             
+            // pickuptime24
+            ?>
 <!-- clear cart if just book items -->
        
             <?php 
-if(isset($_SESSION['orderComplete'])){
-
-if($_SESSION['orderComplete']=="true"){
 
 
+if(isset($_COOKIE['orderComplete'])){
+
+if($_COOKIE['orderComplete']=="true"){
+
+  unset($_COOKIE['orderComplete']);
 
 ?>
 <script>
   localStorage.setItem("cartItem", '{"items":[],"isEmpty":true,"totalItems":0,"totalUniqueItems":0,"cartTotal":0}');
 
   localStorage.removeItem('orderTime');
-  window.document.location.reload();
+  // window.document.location.reload();
 </script>
 <?php
 
-unset($_SESSION["orderComplete"]);
 }
 }
 
@@ -81,14 +85,16 @@ unset($_SESSION["orderComplete"]);
  
  // require connection for table
  require('./middleware/ConnectToDatabase.php');
- if (!isset($_SESSION)) {
-  session_start();
-}
-$activeUserId=$_SESSION['activeClientId'];
- 
 
-// $currentDate 
-$query="select* from orderitems where userId=$activeUserId and orderdate like '$currentDate'";
+$activeUserId=$_SESSION['activeClientId'];
+
+$mainQuery="select* from orderitems where userId=$activeUserId and orderdate like '$currentDate'";
+$resMain=mysqli_query($connection,$mainQuery);
+$mainCount=mysqli_num_rows($resMain);
+
+if($mainCount>0){
+
+$query="select* from orderitems where userId=$activeUserId and orderdate like '$currentDate'  order by pickuptime24";
 $res=mysqli_query($connection,$query);
 $countRecord=mysqli_num_rows($res);
 // todays orders
@@ -145,7 +151,8 @@ if($countRecord>0){
                             <div class="title ">
                               Order Pickup Time:
                             </div>
-                            <div class="data pickuptime">       <?php echo $data['pickuptime'];?></div>
+                            <div class="data pickuptime">    
+                                 <?php echo $data['pickuptime'];?></div>
                           </div>
                           <div class="detailsInner">
                             <div class="title">Order Date: </div>
@@ -178,45 +185,7 @@ if($countRecord>0){
                        <!-- data items order -->
 
 
-                       <?php 
-                       $item = json_decode($data['itemsorder'],true);
-
-                       $countLength=count($item);
-// iterating items
-                       for ($i=0; $i <$countLength ; $i++) { 
-                       
-?>
-
-
-<div >
-                                  <hr class="hr1" />
-                                  <div class="Itemcard">
-                                    <li class="foodName">
-                                      
-                                    <?php echo $item[$i]['itemName'];?>
-                                    </li>
-                                    <li class="size">  <?php echo $item[$i]['size'];?></li>
-                                    <li class="price">
-                                     
-                                    <?php echo $item[$i]['price'];?>
-                                    </li>
-                                    <li class="qty"> <?php echo $item[$i]['qtyBook'];?></li>
-                                    <li class="rupee">
-                                     
-                                      ₹  <?php echo $item[$i]['total'];?>
-                                    </li>
-                                  </div>
-                                </div>
-
-
-<?php
-
-
-                       }
-                  
-
-                    
-                       ?>
+                      
                              
                              
                       </div>
@@ -314,6 +283,11 @@ if($countRecord>0){
 
 }
 
+
+
+
+
+}
 // no records found
 else{
 
@@ -360,7 +334,7 @@ else{
         let getIdsMainName=document.getElementsByClassName('orderIds')[index].innerText;
 let time=document.getElementsByClassName('pickuptime')[index].innerText;
 
-getTodayWithTime(12,45,0,getIdsMainName)
+
 
   
 
@@ -368,57 +342,17 @@ getTodayWithTime(12,45,0,getIdsMainName)
 }
 
 
-function getTodayWithTime(hours, minutes, seconds,id) {
-  var today = new Date();
-  today.setHours(hours);
-  today.setMinutes(minutes);
-  today.setSeconds(seconds);
-
-
-// Set the target time for today (e.g., 18:00:00)
-var targetTime = getTodayWithTime(21, 0, 0);
-
-// Update the countdown every 1 second
-var x = setInterval(function() {
-
-  // Get the current date and time
-  var now = new Date().getTime();
-
-  // Find the distance between now and the target time
-  var distance = targetTime - now;
-
-  // Calculate time units
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 
 
 
-  document.getElementById(`hours${id}`).innerText=hours;
-  document.getElementById(`hours${id}`).innerText=minutes;
-  document.getElementById(`hours${id}`).innerText=seconds;
-  // If the countdown is over, display a message
-  if (distance < 0) {
-    clearInterval(x);
 
-  }
-}, 1000);
-}
-
-
-
+// website current time realtime logic
 function updateTime() {
-
-
- 
-
-
     var now = new Date();
     var hours = now.getHours();
     var minutes = now.getMinutes();
     var seconds = now.getSeconds();
-    
     // Add leading zeros if the value is less than 10
     hours1 = hours < 10 ? '0' + hours : hours;
     minutes = minutes < 10 ? '0' + minutes : minutes;
@@ -426,7 +360,6 @@ function updateTime() {
     var ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
     hours = hours ? hours : 12; // If hours is 0, set it to 12
-    
     // Add leading zeros if the value is less than 10
     hours = hours < 10 ? '0' + hours : hours;
     var timeString = ""

@@ -22,6 +22,7 @@ if (!isset($_SESSION)) {
 	$address=$data['fulladdress'] ;
 	$payment=$_POST['payment'];
 	$pickUpTime=$_POST['orderTime'];
+	$pickuptime24=date("H:i", strtotime("$pickUpTime"));
 	$cartData=$_POST['cartDataSend'];
 	date_default_timezone_set("Asia/Calcutta");
 	$currentDate = date("d-m-Y");
@@ -64,7 +65,7 @@ $resultGets = mysqli_query($connection, $q1);
 $rowCount=mysqli_num_rows($resultGets);
 
 if($rowCount==0){
-	$insertInDb="insert into paymentdata(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,itemsorder,address,pickuptime,ordertime,orderdate,paymentmethod,orderstatus) values($CUST_ID,'$fullname','$email',$mobile,$TXN_AMOUNT,'pending',0,'$orderId','$ORDER_ID','','$cartData','$address','$pickUpTime','$currentTime','$currentDate','online','pending')";
+	$insertInDb="insert into paymentdata(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,itemsorder,address,pickuptime,pickuptime24,ordertime,orderdate,paymentmethod,orderstatus) values($CUST_ID,'$fullname','$email',$mobile,$TXN_AMOUNT,'pending',0,'$orderId','$ORDER_ID','','$cartData','$address','$pickUpTime','$pickuptime24','$currentTime','$currentDate','online','pending')";
            
 	$resultGet = mysqli_query($connection, $insertInDb);
 }
@@ -157,7 +158,7 @@ $resultGets = mysqli_query($connection, $q1);
 $rowCount=mysqli_num_rows($resultGets);
 
 if($rowCount==0){
-$insertInDb="insert into orderitems(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,address,pickuptime,ordertime,orderdate,paymentmethod,orderstatus) values($CUST_ID,'$fullname','$email',$mobile,$TXN_AMOUNT,'pending',0,'$orderId','$ORDER_ID','pending','$address','$pickUpTime','$currentTime','$currentDate','cod','pending')";
+$insertInDb="insert into orderitems(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,address,pickuptime,pickuptime24,ordertime,orderdate,paymentmethod,orderstatus) values($CUST_ID,'$fullname','$email',$mobile,$TXN_AMOUNT,'pending',0,'$orderId','$ORDER_ID','pending','$address','$pickUpTime','$pickuptime24','$currentTime','$currentDate','cod','pending')";
 	   
 $resultGet = mysqli_query($connection, $insertInDb);
 
@@ -177,6 +178,10 @@ $userId=$lastInsertData['userId'];
 $mainOrderId=$last_id;
 $orderToken=$lastInsertData['orderId'];
 $txn_token=$lastInsertData['txn_token'];
+
+
+
+
 for ($i=0; $i <$countLength ; $i++) { 
 	$cartItemName=$item[$i]['itemName'];
 	$cartItemPrice=$item[$i]['price'];
@@ -195,7 +200,8 @@ $DataGetsRes = mysqli_query($connection, $insertItemsQuery);
 
 
 
-$_SESSION['orderComplete']="true";
+setcookie('orderComplete', 'true', time() + (60 * 5));
+
 header("Location: /sd-canteen/ordercomplete.php");
 
 }

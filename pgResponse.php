@@ -1,8 +1,15 @@
 <?php
+
+
+ 
+
+	
+	  setcookie('orderComplete', 'true', time() + (60 * 5));
+
+
         require('./middleware/ConnectToDatabase.php');
-		if (!isset($_SESSION)) {
-			session_start();
-		}
+
+		
 
 
 header("Pragma: no-cache");
@@ -42,13 +49,13 @@ if($isValidChecksum == "TRUE") {
 	$BANKNAME=$_POST['BANKNAME'];
 	$CHECKSUMHASH=$_POST['CHECKSUMHASH'];
 	
-	$paymentInfo="{\"ORDERID\":$ORDERID,\"TXNID\":$TXNID,\"TXNAMOUNT\":\"$TXNAMOUNT\",\"PAYMENTMODE\":\"$PAYMENTMODE\",\"CURRENCY\":\"$CURRENCY\",\"TXNDATE\":\"$TXNDATE\",\"STATUS\":\"$STATUS\",\"RESPCODE\":\"$RESPCODE\",\"RESPMSG\":\"$RESPMSG\",\"GATEWAYNAME\":\"$GATEWAYNAME\",\"BANKTXNID\":$BANKTXNID,\"BANKNAME\":\"$BANKNAME\",\"CHECKSUMHASH\":\"$CHECKSUMHASH\"}";
+	$paymentInfo="{\"ORDERID\":\"$ORDERID\",\"TXNID\":\"$TXNID\",\"TXNAMOUNT\":\"$TXNAMOUNT\",\"PAYMENTMODE\":\"$PAYMENTMODE\",\"CURRENCY\":\"$CURRENCY\",\"TXNDATE\":\"$TXNDATE\",\"STATUS\":\"$STATUS\",\"RESPCODE\":\"$RESPCODE\",\"RESPMSG\":\"$RESPMSG\",\"GATEWAYNAME\":\"$GATEWAYNAME\",\"BANKTXNID\":\"$BANKTXNID\",\"BANKNAME\":\"$BANKNAME\",\"CHECKSUMHASH\":\"$CHECKSUMHASH\"}";
 
 	echo "<b>Checksum matched and following are the transaction details:</b>" . "<br/>";
 	
 	
 	if ($_POST["STATUS"] == "TXN_SUCCESS") {
-	
+		
 //! success payment
 
 
@@ -72,10 +79,13 @@ $paymentinfo=$data['paymentinfo'];
 $itemsorder=$data['itemsorder'];
 $address=$data['address'];
 $pickuptime=$data['pickuptime'];
+$pickuptime24=$data['pickuptime24'];
 $ordertime=$data['ordertime'];
 $orderdate=$data['orderdate'];
 $paymentmethod=$data['paymentmethod'];
 $orderstatus=$data['orderstatus'];
+
+
 
 
 
@@ -85,26 +95,61 @@ $orderstatus=$data['orderstatus'];
 // check weather not double enter
 $checkDoubleEntry="select*from orderitems where txn_token='$ORDERID'";
 $resultGet = mysqli_query($connection, $checkDoubleEntry);
-
 $row=mysqli_num_rows($resultGet);
 
 if($row>0){
 
-	$_SESSION['orderComplete']="true";
+	
 	header("Location: /sd-canteen/ordercomplete.php");
-	return;
+
 }else{
 
 
 
-	$insertInDb="insert into orderitems(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,itemsorder,address,pickuptime,ordertime,orderdate,paymentmethod,orderstatus) values($userId,'$fullname','$email',$mobile,$totalamount,'success',$totalamount,'$orderId','$txn_token','$paymentInfo','$itemsorder','$address','$pickuptime','$ordertime','$orderdate','online','pending')";       
+	$insertInDb="insert into orderitems(userId,fullname,email,mobile,totalamount,paymentstatus,amountreceived,orderId,txn_token,paymentinfo,address,pickuptime,pickuptime24,ordertime,orderdate,paymentmethod,orderstatus) values($userId,'$fullname','$email',$mobile,$totalamount,'success',$totalamount,'$orderId','$txn_token','$paymentInfo','$address','$pickuptime','$pickuptime24','$ordertime','$orderdate','online','pending')";       
 	$resultGet = mysqli_query($connection, $insertInDb);
+$last_id = mysqli_insert_id($connection);
+	
 
-	$fetchFromDb1="delete from paymentdata where id=$id";
+
+// adding items in items table
+
+$item = json_decode($data['itemsorder'],true);
+$countLength=count($item);
+$userId=$data['userId'];
+$mainOrderId=$last_id;
+$orderToken=$data['orderId'];
+$txn_token=$data['txn_token'];
+
+
+for ($i=0; $i <$countLength ; $i++) { 
+	$cartItemName=$item[$i]['itemName'];
+	$cartItemPrice=$item[$i]['price'];
+	$cartItemQtyBook=$item[$i]['qtyBook'];
+	$cartItemTotal=$item[$i]['total'];
+	$cartItemSize=$item[$i]['size'];
+	$cartItemMainCategory=$item[$i]['itemMainCategory'];
+	$cartItemCategory=$item[$i]['category'];
+// insert all items in itemslist
+$insertItemsQuery="insert into itemlist(userId,mainOrderId,itemName,qty,size,maincategory,itemPrice,amountreceived,paymentstatus,orderstatus,category,txn_token,ordertoken) values($userId,$mainOrderId,'$cartItemName','$cartItemQtyBook','$cartItemSize','$cartItemMainCategory','$cartItemPrice','$cartItemPrice','success','pending','$cartItemCategory','$txn_token','$orderToken')";
+
+$DataGetsRes = mysqli_query($connection, $insertItemsQuery);
+}
+
+
+
+$fetchFromDb1="delete from paymentdata where id=$id";
 	$resultGet1 = mysqli_query($connection, $fetchFromDb1);
 
-	$_SESSION['orderComplete']="true";
+
+	
 	header("Location: /sd-canteen/ordercomplete.php");
+
+
+
+
+
+	
 }
 
 
