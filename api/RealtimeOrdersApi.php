@@ -98,7 +98,13 @@ while($subData=mysqli_fetch_array($res2)){
 <div class="div4"><?php echo $subData['category'];?>
 
 </div>
-<div class="div5"><?php echo $subData['itemPrice'];?></div>
+<div class="div5">
+<?php $price=$subData['itemPrice'];
+$qty=$subData['qty'];
+$total=$price*$qty;
+ echo $total;?>
+
+</div>
 <div class="div6"><?php echo $subData['amountreceived'];?></div>
 <div class="div7">
 <?php
@@ -154,11 +160,11 @@ if($subData['orderstatus']=="pending"){
 
 </div>
 <div class="options" id="dropDownMenu<?php echo $subData['id']?>" style="display:none">
-<div><span class="icon1">
+<div onclick='processOrderMenu("<?php echo $subData['id']?>")'><span class="icon1">
 <i class="fa-solid fa-spinner"></i></span> <span class="icon_1">Process</span> 
 </div>
 
-<div><span class="icon2"><i class="fa-solid fa-trash-can"></i></span> <span class="icon_2" >Reject</span> </div>
+<div onclick='processOrderReject("<?php echo $subData['id']?>")'><span class="icon2"><i class="fa-solid fa-trash-can"></i></span> <span class="icon_2" >Reject</span> </div>
 </div>
 
 
@@ -200,16 +206,17 @@ if($subData['orderstatus']=="reject"){
 <div class="div3"><?php echo $subData['qty'];?></div>
 <div class="div4"><?php echo $subData['category'];?>
 </div>
-<div class="div5"><?php 
+<div class="div5" id="totalAmount<?php echo $subData['id']?>"><?php 
 $price=$subData['itemPrice'];
 $qty=$subData['qty'];
 $total=$price*$qty;
 echo $total;?></div>
 <div class="div6">
-<input type="text" value="<?php echo $subData['amountreceived'];?>">
+<input type="text" id="amountReceived<?php echo $subData['id']?>" value="<?php echo $subData['amountreceived'];?>">
+<input type="text" id="maincategory<?php echo $subData['id']?>" value="<?php echo $subData['maincategory'];?>" style="display:none">
 </div>
 <div class="div7">
-<select>
+<select id="orderStatus<?php echo $subData['id']?>">
 <option value="pending">Pending</option>
 <option value="complete">Complete</option>
 </select>
@@ -217,10 +224,10 @@ echo $total;?></div>
 <div class="div8">
 
 
-<svg class="tick" stroke="currentColor" title="Update" fill="currentColor" stroke-width="0" version="1.2" baseProfile="tiny" viewBox="0 0 24 24" class="RealtimeOrder_tick__MD5Un" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Update</title><path d="M11 20c-.801 0-1.555-.312-2.121-.879l-4-4c-.567-.566-.879-1.32-.879-2.121s.312-1.555.879-2.122c1.133-1.133 3.109-1.133 4.242 0l1.188 1.188 3.069-5.523c.526-.952 1.533-1.544 2.624-1.544.507 0 1.012.131 1.456.378.7.39 1.206 1.028 1.427 1.798.221.771.127 1.581-.263 2.282l-5 9c-.454.818-1.279 1.384-2.206 1.514-.139.019-.277.029-.416.029zm-4-8c-.268 0-.518.104-.707.293s-.293.439-.293.707.104.518.293.707l4 4c.223.221.523.33.844.283.312-.043.586-.232.737-.504l5-9c.13-.233.161-.503.088-.76-.073-.257-.243-.47-.478-.6-.473-.264-1.101-.078-1.357.388l-4.357 7.841-3.062-3.062c-.19-.189-.44-.293-.708-.293z"></path></svg>
+<svg class="tick" onclick='sendOrderForProcess("<?php echo $subData['id']?>")' stroke="currentColor" title="Update" fill="currentColor" stroke-width="0" version="1.2" baseProfile="tiny" viewBox="0 0 24 24" class="RealtimeOrder_tick__MD5Un" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Update</title><path d="M11 20c-.801 0-1.555-.312-2.121-.879l-4-4c-.567-.566-.879-1.32-.879-2.121s.312-1.555.879-2.122c1.133-1.133 3.109-1.133 4.242 0l1.188 1.188 3.069-5.523c.526-.952 1.533-1.544 2.624-1.544.507 0 1.012.131 1.456.378.7.39 1.206 1.028 1.427 1.798.221.771.127 1.581-.263 2.282l-5 9c-.454.818-1.279 1.384-2.206 1.514-.139.019-.277.029-.416.029zm-4-8c-.268 0-.518.104-.707.293s-.293.439-.293.707.104.518.293.707l4 4c.223.221.523.33.844.283.312-.043.586-.232.737-.504l5-9c.13-.233.161-.503.088-.76-.073-.257-.243-.47-.478-.6-.473-.264-1.101-.078-1.357.388l-4.357 7.841-3.062-3.062c-.19-.189-.44-.293-.708-.293z"></path></svg>
 
 <!-- close menu -->
-<svg class="back" onclick='processOrder("<?php echo $subData['id']?>")' title="close menu" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="RealtimeOrder_back__KRJO_" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Back</title><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+<svg onclick='processOrderMenuClose("<?php echo $subData['id']?>")' class="back" onclick='processOrder("<?php echo $subData['id']?>")' title="close menu" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="RealtimeOrder_back__KRJO_" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Back</title><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
 </div>
 </div>
 
@@ -269,7 +276,372 @@ else{
     }
 
 
+
+
+
+    
+// process Order to complete
+if (isset($_POST['processOrder']) && isset($_POST['id'])){
+  $id= $_POST['id'];
+$GetQuery="select*from itemlist where id=$id";
+$res=mysqli_query($connection,$GetQuery);
+
+$row=mysqli_num_rows($res);
+if($row> 0){
+
+  $data=mysqli_fetch_assoc($res);
+
+  $price=$data['itemPrice'];
+  $mainOrderID=$data['mainOrderId'];
+ 
+  $qty=$data['qty'];
+  $totalamount=$price*$qty;
+$query="update itemlist set orderstatus='complete',paymentstatus='complete', amountreceived='$totalamount' where id=$id";
+$res=mysqli_query($connection,$query);
+
+$mainQuery="select*from orderitems where id=$mainOrderID";
+$userDataRes=mysqli_query($connection,$mainQuery);
+$userData=mysqli_fetch_assoc($userDataRes);
+
+$email=$userData['email'];
+$paymentinfo=$userData['paymentinfo'];
+$userId=$userData['id'];
+$fullname=$userData['fullname'];
+$orderId=$userData['orderId'];
+
+// update main orderitem status if all particular item complete
+$q="select*from itemlist where mainOrderId=$mainOrderID";
+$res1=mysqli_query($connection,$q);
+$count=mysqli_num_rows($res1);
+
+$counter=0;
+$reject=0;
+$amountReceived=0;
+while($dataCheck=mysqli_fetch_assoc($res1)){
+if($dataCheck["orderstatus"]=="complete"){
+  $counter++;
+  $amountReceived+=$dataCheck["amountreceived"];
 }
+if($dataCheck["orderstatus"]=="reject"){
+  $reject++; $counter++;
+}
+}
+
+// all orders processed
+
+if($count==$counter){
+// check any reject order
+if($reject>0){
+
+$userDataUpdate="update clientdata set cod='disabled' where id=$userId";
+
+if($paymentinfo=="pending"){
+  $updateMainRecord="update orderitems set paymentstatus='failed',paymentinfo='failed',orderstatus='reject',amountreceived=$amountReceived where id=$mainOrderID";
+  $execute=mysqli_query($connection,$updateMainRecord);
+  $execute1=mysqli_query($connection,$userDataUpdate);
+}
+else{
+
+
+  
+  $updateMainRecord="update orderitems set paymentstatus='failed',orderstatus='reject',amountreceived=$amountReceived where id=$mainOrderID";
+  $execute=mysqli_query($connection,$updateMainRecord);
+  $execute1=mysqli_query($connection,$userDataUpdate);
+}
+
+
+  $to = $email;
+                    $subject = "Order Rejected on the SD CANTEEN";
+                    $message = "
+<html>
+    <head>
+        <title>Order Rejected on the SD CANTEEN</title>
+    </head>
+
+    <body>
+        <div>
+        <img src='https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014809/ClientImages/logo_l0f3ug.png' alt='logo' height='50px' width='130px' style='margin-left:30vw'>
+        </div>
+        <div style='color:blue;background-color:rgb(255, 98, 0);padding:1% 0% 1% 3%;color:white;font-size:4vw'>SD CANTEEN</div>
+        <div style='text-align:center'><h4>Hi, $fullname</h4></div>
+        <div style='color:rgb(104, 104, 104);text-align:center;font-size:4vw'>
+       Welcome to SD CANTEEN!
+        </div>
+       <div style='text-align:center;margin-top:3%;margin-bottom:2%;font-size:3.6vw'>Your order with Token Number : <b> $orderId</b> has been <span style='color:red;'>rejected</span></div>
+       <div style='font-size:3vw;color:#4f4f4f;margin-top:4%'>Please place your order responsibly.</div>
+       <div style='font-size:3vw;color:#4f4f4f;margin-top:4%'><b>Note:</b>Cash On Delivery has been disabled for your account for  lifetime.</div>
+       <div style='font-size:3vw;text-align:center;color:#383838;margin-top:5%'>Thank You,</div>
+       <div style='font-size:evw;text-align:center;color: rgb(255, 98, 0);'>Team SD CANTEEN</div>
+       <div style='font-size:2vw;text-align:center;color:#4f4f4f;margin-top:6%;margin-bottom:6%'>If you think this request was made wrongly, you can contact customer support.</div> 
+        <div style='color:blue;background-color:rgb(255, 98, 0);padding:1% 0% 1% 3%;color:white;font-size:4vw'>SD CANTEEN</div>
+    
+    </body>
+</html>
+";
+                    // Always set content-type when sending HTML email
+                    $headers = "MIME-Version: 1.0" . "\r\n";
+                    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\b";
+                    $headers .= 'From: prpbrainbooster@gmail.com' . "\r\n";
+
+
+                    $result = mail($to, $subject, $message, $headers);
+                   
+
+
+
+}
+
+// ! if success
+else{
+
+  if($paymentinfo=="pending"){
+
+    $updateMainRecord="update orderitems set paymentstatus='success',paymentinfo='success',orderstatus='complete',amountreceived=$amountReceived where id=$mainOrderID";
+    $execute=mysqli_query($connection,$updateMainRecord);
+    
+  }else{
+
+
+    $updateMainRecord="update orderitems set paymentstatus='success',orderstatus='complete',amountreceived=$amountReceived where id=$mainOrderID";
+    $execute=mysqli_query($connection,$updateMainRecord);
+    
+  }
+  
+  
+  
+    $to = $email;
+                      $subject = "Your order is complete on SD CANTEEN";
+                      $message = "
+  <html>
+      <head>
+          <title>Your order is complete on SD CANTEEN</title>
+      </head>
+  
+      <body>
+          <div>
+          <img src='https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014809/ClientImages/logo_l0f3ug.png' alt='logo' height='50px' width='130px' style='margin-left:30vw'>
+          </div>
+          <div style='color:blue;background-color:rgb(255, 98, 0);padding:1% 0% 1% 3%;color:white;font-size:4vw'>SD CANTEEN</div>
+ <div style='text-align:center'><h4>Hi, $fullname</h4></div>
+ <div style='color:rgb(104, 104, 104);text-align:center;font-size:4vw'>
+Welcome to SD CANTEEN!
+ </div>
+<div style='text-align:center;margin-top:3%;margin-bottom:2%;font-size:3.5vw'>Your order with Token Number : <b> $orderId</b> has been <span style='color:blue;'>completed</span></div>
+<div style='font-size:3vw;color:#4f4f4f;margin-top:4%'>Thanks for placing an order using the SD CANTEEN </div>
+<div style='font-size:3vw;color:#4f4f4f;margin-top:4%'>Please don't forget to give ratings to the items by opening them on the SD CANTEEN website.</div>
+<div style='font-size:3vw;text-align:center;color:#383838;margin-top:5%'>Thank You,</div>
+<div style='font-size:evw;text-align:center;color: rgb(255, 98, 0);'>Team SD CANTEEN</div>
+<div style='font-size:2vw;text-align:center;color:#4f4f4f;margin-top:6%;margin-bottom:6%'>If you think this request was made wrongly, you can contact customer support.</div> 
+ <div style='color:blue;background-color:rgb(255, 98, 0);padding:1% 0% 1% 3%;color:white;font-size:4vw'>SD CANTEEN</div>
+      
+      </body>
+  </html>
+  ";
+                      // Always set content-type when sending HTML email
+                      $headers = "MIME-Version: 1.0" . "\r\n";
+                      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\b";
+                      $headers .= 'From: prpbrainbooster@gmail.com' . "\r\n";
+  
+  
+                      $result = mail($to, $subject, $message, $headers);
+                     
+  
+  
+  
+}
+
+}
+
+
+
+
+
+}
+}
+
+
+
+
+//! reject order
+if (isset($_POST['rejectOrder']) && isset($_POST['id'])){
+  $id= $_POST['id'];
+$GetQuery="select*from itemlist where id=$id";
+$res=mysqli_query($connection,$GetQuery);
+
+$row=mysqli_num_rows($res);
+if($row> 0){
+
+  $data=mysqli_fetch_assoc($res);
+
+  $price=$data['itemPrice'];
+  $mainOrderID=$data['mainOrderId'];
+ 
+  
+$query="update itemlist set orderstatus='reject',paymentstatus='reject', amountreceived='0' where id=$id";
+$res=mysqli_query($connection,$query);
+
+$mainQuery="select*from orderitems where id=$mainOrderID";
+$userDataRes=mysqli_query($connection,$mainQuery);
+$userData=mysqli_fetch_assoc($userDataRes);
+
+$email=$userData['email'];
+$userId=$userData['id'];
+$paymentinfo=$userData['paymentinfo'];
+$fullname=$userData['fullname'];
+$orderId=$userData['orderId'];
+
+// update main orderitem status if all particular item complete
+$q="select*from itemlist where mainOrderId=$mainOrderID";
+$res1=mysqli_query($connection,$q);
+$count=mysqli_num_rows($res1);
+
+$counter=0;
+$reject=0;
+$amountReceived=0;
+while($dataCheck=mysqli_fetch_assoc($res1)){
+if($dataCheck["orderstatus"]=="complete"){
+  $counter++;
+  $amountReceived+=$dataCheck["amountreceived"];
+}
+if($dataCheck["orderstatus"]=="reject"){
+  $reject++; $counter++;
+}
+}
+
+// all orders processed
+
+if($count==$counter){
+// check any reject order
+if($reject>0){
+$userDataUpdate="update clientdata set cod='disabled' where id=$userId";
+
+
+if($paymentinfo=="pending"){
+  $updateMainRecord="update orderitems set paymentstatus='failed',paymentinfo='failed',orderstatus='reject',amountreceived=$amountReceived where id=$mainOrderID";
+  $execute=mysqli_query($connection,$updateMainRecord);
+  $execute1=mysqli_query($connection,$userDataUpdate);
+
+}else{
+
+
+  $updateMainRecord="update orderitems set paymentstatus='failed',orderstatus='reject',amountreceived=$amountReceived where id=$mainOrderID";
+  $execute=mysqli_query($connection,$updateMainRecord);
+  $execute1=mysqli_query($connection,$userDataUpdate);
+}
+
+
+
+
+  $to = $email;
+                    $subject = "Order Rejected on the SD CANTEEN";
+                    $message = "
+<html>
+    <head>
+        <title>Order Rejected on the SD CANTEEN</title>
+    </head>
+
+    <body>
+        <div>
+        <img src='https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014809/ClientImages/logo_l0f3ug.png' alt='logo' height='50px' width='130px' style='margin-left:30vw'>
+        </div>
+        <div style='color:blue;background-color:rgb(255, 98, 0);padding:1% 0% 1% 3%;color:white;font-size:4vw'>SD CANTEEN</div>
+        <div style='text-align:center'><h4>Hi, $fullname</h4></div>
+        <div style='color:rgb(104, 104, 104);text-align:center;font-size:4vw'>
+       Welcome to SD CANTEEN!
+        </div>
+       <div style='text-align:center;margin-top:3%;margin-bottom:2%;font-size:3.6vw'>Your order with Token Number : <b> $orderId</b> has been <span style='color:red;'>rejected</span></div>
+       <div style='font-size:3vw;color:#4f4f4f;margin-top:4%'>Please place your order responsibly.</div>
+       <div style='font-size:3vw;color:#4f4f4f;margin-top:4%'><b>Note:</b>Cash On Delivery has been disabled for your account for  lifetime.</div>
+       <div style='font-size:3vw;text-align:center;color:#383838;margin-top:5%'>Thank You,</div>
+       <div style='font-size:evw;text-align:center;color: rgb(255, 98, 0);'>Team SD CANTEEN</div>
+       <div style='font-size:2vw;text-align:center;color:#4f4f4f;margin-top:6%;margin-bottom:6%'>If you think this request was made wrongly, you can contact customer support.</div> 
+        <div style='color:blue;background-color:rgb(255, 98, 0);padding:1% 0% 1% 3%;color:white;font-size:4vw'>SD CANTEEN</div>
+    
+    </body>
+</html>
+";
+                    // Always set content-type when sending HTML email
+                    $headers = "MIME-Version: 1.0" . "\r\n";
+                    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\b";
+                    $headers .= 'From: prpbrainbooster@gmail.com' . "\r\n";
+
+
+                    $result = mail($to, $subject, $message, $headers);
+                   
+
+
+
+}
+else{
+
+if($paymentinfo== "pending"){
+
+  $updateMainRecord="update orderitems set paymentstatus='success',paymentinfo='success',orderstatus='complete',amountreceived=$amountReceived where id=$mainOrderID";
+  $execute=mysqli_query($connection,$updateMainRecord);
+}
+
+else{
+
+
+  $updateMainRecord="update orderitems set paymentstatus='success',orderstatus='complete',amountreceived=$amountReceived where id=$mainOrderID";
+  $execute=mysqli_query($connection,$updateMainRecord);
+}
+  
+  
+  
+  
+    $to = $email;
+                      $subject = "Your order is complete on SD CANTEEN";
+                      $message = "
+  <html>
+      <head>
+          <title>Your order is complete on SD CANTEEN</title>
+      </head>
+  
+      <body>
+          <div>
+          <img src='https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014809/ClientImages/logo_l0f3ug.png' alt='logo' height='50px' width='130px' style='margin-left:30vw'>
+          </div>
+          <div style='color:blue;background-color:rgb(255, 98, 0);padding:1% 0% 1% 3%;color:white;font-size:4vw'>SD CANTEEN</div>
+ <div style='text-align:center'><h4>Hi, $fullname</h4></div>
+ <div style='color:rgb(104, 104, 104);text-align:center;font-size:4vw'>
+Welcome to SD CANTEEN!
+ </div>
+<div style='text-align:center;margin-top:3%;margin-bottom:2%;font-size:3.5vw'>Your order with Token Number : <b> $orderId</b> has been <span style='color:blue;'>completed</span></div>
+<div style='font-size:3vw;color:#4f4f4f;margin-top:4%'>Thanks for placing an order using the SD CANTEEN </div>
+<div style='font-size:3vw;color:#4f4f4f;margin-top:4%'>Please don't forget to give ratings to the items by opening them on the SD CANTEEN website.</div>
+<div style='font-size:3vw;text-align:center;color:#383838;margin-top:5%'>Thank You,</div>
+<div style='font-size:evw;text-align:center;color: rgb(255, 98, 0);'>Team SD CANTEEN</div>
+<div style='font-size:2vw;text-align:center;color:#4f4f4f;margin-top:6%;margin-bottom:6%'>If you think this request was made wrongly, you can contact customer support.</div> 
+ <div style='color:blue;background-color:rgb(255, 98, 0);padding:1% 0% 1% 3%;color:white;font-size:4vw'>SD CANTEEN</div>
+      
+      </body>
+  </html>
+  ";
+                      // Always set content-type when sending HTML email
+                      $headers = "MIME-Version: 1.0" . "\r\n";
+                      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\b";
+                      $headers .= 'From: prpbrainbooster@gmail.com' . "\r\n";
+  
+  
+                      $result = mail($to, $subject, $message, $headers);
+                     
+  
+  
+  
+}
+
+}
+
+
+
+
+
+}
+}
+}
+
+
 
 
 

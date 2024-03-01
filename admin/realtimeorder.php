@@ -173,7 +173,8 @@ if(document.getElementById(`dropDownMenu${id}`).style.display=="block"){
   document.getElementById(`dropDownMenuOpenIcon${id}`).style.cursor="pointer";
   document.getElementById(`dropDownMenuOpenIcon${id}`).style.display="block";
   document.getElementById(`dropDownMenuCloseIcon${id}`).style.display="none";
-  document.getElementById(`UpdateFormDiv${id}`).style.display="none";
+
+  // document.getElementById(`UpdateFormDiv${id}`).style.display="none";
 
 }
 
@@ -182,11 +183,188 @@ else{
   document.getElementById(`dropDownMenuOpenIcon${id}`).style.display="none";
   document.getElementById(`dropDownMenuCloseIcon${id}`).style.display="block";
   document.getElementById(`dropDownMenuCloseIcon${id}`).style.cursor="pointer";
-  document.getElementById(`UpdateFormDiv${id}`).style.display="flex";
-console.log(document.getElementById(`UpdateFormDiv${id}`))
+
+
+
+
 }
  
 
+
+}
+
+
+function processOrderMenu(id){
+
+  document.getElementById(`dropDownMenu${id}`).style.display="none";
+  document.getElementById(`UpdateFormDiv${id}`).style.display="flex";
+}
+
+function processOrderMenuClose(id){
+
+  document.getElementById(`UpdateFormDiv${id}`).style.display="none";
+}
+
+
+
+function sendOrderForProcess(id){
+
+
+
+  let orderStatus=document.getElementById(`orderStatus${id}`).value;
+  let maincategory=document.getElementById(`maincategory${id}`).value;
+  let amountReceived=parseInt(document.getElementById(`amountReceived${id}`).value);
+  let totalAmount=parseInt(document.getElementById(`totalAmount${id}`).innerText);
+
+  if(orderStatus=="pending"){
+    alert('please change order status');
+    return;
+  }
+
+  if(parseInt(amountReceived)==0){
+    alert('please update amount Received');
+    return;
+  }
+
+  if(parseInt(totalAmount)<parseInt(amountReceived)){
+    alert('amount received is above the total price');
+    return
+  }
+  if(parseInt(totalAmount)>parseInt(amountReceived)){
+    alert('amount received is below the total price');
+    return
+
+  }
+let password="";
+  if(maincategory=="food"){
+    password=prompt('Enter Food Secret Password to process ');
+    
+  }
+  if(maincategory=="coffee"){
+    password=prompt('Enter Coffee Secret Password to process ');
+  }
+  if(maincategory=="drink"){
+
+    password=prompt('Enter Drink Secret Password to process ');
+  }
+  if(maincategory=="juice"){
+
+    password=prompt('Enter Juice Secret Password to process ');
+  }
+// matching password
+  if(maincategory=="food"){
+  if(password!=="food"){
+    alert('Wrong Food Secret Password');
+    return;
+  }}
+  if(maincategory=="coffee"){
+  if(password!=="coffee"){
+    alert('Wrong Coffee Secret Password');
+    return;
+  }}
+  if(maincategory=="drink"){
+  if(password!=="drink"){
+    alert('Wrong Drink Secret Password');
+    return;
+  }}
+  if(maincategory=="juice"){
+  if(password!=="juice"){
+    alert('Wrong Juice Secret Password');
+    return;
+  }}
+
+
+
+
+
+  $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+                data: {
+                  processOrder: 'process',
+                    id:id
+                },
+                // return data
+                success: function(res) {
+
+                  document.location.reload();
+                }
+
+              })
+
+}
+
+
+// reject order
+
+function processOrderReject(id){
+
+
+
+
+let maincategory=document.getElementById(`maincategory${id}`).value;
+
+
+
+
+let password="";
+if(maincategory=="food"){
+  password=prompt('Enter Food Secret Password to process ');
+  
+}
+if(maincategory=="coffee"){
+  password=prompt('Enter Coffee Secret Password to process ');
+}
+if(maincategory=="drink"){
+
+  password=prompt('Enter Drink Secret Password to process ');
+}
+if(maincategory=="juice"){
+
+  password=prompt('Enter Juice Secret Password to process ');
+}
+// matching password
+if(maincategory=="food"){
+if(password!=="food"){
+  alert('Wrong Food Secret Password');
+  return;
+}}
+if(maincategory=="coffee"){
+if(password!=="coffee"){
+  alert('Wrong Coffee Secret Password');
+  return;
+}}
+if(maincategory=="drink"){
+if(password!=="drink"){
+  alert('Wrong Drink Secret Password');
+  return;
+}}
+if(maincategory=="juice"){
+if(password!=="juice"){
+  alert('Wrong Juice Secret Password');
+  return;
+}}
+
+
+
+
+
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+              data: {
+                rejectOrder: 'reject',
+                  id:id
+              },
+              // return data
+              success: function(res) {
+               
+
+                document.location.reload();
+               
+              }
+
+            })
 
 }
 
