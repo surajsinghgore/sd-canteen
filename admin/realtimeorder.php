@@ -164,6 +164,33 @@
 <script>
 
 
+
+// process order
+function processOrder(id){
+// if open then show close
+if(document.getElementById(`dropDownMenu${id}`).style.display=="block"){
+  document.getElementById(`dropDownMenu${id}`).style.display="none";
+  document.getElementById(`dropDownMenuOpenIcon${id}`).style.cursor="pointer";
+  document.getElementById(`dropDownMenuOpenIcon${id}`).style.display="block";
+  document.getElementById(`dropDownMenuCloseIcon${id}`).style.display="none";
+  document.getElementById(`UpdateFormDiv${id}`).style.display="none";
+
+}
+
+else{
+  document.getElementById(`dropDownMenu${id}`).style.display="block";
+  document.getElementById(`dropDownMenuOpenIcon${id}`).style.display="none";
+  document.getElementById(`dropDownMenuCloseIcon${id}`).style.display="block";
+  document.getElementById(`dropDownMenuCloseIcon${id}`).style.cursor="pointer";
+  document.getElementById(`UpdateFormDiv${id}`).style.display="flex";
+console.log(document.getElementById(`UpdateFormDiv${id}`))
+}
+ 
+
+
+}
+
+
 $.ajax({
                 type: "POST", //type of method
                 url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
