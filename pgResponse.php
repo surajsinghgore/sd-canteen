@@ -1,11 +1,6 @@
 <?php
 
 
- 
-
-	
-	  setcookie('orderComplete', 'true', time() + (60 * 5));
-
 
         require('./middleware/ConnectToDatabase.php');
 

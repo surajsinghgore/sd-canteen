@@ -7,6 +7,7 @@ if (!isset($_SESSION)) {
 
 if (isset($_SESSION['activeClientId'])) {
 
+	$_SESSION['redirect']="trues";
 	$CUST_ID=$_SESSION['activeClientId'] ;
       //   connection
 	  require('./middleware/ConnectToDatabase.php');
@@ -107,7 +108,7 @@ if($rowCount==0){
 	<body>
 		<center><h1>Please do not refresh this page...</h1></center>
 			<form method="post" action="<?php echo PAYTM_TXN_URL ?>" name="f1">
-			<table border="1">
+			<table >
 				<tbody>
 				<?php
 				foreach($paramList as $name => $value) {
@@ -138,8 +139,6 @@ if($rowCount==0){
 
 // cod payment
 else{
-
-
 
 // generate orderId
 $length = 6;
@@ -199,8 +198,6 @@ $DataGetsRes = mysqli_query($connection, $insertItemsQuery);
 }
 
 
-
-setcookie('orderComplete', 'true', time() + (60 * 5));
 
 header("Location: /sd-canteen/ordercomplete.php");
 

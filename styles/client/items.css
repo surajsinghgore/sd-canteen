@@ -182,14 +182,15 @@
   
   .searchSection .topSection .right .subSection .subHeading {
     font-size: 16px;
-    columns: rgb(101, 101, 101);
+    color: rgb(101, 101, 101);
     padding-top: 1%;
+
   }
   .searchSection .topSection .right .subSection .subData {
     color: rgb(5, 5, 5);
     font-size: 19px;
     font-weight: 500;
-    padding-left: 2%;
+    padding-left: 2%;    text-transform: capitalize;
     padding-right: 4%;
   }
   
