@@ -598,10 +598,12 @@
     display: flex;
     margin-left: 3%;
     position: relative;
+ 
     height: auto;
   }
   .reviews .box .clientReview form .rateSection h2 {
     font-size: 17px;
+    margin-bottom: 5%;
   }
   
   .reviews .box .clientReview form .rateSection .rateClient {
@@ -637,6 +639,39 @@
     box-shadow: 0px 0px 12px 2px rgb(252, 180, 180);
   }
   
+
+  /* starRatingBox1 */
+  .starRatingBox1{
+    margin-bottom: 2%;
+    margin-top: 2%;
+    font-size: 19px;
+    display: flex;
+    margin-top: -26%;
+    padding:2px 15px;
+    border-radius: 3px;
+  background-color: orange;
+  }
+
+  .starRatingBox1 span{
+
+  }
+  .starIcon{
+    padding-left: 4px;
+    padding-top: 12%;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+  }
+
+  .rateClient select{
+position: absolute;
+top: -132%;
+right: -380%;
+font-size: 20px;
+text-transform: capitalize;
+    width: 270px;
+  }
+
+
   @media only screen and (min-device-width: 0px) and (max-device-width: 1000px) {
     .searchSection {
       margin-top: 22vw;

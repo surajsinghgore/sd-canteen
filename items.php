@@ -507,6 +507,156 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
 ?>
 
 
+
+
+<div class="reviews">
+
+<div class="box">
+
+
+<!-- client review -->
+<div class="clientReview">
+              
+           <!-- <h1> Update your feedback</h1>  -->
+           
+                <h1> Leave feedback about this item for others</h1>
+         
+<!-- user message -->
+               <form>
+                 <input type="text" placeholder="Client Name" value="userName"  />
+                 <textarea
+                   name="message"
+                   value="userMessage"
+                   
+                   placeholder="Write Your Reviews*"
+                 ></textarea>
+
+                 <!-- Quality Rate  -->
+                 <div class="rateSection">
+               
+                   <h2>Quality Rate of Item: </h2>
+                   <div class="rateClient">
+                   <div class="starRatingBox1" >
+        <span id="priceMenu1">
+        4.1 
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+    <select name="itemRate" id="itemRate">
+      <option value="no">please give item quality Rate</option>
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5">5</option>
+    </select>
+                   </div>
+                 </div>
+
+             <!-- service rate -->
+                 <div class="rateSection">
+                
+                   <h2>Service Rate: </h2>
+                   <div class="rateClient">
+                     <!-- star -->
+
+                     <div class="starRatingBox1" >
+        <span id="priceMenu1">
+        4.1 
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+    <select name="itemRate" id="itemRate">
+      <option value="no">please give item service Rate</option>
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5">5</option>
+    </select>
+   
+                   </div>
+                 </div>
+                 <!-- price rate  -->
+                 <div class="rateSection">
+                   
+                   <h2>Price Rate of Item: </h2>
+                   <div class="rateClient">
+                   <div class="starRatingBox1" >
+        <span id="priceMenu1">
+        4.1 
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+
+    <select name="itemRate" id="itemRate">
+      <option value="no">please give item Price Rate</option>
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5">5</option>
+    </select>
+                   </div>
+                 </div>
+
+            <!-- item rate -->
+                 <div class="rateSection">
+               
+                   <h2>Overall Rate of Item: </h2>
+                   <div class="rateClient">
+                   <div class="starRatingBox1" >
+        <span id="priceMenu1">
+        4.1 
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+
+
+    <select name="itemRate" id="itemRate">
+      <option value="no">please give item overall Rate</option>
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5">5</option>
+    </select>
+                   </div>
+                 </div>
+               </form>
+              
+               <!-- <button onClick="updateRating}>Update Review</button> -->
+     
+               
+               <button >Submit Review</button>
+               
+               
+             </div>
+
+             </div>
+</div>
+
+
      
     <!-- footer -->
     <?php require('./components/Footer.php'); ?>
