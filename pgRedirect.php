@@ -186,10 +186,9 @@ for ($i=0; $i <$countLength ; $i++) {
 $DataGetsRes = mysqli_query($connection, $insertItemsQuery);
 
 }
-// arrange cart data
 
 
-
+// sending mail
 $email_body="<html>
 <head>
 <title>Order Placed </title>
@@ -285,7 +284,7 @@ $email_body="<html>
 
 $to = $email;
 $subject = "Order Placed ";
-$message = "";
+
 
 
     
@@ -300,11 +299,7 @@ $result = mail($to, $subject, $email_body, $headers);
 if ($result == true) {
 	header("Location: /sd-canteen/ordercomplete.php");
 
-}else{
-
-	echo'ss';
 }
-
 
 
 
