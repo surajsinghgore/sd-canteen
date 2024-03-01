@@ -71,7 +71,7 @@ unset($_SESSION['redirect']);
        
   </h1>
           <h2>
-            Total Order Placed : <span>23</span>
+            Total Order Placed : <span id="totalItems">0</span>
           </h2>
         </div>
         <div class="orderToday">
@@ -93,13 +93,13 @@ unset($_SESSION['redirect']);
 
 $activeUserId=$_SESSION['activeClientId'];
 
-$mainQuery="select* from orderitems where userId=$activeUserId and orderdate like '$currentDate'";
+$mainQuery="select* from orderitems where userId=$activeUserId and orderdate like '$currentDate' and orderstatus like 'pending'";
 $resMain=mysqli_query($connection,$mainQuery);
 $mainCount=mysqli_num_rows($resMain);
 
 if($mainCount>0){
 
-$query="select* from orderitems where userId=$activeUserId and orderdate like '$currentDate'  order by pickuptime24";
+$query="select* from orderitems where userId=$activeUserId and orderdate like '$currentDate' and orderstatus like 'pending' order by pickuptime24 ";
 $res=mysqli_query($connection,$query);
 $countRecord=mysqli_num_rows($res);
 // todays orders
@@ -493,7 +493,12 @@ function updateTime() {
 
 // Call updateTime every second
 setInterval(updateTime, 1000);
+
+document.getElementById('totalItems').innerText=document.getElementsByClassName('orders').length;
+
     </script>
+
+    
 </body>
 
 </html>
