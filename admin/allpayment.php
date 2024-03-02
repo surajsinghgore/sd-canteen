@@ -290,7 +290,7 @@ else if($data['paymentstatus']=="reject"){
                                     if(isset($dataArray['TXNAMOUNT'])){
                                         echo $dataArray['TXNAMOUNT'];
                                     }else{
-                                        echo 'NO';
+                                        echo 'COD';
                                     }
                                    ?>
                                     </div>
@@ -308,7 +308,7 @@ else if($data['paymentstatus']=="reject"){
                                     if(isset($dataArray['CURRENCY'])){
                                         echo $dataArray['CURRENCY'];
                                     }else{
-                                        echo 'NO';
+                                        echo 'COD';
                                     }
                                     ?>
                                     </div>
@@ -323,7 +323,7 @@ else if($data['paymentstatus']=="reject"){
                                     if(isset($dataArray['BANKNAME'])){
                                         echo $dataArray['BANKNAME'];
                                     }else{
-                                        echo 'NO';
+                                        echo 'COD';
                                     }
                                     ?>
                                     </div>
@@ -338,7 +338,7 @@ else if($data['paymentstatus']=="reject"){
                                     if(isset($dataArray['BANKTXNID'])){
                                         echo $dataArray['BANKTXNID'];
                                     }else{
-                                        echo 'NO';
+                                        echo 'COD';
                                     }
                                     ?>
                                     </div>
@@ -352,7 +352,7 @@ else if($data['paymentstatus']=="reject"){
                                     if(isset($dataArray['GATEWAYNAME'])){
                                         echo $dataArray['GATEWAYNAME'];
                                     }else{
-                                        echo 'NO';
+                                        echo 'COD';
                                     }
                                     ?>
                                     </div>
@@ -368,7 +368,7 @@ else if($data['paymentstatus']=="reject"){
                                     if(isset($dataArray['PAYMENTMODE'])){
                                         echo $dataArray['PAYMENTMODE'];
                                     }else{
-                                        echo 'NO';
+                                        echo 'COD';
                                     }
                                     ?>
                                     </div>
@@ -382,7 +382,7 @@ else if($data['paymentstatus']=="reject"){
                                     if(isset($dataArray['TXNDATE'])){
                                         echo $dataArray['TXNDATE'];
                                     }else{
-                                        echo 'NO';
+                                        echo 'COD';
                                     }
                                     ?>
                                     </div>
@@ -396,7 +396,7 @@ else if($data['paymentstatus']=="reject"){
                                     if(isset($dataArray['STATUS'])){
                                         echo $dataArray['STATUS'];
                                     }else{
-                                        echo 'NO';
+                                        echo 'COD';
                                     }
                                     ?>
                                     </div>
@@ -470,8 +470,8 @@ $.ajax({
               },
               // return data
               success: function(res) {
-        
-                document.getElementById('cards').innerHTML=res;
+        console.log(res)
+                // document.getElementById('cards').innerHTML=res;
               }
 
             })

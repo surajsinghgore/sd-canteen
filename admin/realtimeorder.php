@@ -167,7 +167,7 @@ $RejectOrderLen=mysqli_num_rows($res3);
 
 // orders not on time
 
-$currentTime = date("h:i:s A");
+$currentTime = date("H:i:s A");
 $query4="select*from orderitems where orderdate like '$currentDate' and pickuptime24<'$currentTime' and orderstatus='pending'";
 
 $res4=mysqli_query($connection, $query4);

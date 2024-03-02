@@ -2643,7 +2643,7 @@ if (isset($_POST['completeOrders'])) {
 
     date_default_timezone_set("Asia/Calcutta");
     $currentDate = date("d-m-Y");
-    $currentTime = date("h:i:s A");
+    $currentTime = date("H:i:s A");
   $query="select*from orderitems where orderdate like '$currentDate' and pickuptime24<'$currentTime' order by pickuptime24";
   $res=mysqli_query($connection, $query);
   $row=mysqli_num_rows($res);
