@@ -570,7 +570,7 @@
     padding-left: 3%;
     padding-bottom: 2%;
   }
-  .reviews .box .clientReview form input {
+  .reviews .box .clientReview  input {
     width: 92%;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -580,7 +580,7 @@
     border: none;
     font-size: 21px;
   }
-  .reviews .box .clientReview form textarea {
+  .reviews .box .clientReview  textarea {
     width: 92%;
     padding-top: 1%;
     padding-bottom: 17%;
@@ -593,30 +593,35 @@
     margin-bottom: 4%;
     font-size: 21px;
   }
-  .reviews .box .clientReview form .rateSection {
+  .reviews .box .clientReview  .rateSection {
     width: 92%;
-    display: flex;
+
+    margin-top: 3%;
+display: flex;
     margin-left: 3%;
     position: relative;
  
     height: auto;
   }
-  .reviews .box .clientReview form .rateSection h2 {
+  .reviews .box .clientReview  .rateSection h2 {
     font-size: 17px;
     margin-bottom: 5%;
+    margin-right: 3%;
+    width: 20%;
   }
   
-  .reviews .box .clientReview form .rateSection .rateClient {
-    margin-left: 3%;
-    margin-top: 1.2%;
-    position: absolute;
+  .reviews .box .clientReview  .rateSection .rateClient {
+    margin-left:0%;
+    margin-top: 0%;
+    position: relative;
     top: 0;
-    left: 22%;
+    display: flex;
+    left: 0;
   }
-  .reviews .box .clientReview form .rateSection .rateClient .tool {
+  .reviews .box .clientReview  .rateSection .rateClient .tool {
     font-size: 10px;
   }
-  .reviews .box .clientReview form .rateSection .rateClient .sizesofStar {
+  .reviews .box .clientReview  .rateSection .rateClient .sizesofStar {
     font-size: 2px;
   }
   .reviews .box .clientReview button {
@@ -641,34 +646,42 @@
   
 
   /* starRatingBox1 */
-  .starRatingBox1{
+  .reviews .box .clientReview  .rateSection .starRatingBox1{
     margin-bottom: 2%;
     margin-top: 2%;
-    font-size: 19px;
+    font-size: 17px;
     display: flex;
-    margin-top: -26%;
-    padding:2px 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+    width: 80px;
+    padding-left: 10%;
     border-radius: 3px;
   background-color: orange;
   }
 
-  .starRatingBox1 span{
-
-  }
-  .starIcon{
+ 
+  .reviews .box .clientReview  .rateSection .starIcon{
     padding-left: 4px;
-    padding-top: 12%;
-    font-size: 20px;
+    position: absolute;
+    top: 17%;
+    right:18%;
+    font-size: 18px;
     color: rgb(255, 255, 255);
   }
 
-  .rateClient select{
-position: absolute;
-top: -132%;
-right: -380%;
-font-size: 20px;
+  .reviews .box .clientReview  .rateSection  select{
+    position: absolute;
+position: relative;
+top: 4%;
+left:60%;
+font-size: 16px;
+outline: none;
+text-align: center;
+height: 25.7px;
 text-transform: capitalize;
-    width: 270px;
+    width:150px;
   }
 
 
@@ -1046,14 +1059,14 @@ text-transform: capitalize;
     .reviews .box .clientReview h1 {
       font-size: 5vw;
     }
-    .reviews .box .clientReview form input {
+    .reviews .box .clientReview  input {
       width: 92%;
       padding-top: 3%;
       padding-bottom: 3%;
   
       font-size: 5vw;
     }
-    .reviews .box .clientReview form textarea {
+    .reviews .box .clientReview  textarea {
       width: 92%;
   
       height: 40vw;
@@ -1063,13 +1076,13 @@ text-transform: capitalize;
       display: flex;
       flex-wrap: wrap;
     }
-    .reviews .box .clientReview form .rateSection h2 {
+    .reviews .box .clientReview  .rateSection h2 {
       font-size: 4vw;
       width: 100%;
       text-align: center;
     }
   
-    .reviews .box .clientReview form .rateSection .rateClient {
+    .reviews .box .clientReview  .rateSection .rateClient {
       margin-left: 3%;
       margin-top: 1.2%;
       width: 100%;
@@ -1078,7 +1091,7 @@ text-transform: capitalize;
       top: 0;
       left: 0%;
     }
-    .reviews .box .clientReview form .rateSection .rateClient .tool {
+    .reviews .box .clientReview  .rateSection .rateClient .tool {
       font-size: 3vw;
       margin-top: 2%;
       margin-bottom: 2%;

@@ -133,7 +133,8 @@ $itemRateData=mysqli_fetch_assoc($executeItemRating);
     <span
       class="activeBtn"
     >
-   
+   <input type="text" name="itemname" id="itemnameofcurrent" value="<?php echo $data['foodname'];?>" readonly style="display:none">
+   <input type="text" name="userid" id="userId" value="<?php echo $_SESSION['activeClientId'];?>" readonly style="display:none">
     </span>
   </h1>
  
@@ -721,9 +722,6 @@ echo $itemRateData['numberofrating'];
                 </div>
 
 
-
-                <svg class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
-                
           
 
           
@@ -773,7 +771,26 @@ if(isset($_SESSION['activeClientId'])){
 $checkQuery="select*from itemlist where userID=$clientIdActive and orderstatus='complete' and itemName like '%$itemname%'";
 $result = mysqli_query($connection,$checkQuery);
 $reviewCheck=mysqli_num_rows($result);
+echo $reviewCheck;
 if($reviewCheck> 0){
+  // check weather first time giving or already giving
+  $itemsratingRes="select*from itemsrating where itemName like '%$itemname%'";
+$itemRatingDataRes=mysqli_query($connection,$itemsratingRes);
+$itemRatingDataResCount=mysqli_num_rows($itemRatingDataRes);
+
+if($itemRatingDataResCount> 0){
+
+
+$itemRatingData=mysqli_fetch_assoc($itemRatingDataRes);
+$itemId=$itemRatingData['id'];
+echo $itemId;
+  $checkUpdateQuery="select*from itemratingcomments where userId=$clientIdActive and ratingId=$itemId";
+  $updateResQuery=mysqli_query($connection,$checkUpdateQuery);
+  $updateRowQuery=mysqli_num_rows($updateResQuery);
+  $updateData=mysqli_fetch_assoc($updateResQuery);
+
+// update because rating already given by user
+  if($updateRowQuery>0){
 ?>
 <div class="reviews">
 
@@ -783,19 +800,22 @@ if($reviewCheck> 0){
 <!-- client review -->
 <div class="clientReview">
               
-           <!-- <h1> Update your feedback</h1>  -->
+           <h1> Update your feedback</h1> 
            
-                <h1> Leave feedback about this item for others</h1>
-         
+              
 <!-- user message -->
-               <form>
-                 <input type="text" placeholder="Client Name"   />
+            
+                 <input type="text" placeholder="Client Name"   value="<?php echo $_SESSION['activeClientFullname'];?>"
+                 
+                   readonly >
                  <textarea
                    name="message"
-                   value="userMessage"
+                   id="commentMessage"
                    
                    placeholder="Write Your Reviews*"
-                 ></textarea>
+                 ><?php echo $updateData['message'];?>
+                
+               </textarea>
 
                  <!-- Quality Rate  -->
                  <div class="rateSection">
@@ -803,13 +823,13 @@ if($reviewCheck> 0){
                    <h2>Quality Rate of Item: </h2>
                    <div class="rateClient">
                    <div class="starRatingBox1" >
-        <span id="priceMenu1">
-        4.1 
+        <span id="qualityRateStar">
+        <?php echo $updateData['QualityRate'];?>
         </span>
         <span class="fa fa-star starIcon"></span>
     </div>
-    <select name="itemRate" id="itemRate">
-      <option value="no">please give item quality Rate</option>
+    <select name="itemRate" id="qualityRate">
+     <option value="<?php echo $updateData['QualityRate'];?>" selected ><?php echo $updateData['QualityRate'];?></option>
       <option value="0.5">0.5</option>
       <option value="1">1</option>
       <option value="1.5">1.5</option>
@@ -832,13 +852,14 @@ if($reviewCheck> 0){
                      <!-- star -->
 
                      <div class="starRatingBox1" >
-        <span id="priceMenu1">
-        4.1 
+        <span id="serviceRateStar" >
+        <?php echo $updateData['ServiceRate'];?>
         </span>
         <span class="fa fa-star starIcon"></span>
     </div>
-    <select name="itemRate" id="itemRate">
-      <option value="no">please give item service Rate</option>
+    <select name="itemRate" id="serviceRate">
+
+      <option value="<?php echo $updateData['ServiceRate'];?>" selected><?php echo $updateData['ServiceRate'];?></option>
       <option value="0.5">0.5</option>
       <option value="1">1</option>
       <option value="1.5">1.5</option>
@@ -859,14 +880,14 @@ if($reviewCheck> 0){
                    <h2>Price Rate of Item: </h2>
                    <div class="rateClient">
                    <div class="starRatingBox1" >
-        <span id="priceMenu1">
-        4.1 
+        <span id="priceRateStar">
+        <?php echo $updateData['PriceRate'];?>
         </span>
         <span class="fa fa-star starIcon"></span>
     </div>
 
-    <select name="itemRate" id="itemRate">
-      <option value="no">please give item Price Rate</option>
+    <select name="itemRate" id="priceRate">
+    <option value="<?php echo $updateData['PriceRate'];?>" selected>  <?php echo $updateData['PriceRate'];?></option>
       <option value="0.5">0.5</option>
       <option value="1">1</option>
       <option value="1.5">1.5</option>
@@ -876,45 +897,18 @@ if($reviewCheck> 0){
       <option value="3.5">3.5</option>
       <option value="4">4</option>
       <option value="4.5">4.5</option>
-      <option value="5">5</option>
+      <option value="5" >5</option>
+   
     </select>
                    </div>
                  </div>
 
-            <!-- item rate -->
-                 <div class="rateSection">
-               
-                   <h2>Overall Rate of Item: </h2>
-                   <div class="rateClient">
-                   <div class="starRatingBox1" >
-        <span id="priceMenu1">
-        4.1 
-        </span>
-        <span class="fa fa-star starIcon"></span>
-    </div>
-
-
-    <select name="itemRate" id="itemRate">
-      <option value="no">please give item overall Rate</option>
-      <option value="0.5">0.5</option>
-      <option value="1">1</option>
-      <option value="1.5">1.5</option>
-      <option value="2">2</option>
-      <option value="2.5">2.5</option>
-      <option value="3">3</option>
-      <option value="3.5">3.5</option>
-      <option value="4">4</option>
-      <option value="4.5">4.5</option>
-      <option value="5">5</option>
-    </select>
-                   </div>
-                 </div>
-               </form>
-              
-               <!-- <button onClick="updateRating}>Update Review</button> -->
-     
-               
-               <button >Submit Review</button>
+           
+                 
+                 <button>Update Review</button>
+                 
+                 
+                
                
                
              </div>
@@ -922,6 +916,257 @@ if($reviewCheck> 0){
              </div>
 </div>
 <?php }
+else{
+?>
+<div class="reviews">
+
+<div class="box">
+
+
+
+<div class="clientReview">
+              
+      
+                <h1> Leave feedback about this item for others</h1>
+         
+
+            
+                 <input type="text" placeholder="Client Name"   value="<?php echo $_SESSION['activeClientFullname'];?>"
+                 
+                   readonly >
+                 <textarea
+                   name="message"
+                   id="commentMessage"
+                   placeholder="Write Your Reviews*"
+                 ></textarea>
+
+             
+                 <div class="rateSection">
+               
+                   <h2>Quality Rate of Item: </h2>
+                   <div class="rateClient">
+                   <div class="starRatingBox1" >
+        <span id="qualityRateStar">
+        5
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+    <select name="itemRate" id="qualityRate">
+     
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5" selected>5</option>
+    </select>
+                   </div>
+                 </div>
+
+            
+                 <div class="rateSection">
+                
+                   <h2>Service Rate: </h2>
+                   <div class="rateClient">
+                     <!-- star -->
+
+                     <div class="starRatingBox1" >
+        <span id="serviceRateStar" >
+       5
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+    <select name="itemRate" id="serviceRate">
+
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5" selected>5</option>
+    </select>
+   
+                   </div>
+                 </div>
+                 <!-- price rate  -->
+                 <div class="rateSection">
+                   
+                   <h2>Price Rate of Item: </h2>
+                   <div class="rateClient">
+                   <div class="starRatingBox1" >
+        <span id="priceRateStar">
+  5
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+
+    <select name="itemRate" id="priceRate">
+     
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5" selected>5</option>
+    </select>
+                   </div>
+                 </div>
+
+           
+                 
+          
+                 
+                 <button onclick="sendRatingNew()">Submit Review</button>
+            
+               
+               
+             </div>
+
+             </div>
+</div>
+<?php }
+ 
+
+
+
+ }
+else{
+
+?>
+<div class="reviews">
+
+<div class="box">
+
+
+
+<div class="clientReview">
+              
+      
+                <h1> Leave feedback about this item for others</h1>
+         
+
+            
+                 <input type="text" placeholder="Client Name"   value="<?php echo $_SESSION['activeClientFullname'];?>"
+                 
+                   readonly >
+                 <textarea
+                   name="message"
+                   id="commentMessage"
+                   placeholder="Write Your Reviews*"
+                 ></textarea>
+
+             
+                 <div class="rateSection">
+               
+                   <h2>Quality Rate of Item: </h2>
+                   <div class="rateClient">
+                   <div class="starRatingBox1" >
+        <span id="qualityRateStar">
+        5
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+    <select name="itemRate" id="qualityRate">
+     
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5" selected>5</option>
+    </select>
+                   </div>
+                 </div>
+
+            
+                 <div class="rateSection">
+                
+                   <h2>Service Rate: </h2>
+                   <div class="rateClient">
+                     <!-- star -->
+
+                     <div class="starRatingBox1" >
+        <span id="serviceRateStar" >
+       5
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+    <select name="itemRate" id="serviceRate">
+
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5" selected>5</option>
+    </select>
+   
+                   </div>
+                 </div>
+                 <!-- price rate  -->
+                 <div class="rateSection">
+                   
+                   <h2>Price Rate of Item: </h2>
+                   <div class="rateClient">
+                   <div class="starRatingBox1" >
+        <span id="priceRateStar">
+  5
+        </span>
+        <span class="fa fa-star starIcon"></span>
+    </div>
+
+    <select name="itemRate" id="priceRate">
+     
+      <option value="0.5">0.5</option>
+      <option value="1">1</option>
+      <option value="1.5">1.5</option>
+      <option value="2">2</option>
+      <option value="2.5">2.5</option>
+      <option value="3">3</option>
+      <option value="3.5">3.5</option>
+      <option value="4">4</option>
+      <option value="4.5">4.5</option>
+      <option value="5" selected>5</option>
+    </select>
+                   </div>
+                 </div>
+
+           
+                 
+          
+                 
+                 <button onclick="sendRatingNew()">Submit Review</button>
+            
+               
+               
+             </div>
+
+             </div>
+</div>
+<?php }
+}
+
+
 }
 
 ?>
@@ -1210,6 +1455,51 @@ document.getElementById('price').innerText =cartDataConvert1.items[i].price;
                 }
             }
         }, 500)
+
+        document.getElementById('qualityRate').addEventListener('change',()=>{
+          let qualityRateStar=document.getElementById('qualityRateStar').innerText=document.getElementById('qualityRate').value;
+        })
+        document.getElementById('serviceRate').addEventListener('change',()=>{
+          let serviceRateStar=document.getElementById('serviceRateStar').innerText=document.getElementById('serviceRate').value;
+        })
+        document.getElementById('priceRate').addEventListener('change',()=>{
+          let priceRateStar=document.getElementById('priceRateStar').innerText=document.getElementById('priceRate').value;
+        })
+   
+
+        function sendRatingNew(){
+let qualityRate=document.getElementById('qualityRate').value;
+let serviceRate=document.getElementById('serviceRate').value;
+let priceRate=document.getElementById('priceRate').value;
+let itemName=document.getElementById('itemnameofcurrent').value;
+let commentMessage=document.getElementById('commentMessage').value;
+let userId=document.getElementById('userId').value;
+
+if(commentMessage==""){
+  alert('please enter your valuable message');
+  return;
+}
+$.ajax({
+                type: "POST", 
+                url: "http://localhost/sd-canteen/clientApi/reviewItems.php",
+                data: {
+                    itemName: itemName,
+                    qualityRate: qualityRate,
+                    serviceRate: serviceRate,
+                    priceRate: priceRate,
+                    new:'new',
+                    usermessage:commentMessage,
+                    userId:userId
+                },
+                // return data
+                success: function(res) {
+console.log(res)
+// window.document.location.reload();
+                }
+
+              })
+
+        }
    </script>
 </body>
 
