@@ -299,6 +299,29 @@ if($row> 0){
 $query="update itemlist set orderstatus='complete',paymentstatus='complete', amountreceived='$totalamount' where id=$id";
 $res=mysqli_query($connection,$query);
 
+
+
+// !  update in orderTrack DB
+$orderTrack="select*from ordertrack where itemId=$id";
+$orderTrackRes=mysqli_query($connection,"$orderTrack");
+$numberOfRecords=mysqli_num_rows($orderTrackRes);
+// means update success to + 1
+$orderTrackData=mysqli_fetch_assoc($orderTrackRes);
+$success=$orderTrackData["success"];
+$pending=$orderTrackData["pending"];
+$ids=$orderTrackData["id"];
+++$success;
+--$pending;
+$insertOrderTrack="update ordertrack set success=$success,pending=$pending where id=$ids";
+	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
+
+
+
+
+
+
+
+
 $mainQuery="select*from orderitems where id=$mainOrderID";
 $userDataRes=mysqli_query($connection,$mainQuery);
 $userData=mysqli_fetch_assoc($userDataRes);
@@ -480,10 +503,28 @@ if($row> 0){
 $query="update itemlist set orderstatus='reject',paymentstatus='reject', amountreceived='0' where id=$id";
 $res=mysqli_query($connection,$query);
 
+// !  update in orderTrack DB
+$orderTrack="select*from ordertrack where itemId=$id";
+$orderTrackRes=mysqli_query($connection,"$orderTrack");
+$numberOfRecords=mysqli_num_rows($orderTrackRes);
+// means update reject to + 1
+$orderTrackData=mysqli_fetch_assoc($orderTrackRes);
+$reject=$orderTrackData["reject"];
+$pending=$orderTrackData["pending"];
+$ids=$orderTrackData["id"];
+++$reject;
+--$pending;
+$insertOrderTrack="update ordertrack set reject=$reject,pending=$pending where id=$ids";
+$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
+
+
+
+
+
+
 $mainQuery="select*from orderitems where id=$mainOrderID";
 $userDataRes=mysqli_query($connection,$mainQuery);
 $userData=mysqli_fetch_assoc($userDataRes);
-
 $email=$userData['email'];
 $userId=$userData['id'];
 $paymentinfo=$userData['paymentinfo'];

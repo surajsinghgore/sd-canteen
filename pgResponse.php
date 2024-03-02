@@ -125,8 +125,10 @@ for ($i=0; $i <$countLength ; $i++) {
 	$cartItemSize=$item[$i]['size'];
 	$cartItemMainCategory=$item[$i]['itemMainCategory'];
 	$cartItemCategory=$item[$i]['category'];
+
+	$total=$cartItemQtyBook*$cartItemPrice;
 // insert all items in itemslist
-$insertItemsQuery="insert into itemlist(userId,mainOrderId,itemName,qty,size,maincategory,itemPrice,amountreceived,paymentstatus,orderstatus,category,txn_token,ordertoken) values($userId,$mainOrderId,'$cartItemName','$cartItemQtyBook','$cartItemSize','$cartItemMainCategory','$cartItemPrice','$cartItemPrice','success','pending','$cartItemCategory','$txn_token','$orderToken')";
+$insertItemsQuery="insert into itemlist(userId,mainOrderId,itemName,qty,size,maincategory,itemPrice,amountreceived,paymentstatus,orderstatus,category,txn_token,ordertoken) values($userId,$mainOrderId,'$cartItemName','$cartItemQtyBook','$cartItemSize','$cartItemMainCategory','$cartItemPrice','$total','success','pending','$cartItemCategory','$txn_token','$orderToken')";
 $DataGetsRes = mysqli_query($connection, $insertItemsQuery);
 $ItemId=mysqli_insert_id($connection);
 
@@ -141,14 +143,16 @@ $numberOfRecords=mysqli_num_rows($orderTrackRes);
 if ($numberOfRecords > 0) {
 $orderTrackData=mysqli_fetch_assoc($orderTrackRes);
 $totalOrder=$orderTrackData["totalOrder"];
+$pending=$orderTrackData["pendinng"];
 $id=$orderTrackData["id"];
 ++$totalOrder;
-$insertOrderTrack="update ordertrack set totalOrder=$totalOrder where id=$id";
+++$pending;
+$insertOrderTrack="update ordertrack set totalOrder=$totalOrder,pending=$pending where id=$id";
 	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
 }
 // new item insert in orderTrack
 else{
-	$insertOrderTrack="insert into ordertrack(itemName,itemId,maincategory,totalOrder) values('$cartItemName',$ItemId,'$cartItemMainCategory',1)";
+	$insertOrderTrack="insert into ordertrack(itemName,itemId,maincategory,totalOrder,pending) values('$cartItemName',$ItemId,'$cartItemMainCategory',1,1)";
 	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
 }
 

@@ -206,14 +206,16 @@ if ($numberOfRecords > 0) {
 
 $orderTrackData=mysqli_fetch_assoc($orderTrackRes);
 $totalOrder=$orderTrackData["totalOrder"];
+$pending=$orderTrackData["pending"];
 $id=$orderTrackData["id"];
 ++$totalOrder;
-$insertOrderTrack="update ordertrack set totalOrder=$totalOrder where id=$id";
+++$pending;
+$insertOrderTrack="update ordertrack set totalOrder=$totalOrder,pending=$pending where id=$id";
 	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
 }
 // new item insert in orderTrack
 else{
-	$insertOrderTrack="insert into ordertrack(itemName,itemId,maincategory,totalOrder) values('$cartItemName',$ItemId,'$cartItemMainCategory',1)";
+	$insertOrderTrack="insert into ordertrack(itemName,itemId,maincategory,totalOrder,pending) values('$cartItemName',$ItemId,'$cartItemMainCategory',1,1)";
 	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
 }
 }
