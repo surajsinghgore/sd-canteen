@@ -1242,15 +1242,15 @@ if (isset($_POST['searchByCustomerName']) && isset($_POST['input'])) {
 
 
 
-  // search By Customer Name
-if (isset($_POST['searchByCustomerName']) && isset($_POST['input'])) {
+  // search By Time Slot
+if (isset($_POST['searchByTimeSlot']) && isset($_POST['input'])) {
 
   $input=$_POST['input'];
 
     date_default_timezone_set("Asia/Calcutta");
     $currentDate = date("d-m-Y");
     $currentTime = date("h:i:s A");
-  $query="select*from orderitems where fullname like '%$input%' and orderdate like '$currentDate'  order by pickuptime24";
+  $query="select*from orderitems where pickuptime like '%$input%' and orderdate like '$currentDate'  order by pickuptime24";
   $res=mysqli_query($connection, $query);
   $row=mysqli_num_rows($res);
   

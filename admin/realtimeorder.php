@@ -57,7 +57,9 @@
               id="customerNameSearch"
               onkeyup="searchByCustomerName()"
             />
-            <select  name="time" id="time">
+            <select  name="time" id="timeSlotSearch"
+            
+            onchange="searchByTimeSlot()">
               <option value="null">Search Time Slot...</option>
               <option value="8.00-Am">8.00 Am</option>
               <option value="8.15-Am">8.15 Am</option>
@@ -464,6 +466,30 @@ $.ajax({
                 url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
                 data: {
                   searchByCustomerName: 'process',
+                    input:input
+                },
+                // return data
+                success: function(res) {
+          
+                  document.getElementById('table_sections').innerHTML=res;
+                }
+
+              })
+              }
+
+
+
+
+                   // search By time Slot
+                   function searchByTimeSlot(){
+
+                     let input=parseFloat(document.getElementById('timeSlotSearch').value.toUpperCase());
+            
+  $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+                data: {
+                  searchByTimeSlot: 'process',
                     input:input
                 },
                 // return data
