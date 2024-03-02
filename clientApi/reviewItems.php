@@ -1,5 +1,144 @@
 <?php
 
+
+function CalaulateAvg($item){
+ 
+       $ZeroPointFive = 0;
+       $OnePointFive = 0;
+       $TwoPointFive = 0;
+       $ThreePointFive = 0;
+       $FourPointFive = 0;
+       $One = 0;
+       $two = 0;
+       $three = 0;
+       $four = 0;
+       $findAvgCount = 0;
+       $five = 0;
+      
+         
+            if ($item=="0.5") {
+              $ZeroPointFive++;
+            }
+            if ($item=="1") {
+              $One++;
+            }
+            if ($item=="1.5") {
+              $OnePointFive++;
+            }
+            if ($item=="2") {
+              $two++;
+            }
+            if ($item=="2.5") {
+              $TwoPointFive++;
+            }
+            if ($item=="3") {
+              $three++;
+            }
+            if ($item=="3.5") {
+              $ThreePointFive++;
+            }
+            if ($item=="4") {
+              $four++;
+            }
+            if ($item=="4.5") {
+              $FourPointFive++;
+            }
+            if ($item=="5") {
+              $five++;
+            }
+          
+        if ($ZeroPointFive != 0) {
+          $findAvgCount++;
+        }
+        if ($OnePointFive != 0) {
+          $findAvgCount++;
+        }
+        if ($TwoPointFive != 0) {
+          $findAvgCount++;
+        }
+        if ($ThreePointFive != 0) {
+          $findAvgCount++;
+        }
+        if ($FourPointFive != 0) {
+          $findAvgCount++;
+        }
+        if ($One != 0) {
+          $findAvgCount++;
+        }
+        if ($two != 0) {
+          $findAvgCount++;
+        }
+        if ($three != 0) {
+          $findAvgCount++;
+        }
+        if ($four != 0) {
+          $findAvgCount++;
+        }
+        if ($five != 0) {
+          $findAvgCount++;
+        }
+
+       $calZeroPointFive = 0;
+       $calOne = 0;
+       $calOnePointFive = 0;
+       $caltwo = 0;
+       $calTwoPointFive = 0;
+       $calthree = 0;
+       $calThreePointFive = 0;
+       $calfour = 0;
+       $calFourPointFive = 0;
+       $calfive = 0;
+        if ($ZeroPointFive != 0) {
+          $calZeroPointFive =
+            (($ZeroPointFive * 0.5) / (5 * $ZeroPointFive)) * 100;
+        }
+        if ($OnePointFive != 0) {
+          $calOnePointFive = (($OnePointFive * 1.5) / (5 * $OnePointFive)) * 100;
+        }
+        if ($TwoPointFive != 0) {
+          $calTwoPointFive = (($TwoPointFive * 2.5) / (5 * $TwoPointFive)) * 100;
+        }
+        if ($ThreePointFive != 0) {
+          $calThreePointFive =
+            (($ThreePointFive * 3.5) / (5 * $ThreePointFive)) * 100;
+        }
+        if ($FourPointFive != 0) {
+          $calFourPointFive =
+            (($FourPointFive * 4.5) / (5 * $FourPointFive)) * 100;
+        }
+        if ($One != 0) {
+          $calOne = (($One * 1) / (5 * $One)) * 100;
+        }
+        if ($two != 0) {
+          $caltwo = (($two * 2) / (5 * $two)) * 100;
+        }
+        if ($three != 0) {
+          $calthree = (($three * 3) / (5 * $three)) * 100;
+        }
+        if ($four != 0) {
+          $calfour = (($four * 4) / (5 * $four)) * 100;
+        }
+        if ($five != 0) {
+          $calfive = (($five * 5) / (5 * $five)) * 100;
+        }
+
+       $AllPercantegTotal =
+          $calZeroPointFive +
+          $calOne +
+          $calOnePointFive +
+          $caltwo +
+          $calTwoPointFive +
+          $calthree +
+          $calThreePointFive +
+          $calfour +
+          $calFourPointFive +
+          $calfive;
+        $avgs = ($AllPercantegTotal / (100 * $findAvgCount)) * 100;
+
+       
+     return $avgs;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //   connection
     require('../middleware/ConnectToDatabase.php');
@@ -77,7 +216,7 @@ if ($itemsRatingCount> 0) {
 
 
 
-    
+
 }
 
 
@@ -97,144 +236,7 @@ mysqli_query($connection, $q2);
 
     }
 
-        // function QualityRateCalculate() {
-        //     let ZeroPointFive = 0;
-        //     let OnePointFive = 0;
-        //     let TwoPointFive = 0;
-        //     let ThreePointFive = 0;
-        //     let FourPointFive = 0;
-        //     let One = 0;
-        //     let two = 0;
-        //     let three = 0;
-        //     let four = 0;
-        //     let findAvgCount = 0;
-        //     let five = 0;
-        //     if (dataRess.data.length != 0) {
-        //       dataRess.data[0].ItemsReviwers.map((item) => {
-        //         if (item.QualityRate == "0.5") {
-        //           ZeroPointFive++;
-        //         }
-        //         if (item.QualityRate == "1") {
-        //           One++;
-        //         }
-        //         if (item.QualityRate == "1.5") {
-        //           OnePointFive++;
-        //         }
-        //         if (item.QualityRate == "2") {
-        //           two++;
-        //         }
-        //         if (item.QualityRate == "2.5") {
-        //           TwoPointFive++;
-        //         }
-        //         if (item.QualityRate == "3") {
-        //           three++;
-        //         }
-        //         if (item.QualityRate == "3.5") {
-        //           ThreePointFive++;
-        //         }
-        //         if (item.QualityRate == "4") {
-        //           four++;
-        //         }
-        //         if (item.QualityRate == "4.5") {
-        //           FourPointFive++;
-        //         }
-        //         if (item.QualityRate == "5") {
-        //           five++;
-        //         }
-        //       });
-        //     }
-        //     if (ZeroPointFive != 0) {
-        //       findAvgCount++;
-        //     }
-        //     if (OnePointFive != 0) {
-        //       findAvgCount++;
-        //     }
-        //     if (TwoPointFive != 0) {
-        //       findAvgCount++;
-        //     }
-        //     if (ThreePointFive != 0) {
-        //       findAvgCount++;
-        //     }
-        //     if (FourPointFive != 0) {
-        //       findAvgCount++;
-        //     }
-        //     if (One != 0) {
-        //       findAvgCount++;
-        //     }
-        //     if (two != 0) {
-        //       findAvgCount++;
-        //     }
-        //     if (three != 0) {
-        //       findAvgCount++;
-        //     }
-        //     if (four != 0) {
-        //       findAvgCount++;
-        //     }
-        //     if (five != 0) {
-        //       findAvgCount++;
-        //     }
-  
-        //     let calZeroPointFive = 0;
-        //     let calOne = 0;
-        //     let calOnePointFive = 0;
-        //     let caltwo = 0;
-        //     let calTwoPointFive = 0;
-        //     let calthree = 0;
-        //     let calThreePointFive = 0;
-        //     let calfour = 0;
-        //     let calFourPointFive = 0;
-        //     let calfive = 0;
-        //     if (ZeroPointFive != 0) {
-        //       calZeroPointFive =
-        //         ((ZeroPointFive * 0.5) / (5 * ZeroPointFive)) * 100;
-        //     }
-        //     if (OnePointFive != 0) {
-        //       calOnePointFive = ((OnePointFive * 1.5) / (5 * OnePointFive)) * 100;
-        //     }
-        //     if (TwoPointFive != 0) {
-        //       calTwoPointFive = ((TwoPointFive * 2.5) / (5 * TwoPointFive)) * 100;
-        //     }
-        //     if (ThreePointFive != 0) {
-        //       calThreePointFive =
-        //         ((ThreePointFive * 3.5) / (5 * ThreePointFive)) * 100;
-        //     }
-        //     if (FourPointFive != 0) {
-        //       calFourPointFive =
-        //         ((FourPointFive * 4.5) / (5 * FourPointFive)) * 100;
-        //     }
-        //     if (One != 0) {
-        //       calOne = ((One * 1) / (5 * One)) * 100;
-        //     }
-        //     if (two != 0) {
-        //       caltwo = ((two * 2) / (5 * two)) * 100;
-        //     }
-        //     if (three != 0) {
-        //       calthree = ((three * 3) / (5 * three)) * 100;
-        //     }
-        //     if (four != 0) {
-        //       calfour = ((four * 4) / (5 * four)) * 100;
-        //     }
-        //     if (five != 0) {
-        //       calfive = ((five * 5) / (5 * five)) * 100;
-        //     }
-  
-        //     let AllPercantegTotal =
-        //       calZeroPointFive +
-        //       calOne +
-        //       calOnePointFive +
-        //       caltwo +
-        //       calTwoPointFive +
-        //       calthree +
-        //       calThreePointFive +
-        //       calfour +
-        //       calFourPointFive +
-        //       calfive;
-        //     let avgs = (AllPercantegTotal / (100 * findAvgCount)) * 100;
-  
-        //     if (findAvgCount != 0) {
-        //       setQuality(avgs);
-        //     }
-        //   }
+       
         //   function PriceRateCalculate() {
         //     let ZeroPointFive = 0;
         //     let OnePointFive = 0;

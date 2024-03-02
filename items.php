@@ -127,14 +127,19 @@ $itemRateData=mysqli_fetch_assoc($executeItemRating);
 
 <div class="right">
   <h1 id="itemNameCurrent">
-  <?php 
-
-    echo $data['foodname'];?>
+  <?php echo $data['foodname'];?>
     <span
       class="activeBtn"
     >
    <input type="text" name="itemname" id="itemnameofcurrent" value="<?php echo $data['foodname'];?>" readonly style="display:none">
-   <input type="text" name="userid" id="userId" value="<?php echo $_SESSION['activeClientId'];?>" readonly style="display:none">
+   <?php 
+   if(isset($_SESSION['activeClientId'])){
+?>
+<input type="text" name="userid" id="userId" value="<?php echo $_SESSION['activeClientId'];?>" readonly style="display:none">
+
+<?php   }
+   ?>
+   
     </span>
   </h1>
  
@@ -173,7 +178,7 @@ $itemRateData=mysqli_fetch_assoc($executeItemRating);
      
    <?php 
    echo $itemRateData['rating'];?>
-   ?>
+   
     </span>
     <span class="fa fa-star checked"></span>
 </div>
@@ -181,7 +186,7 @@ $itemRateData=mysqli_fetch_assoc($executeItemRating);
 
   <h5>(<?php 
    echo $itemRateData['numberofrating'];?>
-   ?> Customer Review)</h5>
+   Customer Review)</h5>
 </div>
   <?php        }
           ?>
@@ -392,7 +397,7 @@ echo "5/5";
   // ! review found
 else{
 
-echo $itemRateData['rate'];
+echo $itemRateData['rating']."/5";
 }
   ?>
 
@@ -413,7 +418,7 @@ echo "4.5";
   // ! review found
 else{
 
-echo $itemRateData['rate'];
+echo $itemRateData['rating'];
 }
   ?>
         </span>
@@ -448,8 +453,9 @@ echo "100%";
   }
   // ! review found
 else{
+  $percentageOfQuality=($itemRateData['QualityRate']/5)*100;
 
-echo $itemRateData['QualityRate']."%";
+echo $percentageOfQuality."%";
 }
   ?>"
           ></div>
@@ -462,8 +468,9 @@ echo "100%";
   }
   // ! review found
 else{
+  $percentageOfQuality=($itemRateData['QualityRate']/5)*100;
 
-echo $itemRateData['QualityRate']."%";
+echo $percentageOfQuality."%";
 }
   ?></div>
       </li>
@@ -481,7 +488,9 @@ echo "100%";
   // ! review found
 else{
 
-echo $itemRateData['PriceRate']."%";
+$percentageOfQuality=($itemRateData['PriceRate']/5)*100;
+
+echo $percentageOfQuality."%";
 }
   ?>"
           ></div>
@@ -494,8 +503,9 @@ echo "100%";
   }
   // ! review found
 else{
+  $percentageOfQuality=($itemRateData['PriceRate']/5)*100;
 
-echo $itemRateData['PriceRate']."%";
+  echo $percentageOfQuality."%";
 }
   ?></div>
       </li>
@@ -512,8 +522,10 @@ echo "100%";
   }
   // ! review found
 else{
+  $percentageOfQuality=($itemRateData['ServiceRate']/5)*100;
 
-echo $itemRateData['ServiceRate']."%";
+  echo $percentageOfQuality."%";
+
 }
   ?>"
           ></div>
@@ -526,8 +538,9 @@ echo "100%";
   }
   // ! review found
 else{
+  $percentageOfQuality=($itemRateData['ServiceRate']/5)*100;
 
-echo $itemRateData['ServiceRate']."%";
+  echo $percentageOfQuality."%";
 }
   ?></div>
       </li>
@@ -594,12 +607,23 @@ echo $itemRateData['numberofrating'];
    if(isset($itemRateData['numberofrating'])){
    if($itemRateData['numberofrating']>0){
 ?>
-  <div class="reviewSection" >
+
+
+<!-- fetch comments -->
+<?php 
+
+$itemIDs=$itemRateData['id'];
+$subQuery="select*from itemratingcomments where ratingId=$itemIDs";
+$resSubQuery=mysqli_query($connection,$subQuery);
+
+while($subDatas=mysqli_fetch_array($resSubQuery)){
+?>
+<div class="reviewSection" >
                 <div class="topSection">
                   <div class="starSection" >
                   <div class="starRatingBox" >
         <span style="font-size:15px;">
-        4.1 
+        <?php echo $subDatas['QualityRate'];?>
         </span>
         <span class="fa fa-star checked"></span>
     </div>
@@ -607,21 +631,21 @@ echo $itemRateData['numberofrating'];
                    
                   </div>
                   <div class="userDetails">
-                    <h2>suraj singh</h2>
+                    <h2><?php echo $subDatas['username'];?></h2>
                   </div>
 
                   <div class="icons">
                   <svg stroke="currentColor" class="icon" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg>
-                    <p>8-2-2024</p>
+                    <p><?php echo $subDatas['commentdate'];?></p>
 
 
                     <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6h6v-2h-4z"></path></svg>
-                    <p>9-14 Am</p>
+                    <p><?php echo $subDatas['commenttime'];?></p>
                   </div>
                 </div>
 
                 <div class="commentStyle">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem debitis quos illum, omnis ipsa rem cum enim dolorum non impedit dicta quibusdam quam quidem ullam assumenda porro quas eaque nobis corrupti iusto velit id aliquid? Ad voluptatibus maiores assumenda necessitatibus officia aliquam libero nulla cupiditate nemo laboriosam adipisci, voluptatem voluptatum?</p>
+                  <p><?php echo $subDatas['message'];?></p>
                 </div>
 
 
@@ -636,8 +660,8 @@ echo $itemRateData['numberofrating'];
 
     
     </div>
-
-  <?php }
+<?php }
+ }
 
 
 // no reviews
@@ -771,7 +795,7 @@ if(isset($_SESSION['activeClientId'])){
 $checkQuery="select*from itemlist where userID=$clientIdActive and orderstatus='complete' and itemName like '%$itemname%'";
 $result = mysqli_query($connection,$checkQuery);
 $reviewCheck=mysqli_num_rows($result);
-echo $reviewCheck;
+
 if($reviewCheck> 0){
   // check weather first time giving or already giving
   $itemsratingRes="select*from itemsrating where itemName like '%$itemname%'";
@@ -783,7 +807,7 @@ if($itemRatingDataResCount> 0){
 
 $itemRatingData=mysqli_fetch_assoc($itemRatingDataRes);
 $itemId=$itemRatingData['id'];
-echo $itemId;
+
   $checkUpdateQuery="select*from itemratingcomments where userId=$clientIdActive and ratingId=$itemId";
   $updateResQuery=mysqli_query($connection,$checkUpdateQuery);
   $updateRowQuery=mysqli_num_rows($updateResQuery);
@@ -1493,8 +1517,8 @@ $.ajax({
                 },
                 // return data
                 success: function(res) {
-console.log(res)
-// window.document.location.reload();
+
+window.document.location.reload();
                 }
 
               })

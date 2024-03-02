@@ -654,7 +654,7 @@ display: flex;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 90;
     width: 80px;
     padding-left: 10%;
     border-radius: 3px;
