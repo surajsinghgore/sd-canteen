@@ -116,7 +116,7 @@
     require('../middleware/ConnectToDatabase.php');
     date_default_timezone_set("Asia/Calcutta");
     $currentDate = date("d-m-Y");
-    $currentTime = date("h:i:s A");
+  
 
     // total orders
 $query="select*from orderitems where orderdate like '$currentDate' ";
@@ -143,6 +143,23 @@ $query3="select*from orderitems where orderdate like '$currentDate' and ordersta
 $res3=mysqli_query($connection, $query3);
 $RejectOrderLen=mysqli_num_rows($res3);
 
+
+
+// orders not on time
+
+$currentTime = date("h:i:s A");
+$query4="select*from orderitems where orderdate like '$currentDate' and pickuptime24<'$currentTime' and orderstatus='pending'";
+
+$res4=mysqli_query($connection, $query4);
+$lateOrderLen=mysqli_num_rows($res4);
+
+
+
+
+
+
+
+
     ?>
           <div class="analysis">
             <div class="div1" >
@@ -158,7 +175,7 @@ $RejectOrderLen=mysqli_num_rows($res3);
               Reject Orders : <?php echo $RejectOrderLen;?> 
             </div>
             <div class="div5">
-              Orders Not On Time: 23
+              Orders Not On Time: <?php echo $lateOrderLen;?> 
             </div>
           </div>
 
