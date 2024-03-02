@@ -41,18 +41,18 @@
                     <li>
                         <select placeholder="Select Month" id="month">
                             <option value="no">Select Month</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
-                            <option>11</option>
-                            <option>12</option>
+                            <option value="01">1</option>
+                            <option value="02">2</option>
+                            <option value="03">3</option>
+                            <option value="04">4</option>
+                            <option value="05">5</option>
+                            <option value="06">6</option>
+                            <option value="07">7</option>
+                            <option value="08">8</option>
+                            <option value="09">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
                         </select>
                     </li>
 
@@ -126,7 +126,7 @@ if ($result) {
                             <option value="TXN_SUCCESS">Complete</option>
                             <option value="TXN_FAILURE">Failed</option>
                             <option value="PENDING">Pending</option>
-                            <option value="initiated">Initiated</option>
+                  
                         </select>
                     </li>
 
@@ -141,285 +141,12 @@ if ($result) {
                     </h2>
 
                     <div class="cards" id="cards">
-<?php 
 
-$query="select*from orderitems where fullname='suraj singh'";
-$result = mysqli_query($connection,$query);
-
-while ($data = mysqli_fetch_array($result)) {
-?>
-
-
-<div class="card">
-                            <div class="topSection">
-                                <div class="left">
-                                    <h6>Payment Details</h6>
-                                    <p><?php echo $data['fullname'];?></p>
-                                </div>
-
-
-
-                                <?php 
-                                if($data['paymentstatus']=="success"){
-?>
-<div class="right">
-                                    <li class="button">
-                                        <div class="complete">Complete</div>
-                                    </li>
-                                </div>
-  <?php                              }
-
-
-
-
-else if($data['paymentstatus']=="pending"){
-    ?>
-      <div class="right">
-                              <li class="button">
-                                <div class="pending">Pending</div>
-                              </li>
-                            </div>
-      <?php                              }
-
-
-
-
-else if($data['paymentstatus']=="reject"){
-    ?>
-      <div class="right">
-                              <li class="button">
-                                <div class="reject">Failed</div>
-                              </li>
-                            </div>
-      <?php                              }
-
-      else{
-?>
-<div class="right">
-                           
-                           <li class="button">
-                             <div class="initiate">
-                               Initiated
-                             </div>
-                           </li>
-                         </div> 
-
-
-<?php
-
-      }
-                                ?>
-                                
-
-                              
-                            </div>
-                                
-                             
-
-
-                             
-
-
-                        
-
-                        <div class="mainData">
-                            <h5>Payment Info</h5>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">Email ID</div>
-                                    <div class="desc"><?php echo $data['email'];?></div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">Mobile</div>
-                                    <div class="desc"><?php echo $data['mobile'];?></div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Order Token
-                                    </div>
-                                    <div class="desc1">
-                                    <?php echo $data['orderId'];?>
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">
-                                        Payment Date
-                                    </div>
-                                    <div class="desc">
-                                    <?php echo $data['orderdate'];?>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">
-                                        Payment Time
-                                    </div>
-                                    <div class="desc">
-                                    <?php echo $data['pickuptime'];?>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Order Status
-                                    </div>
-                                    <div class="desc">
-                                    <?php echo $data['orderstatus'];?>
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">
-                                        Order Amount
-                                    </div>
-                                    <div class="desc">
-                                    <?php echo $data['totalamount'];?>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Transaction Amount
-                                    </div>
-                                    <div class="desc">
-                                    <?php 
-                                    $dataArray=json_decode($data['paymentinfo'], true);
-                                   
-                                    if(isset($dataArray['TXNAMOUNT'])){
-                                        echo $dataArray['TXNAMOUNT'];
-                                    }else{
-                                        echo 'COD';
-                                    }
-                                   ?>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">
-                                        transaction Currency
-                                    </div>
-                                    <div class="desc">
-
-
-
-                                    <?php
-                                    if(isset($dataArray['CURRENCY'])){
-                                        echo $dataArray['CURRENCY'];
-                                    }else{
-                                        echo 'COD';
-                                    }
-                                    ?>
-                                    </div>
-                                </li>
-                            </div>
-                            <h4>Bank Info</h4>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">Bank Name</div>
-                                    <div class="desc">
-                                    <?php
-                                    if(isset($dataArray['BANKNAME'])){
-                                        echo $dataArray['BANKNAME'];
-                                    }else{
-                                        echo 'COD';
-                                    }
-                                    ?>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">
-                                        Bank Transaction ID
-                                    </div>
-                                    <div class="desc">
-                                    <?php
-                                    if(isset($dataArray['BANKTXNID'])){
-                                        echo $dataArray['BANKTXNID'];
-                                    }else{
-                                        echo 'COD';
-                                    }
-                                    ?>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Gateway Name
-                                    </div>
-                                    <div class="desc">
-                                    <?php
-                                    if(isset($dataArray['GATEWAYNAME'])){
-                                        echo $dataArray['GATEWAYNAME'];
-                                    }else{
-                                        echo 'COD';
-                                    }
-                                    ?>
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">
-                                        Payment Mode
-                                    </div>
-                                    <div class="desc">
-                                    <?php
-                                    if(isset($dataArray['PAYMENTMODE'])){
-                                        echo $dataArray['PAYMENTMODE'];
-                                    }else{
-                                        echo 'COD';
-                                    }
-                                    ?>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Transaction Full Date
-                                    </div>
-                                    <div class="desc">
-                                    <?php
-                                    if(isset($dataArray['TXNDATE'])){
-                                        echo $dataArray['TXNDATE'];
-                                    }else{
-                                        echo 'COD';
-                                    }
-                                    ?>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Payment Status
-                                    </div>
-                                    <div class="desc">
-                                    <?php
-                                    if(isset($dataArray['STATUS'])){
-                                        echo $dataArray['STATUS'];
-                                    }else{
-                                        echo 'COD';
-                                    }
-                                    ?>
-                                    </div>
-                                </li>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-
-
-<?php
-}
-
-
-
-?>
 
 
                     
 
-                    <!-- <h1>No Data Found</h1> -->
+                
 
                   
                 </div>
@@ -470,8 +197,8 @@ $.ajax({
               },
               // return data
               success: function(res) {
-        console.log(res)
-                // document.getElementById('cards').innerHTML=res;
+
+                document.getElementById('cards').innerHTML=res;
               }
 
             })
