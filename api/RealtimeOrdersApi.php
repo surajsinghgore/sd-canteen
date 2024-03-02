@@ -305,7 +305,7 @@ $res=mysqli_query($connection,$query);
 
 // !  update in orderTrack DB
 $orderTrack="select*from ordertrack where itemId=$id";
-$orderTrackRes=mysqli_query($connection,"$orderTrack");
+$orderTrackRes=mysqli_query($connection,$orderTrack);
 $numberOfRecords=mysqli_num_rows($orderTrackRes);
 // means update success to + 1
 $orderTrackData=mysqli_fetch_assoc($orderTrackRes);
@@ -353,7 +353,8 @@ if($dataCheck["orderstatus"]=="reject"){
 }
 
 // all orders processed
-
+var_dump($count);
+var_dump($counter);
 if($count==$counter){
 // check any reject order
 if($reject>0){

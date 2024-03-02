@@ -112,19 +112,50 @@
             </select>
           </div>
 
-    
+    <?php 
+    require('../middleware/ConnectToDatabase.php');
+    date_default_timezone_set("Asia/Calcutta");
+    $currentDate = date("d-m-Y");
+    $currentTime = date("h:i:s A");
+
+    // total orders
+$query="select*from orderitems where orderdate like '$currentDate' ";
+$res=mysqli_query($connection, $query);
+$totalOrdersLen=mysqli_num_rows($res);
+
+
+
+// complete order
+$query1="select*from orderitems where orderdate like '$currentDate' and orderstatus like 'complete'";
+$res1=mysqli_query($connection, $query1);
+$CompleteOrderLen=mysqli_num_rows($res1);
+
+
+
+// pending order
+$query2="select*from orderitems where orderdate like '$currentDate' and orderstatus='pending'";
+$res2=mysqli_query($connection, $query2);
+$PendingOrderLen=mysqli_num_rows($res2);
+
+
+// reject order
+$query3="select*from orderitems where orderdate like '$currentDate' and orderstatus='reject'";
+$res3=mysqli_query($connection, $query3);
+$RejectOrderLen=mysqli_num_rows($res3);
+
+    ?>
           <div class="analysis">
             <div class="div1" >
-              Total Orders : 34
+              Total Orders : <?php echo $totalOrdersLen;?> 
             </div>
             <div class="div2">
-              Complete Orders: 23
+              Complete Orders: <?php echo $CompleteOrderLen;?> 
             </div>
             <div class="div3">
-              Pending Orders: 23
+              Pending Orders: <?php echo $PendingOrderLen;?> 
             </div>
             <div class="div4" >
-              Reject Orders : 23
+              Reject Orders : <?php echo $RejectOrderLen;?> 
             </div>
             <div class="div5">
               Orders Not On Time: 23
@@ -286,7 +317,6 @@ let password="";
                 },
                 // return data
                 success: function(res) {
-
                   document.location.reload();
                 }
 
