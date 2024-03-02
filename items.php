@@ -713,6 +713,8 @@ while($subDatas=mysqli_fetch_array($resSubQuery)){
 
   <?php }
 
+
+// comments
 }else{
 ?>
 <div class="reviewSection">
@@ -802,6 +804,7 @@ if($reviewCheck> 0){
 $itemRatingDataRes=mysqli_query($connection,$itemsratingRes);
 $itemRatingDataResCount=mysqli_num_rows($itemRatingDataRes);
 
+// update 
 if($itemRatingDataResCount> 0){
 
 
@@ -929,7 +932,7 @@ $itemId=$itemRatingData['id'];
 
            
                  
-                 <button>Update Review</button>
+                 <button onclick="updateReview()">Update Review</button>
                  
                  
                 
@@ -940,6 +943,9 @@ $itemId=$itemRatingData['id'];
              </div>
 </div>
 <?php }
+
+
+// new comment
 else{
 ?>
 <div class="reviews">
@@ -1069,6 +1075,9 @@ else{
 else{
 
 ?>
+
+
+<!-- new review -->
 <div class="reviews">
 
 <div class="box">
@@ -1491,6 +1500,11 @@ document.getElementById('price').innerText =cartDataConvert1.items[i].price;
         })
    
 
+
+
+
+        // new rating
+
         function sendRatingNew(){
 let qualityRate=document.getElementById('qualityRate').value;
 let serviceRate=document.getElementById('serviceRate').value;
@@ -1524,6 +1538,43 @@ window.document.location.reload();
               })
 
         }
+
+
+        // updateReview
+
+        function updateReview(){
+let qualityRate=document.getElementById('qualityRate').value;
+let serviceRate=document.getElementById('serviceRate').value;
+let priceRate=document.getElementById('priceRate').value;
+let itemName=document.getElementById('itemnameofcurrent').value;
+let commentMessage=document.getElementById('commentMessage').value;
+let userId=document.getElementById('userId').value;
+
+if(commentMessage==""){
+  alert('please enter your valuable message');
+  return;
+}
+$.ajax({
+                type: "POST", 
+                url: "http://localhost/sd-canteen/clientApi/reviewItems.php",
+                data: {
+                    itemName: itemName,
+                    qualityRate: qualityRate,
+                    serviceRate: serviceRate,
+                    priceRate: priceRate,
+                    new:'new',
+                    usermessage:commentMessage,
+                    userId:userId
+                },
+                // return data
+                success: function(res) {
+window.document.location.reload();
+                }
+
+              })
+
+        }
+
    </script>
 </body>
 
