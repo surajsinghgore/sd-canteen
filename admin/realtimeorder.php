@@ -36,7 +36,22 @@
 <div class="orders">
           <h1>Filter Records</h1>
           <h5>
-            Todays Collection : <span>₹ 23</span>
+            Todays Collection : <span>₹ <?php 
+               require('../middleware/ConnectToDatabase.php');
+               date_default_timezone_set("Asia/Calcutta");
+               $currentDate = date("d-m-Y");
+               $sql = mysqli_query($connection,"SELECT SUM(amountreceived) as total FROM orderitems where orderdate like '$currentDate' and orderstatus='complete'");
+            
+               $row = mysqli_fetch_array($sql);
+              
+               if($row[0]==0){
+                echo "0";
+               }else{
+
+                 echo $totalAmount=$row['total'];
+                }
+     
+          ?></span>
           </h5>
 
    
@@ -120,12 +135,13 @@
     require('../middleware/ConnectToDatabase.php');
     date_default_timezone_set("Asia/Calcutta");
     $currentDate = date("d-m-Y");
-  
+ 
 
     // total orders
 $query="select*from orderitems where orderdate like '$currentDate' ";
 $res=mysqli_query($connection, $query);
 $totalOrdersLen=mysqli_num_rows($res);
+// sum
 
 
 
