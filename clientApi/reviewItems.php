@@ -132,7 +132,7 @@ $itemsRatingCommentCount=mysqli_num_rows($queryCheck2);
 if($itemsRatingCommentCount>0){
 
 // update itemratingcomments
-    $updateItemRatingComments="update itemratingcomments set message='$usermessage',QualityRate=$qualityRate,ServiceRate=$serviceRate,PriceRate=$priceRate,commenttime='$currentTime',commentdate='$currentDate' where userId=$userId";
+    $updateItemRatingComments="update itemratingcomments set message='$usermessage',QualityRate=$qualityRate,ServiceRate=$serviceRate,PriceRate=$priceRate,commenttime='$currentTime',commentdate='$currentDate' where userId=$userId and ratingId=$ratingIdMain";
 $executeRes=mysqli_query($connection,$updateItemRatingComments);
 
 
@@ -159,6 +159,29 @@ $executeQuery=mysqli_query($connection,$updateItemsRating);
 
 else{
 
+
+
+    $q2="insert into itemratingcomments(ratingId,username,message,userId,QualityRate,ServiceRate,PriceRate,commenttime,commentdate) values($ratingIdMain,'$username','$usermessage',$userId,$qualityRate,$serviceRate,$priceRate,'$currentTime','$currentDate')";
+    mysqli_query($connection, $q2);
+
+
+// fetch all items comment so that overall rate re calculate
+$allSubDatas="select*from itemratingcomments where ratingId=$ratingIdMain";
+$allCommentsResData=mysqli_query($connection,$allSubDatas);
+$numberOfComments=mysqli_num_rows($allCommentsResData);
+
+
+$averageQuality=0;
+$ServiceRate=0;
+$PriceRate=0;
+while($allSubData=mysqli_fetch_array($allCommentsResData)){
+    $averageQuality+=CalaulateAvg($allSubData['QualityRate'],$numberOfComments);
+    $ServiceRate+=CalaulateAvg($allSubData['ServiceRate'],$numberOfComments);
+    $PriceRate+=CalaulateAvg($allSubData['PriceRate'],$numberOfComments);
+}
+
+$updateItemsRating="update itemsrating set rating=$averageQuality,QualityRate=$averageQuality,ServiceRate=$ServiceRate,PriceRate=$PriceRate where id=$ratingIdMain";
+$executeQuery=mysqli_query($connection,$updateItemsRating);
 
 }
 
