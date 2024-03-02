@@ -212,7 +212,9 @@ $qty=$subData['qty'];
 $total=$price*$qty;
 echo $total;?></div>
 <div class="div6">
-<input type="text" id="amountReceived<?php echo $subData['id']?>" value="<?php echo $subData['amountreceived'];?>">
+<input type="text" id="amountReceived<?php echo $subData['id']?>" value="<?php
+
+echo $subData['amountreceived'];?>">
 <input type="text" id="maincategory<?php echo $subData['id']?>" value="<?php echo $subData['maincategory'];?>" style="display:none">
 </div>
 <div class="div7">
