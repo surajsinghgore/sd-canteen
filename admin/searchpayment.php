@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../styles/admin/admin.css?v=14">
 <link rel="stylesheet" href="../styles/admin/payment.css?v=2">
 
+<!-- ajax added -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     // prevent reload post request
     if (window.history.replaceState) {
@@ -29,405 +31,151 @@
         <div class="rightsidebar">
             <?php $AdminTopHeaderTitle = "Search Payments";
             require('../components/AdminTopHeader.php'); ?>
-       
+
 
 
 
 
             <div class="AllPayments">
-               <!-- filter box -->
-               <div class="filterBox">
-<li>
-<input type="text" placeholder="Search By TXNID" />
-</li>
+                <!-- filter box -->
+                <div class="filterBox">
+                    <li>
+                        <input type="text" placeholder="Search By TXN TOKEN" id="TXNID" onkeyup="searchByTXNID()" />
+                    </li>
 
-<li>
-<input type="text" placeholder="Search By TXN AMOUNT" />
-</li>
+                    <li>
+                        <input type="text" placeholder="Search By TXN AMOUNT" id="totalAmount" onkeyup="searchByTotalAmount()" />
+                    </li>
 
-<li>
-<input type="text" placeholder="Search By Customer Name" />
-</li>
-<li>
-<input type="text" placeholder="Search By Order Token"/>
-</li>
+                    <li>
+                        <input type="text" placeholder="Search By Customer Name" id="customerName" onkeyup="searchByCustomerName()" />
+                    </li>
+                    <li>
+                        <input type="text" placeholder="Search By Order Token" id="tokenId" onkeyup="searchByTokenId()" />
+                    </li>
 
 
-</div>
+                </div>
 
 
 
                 <div class="datasPayment">
                     <h2>
-                    Total Records Found:<span> 23</span>
+                        Total Records Found: <span id="totalRecords"> 23</span>
                     </h2>
 
-                    <div class="cards">
-
-                        <div class="card">
-                            <div class="topSection">
-                                <div class="left">
-                                    <h6>Payment Details</h6>
-                                    <p>suraj singh</p>
-                                </div>
-
-                                <div class="right">
-                                    <li class="button">
-                                        <div class="complete">Complete</div>
-                                    </li>
-                                </div>
-
-                                <!-- text TXN_FAILURE -->
-                                <!--        
-                            <div class="right">
-                              <li class="button">
-                                <div class="reject">Failed</div>
-                              </li>
-                            </div> -->
+                    <div class="cards" id="cards">
 
 
-                                <!-- initiated -->
-                                <!-- <div class="right">
-                           
-                              <li class="button">
-                                <div class="initiate">
-                                  Initiated
-                                </div>
-                              </li>
-                            </div> -->
 
 
-                                <!-- pending -->
-                                <!-- <div class="right">
-                              <li class="button">
-                                <div class="pending">Pending</div>
-                              </li> -->
-                            </div>
-
-
-                        
-
-                        <div class="mainData">
-                            <h5>Payment Info</h5>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">Email ID</div>
-                                    <div class="desc">surajthakurrs45@gmail.com</div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">Mobile</div>
-                                    <div class="desc">8769847567</div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Order Token
-                                    </div>
-                                    <div class="desc1">
-                                        XH3kid
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">
-                                        Payment Date
-                                    </div>
-                                    <div class="desc">
-                                        29/09/2023
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">
-                                        Payment Time
-                                    </div>
-                                    <div class="desc">
-                                        9-44 AM
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Order Status
-                                    </div>
-                                    <div class="desc">
-                                        Pending
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">
-                                        Order Amount
-                                    </div>
-                                    <div class="desc">
-                                        230
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Transaction Amount
-                                    </div>
-                                    <div class="desc">
-                                        30.0
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">
-                                        transaction Currency
-                                    </div>
-                                    <div class="desc">
-                                        INR
-                                    </div>
-                                </li>
-                            </div>
-                            <h4>Bank Info</h4>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">Bank Name</div>
-                                    <div class="desc">
-                                        HDFC BANK
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">
-                                        Bank Transaction ID
-                                    </div>
-                                    <div class="desc">
-                                        17520438122
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Gateway Name
-                                    </div>
-                                    <div class="desc">
-                                        HDFC
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">
-                                        Payment Mode
-                                    </div>
-                                    <div class="desc">
-                                        NB
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Transaction Full Date
-                                    </div>
-                                    <div class="desc">
-                                        2024-01-25 09:44:46.0
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Payment Status
-                                    </div>
-                                    <div class="desc">
-                                        TXN_SUCCESS
-                                    </div>
-                                </li>
-                            </div>
-
-                        </div>
                     </div>
-
-
-                    <div class="card">
-                            <div class="topSection">
-                                <div class="left">
-                                    <h6>Payment Details</h6>
-                                    <p>suraj singh</p>
-                                </div>
-
-                                <div class="right">
-                                    <li class="button">
-                                        <div class="complete">Complete</div>
-                                    </li>
-                                </div>
-
-                                <!-- text TXN_FAILURE -->
-                                <!--        
-                            <div class="right">
-                              <li class="button">
-                                <div class="reject">Failed</div>
-                              </li>
-                            </div> -->
-
-
-                                <!-- initiated -->
-                                <!-- <div class="right">
-                           
-                              <li class="button">
-                                <div class="initiate">
-                                  Initiated
-                                </div>
-                              </li>
-                            </div> -->
-
-
-                                <!-- pending -->
-                                <!-- <div class="right">
-                              <li class="button">
-                                <div class="pending">Pending</div>
-                              </li> -->
-                            </div>
-
-
-                        
-
-                        <div class="mainData">
-                            <h5>Payment Info</h5>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">Email ID</div>
-                                    <div class="desc">surajthakurrs45@gmail.com</div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">Mobile</div>
-                                    <div class="desc">8769847567</div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Order Token
-                                    </div>
-                                    <div class="desc1">
-                                        XH3kid
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">
-                                        Payment Date
-                                    </div>
-                                    <div class="desc">
-                                        29/09/2023
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">
-                                        Payment Time
-                                    </div>
-                                    <div class="desc">
-                                        9-44 AM
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Order Status
-                                    </div>
-                                    <div class="desc">
-                                        Pending
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">
-                                        Order Amount
-                                    </div>
-                                    <div class="desc">
-                                        230
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Transaction Amount
-                                    </div>
-                                    <div class="desc">
-                                        30.0
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">
-                                        transaction Currency
-                                    </div>
-                                    <div class="desc">
-                                        INR
-                                    </div>
-                                </li>
-                            </div>
-                            <h4>Bank Info</h4>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">Bank Name</div>
-                                    <div class="desc">
-                                        HDFC BANK
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="heading">
-                                        Bank Transaction ID
-                                    </div>
-                                    <div class="desc">
-                                        17520438122
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Gateway Name
-                                    </div>
-                                    <div class="desc">
-                                        HDFC
-                                    </div>
-                                </li>
-                            </div>
-                            <div class="all">
-                                <li>
-                                    <div class="heading">
-                                        Payment Mode
-                                    </div>
-                                    <div class="desc">
-                                        NB
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Transaction Full Date
-                                    </div>
-                                    <div class="desc">
-                                        2024-01-25 09:44:46.0
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="heading">
-                                        Payment Status
-                                    </div>
-                                    <div class="desc">
-                                        TXN_SUCCESS
-                                    </div>
-                                </li>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- <h1>No Data Found</h1> -->
-
                 </div>
             </div>
+
+
+
+
+
+
+
+
         </div>
 
-
-
-
-
-
-
-
     </div>
 
-    </div>
+
+
+
+    <script>
+        // token id
+        function searchByTokenId() {
+            let tokenId = document.getElementById('tokenId').value.toUpperCase();
+            $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/searchPayment.php", //your page
+                data: {
+                    tokenId: tokenId,
+
+                },
+                // return data
+                success: function(res) {
+                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
+                    document.getElementById('cards').innerHTML = res;
+                }
+
+            })
+        }
+
+
+        // search by customer name
+
+        function searchByCustomerName() {
+            let input = document.getElementById('customerName').value.toLowerCase();
+            $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/searchPayment.php", //your page
+                data: {
+                    customerName: input,
+
+                },
+                // return data
+                success: function(res) {
+                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
+                    document.getElementById('cards').innerHTML = res;
+                }
+
+            })
+        }
+
+
+        // search by searchByTotalAmount
+
+        function searchByTotalAmount() {
+            let input = document.getElementById('totalAmount').value;
+            $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/searchPayment.php", //your page
+                data: {
+                    totalAmount: input,
+
+                },
+                // return data
+                success: function(res) {
+                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
+                    document.getElementById('cards').innerHTML = res;
+                }
+
+            })
+        }
+
+
+
+
+
+        // search by txn token
+
+        function searchByTXNID() {
+            let input = document.getElementById('TXNID').value;
+            $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/searchPayment.php", //your page
+                data: {
+                    TXNID: input,
+
+                },
+                // return data
+                success: function(res) {
+                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
+                    document.getElementById('cards').innerHTML = res;
+                }
+
+            })
+        }
+
+
+        document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
+    </script>
 </body>
 
 </html>
