@@ -136,14 +136,16 @@ $ItemId=mysqli_insert_id($connection);
 
 
 // !  add items in orderTrack DB
-$orderTrack="select*from ordertrack where itemName like '$cartItemName'";
+$currentMonth = date('F'); // Full month name (e.g., January)
+$currentYear = date('Y'); // Four-digit year (e.g., 2024)
+$orderTrack="select*from ordertrack where itemName like '$cartItemName' and month='$currentMonth' and year='$currentYear'";
 $orderTrackRes=mysqli_query($connection,"$orderTrack");
 $numberOfRecords=mysqli_num_rows($orderTrackRes);
 // means update totalOrder to + 1
 if ($numberOfRecords > 0) {
 $orderTrackData=mysqli_fetch_assoc($orderTrackRes);
 $totalOrder=$orderTrackData["totalOrder"];
-$pending=$orderTrackData["pendinng"];
+$pending=$orderTrackData["pending"];
 $id=$orderTrackData["id"];
 ++$totalOrder;
 ++$pending;
@@ -152,7 +154,7 @@ $insertOrderTrack="update ordertrack set totalOrder=$totalOrder,pending=$pending
 }
 // new item insert in orderTrack
 else{
-	$insertOrderTrack="insert into ordertrack(itemName,itemId,maincategory,totalOrder,pending) values('$cartItemName',$ItemId,'$cartItemMainCategory',1,1)";
+	$insertOrderTrack="insert into ordertrack(itemName,itemId,maincategory,totalOrder,pending,month,year) values('$cartItemName',$ItemId,'$cartItemMainCategory',1,1,'$currentMonth','$currentYear')";
 	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
 }
 
