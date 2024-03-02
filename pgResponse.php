@@ -127,8 +127,32 @@ for ($i=0; $i <$countLength ; $i++) {
 	$cartItemCategory=$item[$i]['category'];
 // insert all items in itemslist
 $insertItemsQuery="insert into itemlist(userId,mainOrderId,itemName,qty,size,maincategory,itemPrice,amountreceived,paymentstatus,orderstatus,category,txn_token,ordertoken) values($userId,$mainOrderId,'$cartItemName','$cartItemQtyBook','$cartItemSize','$cartItemMainCategory','$cartItemPrice','$cartItemPrice','success','pending','$cartItemCategory','$txn_token','$orderToken')";
-
 $DataGetsRes = mysqli_query($connection, $insertItemsQuery);
+$ItemId=mysqli_insert_id($connection);
+
+
+
+
+// !  add items in orderTrack DB
+$orderTrack="select*from ordertrack where itemName like '$cartItemName'";
+$orderTrackRes=mysqli_query($connection,"$orderTrack");
+$numberOfRecords=mysqli_num_rows($orderTrackRes);
+// means update totalOrder to + 1
+if ($numberOfRecords > 0) {
+$orderTrackData=mysqli_fetch_assoc($orderTrackRes);
+$totalOrder=$orderTrackData["totalOrder"];
+$id=$orderTrackData["id"];
+++$totalOrder;
+$insertOrderTrack="update ordertrack set totalOrder=$totalOrder where id=$id";
+	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
+}
+// new item insert in orderTrack
+else{
+	$insertOrderTrack="insert into ordertrack(itemName,itemId,maincategory,totalOrder) values('$cartItemName',$ItemId,'$cartItemMainCategory',1)";
+	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
+}
+
+
 }
 
 
