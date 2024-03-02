@@ -100,8 +100,8 @@
                 },
                 // return data
                 success: function(res) {
-                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
-                    document.getElementById('cards').innerHTML = res;
+                   
+                    document.getElementById('cards').innerHTML = res; document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
                 }
 
             })
@@ -121,8 +121,9 @@
                 },
                 // return data
                 success: function(res) {
-                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
+                   
                     document.getElementById('cards').innerHTML = res;
+                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
                 }
 
             })
@@ -142,8 +143,9 @@
                 },
                 // return data
                 success: function(res) {
-                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
+                 
                     document.getElementById('cards').innerHTML = res;
+                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
                 }
 
             })
@@ -166,8 +168,9 @@
                 },
                 // return data
                 success: function(res) {
-                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
+                  
                     document.getElementById('cards').innerHTML = res;
+                    document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
                 }
 
             })

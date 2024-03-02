@@ -197,8 +197,9 @@ $.ajax({
               },
               // return data
               success: function(res) {
-
+             
                 document.getElementById('cards').innerHTML=res;
+                document.getElementById('totalRecords').innerText = document.getElementsByClassName('card').length;
               }
 
             })
