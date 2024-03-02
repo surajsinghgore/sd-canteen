@@ -232,19 +232,6 @@ if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [
 
 
 
-//                 if(selectBox=="token"){inputBox.placeholder="Enter 6 Digit Token eg [xxxxxx] ";}
-// if(selectBox=="clientname"){inputBox.placeholder="Enter Client Full Name eg [s----- -----]";}
-// if(selectBox=="clientemail"){inputBox.placeholder="Enter Client Email Address eg [---@fg.com]";}
-// if(selectBox=="clientphone"){inputBox.placeholder="Enter Order's Full Date eg [--.--.----]";}
-// if(selectBox=="fulldate"){inputBox.placeholder="Enter Order\'s Full Date eg [31-03-2034]";}
-// if(selectBox=="fulltime"){inputBox.placeholder="Enter Order\'s Full Time   eg [10.11 Pm]";}
-
-
-// if(selectBox=="paymentmethod"){inputBox.placeholder="Enter Payment Method eg [complete]";}
-// if(selectBox=="productname"){inputBox.placeholder="Enter Item Name eg [samosa]";}
-// if(selectBox=="productcategory"){inputBox.placeholder="Enter Item Category eg [food]";}
-// if(selectBox=="orderstatus"){inputBox.placeholder="Enter Order' Status eg [pending] ";}
-// if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [100]";}
 
 
                 // if search using client token
@@ -255,7 +242,7 @@ if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [
                 
   $.ajax({
                 type: "POST", //type of method
-                url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+                url: "http://localhost/sd-canteen/api/allorders.php", //your page
                 data: {
                   searchByTokenId: 'process',
                     input:inputBox
@@ -270,6 +257,329 @@ if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [
            
               
                 }
+
+
+
+
+
+                   // if search using client name
+                   if(selectBox=="clientname"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByCustomerName: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+
+
+// if(selectBox=="clientphone"){inputBox.placeholder="Enter Order's Full Date eg [--.--.----]";}
+// if(selectBox=="fulldate"){inputBox.placeholder="Enter Order\'s Full Date eg [31-03-2034]";}
+// if(selectBox=="fulltime"){inputBox.placeholder="Enter Order\'s Full Time   eg [10.11 Pm]";}
+
+
+// if(selectBox=="paymentmethod"){inputBox.placeholder="Enter Payment Method eg [complete]";}
+// if(selectBox=="productname"){inputBox.placeholder="Enter Item Name eg [samosa]";}
+// if(selectBox=="productcategory"){inputBox.placeholder="Enter Item Category eg [food]";}
+// if(selectBox=="orderstatus"){inputBox.placeholder="Enter Order' Status eg [pending] ";}
+// if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [100]";}
+
+
+
+                   // if search using client email
+                   if(selectBox=="clientemail"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByCustomerEmail: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+
+
+
+// if(selectBox=="fulldate"){inputBox.placeholder="Enter Order\'s Full Date eg [31-03-2034]";}
+// if(selectBox=="fulltime"){inputBox.placeholder="Enter Order\'s Full Time   eg [10.11 Pm]";}
+
+
+// if(selectBox=="paymentmethod"){inputBox.placeholder="Enter Payment Method eg [complete]";}
+// if(selectBox=="productname"){inputBox.placeholder="Enter Item Name eg [samosa]";}
+// if(selectBox=="productcategory"){inputBox.placeholder="Enter Item Category eg [food]";}
+// if(selectBox=="orderstatus"){inputBox.placeholder="Enter Order' Status eg [pending] ";}
+// if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [100]";}
+
+
+
+                   // if search using client mobile
+                   if(selectBox=="clientphone"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByCustomerMobile: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+
+
+
+              
+
+
+
+
+
+
+                   // if search using client date
+                   if(selectBox=="fulldate"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByCustomerDate: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+
+      // if search using client fulltime
+      if(selectBox=="fulltime"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByCustomerTime: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+
+// if(selectBox=="productname"){inputBox.placeholder="Enter Item Name eg [samosa]";}
+// if(selectBox=="productcategory"){inputBox.placeholder="Enter Item Category eg [food]";}
+// if(selectBox=="orderstatus"){inputBox.placeholder="Enter Order' Status eg [pending] ";}
+// if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [100]";}
+
+if(selectBox=="paymentmethod"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByPaymentMethod: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+// if(selectBox=="productname"){inputBox.placeholder="Enter Item Name eg [samosa]";}
+// if(selectBox=="productcategory"){inputBox.placeholder="Enter Item Category eg [food]";}
+
+// if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [100]";}
+
+
+if(selectBox=="orderstatus"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByOrderStatus: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+
+
+
+
+
+              
+
+// if(selectBox=="productcategory"){inputBox.placeholder="Enter Item Category eg [food]";}
+
+// if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [100]";}
+
+
+if(selectBox=="productname"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByItemName: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+
+
+              
+
+
+// if(selectBox=="totalamount"){inputBox.placeholder="Enter Order Total Amount eg [100]";}
+
+
+if(selectBox=="productcategory"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByItemCategory: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+
+
+
+              
+
+
+if(selectBox=="totalamount"){
+
+            
+               
+                
+$.ajax({
+              type: "POST", //type of method
+              url: "http://localhost/sd-canteen/api/allorders.php", //your page
+              data: {
+                searchByItemTotalAmount: 'process',
+                  input:inputBox
+              },
+              // return data
+              success: function(res) {
+        
+                document.getElementById('table_sections').innerHTML=res;
+              }
+
+            })
+         
+            
+              }
+
+
+
+
+
             }
 
 
