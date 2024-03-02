@@ -93,8 +93,16 @@ $juiceCount = mysqli_num_rows($juiceCountRes);
 if ($foodCount > 0) {
     $totals=1;
     while ($data = mysqli_fetch_array($foodCountRes)) {
-      var_dump($foodCount);
-      
+    // check items rating
+      $ProductId=$data['id'];
+
+
+      $itemRating="select*from itemsrating where itemId=$ProductId";
+      $executeItemRating=mysqli_query($connection,$itemRating);
+      $ratingLenCount=mysqli_num_rows($executeItemRating);
+
+$itemRateData=mysqli_fetch_assoc($executeItemRating);
+
       ?>
 
    <div class="searchSection">
@@ -120,6 +128,7 @@ if ($foodCount > 0) {
 <div class="right">
   <h1 id="itemNameCurrent">
   <?php 
+
     echo $data['foodname'];?>
     <span
       class="activeBtn"
@@ -131,18 +140,51 @@ if ($foodCount > 0) {
 
 
   <div class="star">
-    <div class="startSection">
 
-    <div class="starRatingBox" >
-        <span id="priceMenu">
-        4.1 
-        </span>
-        <span class="fa fa-star checked"></span>
-    </div>
-   
+  <!-- rating section top  -->
+  <?php 
+  //! no review found
+  if($ratingLenCount==0){
+           ?>
+              <div class="startSection">
 
-      <h5>(2 Customer Review)</h5>
-    </div>
+<div class="starRatingBox" >
+    <span id="priceMenu">
+     
+   5
+    </span>
+    <span class="fa fa-star checked"></span>
+</div>
+
+
+  <h5>(0 Customer Review)</h5>
+</div>
+           
+           <?php
+          }
+          //! review finds
+          else{
+?>
+         <div class="startSection">
+
+<div class="starRatingBox" >
+    <span id="priceMenu">
+     
+   <?php 
+   echo $itemRateData['rating'];?>
+   ?>
+    </span>
+    <span class="fa fa-star checked"></span>
+</div>
+
+
+  <h5>(<?php 
+   echo $itemRateData['numberofrating'];?>
+   ?> Customer Review)</h5>
+</div>
+  <?php        }
+          ?>
+ 
   </div>
   <h3>₹ <span id="price">
 
@@ -331,7 +373,7 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
   </div>
 </div>
 </div>
-<div class="description"><?php  echo  nl2br($data['description']);?></div>
+<div class="description"><?php  echo $data['description'];?></div>
 
 <div class="reviews" id="reviews">
 <div class="heading">Rating & Reviews</div>
@@ -340,20 +382,54 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
   <div class="top">
     <div class="avgRate">
       <h1>
+      <?php 
+  //! no review found
+  if($ratingLenCount==0){
 
+echo "5/5";
+  }
+  // ! review found
+else{
 
-       5 / 5
+echo $itemRateData['rate'];
+}
+  ?>
+
       </h1>
       <div class="rates">
 
       <!-- star -->
       <div class="starRatingBox" style="margin-bottom:10px;margin-left:8px">
         <span>
-        4.1 
+       
+
+        <?php 
+  //! no review found
+  if($ratingLenCount==0){
+
+echo "4.5";
+  }
+  // ! review found
+else{
+
+echo $itemRateData['rate'];
+}
+  ?>
         </span>
         <span class="fa fa-star checked"></span>
     </div>
-        <p>Based On 2 rating</p>
+        <p>Based On   <?php 
+  //! no review found
+  if($ratingLenCount==0){
+
+echo "0";
+  }
+  // ! review found
+else{
+
+echo $itemRateData['numberofrating'];
+}
+  ?> rating</p>
       </div>
     </div>
 
@@ -363,36 +439,113 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
         <div class="progress">
           <div
             class="pro"
-            style="width:70%"
+            style="width: <?php 
+  //! no review found
+  if($ratingLenCount==0){
+
+echo "100%";
+  }
+  // ! review found
+else{
+
+echo $itemRateData['QualityRate']."%";
+}
+  ?>"
           ></div>
         </div>
-        <div class="percent">70%</div>
+        <div class="percent"><?php 
+  //! no review found
+  if($ratingLenCount==0){
+
+echo "100%";
+  }
+  // ! review found
+else{
+
+echo $itemRateData['QualityRate']."%";
+}
+  ?></div>
       </li>
       <li>
         <div class="headings">Price</div>
         <div class="progress">
           <div
             class="pro"
-            style="width:60%"
+            style="width:<?php 
+  //! no review found
+  if($ratingLenCount==0){
+
+echo "100%";
+  }
+  // ! review found
+else{
+
+echo $itemRateData['PriceRate']."%";
+}
+  ?>"
           ></div>
         </div>
-        <div class="percent">60%</div>
+        <div class="percent"><?php 
+  //! no review found
+  if($ratingLenCount==0){
+
+echo "100%";
+  }
+  // ! review found
+else{
+
+echo $itemRateData['PriceRate']."%";
+}
+  ?></div>
       </li>
       <li>
         <div class="headings">Service</div>
         <div class="progress">
           <div
             class="pro"
-            style="width:55%"
+            style="width:<?php 
+  //! no review found
+  if($ratingLenCount==0){
+
+echo "100%";
+  }
+  // ! review found
+else{
+
+echo $itemRateData['ServiceRate']."%";
+}
+  ?>"
           ></div>
         </div>
-        <div class="percent">55%</div>
+        <div class="percent"><?php 
+  //! no review found
+  if($ratingLenCount==0){
+
+echo "100%";
+  }
+  // ! review found
+else{
+
+echo $itemRateData['ServiceRate']."%";
+}
+  ?></div>
       </li>
     </div>
   </div>
 <!-- filter logic -->
   <div class="filterReview">
-    <div class="titles">Reviewed by 2 user</div>
+    <div class="titles">Reviewed by <?php 
+  //! no review found
+  if($ratingLenCount==0){
+
+echo "0";
+  }
+  // ! review found
+else{
+
+echo $itemRateData['numberofrating'];
+}
+  ?> user</div>
     <div class="filterSection">
       <div class="sections">
         <h1>
@@ -435,8 +588,12 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
 
   <div class="reviewsSectionField">
     <div class="childs" >
-   
-              <div class="reviewSection" >
+   <?php 
+
+   if(isset($itemRateData['numberofrating'])){
+   if($itemRateData['numberofrating']>0){
+?>
+  <div class="reviewSection" >
                 <div class="topSection">
                   <div class="starSection" >
                   <div class="starRatingBox" >
@@ -479,14 +636,105 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
     
     </div>
 
-
-<!-- no comments -->
-
+  <?php }
 
 
+// no reviews
+   else{
+?>
+
+<div class="reviewSection" >
+                <div class="topSection">
+                  <div class="starSection" >
+                  <div class="starRatingBox" >
+        <span style="font-size:15px;">
+        5
+        </span>
+        <span class="fa fa-star checked"></span>
+    </div>
+                    <p></p>
+                   
+                  </div>
+                  <div class="userDetails">
+                    <h2>admin</h2>
+                  </div>
+
+                  <div class="icons">
+                  <svg stroke="currentColor" class="icon" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg>
+                    <p>0-0-0000</p>
+
+
+                    <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6h6v-2h-4z"></path></svg>
+                    <p>0-00 Am</p>
+                  </div>
+                </div>
+
+                <div class="commentStyle">
+                  <p>No Comments Found</p>
+                </div>
 
 
 
+                <svg class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
+                
+          
+
+          
+
+
+
+    
+    </div>
+
+  <?php }
+
+}else{
+?>
+<div class="reviewSection">
+                <div class="topSection">
+                  <div class="starSection" >
+                  <div class="starRatingBox" >
+        <span style="font-size:15px;">
+        5
+        </span>
+        <span class="fa fa-star checked"></span>
+    </div>
+                    <p></p>
+                   
+                  </div>
+                  <div class="userDetails">
+                    <h2>admin</h2>
+                  </div>
+
+                  <div class="icons">
+                  <svg stroke="currentColor" class="icon" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg>
+                    <p>0-0-0000</p>
+
+
+                    <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6h6v-2h-4z"></path></svg>
+                    <p>0-00 Am</p>
+                  </div>
+                </div>
+
+                <div class="commentStyle">
+                  <p>No Comments Found</p>
+                </div>
+
+
+
+                <svg class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
+                
+          
+
+          
+
+
+
+    
+    </div>
+<?php }
+   ?>
+            
   </div>
 </div>
 </div>
@@ -502,13 +750,31 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
 
 <?php
 } 
-}   
 
+
+
+
+
+
+
+
+
+
+// review box
 ?>
+<!-- check wether rating is allowed to post or not -->
+<?php 
 
-
-
-
+// only check after login
+if(isset($_SESSION['activeClientId'])){
+ $clientIdActive=$_SESSION['activeClientId'];
+ 
+  //check weather try this food or not 
+$checkQuery="select*from itemlist where userID=$clientIdActive and orderstatus='complete' and itemName like '%$itemname%'";
+$result = mysqli_query($connection,$checkQuery);
+$reviewCheck=mysqli_num_rows($result);
+if($reviewCheck> 0){
+?>
 <div class="reviews">
 
 <div class="box">
@@ -655,6 +921,21 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
 
              </div>
 </div>
+<?php }
+}
+
+?>
+
+
+<?php
+}   
+
+?>
+
+
+
+
+
 
 
      
