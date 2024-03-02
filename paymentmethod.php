@@ -116,13 +116,32 @@ require('./middleware/VerifyClientLogin.php');?>
                 </label>
               </div>
 
-          
-                <div class="div">
+          <?php
+        require('./middleware/ConnectToDatabase.php');
+
+$id=$_SESSION['activeClientId'];
+$resultGet = mysqli_query($connection, "SELECT * FROM clientdata where id=$id");
+$rowGetData = mysqli_fetch_assoc($resultGet);
+if(isset($rowGetData['cod'])){
+  if($rowGetData['cod']=="disabled"){
+
+  }else{
+?>
+
+<div class="div">
                   <input type="radio" name="payment" id="cod" value="COD" />
                   <label for="cod" style="cursor:pointer">
                     <h4> Cash On Delivery</h4>
                   </label>
                 </div>
+
+
+<?php  }
+
+}
+      
+          ?>
+               
            
   
           </div>

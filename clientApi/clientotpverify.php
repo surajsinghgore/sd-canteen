@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $fulladdress = $dataRes['fulladdress'];
                     $password = $dataRes['password'];
 
-                    $sql_query = "insert into clientdata(fullname,age,email,mobile,gender,fulladdress,profileimage,password) values('$fullname',$age,'$email',$mobile,'$gender','$fulladdress','','$password')";
+                    $sql_query = "insert into clientdata(fullname,age,email,mobile,gender,fulladdress,profileimage,password,cod) values('$fullname',$age,'$email',$mobile,'$gender','$fulladdress','','$password','enable')";
 
 
                     $res = mysqli_query($connection, $sql_query);

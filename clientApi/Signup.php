@@ -310,7 +310,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($result == true) {
 
 
-                    $sql_query = "insert into clientregistertemp(fullname,age,email,mobile,gender,fulladdress,password,verifystatus,otp) values('$fullname',$age,'$email',$mobile,'$gender','$address','$encodePassword','false','$SixDigitOtp')";
+                    $sql_query = "insert into clientregistertemp(fullname,age,email,mobile,gender,fulladdress,password,verifystatus,otp,cod) values('$fullname',$age,'$email',$mobile,'$gender','$address','$encodePassword','false','$SixDigitOtp','enable')";
 
                     $res = mysqli_query($connection, $sql_query);
                     if ($res) {

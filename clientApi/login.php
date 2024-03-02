@@ -43,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $_SESSION['activeClientEmail'] = $data['email'];
                     $_SESSION['activeClientMobile'] = $data['mobile'];
                     $_SESSION['activeClientFullname'] = $data['fullname'];
+            
                     $error_status = "success";
                     $error_message = 'successfully login';
                     $toast_status = 'true';
