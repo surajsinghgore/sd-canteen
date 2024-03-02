@@ -54,7 +54,8 @@
              
               placeholder="Search Customer Name..."
              
-              id="names"
+              id="customerNameSearch"
+              onkeyup="searchByCustomerName()"
             />
             <select  name="time" id="time">
               <option value="null">Search Time Slot...</option>
@@ -432,9 +433,7 @@ $.ajax({
 
 
 
-              // tokenIdSearch
-
-
+              // search By tokenIdSearch
               function searchByTokenId(){
                let input=document.getElementById('tokenIdSearch').value.toUpperCase();
                 
@@ -443,6 +442,28 @@ $.ajax({
                 url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
                 data: {
                   searchByTokenId: 'process',
+                    input:input
+                },
+                // return data
+                success: function(res) {
+          
+                  document.getElementById('table_sections').innerHTML=res;
+                }
+
+              })
+              }
+
+
+
+                  // search By customer name
+                  function searchByCustomerName(){
+               let input=document.getElementById('customerNameSearch').value.toLowerCase();
+                
+  $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+                data: {
+                  searchByCustomerName: 'process',
                     input:input
                 },
                 // return data
