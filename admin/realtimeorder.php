@@ -529,15 +529,94 @@ document.getElementById('table_sections').innerHTML=res;
 
 
 // all order load
-function totalOrderLoad(){}
+function totalOrderLoad(){
+  window.document.location.reload();
+}
+
+
+
 // all complete load
-function completeOrderLoad(){}
+function completeOrderLoad(){
+  $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+                data: {
+                  completeOrders: 'process',
+                   
+                },
+                // return data
+                success: function(res) {
+          
+                  document.getElementById('table_sections').innerHTML=res;
+                }
+
+              })
+
+
+}
+
+
+
 // all pending load
-function pendingOrderLoad(){}
+function pendingOrderLoad(){
+
+  $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+                data: {
+                  pendingOrders: 'process',
+                   
+                },
+                // return data
+                success: function(res) {
+          
+                  document.getElementById('table_sections').innerHTML=res;
+                }
+
+              })
+}
+
+
 // all reject load
-function rejectOrderLoad(){}
+function rejectOrderLoad(){
+
+  $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+                data: {
+                  rejectOrders: 'process',
+                   
+                },
+                // return data
+                success: function(res) {
+          
+                  document.getElementById('table_sections').innerHTML=res;
+                }
+
+              })
+
+}
+
+
 // all delay load
-function delayOrderLoad(){}
+function delayOrderLoad(){
+  $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+                data: {
+                  delayOrders: 'process',
+                   
+                },
+                // return data
+                success: function(res) {
+          
+                  document.getElementById('table_sections').innerHTML=res;
+                }
+
+              })
+
+
+}
 
 </script>
     
