@@ -105,13 +105,14 @@
             </select>
             <select
               name="category"
-              id="category"
+              id="itemCategory"
+              onchange="searchByItemCategory()"
             >
               <option value="null">Select Category..</option>
-              <option value="foodcategory">Food Category</option>
-              <option value="coffeecategory">Coffee Category</option>
-              <option value="drinkcategory">Drink Category</option>
-              <option value="juicecategory">Juice Category</option>
+              <option value="food">Food Category</option>
+              <option value="coffee">Coffee Category</option>
+              <option value="drink">Drink Category</option>
+              <option value="juice">Juice Category</option>
             </select>
           </div>
 
@@ -165,19 +166,19 @@ $lateOrderLen=mysqli_num_rows($res4);
 
     ?>
           <div class="analysis">
-            <div class="div1" >
+            <div class="div1" onclick="totalOrderLoad()">
               Total Orders : <?php echo $totalOrdersLen;?> 
             </div>
-            <div class="div2">
+            <div class="div2" onclick="completeOrderLoad()">
               Complete Orders: <?php echo $CompleteOrderLen;?> 
             </div>
-            <div class="div3">
+            <div class="div3" onclick="pendingOrderLoad()">
               Pending Orders: <?php echo $PendingOrderLen;?> 
             </div>
-            <div class="div4" >
+            <div class="div4" onclick="rejectOrderLoad()">
               Reject Orders : <?php echo $RejectOrderLen;?> 
             </div>
-            <div class="div5">
+            <div class="div5" onclick="delayOrderLoad()">
               Orders Not On Time: <?php echo $lateOrderLen;?> 
             </div>
           </div>
@@ -500,6 +501,44 @@ $.ajax({
 
               })
               }
+
+
+
+
+                // search By items category
+                function searchByItemCategory(){
+
+let input=document.getElementById('itemCategory').value.toLowerCase();
+
+$.ajax({
+type: "POST", //type of method
+url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+data: {
+  searchByItemCategory: 'process',
+input:input
+},
+// return data
+success: function(res) {
+
+document.getElementById('table_sections').innerHTML=res;
+}
+
+})
+}
+
+
+
+// all order load
+function totalOrderLoad(){}
+// all complete load
+function completeOrderLoad(){}
+// all pending load
+function pendingOrderLoad(){}
+// all reject load
+function rejectOrderLoad(){}
+// all delay load
+function delayOrderLoad(){}
+
 </script>
     
 
