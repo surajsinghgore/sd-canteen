@@ -44,9 +44,9 @@
             <input
               type="search"
               name="token"
-         
               placeholder="Search Token Id ..."
-              id="token"
+              id="tokenIdSearch"
+              onkeyup="searchByTokenId()"
             />
             <input
               type="search"
@@ -429,6 +429,30 @@ $.ajax({
                 }
 
               })
+
+
+
+              // tokenIdSearch
+
+
+              function searchByTokenId(){
+               let input=document.getElementById('tokenIdSearch').value.toUpperCase();
+                
+  $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
+                data: {
+                  searchByTokenId: 'process',
+                    input:input
+                },
+                // return data
+                success: function(res) {
+          
+                  document.getElementById('table_sections').innerHTML=res;
+                }
+
+              })
+              }
 </script>
     
 
