@@ -359,8 +359,95 @@ $janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
 
 // calculate
 $data.= ",\"totalOrders\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
-$data3.= "\"totalOrders\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]}";
-
+$data3.= "\"totalOrders\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
 echo $data3;
+
+
+
+
+
+// monthwise clients
+$data4="";
+$janCount="null";
+$febCount="null";
+$marCount="null";
+$aprCount="null";
+$mayCount="null";
+$junCount="null";
+$julCount="null";
+$augCount="null";
+$sepCount="null";
+$octCount="null";
+$novCount="null";
+$decCount="null";
+
+    // fetch monthwise visits
+// jan
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-01___'");
+$janCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($janCountRes>0){
+    $janCount=$janCountRes;
+}
+
+// feb
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-02___'");
+$febCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($febCountRes>0){
+    $febCount=$febCountRes;
+}
+// mar
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-03___'");
+$marCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($marCountRes> 0){
+    $marCount=$marCountRes;
+}
+// apr
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-04___'");
+$aprCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($aprCountRes> 0){$aprCount=$aprCountRes;}
+
+
+// may
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-05___'");
+$mayCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($mayCountRes> 0){$mayCount=$aprCountRes;}
+
+// jun
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-06___'");
+$junCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($junCountRes> 0){$junCount=$junCountRes;}
+
+// jul
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-07___'");
+$julCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($julCountRes> 0){$julCount=$julCountRes;}
+
+// aug
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-08___'");
+$augCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($augCountRes> 0){$augCount=$augCountRes;}
+
+// sep
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-09___'");
+$sepCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($sepCountRes> 0){$sepCount=$sepCountRes;}
+
+// oct
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-10___'");
+$octCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($octCountRes> 0){$octCount=$octCountRes;}
+
+// nov
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-11___'");
+$novCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($novCountRes> 0){$novCount=$novCountRes;}
+
+// dec
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where createdAt like '$year-12___'");
+$decCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($decCountRes> 0){$decCount=$decCountRes;}
+// calculate
+$data4.= ",\"monthwiseclient\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]}";
+echo $data4;
 }
 ?>

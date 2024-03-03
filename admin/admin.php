@@ -391,7 +391,7 @@ new Chart("myChart7", {
 
  //8 Monthwise new client
  const xValues6 = ['january','february','march','april','may','june','july','august','september','october','november','december'];
-const yValues6 = [2,8,8,9,9,9,10,11,14,14,15];
+const yValues6 = data.monthwiseclient;
 
 new Chart("myChart6", {
   type: "line",
