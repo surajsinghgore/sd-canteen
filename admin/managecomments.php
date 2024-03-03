@@ -1,3 +1,5 @@
+<!-- manage comments api-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,23 +36,43 @@
 
             <!-- manage comments -->
             <div class="mainComments">
+   <?php 
    
-     
-            <div class="section">
-   <h3>Number Of Reports : <span>2</span></h3>
-     <div class="comment">
-    TESTING COMMENTS
-     </div>
+   require('../middleware/ConnectToDatabase.php');
 
-     <div class="options">
-     <div class="div1"> <button title="Really Toxic ?">Toxic</button>  </div>
-     <div class="div2">
-   <button  title="Really Not Toxic ">Not Toxic</button>
-     </div>
-     </div>
-     </div>
+$fetchCommentsRes=mysqli_query($connection,'select*from commentreports');
+$CommentCount=mysqli_num_rows($fetchCommentsRes);
+if ($CommentCount> 0) {
+
+    while ($Comment = mysqli_fetch_array($fetchCommentsRes)) {
+?>
+        <div class="section">
+        <h3>Number Of Reports : <span> <?php echo $Comment['numberofreport']; ?></span></h3>
+          <div class="comment">
+         <?php echo $Comment['message']; ?>
+          </div>
+     
+          <div class="options">
+          <div class="div1"> <button title="Really Toxic ?" onclick='toxicCommentFunction(" <?php echo $Comment['id']; ?>","<?php echo $Comment['commentId']; ?>")'>Toxic</button>  </div>
+          <div class="div2">
+        <button  title="Really Not Toxic " onclick='notToxicCommentFunction("<?php echo $Comment['id']; ?>","<?php echo $Comment['commentId']; ?>")'>Not Toxic</button>
+          </div>
+          </div>
+          </div>
+   <?php }
+}
+
+else{
+?>
+<h1>No Comments Reported Yet</h1>
+<?php }
+   ?>
+     
+           
   
-   <!-- <h1>No Comments Reported Yet</h1> -->
+
+     
+ 
    
 
 
@@ -59,6 +81,38 @@
         </div>
 
     </div>
+
+<script>
+
+
+function toxicCommentFunction(id,commentId){
+ 
+    $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/managecomments.php", //your page
+                data: {
+                    id: id,
+                    commentId:commentId,
+                    toxic: 'toxic',
+               
+                },
+                // return data
+                success: function(res) {
+                    console.log(res)
+                }})
+}
+
+
+
+function notToxicCommentFunction(id){
+
+}
+
+
+</script>
+
+        <!-- ajax added -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </body>
 
 </html>
