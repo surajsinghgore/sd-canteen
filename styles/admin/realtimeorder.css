@@ -4,6 +4,7 @@ rightsidebar .orders {
     height: auto;
     overflow: hidden;
     position: relative;
+    display: flex;
   }
   
   .orders input[type="search"]::-webkit-search-decoration,
@@ -21,9 +22,13 @@ rightsidebar .orders {
   }
   
   .rightsidebar .orders h5 {
-    position: absolute;
-    top: 13%;
-    right: 2%;
+    position: relative;
+    top: 0%;
+    right: 0%;
+    margin-right: 2%;
+    float: right;
+    margin-top: -50px;
+    font-size: 99;
       font-size: 18px;
     color: rgb(71, 10, 10);
     padding-left: 1%;
