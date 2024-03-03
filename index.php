@@ -745,7 +745,25 @@ if($juiceCount>0){
             </div>
             <h5>Delicacy Of Items</h5>
             <p>
-                23
+               <?php 
+               $countNumber=0;
+               $foodQuery="select*from fooditems";
+               $foodQueryRES=mysqli_query($connection,$foodQuery);
+               $countNumber+=mysqli_num_rows($foodQueryRES);
+
+
+               $foodQuery="select*from coffeeitems";
+               $foodQueryRES=mysqli_query($connection,$foodQuery);
+               $countNumber+=mysqli_num_rows($foodQueryRES);
+               $foodQuery="select*from drinkitems";
+               $foodQueryRES=mysqli_query($connection,$foodQuery);
+               $countNumber+=mysqli_num_rows($foodQueryRES);
+               $foodQuery="select*from juiceitems";
+               $foodQueryRES=mysqli_query($connection,$foodQuery);
+               $countNumber+=mysqli_num_rows($foodQueryRES);
+
+echo $countNumber;
+               ?> 
             </p>
         </div>
 
@@ -757,7 +775,18 @@ if($juiceCount>0){
                 </svg>
             </div>
             <h5>Total Visits </h5>
-            <p>23</p>
+            <p>
+            <?php 
+               $countNumber=0;
+               $foodQuery="select*from websitecounter";
+               $foodQueryRES=mysqli_query($connection,$foodQuery);
+               $countNumber+=mysqli_num_rows($foodQueryRES);
+
+
+echo $countNumber;
+               ?> 
+
+            </p>
         </div>
 
         <div class="fact">
@@ -771,7 +800,15 @@ if($juiceCount>0){
             </div>
             <h5>Orders Placed</h5>
             <p>
-                16
+            <?php 
+               $countNumber=0;
+               $foodQuery="select*from orderitems";
+               $foodQueryRES=mysqli_query($connection,$foodQuery);
+               $countNumber+=mysqli_num_rows($foodQueryRES);
+
+
+echo $countNumber;
+               ?> 
                 
             </p>
         </div>
@@ -788,7 +825,16 @@ if($juiceCount>0){
             <h5> Happy clients</h5>
             <p>
 
-                23
+            <?php 
+               $countNumber=0;
+               $foodQuery="select*from clientdata";
+               $foodQueryRES=mysqli_query($connection,$foodQuery);
+               $countNumber+=mysqli_num_rows($foodQueryRES);
+
+
+echo $countNumber;
+               ?> 
+                
             </p>
         </div>
     </div>
