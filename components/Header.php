@@ -190,7 +190,7 @@ if($mainCount>0){
    ?> <div class='cookingMain' id="cooking">
     <div class='cookingSection'>
     <a href="/sd-canteen/ordercomplete.php"><h6>Order Cooking</h6></a>
-      <button title='Hide' onclick="sessionStorage.setItem('cooking','disabled');document.location.reload()">x</button>
+      <button title='Hide' onclick="sessionStorage.removeItem('cooking','disabled');document.location.reload()">x</button>
       <a href="/sd-canteen/ordercomplete.php"><div class="cookImage">
       <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014402/cooking_ggqydy.gif"  alt="cooking image" />
       </div>
@@ -217,7 +217,7 @@ if($mainCount>0){
     <script>
         if(sessionStorage.getItem('cooking')){
 
-            document.getElementById('cooking1').style.display="none";
+            document.getElementById('cooking').style.display="none";
         }
 
 

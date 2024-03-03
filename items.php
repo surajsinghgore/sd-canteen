@@ -90,11 +90,7 @@ $foodCount = mysqli_num_rows($foodCountRes);
 $coffeeCount = mysqli_num_rows($coffeeCountRes);
 $drinkCount = mysqli_num_rows($drinkCountRes);
 $juiceCount = mysqli_num_rows($juiceCountRes);
-echo "<h1>$foodCount</h1>";
-echo "<h1>$coffeeCount</h1>";
-echo "<h1>$drinkCount</h1>";
-echo "<h1>$juiceCount</h1>";
-echo "<h1>$itemname</h1>";
+
 
 
 
