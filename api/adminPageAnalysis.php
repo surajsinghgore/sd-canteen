@@ -88,7 +88,7 @@ if($novCountRes> 0){$novCount=$novCountRes;}
 $websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM websitecounter where visitDate like '%___12-$year%'");
 $decCountRes=mysqli_num_rows($websiteVisitCountRes);
 if($decCountRes> 0){$decCount=$decCountRes;}
-
+// calculate
 $data.= "{\"monthwisevisit\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
 
 
@@ -118,9 +118,249 @@ $chromeRes=mysqli_query($connection,"SELECT * FROM websitecounter where browser 
 $Safari=mysqli_num_rows($chromeRes);
 
 
-$data.=",\"browserUse\":[$Chrome,$Firefox,$Safari,$Opera,$Edge,$IE,$Other]}";
+$data.=",\"browserUse\":[$Chrome,$Firefox,$Safari,$Opera,$Edge,$IE,$Other]";
+
+
+
+
+
+// total order placed
+
+$janCount="null";
+$febCount="null";
+$marCount="null";
+$aprCount="null";
+$mayCount="null";
+$junCount="null";
+$julCount="null";
+$augCount="null";
+$sepCount="null";
+$octCount="null";
+$novCount="null";
+$decCount="null";
+
+    // fetch monthwise visits
+// jan
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___01-$year%'");
+$janCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($janCountRes>0){
+    $janCount=$janCountRes;
+}
+
+// feb
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___02-$year%'");
+$febCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($febCountRes>0){
+    $febCount=$febCountRes;
+}
+// mar
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___03-$year%'");
+$marCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($marCountRes> 0){
+    $marCount=$marCountRes;
+}
+// apr
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___04-$year%'");
+$aprCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($aprCountRes> 0){$aprCount=$aprCountRes;}
+
+
+// may
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___05-$year%'");
+$mayCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($mayCountRes> 0){$mayCount=$aprCountRes;}
+
+// jun
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___06-$year%'");
+$junCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($junCountRes> 0){$junCount=$junCountRes;}
+
+// jul
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___07-$year%'");
+$julCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($julCountRes> 0){$julCount=$julCountRes;}
+
+// aug
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___08-$year%'");
+$augCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($augCountRes> 0){$augCount=$augCountRes;}
+
+// sep
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___09-$year%'");
+$sepCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($sepCountRes> 0){$sepCount=$sepCountRes;}
+
+// oct
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___10-$year%'");
+$octCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($octCountRes> 0){$octCount=$octCountRes;}
+
+// nov
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___11-$year%'");
+$novCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($novCountRes> 0){$novCount=$novCountRes;}
+
+// dec
+$websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM orderitems where orderdate like '%___12-$year%'");
+$decCountRes=mysqli_num_rows($websiteVisitCountRes);
+if($decCountRes> 0){$decCount=$decCountRes;}
+// calculate
+$data.= ",\"totalOrders\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
+
 
 echo $data;
+$data2="";
+// ! top 10 trending items
+$subDataHeading="";
+$subData="";
+$topTrendingRes=mysqli_query($connection,"select*from topsearches order by numberofsearch desc LIMIT 10");
+$count=0;
+while($data=mysqli_fetch_array($topTrendingRes)){
+    $itemName=$data['itemname'];
+    $numberofsearch=$data['numberofsearch'];
+    ++$count;
+    if($count<10){
+        $subDataHeading.="\"$itemName\",";
+        $subData.="\"$numberofsearch\",";
+    }else{
+        $subDataHeading.="\"$itemName\"";
+        $subData.="\"$numberofsearch\"";
+    }
+}
 
+
+$data2.= ",\"trendingItemName\":[$subDataHeading]";
+$data2.= ",\"trendingItemData\":[$subData],";
+
+
+echo $data2;
+
+$data3= "";
+
+// total order placed
+
+$janCount="0";
+$febCount="0";
+$marCount="0";
+$aprCount="0";
+$mayCount="0";
+$junCount="0";
+$julCount="0";
+$augCount="0";
+$sepCount="0";
+$octCount="0";
+$novCount="0";
+$decCount="0";
+
+// jan
+
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___01-$year%'");
+
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+
+    
+if($janCountRes['Sum']!=null){
+    $janCount=$janCountRes['Sum'];
+
+}
+
+// feb
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___02-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+
+    if($janCountRes['Sum']!=null){
+        $febCount=$janCountRes['Sum'];
+    }
+    
+// mar
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___03-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+  
+    if($janCountRes['Sum']!=null){
+        $marCount=$janCountRes['Sum'];
+    }
+// apr
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___04-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+   
+    if($janCountRes['Sum']!=null){
+        $aprCount=$janCountRes['Sum'];
+    }
+
+// may
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___05-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+    
+    if($janCountRes['Sum']!=null){
+        $mayCount=$janCountRes['Sum'];
+    }
+// jun
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___06-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+   
+     
+    if($janCountRes['Sum']!=null){
+        $junCount=$janCountRes['Sum'];
+    }
+// jul
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___07-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+   
+    if($janCountRes['Sum']!=null){
+        $julCount=$janCountRes['Sum'];
+    }
+
+
+// aug
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___08-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+
+    if($janCountRes['Sum']!=null){
+        $augCount=$janCountRes['Sum'];
+    }
+
+
+// sep
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___09-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+
+    
+    if($janCountRes['Sum']!=null){
+        $sepCount=$janCountRes['Sum'];
+    }
+
+
+// oct
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___10-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+ 
+    if($janCountRes['Sum']!=null){
+        $octCount=$janCountRes['Sum'];
+    }
+
+
+
+// nov
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___11-$year%'");
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+   
+    if($janCountRes['Sum']!=null){
+        $novCount=$janCountRes['Sum'];
+    }
+
+// dec
+$websiteVisitCountRes=mysqli_query($connection,"SELECT SUM(amountreceived) as Sum FROM orderitems where orderdate like '%___12-$year%'");
+
+$janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
+
+    if($janCountRes['Sum']!=null){
+        $decCount=$janCountRes['Sum'];
+    }
+
+// calculate
+$data.= ",\"totalOrders\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
+$data3.= "\"totalOrders\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]}";
+
+echo $data3;
 }
 ?>

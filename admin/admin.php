@@ -239,10 +239,10 @@ let selectedYear=document.getElementById('selectedYear').value;
            
                 success: function(res) {
 
-                  
+                    console.log(res)
                     let data=JSON.parse(res);
 
-                    console.log(data)
+                 
 
 
 
@@ -306,9 +306,11 @@ const xMyChart10 = ["chrome", "firefox", "safari", "opera","edge","ie", "other"]
 // total order placed
 
 const xValues9 = ['january','february','march','april','may','june','july','august','september','october','november','december'];
-const yValues9 = [55, 49, 44, 24, 15,23,23,23,45,45,12,34];
+const yValues9 = data.totalOrders;
 const barColors9 = ["red", "green","blue","orange","brown","#05FA87","#FA6D05","#05D9FA","#B705FA","#E3C506","#48FA05","#FA0587"];
 
+
+// top trending items of all times
 new Chart("myChart9", {
   type: "bar",
   data: {
@@ -330,8 +332,8 @@ new Chart("myChart9", {
 
 // top 10 trending Items
 
-const xMyChart8 = ["Americano", "Cappuccino", "Espresso", "Macchiato", "Mocha", "Latte", "Doppio", "Café au lait", "Cold brew", "Affogato"];
-        const yMyChart8 = [20, 1, 34, 5, 5, 10, 3, 4, 12, 22];
+const xMyChart8 = data.trendingItemName;
+        const yMyChart8 = data.trendingItemData;
         const barColorsMyChart8 = [
             "#378A29",
             "#29718A",
@@ -365,7 +367,7 @@ const xMyChart8 = ["Americano", "Cappuccino", "Espresso", "Macchiato", "Mocha", 
 // 7 total earnings
 
 const xValues7 = ['january','february','march','april','may','june','july','august','september','october','november','december'];
-const yValues7 = [55, 49, 44, 24, 15,23,23,23,45,45,12,34];
+const yValues7 = data.totalOrders;
 const barColors7 = ["red", "green","blue","orange","brown","#05FA87","#FA6D05","#05D9FA","#B705FA","#E3C506","#48FA05","#FA0587"];
 
 new Chart("myChart7", {
