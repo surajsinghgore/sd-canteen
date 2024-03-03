@@ -60,6 +60,8 @@ date_default_timezone_set("Asia/Calcutta");
 $currentDate = date("d-m-Y");
 $currentTime = date("h:i:s A");
 
+$currentTime24 = date("H:i:s A");
+
 // fetch user details
 $clientDataQuery="select*from clientdata where id=$userId";
 $clientDataRes=mysqli_query($connection,$clientDataQuery);
@@ -132,7 +134,7 @@ $itemsRatingCommentCount=mysqli_num_rows($queryCheck2);
 if($itemsRatingCommentCount>0){
 
 // update itemratingcomments
-    $updateItemRatingComments="update itemratingcomments set message='$usermessage',QualityRate=$qualityRate,ServiceRate=$serviceRate,PriceRate=$priceRate,commenttime='$currentTime',commentdate='$currentDate' where userId=$userId and ratingId=$ratingIdMain";
+    $updateItemRatingComments="update itemratingcomments set message='$usermessage',QualityRate=$qualityRate,ServiceRate=$serviceRate,PriceRate=$priceRate,commenttime='$currentTime',time24='$currentTime24',commentdate='$currentDate' where userId=$userId and ratingId=$ratingIdMain";
 $executeRes=mysqli_query($connection,$updateItemRatingComments);
 
 
@@ -161,7 +163,7 @@ else{
 
 
 
-    $q2="insert into itemratingcomments(ratingId,username,message,userId,QualityRate,ServiceRate,PriceRate,commenttime,commentdate) values($ratingIdMain,'$username','$usermessage',$userId,$qualityRate,$serviceRate,$priceRate,'$currentTime','$currentDate')";
+    $q2="insert into itemratingcomments(ratingId,username,message,userId,QualityRate,ServiceRate,PriceRate,commenttime,commentdate,time24) values($ratingIdMain,'$username','$usermessage',$userId,$qualityRate,$serviceRate,$priceRate,'$currentTime','$currentDate','$currentTime24')";
     mysqli_query($connection, $q2);
 
 
@@ -199,7 +201,7 @@ mysqli_query($connection, $insertInRating);
 $last_INDEX_ID=mysqli_insert_id($connection);
 
 // insert in itemratingcomments table
-$q2="insert into itemratingcomments(ratingId,username,message,userId,QualityRate,ServiceRate,PriceRate,commenttime,commentdate) values($last_INDEX_ID,'$username','$usermessage',$userId,$qualityRate,$serviceRate,$priceRate,'$currentTime','$currentDate')";
+$q2="insert into itemratingcomments(ratingId,username,message,userId,QualityRate,ServiceRate,PriceRate,commenttime,commentdate,time24) values($last_INDEX_ID,'$username','$usermessage',$userId,$qualityRate,$serviceRate,$priceRate,'$currentTime','$currentDate','$currentTime24')";
 mysqli_query($connection, $q2);
 
 }

@@ -597,7 +597,8 @@ echo $itemRateData['numberofrating'];
         </h1>
         <select
           value="All Reviews"
-          
+          id="filterUsingTime"
+          onchange="filterUsingDuration()"
         >
           <option value="all">All Reviews</option>
           <option value="latest">Latest Order</option>
@@ -609,6 +610,8 @@ echo $itemRateData['numberofrating'];
         <h1>
         <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"></path></svg> Filter :
         </h1>
+
+
         <select
           value="All star"
           id="filterUsingStar"
@@ -4022,29 +4025,28 @@ echo $itemRateData['numberofrating'];
       <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"></path></svg> Filter :
       </h1>
       <select
-          value="All star"
-          id="filterUsingStar"
-      onchange="filterCommentsUsingTime()"
-        >
-          <option value="all">All Star</option>
-          <option value="5">5 Star</option>
-          <option value="4.5">4.5 Star</option>
-          <option value="4">4 Star</option>
-          <option value="3.5">3.5 Star</option>
-          <option value="3">3 Star</option>
-          <option value="2.5">2.5 Star</option>
-          <option value="2">2 Star</option>
-          <option value="1.5">1.5 Star</option>
-          <option value="1">1 Star</option>
-          <option value="0.5">0.5 Star</option>
-        </select>
-      </div>
+        value="All star"
+    
+      >
+        <option value="all">All Star</option>
+        <option value="5">5 Star</option>
+        <option value="4.5">4.5 Star</option>
+        <option value="4">4 Star</option>
+        <option value="3.5">3.5 Star</option>
+        <option value="3">3 Star</option>
+        <option value="2.5">2.5 Star</option>
+        <option value="2">2 Star</option>
+        <option value="1.5">1.5 Star</option>
+        <option value="1">1 Star</option>
+        <option value="0.5">0.5 Star</option>
+      </select>
     </div>
   </div>
+</div>
 
 
-  <div class="reviewsSectionField" >
-    <div class="childs" id="mainCommentSection">
+<div class="reviewsSectionField">
+  <div class="childs" >
  <?php 
 
  if(isset($itemRateData['numberofrating'])){
@@ -4687,6 +4689,40 @@ else{
 
 
    <script>
+
+
+
+// filterUsingDuration
+
+function filterUsingDuration(){
+let itemName=document.getElementById('itemNameCurrent').innerText;
+let input=document.getElementById('filterUsingTime').value;
+
+if(input=="all"){
+  document.location.reload();
+  return;
+}
+
+
+$.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/clientApi/reportComments.php", //your page
+                data: {
+                    filterUsingDuration: input,
+                    input:input,
+                    itemName:itemName
+                },
+                // return data
+                success: function(res) {
+              
+document.getElementById('mainCommentSection').innerHTML=res;
+
+
+                }
+              })
+
+}
+
 // comments report
 function reportComments(id){
 sessionStorage.setItem('reportcomment',id);
