@@ -93,7 +93,7 @@ $resCount=1;
 <h1><?php echo $data['foodname'];?></h1>
 <h6>QTY: 1</h6>
 <h4>Category : <?php echo $data['category'];?></h4>
-<a href=""><button>Click To Order</button></a>
+<a href="/sd-canteen/items.php?itemname=<?php echo $data['foodname'];?>"><button>Click To Order</button></a>
 </div>
 </div>
 </div>
