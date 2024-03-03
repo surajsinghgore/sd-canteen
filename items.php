@@ -1739,7 +1739,8 @@ echo $itemRateData['numberofrating'];
       </h1>
       <select
         value="All Reviews"
-        
+          id="filterUsingTime"
+          onchange="filterUsingDuration()"
       >
         <option value="all">All Reviews</option>
         <option value="latest">Latest Order</option>
@@ -2874,7 +2875,8 @@ echo $itemRateData['numberofrating'];
       </h1>
       <select
         value="All Reviews"
-        
+          id="filterUsingTime"
+          onchange="filterUsingDuration()"
       >
         <option value="all">All Reviews</option>
         <option value="latest">Latest Order</option>
@@ -4012,7 +4014,8 @@ echo $itemRateData['numberofrating'];
       </h1>
       <select
         value="All Reviews"
-        
+          id="filterUsingTime"
+          onchange="filterUsingDuration()"
       >
         <option value="all">All Reviews</option>
         <option value="latest">Latest Order</option>
