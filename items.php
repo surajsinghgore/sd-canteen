@@ -2727,7 +2727,6 @@ $.ajax({
                 // return data
                 success: function(res) {
 
-
                   window.scroll({
  top: 0, 
  left: 0, 

@@ -111,8 +111,8 @@ $q1="select*from itemsrating where itemName like '%$itemName%'";
 $queryCheck=mysqli_query($connection,$q1);
 
 
-
 $itemsRatingCount=mysqli_num_rows($queryCheck);
+echo $itemsRatingCount;
 
 // already exits just update
 if ($itemsRatingCount> 0) {

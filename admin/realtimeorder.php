@@ -354,7 +354,8 @@ let password="";
                 },
                 // return data
                 success: function(res) {
-                
+           
+                  document.location.reload();
                  
                 }
 
