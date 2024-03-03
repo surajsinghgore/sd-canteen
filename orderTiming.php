@@ -219,6 +219,63 @@ m = m + 10;
 // 0 means sunday
 if(Dates.getDay()==0){
 
+
+
+  let datass=data.filter((items)=>{
+return items.time>=times;
+
+})
+
+if(datass.length==0){
+  document.getElementById('BottomMessage').innerHTML=`<div class="message">
+Orders are not allowed to be placed after <span>5.51 PM</span> from <span>Monday</span> to <span>Saturday.</span> . We are closed on <span>Sundays</span> and <span>Holidays</span>.`;
+
+document.getElementById('BottomBtns').innerHTML=`
+  <button
+                  style="cursor: not-allowed;"
+                  
+                  disabled
+                >
+                  Order Is Off
+                </button>
+  `;
+}
+
+else{
+  document.getElementById('BottomBtns').innerHTML=`
+  <a href="/sd-canteen/paymentmethod.php"><button>Continue Order</button></a>`;
+}
+datass.map((item,index)=>{
+
+
+  document.getElementById('TimingBox').innerHTML+=`
+<div class="box" >
+                <div class="btn">
+                
+                    <input
+                      type="radio"
+                      name="time"
+                      id="box${item.time1}"
+                   onclick='setTimeForOrder("${item.time}","${item.time1}")'
+                    />
+                
+                 
+            
+                </div>
+
+                <div class="time">
+                  <h4>
+                    <label for="box${item.time1}">
+                      ${item.time1} 
+                    </label>
+                  </h4>
+                </div>
+              </div>
+`;
+})
+
+
+
 }
 
 // means not sunday

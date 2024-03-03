@@ -1533,6 +1533,7 @@ $.ajax({
                 success: function(res) {
 
 window.document.location.reload();
+document.body.scrollTop = document.documentElement.scrollTop = 0;
                 }
 
               })

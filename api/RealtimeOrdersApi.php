@@ -284,7 +284,8 @@ else{
     
 // process Order to complete
 if (isset($_POST['processOrder']) && isset($_POST['id'])){
-  $id= $_POST['id'];
+  $id=$_POST['id'];
+  
 $GetQuery="select*from itemlist where id=$id";
 $res=mysqli_query($connection,$GetQuery);
 
@@ -299,11 +300,12 @@ if($row> 0){
   $qty=$data['qty'];
   $totalamount=$price*$qty;
 $query="update itemlist set orderstatus='complete',paymentstatus='complete', amountreceived='$totalamount' where id=$id";
-$res=mysqli_query($connection,$query);
+// $res=mysqli_query($connection,$query);
 
 
 
 // !  update in orderTrack DB
+echo $mainOrderID;
 $orderTrack="select*from ordertrack where itemId=$id";
 $orderTrackRes=mysqli_query($connection,$orderTrack);
 $numberOfRecords=mysqli_num_rows($orderTrackRes);
@@ -315,7 +317,7 @@ $ids=$orderTrackData["id"];
 ++$success;
 --$pending;
 $insertOrderTrack="update ordertrack set success=$success,pending=$pending where id=$ids";
-	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
+	// $executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
 
 
 
@@ -336,6 +338,7 @@ $orderId=$userData['orderId'];
 
 // update main orderitem status if all particular item complete
 $q="select*from itemlist where mainOrderId=$mainOrderID";
+echo $q;
 $res1=mysqli_query($connection,$q);
 $count=mysqli_num_rows($res1);
 
@@ -353,8 +356,7 @@ if($dataCheck["orderstatus"]=="reject"){
 }
 
 // all orders processed
-var_dump($count);
-var_dump($counter);
+
 if($count==$counter){
 // check any reject order
 if($reject>0){

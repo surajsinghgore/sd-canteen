@@ -170,7 +170,7 @@ $allSubDatas="select*from itemratingcomments where ratingId=$ratingIdMain";
 $allCommentsResData=mysqli_query($connection,$allSubDatas);
 $numberOfComments=mysqli_num_rows($allCommentsResData);
 
-
+++$numberofrating;
 $averageQuality=0;
 $ServiceRate=0;
 $PriceRate=0;
@@ -180,7 +180,7 @@ while($allSubData=mysqli_fetch_array($allCommentsResData)){
     $PriceRate+=CalaulateAvg($allSubData['PriceRate'],$numberOfComments);
 }
 
-$updateItemsRating="update itemsrating set rating=$averageQuality,QualityRate=$averageQuality,ServiceRate=$ServiceRate,PriceRate=$PriceRate where id=$ratingIdMain";
+$updateItemsRating="update itemsrating set rating=$averageQuality,numberofrating=$numberofrating,QualityRate=$averageQuality,ServiceRate=$ServiceRate,PriceRate=$PriceRate where id=$ratingIdMain";
 $executeQuery=mysqli_query($connection,$updateItemsRating);
 
 }

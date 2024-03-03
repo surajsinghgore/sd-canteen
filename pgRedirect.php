@@ -193,9 +193,37 @@ $DataGetsRes = mysqli_query($connection, $insertItemsQuery);
 $ItemId=mysqli_insert_id($connection);
 
 
+$getIdOfItem="";
+if($cartItemMainCategory=="food"){
+	$getFoodDEtails="select*from fooditems where foodname like '%$cartItemName%'";
+	$foodResDb=mysqli_query($connection, $getFoodDEtails);
+	$foodDataFromDb=mysqli_fetch_assoc($foodResDb);
+	$getIdOfItem=$foodDataFromDb['id'];
+}
+if($cartItemMainCategory=="coffee"){
+	$getFoodDEtails="select*from coffeeitems where coffeeitemsname like '%$cartItemName%'";
+	$foodResDb=mysqli_query($connection, $getFoodDEtails);
+	$foodDataFromDb=mysqli_fetch_assoc($foodResDb);
+	$getIdOfItem=$foodDataFromDb['id'];
+}
+if($cartItemMainCategory=="juice"){
+	$getFoodDEtails="select*from juiceitems where juicename like '%$cartItemName%'";
+	$foodResDb=mysqli_query($connection, $getFoodDEtails);
+	$foodDataFromDb=mysqli_fetch_assoc($foodResDb);
+	$getIdOfItem=$foodDataFromDb['id'];
+}
+if($cartItemMainCategory=="drink"){
+	$getFoodDEtails="select*from drinkitems where drinkname like '%$cartItemName%'";
+	$foodResDb=mysqli_query($connection, $getFoodDEtails);
+	$foodDataFromDb=mysqli_fetch_assoc($foodResDb);
+	$getIdOfItem=$foodDataFromDb['id'];
+}
+
 // !  add items in orderTrack DB
 $currentMonth = date('F'); // Full month name (e.g., January)
 $currentYear = date('Y'); // Four-digit year (e.g., 2024)
+
+
 $orderTrack="select*from ordertrack where itemName like '$cartItemName' and month='$currentMonth' and year='$currentYear'";
 $orderTrackRes=mysqli_query($connection,"$orderTrack");
 $numberOfRecords=mysqli_num_rows($orderTrackRes);
@@ -215,9 +243,13 @@ $insertOrderTrack="update ordertrack set totalOrder=$totalOrder,pending=$pending
 }
 // new item insert in orderTrack
 else{
-	$insertOrderTrack="insert into ordertrack(itemName,itemId,maincategory,totalOrder,pending,month,year) values('$cartItemName',$ItemId,'$cartItemMainCategory',1,1,'$currentMonth','$currentYear')";
+	$insertOrderTrack="insert into ordertrack(itemName,itemId,maincategory,totalOrder,pending,month,year) values('$cartItemName',$getIdOfItem,'$cartItemMainCategory',1,1,'$currentMonth','$currentYear')";
 	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
 }
+
+
+
+
 }
 
 
