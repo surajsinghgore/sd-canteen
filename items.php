@@ -4,6 +4,8 @@
 <?php require('./modules/clientHeadTag.php'); ?>
 
 
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <link rel="stylesheet" href="./styles/client/items.css?v=6">
 
@@ -40,8 +42,31 @@ border-radius:5px;
 </script>
 
 <body>
- 
+ <!-- modals -->
+  <!-- Modal -->
 
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirm to report</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"> <i class="fa-solid fa-xmark"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure to report this comment ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="noReport()">No </button>
+                    <button type="button" class="btn btn-primary" onclick="reportCommentFunc()">Yes Delete
+
+
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
         <!-- header -->
@@ -654,8 +679,25 @@ while($subDatas=mysqli_fetch_array($resSubQuery)){
                 </div>
 
 
+<!-- report comments -->
 
-                <svg class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
+<!-- only allowed after login -->
+<?php if(isset($_SESSION['activeClientId'])){
+$userActiveId=$_SESSION['activeClientId'];
+
+if($subDatas['userId']!= $userActiveId){
+?>
+   <svg   
+                data-toggle="modal" data-target="#exampleModal"
+
+onclick='reportComments("<?php echo $subDatas['id'];?>")'
+
+ class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
+
+
+<?php }
+} ?>
+             
                 
           
 
@@ -1776,11 +1818,24 @@ while($subDatas=mysqli_fetch_array($resSubQuery)){
 
 
 
-              <svg class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
-              
-        
+             <!-- report comments -->
 
-        
+<!-- only allowed after login -->
+<?php if(isset($_SESSION['activeClientId'])){
+$userActiveId=$_SESSION['activeClientId'];
+
+if($subDatas['userId']!= $userActiveId){
+?>
+   <svg   
+                data-toggle="modal" data-target="#exampleModal"
+
+onclick='reportComments("<?php echo $subDatas['id'];?>")'
+
+ class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
+
+
+<?php }
+} ?>
 
 
 
@@ -2897,9 +2952,24 @@ while($subDatas=mysqli_fetch_array($resSubQuery)){
 
 
 
-              <svg class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
-              
-        
+        <!-- report comments -->
+
+<!-- only allowed after login -->
+<?php if(isset($_SESSION['activeClientId'])){
+$userActiveId=$_SESSION['activeClientId'];
+
+if($subDatas['userId']!= $userActiveId){
+?>
+   <svg   
+                data-toggle="modal" data-target="#exampleModal"
+
+onclick='reportComments("<?php echo $subDatas['id'];?>")'
+
+ class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
+
+
+<?php }
+} ?>
 
         
 
@@ -4019,9 +4089,24 @@ while($subDatas=mysqli_fetch_array($resSubQuery)){
 
 
 
-              <svg class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
-              
-        
+        <!-- report comments -->
+
+<!-- only allowed after login -->
+<?php if(isset($_SESSION['activeClientId'])){
+$userActiveId=$_SESSION['activeClientId'];
+
+if($subDatas['userId']!= $userActiveId){
+?>
+   <svg   
+                data-toggle="modal" data-target="#exampleModal"
+
+onclick='reportComments("<?php echo $subDatas['id'];?>")'
+
+ class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
+
+
+<?php }
+} ?>
 
         
 
@@ -4598,17 +4683,50 @@ else{
 
 
    <script>
+// comments report
+function reportComments(id){
+sessionStorage.setItem('reportcomment',id);
+
+}
 
 
-       
+// report comment on yes
+function reportCommentFunc()
+{
+let id=sessionStorage.getItem('reportcomment');
+ $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/clientApi/reportComments.php", //your page
+                data: {
+                    idToReport: id,
+                    
+                },
+                // return data
+                success: function(res) {
+                  console.log(res)
+if(res=="you already reported"){
+  alert('you already reported this comment');
+  document.location.reload();
+  return;
+}
+
+  document.location.reload();
+            
+                }
+
+                })
+
+
+}       
        function changeSize(price,sizename){
            
            document.getElementById('price').innerText=price;
 }
 
 
-
-
+function noReport(){
+sessionStorage.removeItem('reportcomment');
+}
 
 
 
@@ -4978,6 +5096,19 @@ setTimeout(()=>{
         }
 
    </script>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>
