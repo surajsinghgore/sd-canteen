@@ -35,40 +35,26 @@
     <div class="term">
 <h1>How can we help you ?</h1>
 
-<div class="help">
-<div class="searchSection">
-<input type="search" name="search"  placeholder="Start typing our search..."  id="searchss">
-<div class="icons">
-<svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-</div>
 
-
-<div class="suggestions" >
- <li>account</li>
-</div>
-</div>
-<p id="articles">Or you can read the following articles</p>
-
-</div>
 
 <div class="articles">
 <h1>Getting Started</h1>
 
-<div class="article" id="ordercancels">
+<div class="article">
 <div class="title" >
 cancel order 
 
 <div class="sign" id="downordercancel"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></div>
 
 
-<!-- <div class="sign1" id="upordercancel">
+<div class="sign1" id="upordercancel">
 
 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"></path></svg>
-</div> -->
+</div>
 
 
 </div>
-<div class="solution" id="ordercancel">
+<div class="solution">
 <h5>for Cancellation of order you need to follow the following steps:-</h5>
 <h6>Note:- After cancellation of order [ cash on delivery ] option willbe disabled lifetime from your account. </h6>
 <h4>Step 1: <span>Call on this Number : +91-1234567890</span></h4>
@@ -164,6 +150,14 @@ Facing Any Issue
     <?php require('./components/Footer.php'); ?>
 
    
+
+    <script>
+
+
+function searchFunction(){
+    let input=document.getElementById('searchBarHelp').value;
+}
+    </script>
 </body>
 
 </html>
