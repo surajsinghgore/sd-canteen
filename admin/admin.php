@@ -413,8 +413,8 @@ new Chart("myChart6", {
   }
 });
 
-const xMyChart5 = ["Americano", "Cappuccino", "Espresso", "Macchiato", "Mocha", "Latte", "Doppio", "Café au lait", "Cold brew", "Affogato"];
-        const yMyChart5 = [20, 1, 34, 5, 5, 10, 3, 4, 12, 22];
+const xMyChart5 = data.topFoodName;
+        const yMyChart5 = data.topFoodData;
         const barColorsMyChart5 = [
             "#378A29",
             "#29718A",
@@ -448,8 +448,8 @@ const xMyChart5 = ["Americano", "Cappuccino", "Espresso", "Macchiato", "Mocha", 
 
 
  // 10 most ordered coffee
- const xMyChart4 = ["Americano", "Cappuccino", "Espresso", "Macchiato", "Mocha", "Latte", "Doppio", "Café au lait", "Cold brew", "Affogato"];
-        const yMyChart4 = [20, 1, 34, 5, 5, 10, 3, 4, 12, 22];
+ const xMyChart4 = data.topCoffeeName;
+        const yMyChart4 = data.topCoffeeData;
         const barColorsMyChart4 = [
             "#378A29",
             "#29718A",
@@ -483,8 +483,8 @@ const xMyChart5 = ["Americano", "Cappuccino", "Espresso", "Macchiato", "Mocha", 
 
 
    // 11 most ordered juice
-   const xMyChart3 = ["mango", "orange", "sugarcane", "nimbu pani", "strawberry", "banana", "Pineapple", "Papaya", "Pineapple", "Grapes"];
-        const yMyChart3 = [5, 12, 14, 23, 12, 5, 23, 14, 5, 32];
+   const xMyChart3 =data.topJuiceName;
+        const yMyChart3 = data.topJuiceData;
         const barColorsMyChart3 = [
             "#FF0400",
             "#78FF00",
@@ -520,8 +520,8 @@ const xMyChart5 = ["Americano", "Cappuccino", "Espresso", "Macchiato", "Mocha", 
 
 // 12
         // most ordered drinks chartJs
-        const xValues = ["coca cola", "maaza", "sprite", "slice", "pepsi", "fruti", "fanta", "thumbs up", "dew", "campa cola"];
-        const yValues = [10, 10, 20, 5, 5, 10, 10, 10, 10, 10];
+        const xValues = data.topDrinkName;
+        const yValues = data.topDrinkData;
         const barColors = [
             "#b91d47",
             "#00aba9",

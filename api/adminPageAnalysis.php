@@ -210,6 +210,8 @@ $data.= ",\"totalOrders\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$ju
 
 echo $data;
 $data2="";
+
+
 // ! top 10 trending items
 $subDataHeading="";
 $subData="";
@@ -447,7 +449,117 @@ $websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM clientdata where c
 $decCountRes=mysqli_num_rows($websiteVisitCountRes);
 if($decCountRes> 0){$decCount=$decCountRes;}
 // calculate
-$data4.= ",\"monthwiseclient\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]}";
+$data4.= ",\"monthwiseclient\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
 echo $data4;
+
+
+// most ordered food item
+$data5="";
+// ! top 10 trending items
+$subDataHeading="";
+$subData="";
+$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='food' order by totalOrder desc LIMIT 10");
+$count=0;
+while($data=mysqli_fetch_array($topTrendingRes)){
+    $itemName=$data['itemName'];
+    $numberofsearch=$data['totalOrder'];
+    ++$count;
+    if($count<10){
+        $subDataHeading.="\"$itemName\",";
+        $subData.="\"$numberofsearch\",";
+    }else{
+        $subDataHeading.="\"$itemName\"";
+        $subData.="\"$numberofsearch\"";
+    }
+}
+
+
+$data5.= ",\"topFoodName\":[$subDataHeading]";
+$data5.= ",\"topFoodData\":[$subData]";
+echo $data5;
+
+
+
+
+
+// most ordered food item
+$data6="";
+// ! top 10 trending items
+$subDataHeading="";
+$subData="";
+$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='coffee' order by totalOrder desc LIMIT 10");
+$count=0;
+while($data=mysqli_fetch_array($topTrendingRes)){
+    $itemName=$data['itemName'];
+    $numberofsearch=$data['totalOrder'];
+    ++$count;
+    if($count<10){
+        $subDataHeading.="\"$itemName\",";
+        $subData.="\"$numberofsearch\",";
+    }else{
+        $subDataHeading.="\"$itemName\"";
+        $subData.="\"$numberofsearch\"";
+    }
+}
+
+
+$data6.= ",\"topCoffeeName\":[$subDataHeading]";
+$data6.= ",\"topCoffeeData\":[$subData]";
+echo $data6;
+
+
+
+
+// most ordered juice item
+$data7="";
+
+$subDataHeading="";
+$subData="";
+$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='juice' order by totalOrder desc LIMIT 10");
+$count=0;
+while($data=mysqli_fetch_array($topTrendingRes)){
+    $itemName=$data['itemName'];
+    $numberofsearch=$data['totalOrder'];
+    ++$count;
+    if($count<10){
+        $subDataHeading.="\"$itemName\",";
+        $subData.="\"$numberofsearch\",";
+    }else{
+        $subDataHeading.="\"$itemName\"";
+        $subData.="\"$numberofsearch\"";
+    }
+}
+
+
+$data7.= ",\"topJuiceName\":[$subDataHeading]";
+$data7.= ",\"topJuiceData\":[$subData]";
+echo $data7;
+
+
+
+
+// most drink food item
+$data8="";
+$subDataHeading="";
+$subData="";
+$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='drink' order by totalOrder desc LIMIT 10");
+$count=0;
+while($data=mysqli_fetch_array($topTrendingRes)){
+    $itemName=$data['itemName'];
+    $numberofsearch=$data['totalOrder'];
+    ++$count;
+    if($count<10){
+        $subDataHeading.="\"$itemName\",";
+        $subData.="\"$numberofsearch\",";
+    }else{
+        $subDataHeading.="\"$itemName\"";
+        $subData.="\"$numberofsearch\"";
+    }
+}
+
+
+$data8.= ",\"topDrinkName\":[$subDataHeading]";
+$data8.= ",\"topDrinkData\":[$subData]}";
+echo $data8;
 }
 ?>
