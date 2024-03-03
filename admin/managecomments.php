@@ -105,7 +105,7 @@ function toxicCommentFunction(id,commentId){
 
 
 function notToxicCommentFunction(id,commentId){
-    console.log(id,commentId)
+
     $.ajax({
                 type: "POST", //type of method
                 url: "http://localhost/sd-canteen/api/managecomments.php", //your page

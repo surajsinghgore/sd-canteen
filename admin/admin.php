@@ -6,6 +6,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=3">
 <link rel="stylesheet" href="../styles/admin/analysis.css?v=6">
+
+        <!-- ajax added -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     window.document.title = "SD CANTEEN | Admin Panel";
 </script>
@@ -38,14 +41,63 @@
             <div class="allAnaylsis">
                 <!-- filter by year wise -->
                 <div class="filter">
-                    <select name="year">
+                    <select name="year" id="selectedYear">
 
-                        <option>
-                            2024
-                        </option>
-                        <option>
-                            2023
-                        </option>
+                     <!-- year fetch -->
+                        
+                        <?php 
+ require('../middleware/ConnectToDatabase.php');
+
+
+ $sql="SELECT DISTINCT orderdate FROM orderitems";
+    $result = mysqli_query($connection,$sql);
+
+    if ($result) {
+        // Check if there are rows returned
+        if (mysqli_num_rows($result) > 0) {
+            // Loop through each row
+            while ($row = mysqli_fetch_assoc($result)) {
+                // Access the column data
+                $distinctData = $row['orderdate'];
+                
+
+
+
+// Extracting the year using MySQL YEAR() function
+$query = "SELECT YEAR(STR_TO_DATE('$distinctData', '%d-%m-%Y')) AS year";
+$result = mysqli_query($connection, $query);
+
+if ($result) {
+    // Fetching the result
+    $row = mysqli_fetch_assoc($result);
+    $year = $row['year'];
+    ?>
+    <option>
+  <?php echo $year; ?>
+   </option>
+   <?php
+    // Output the year
+
+    // year return
+
+
+    echo "Year from MySQL date: $year";
+} else {
+  
+  
+}
+
+            }
+        } else {
+          
+        }
+    } else {
+       
+    }
+    
+
+?>
+
 
                     </select>
                 </div>
@@ -171,9 +223,33 @@
 
     <!-- chatJs graph -->
     <script>
+
+
+
+let selectedYear=document.getElementById('selectedYear').value;
+        // load analysis data
+        $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/adminPageAnalysis.php", 
+                data: {
+                   year:selectedYear
+               
+                },
+           
+                success: function(res) {
+
+
+                    console.log(res)
+                    let data=JSON.parse(res);
+
+
+
+
+
+
 // monthwise website visits
 const xValues11 = ['january','february','march','april','may','june','july','august','september','october','november','december'];
-const yValues11 = [2,8,8,9,9,9,10,11,14,14,15];
+const yValues11 = data.monthwisevisit;
 
 new Chart("myChart11", {
   type: "line",
@@ -475,7 +551,12 @@ const xMyChart5 = ["Americano", "Cappuccino", "Espresso", "Macchiato", "Mocha", 
 
      
 
+    
+                }})
     </script>
+
+
+
 
 
 
