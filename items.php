@@ -49,7 +49,7 @@ border-radius:5px;
 
 
         <div>
-    <div class="admin">
+    <div class="admin" id="topOfPage">
 
 
 
@@ -1532,8 +1532,16 @@ $.ajax({
                 // return data
                 success: function(res) {
 
-window.document.location.reload();
-document.body.scrollTop = document.documentElement.scrollTop = 0;
+                  window.scroll({
+ top: 0, 
+ left: 0, 
+ behavior: 'smooth' 
+});
+
+setTimeout(()=>{
+  document.location.reload();
+},1000)
+                
                 }
 
               })
@@ -1569,7 +1577,17 @@ $.ajax({
                 },
                 // return data
                 success: function(res) {
-window.document.location.reload();
+
+
+                  window.scroll({
+ top: 0, 
+ left: 0, 
+ behavior: 'smooth' 
+});
+
+setTimeout(()=>{
+  document.location.reload();
+},1000)
                 }
 
               })
