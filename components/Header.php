@@ -197,6 +197,14 @@ if($mainCount>0){
           </div></a>
       </div>
       <?php
+}else{
+    ?>
+<script>
+    if(sessionStorage.getItem('cooking')){
+        sessionStorage.removeItem('cooking');
+    }
+</script>
+    <?php
 }
 }
 ?>
@@ -209,7 +217,7 @@ if($mainCount>0){
     <script>
         if(sessionStorage.getItem('cooking')){
 
-            document.getElementById('cooking').style.display="none";
+            document.getElementById('cooking1').style.display="none";
         }
         // search bar client_logout_click
         function searchMainBar() {

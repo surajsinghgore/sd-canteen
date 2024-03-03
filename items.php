@@ -1489,9 +1489,9 @@ document.getElementById('price').innerText =cartDataConvert1.items[i].price;
             }
         }, 500)
 
-        document.getElementById('qualityRate').addEventListener('change',()=>{
-          let qualityRateStar=document.getElementById('qualityRateStar').innerText=document.getElementById('qualityRate').value;
-        })
+
+        
+   
         document.getElementById('serviceRate').addEventListener('change',()=>{
           let serviceRateStar=document.getElementById('serviceRateStar').innerText=document.getElementById('serviceRate').value;
         })
