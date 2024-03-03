@@ -3,6 +3,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php require('../modules/HeadTag.php'); ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=3">
 <link rel="stylesheet" href="../styles/admin/analysis.css?v=6">
@@ -238,11 +239,10 @@ let selectedYear=document.getElementById('selectedYear').value;
            
                 success: function(res) {
 
-
-                    console.log(res)
+                  
                     let data=JSON.parse(res);
 
-
+                    console.log(data)
 
 
 
@@ -274,15 +274,16 @@ new Chart("myChart11", {
 // browser used
 
 
-const xMyChart10 = ["chrome", "firebox", "safari", "opera", "other"];
-        const yMyChart10 = [20, 1, 34, 5, 5];
+const xMyChart10 = ["chrome", "firefox", "safari", "opera","edge","ie", "other"];
+        const yMyChart10 = data.browserUse;
         const barColorsMyChart10 = [
             "#378A29",
             "#29718A",
             "#0F29AC",
             "#AC350F",
             "#0FACA0",
-            
+            '#ff33cc',
+            '#00ffff'
         ];
 
         new Chart("myChart10", {
