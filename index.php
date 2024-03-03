@@ -124,41 +124,66 @@
 
     <!-- top rated items -->
     <div class="homeCards">
-        <h1>Top 5 Trending Food Items</h1>
+        <h1>Top 5 Trending  Items</h1>
         
-        <!-- 1 -->
-        <div class="card">
 
-            <a href="">
+        <?php
+        
+        require('./middleware/ConnectToDatabase.php');
 
-                <div>
-                    <div class="imgMain">
-                        <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681099430/15f0de6c774e296fa628e50e2dfbc5462023-04-10T04-03-49.384Z-2023-01-07T13-52-46.181Z-36.png.png" alt="trending items" />
-                    </div>
+        $resTopTrendingItems=mysqli_query($connection,'select*from topsearches order by numberofsearch desc LIMIT 5');
+        while ($dataTrending=mysqli_fetch_array($resTopTrendingItems)){
+           
+           $itemname=$dataTrending['itemname'];
+           
 
-                    <div class="data">
-                        <h4>Burger</h4>
-                        <p> df f sada dasd wd dasdjbbashdgadag lorem200
-                        </p>
-                    </div>
-                </div>
 
-            </a>
 
-        </div>
-<!-- 2 -->
+         // first check item in food
+$sql_query1 = "select * from fooditems where foodname like '$itemname' and active='on'";
+$sql_query2 = "select * from coffeeitems where coffeename like '$itemname' and active='on'";
+$sql_query3 = "select * from drinkitems where drinkname like '$itemname' and active='on'";
+$sql_query4 = "select * from juiceitems where juicename like '$itemname' and active='on'";
+           
+
+$foodCountRes = mysqli_query($connection, $sql_query1);
+$coffeeCountRes = mysqli_query($connection, $sql_query2);
+$drinkCountRes = mysqli_query($connection, $sql_query3);
+$juiceCountRes = mysqli_query($connection, $sql_query4);
+
+$foodCount = mysqli_num_rows($foodCountRes);
+$coffeeCount = mysqli_num_rows($coffeeCountRes);
+$drinkCount = mysqli_num_rows($drinkCountRes);
+$juiceCount = mysqli_num_rows($juiceCountRes);
+
+
+if($foodCount>0){
+    while ($data = mysqli_fetch_array($foodCountRes)) {
+        ?>
+
 <div class="card">
 
-<a href="">
+<a href="/sd-canteen/items.php?itemname=<?php echo $data['foodname'];?>">
 
     <div>
         <div class="imgMain">
-            <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681099430/15f0de6c774e296fa628e50e2dfbc5462023-04-10T04-03-49.384Z-2023-01-07T13-52-46.181Z-36.png.png" alt="trending items" />
+            <img src="
+            <?php 
+            
+            $modifiedString = substr($data['imagepath'], 1);
+            echo $modifiedString;
+            
+            ?>
+            " alt="trending items" />
         </div>
 
         <div class="data">
-            <h4>Burger</h4>
-            <p> df f sada dasd wd dasdjbbashdgadag lorem200
+            <h4><?php echo $data['foodname'];?></h4>
+            <p>
+            
+            <?php 
+            $desc=substr($data['description'], 0, 198);
+            echo $desc;?>
             </p>
         </div>
     </div>
@@ -167,19 +192,39 @@
 
 </div>
 
-<!-- 3 -->
+<?php
+}
+ }
+
+
+ 
+if($coffeeCount>0){
+    while ($data = mysqli_fetch_array($coffeeCountRes)) {
+        ?>
+
 <div class="card">
 
-<a href="">
+<a href="/sd-canteen/items.php?itemname=<?php echo $data['coffeename'];?>">
 
     <div>
         <div class="imgMain">
-            <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681099430/15f0de6c774e296fa628e50e2dfbc5462023-04-10T04-03-49.384Z-2023-01-07T13-52-46.181Z-36.png.png" alt="trending items" />
+            <img src="
+            <?php 
+            
+            $modifiedString = substr($data['imagepath'], 1);
+            echo $modifiedString;
+            
+            ?>
+            " alt="trending items" />
         </div>
 
         <div class="data">
-            <h4>Burger</h4>
-            <p> df f sada dasd wd dasdjbbashdgadag lorem200
+            <h4><?php echo $data['coffeename'];?></h4>
+            <p>
+            
+            <?php 
+            $desc=substr($data['description'], 0, 198);
+            echo $desc;?>
             </p>
         </div>
     </div>
@@ -187,19 +232,38 @@
 </a>
 
 </div>
-<!-- 4 -->
+
+<?php
+}
+
+}
+if($drinkCount>0){
+    while ($data = mysqli_fetch_array($drinkCountRes)) {
+        ?>
+
 <div class="card">
 
-<a href="">
+<a href="/sd-canteen/items.php?itemname=<?php echo $data['drinkname'];?>">
 
     <div>
         <div class="imgMain">
-            <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681099430/15f0de6c774e296fa628e50e2dfbc5462023-04-10T04-03-49.384Z-2023-01-07T13-52-46.181Z-36.png.png" alt="trending items" />
+            <img src="
+            <?php 
+            
+            $modifiedString = substr($data['imagepath'], 1);
+            echo $modifiedString;
+            
+            ?>
+            " alt="trending items" />
         </div>
 
         <div class="data">
-            <h4>Burger</h4>
-            <p> df f sada dasd wd dasdjbbashdgadag lorem200
+            <h4><?php echo $data['drinkname'];?></h4>
+            <p>
+            
+            <?php 
+            $desc=substr($data['description'], 0, 198);
+            echo $desc;?>
             </p>
         </div>
     </div>
@@ -207,19 +271,37 @@
 </a>
 
 </div>
-<!-- 5 -->
+
+<?php
+}
+}
+if($juiceCount>0){
+    while ($data = mysqli_fetch_array($juiceCountRes)) {
+        ?>
+
 <div class="card">
 
-<a href="">
+<a href="/sd-canteen/items.php?itemname=<?php echo $data['juicename'];?>">
 
     <div>
         <div class="imgMain">
-            <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681099430/15f0de6c774e296fa628e50e2dfbc5462023-04-10T04-03-49.384Z-2023-01-07T13-52-46.181Z-36.png.png" alt="trending items" />
+            <img src="
+            <?php 
+            
+            $modifiedString = substr($data['imagepath'], 1);
+            echo $modifiedString;
+            
+            ?>
+            " alt="trending items" />
         </div>
 
         <div class="data">
-            <h4>Burger</h4>
-            <p> df f sada dasd wd dasdjbbashdgadag lorem200
+            <h4><?php echo $data['juicename'];?></h4>
+            <p>
+            
+            <?php 
+            $desc=substr($data['description'], 0, 198);
+            echo $desc;?>
             </p>
         </div>
     </div>
@@ -227,6 +309,16 @@
 </a>
 
 </div>
+
+<?php
+}
+
+}
+
+         }
+        ?>
+     
+
 
     </div>
 

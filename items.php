@@ -98,6 +98,7 @@ $itemname=$_GET['itemname'];
 
 require('./middleware/ConnectToDatabase.php');
 $totals=0;
+
 // first check item in food
 $sql_query1 = "select * from fooditems where foodname like '$itemname' and active='on'";
 $sql_query2 = "select * from coffeeitems where coffeename like '$itemname' and active='on'";
