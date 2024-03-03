@@ -296,17 +296,18 @@ if($row> 0){
 
   $price=$data['itemPrice'];
   $mainOrderID=$data['mainOrderId'];
+  $itemName=$data['itemName'];
  
   $qty=$data['qty'];
   $totalamount=$price*$qty;
 $query="update itemlist set orderstatus='complete',paymentstatus='complete', amountreceived='$totalamount' where id=$id";
-// $res=mysqli_query($connection,$query);
+$res=mysqli_query($connection,$query);
 
 
 
 // !  update in orderTrack DB
 echo $mainOrderID;
-$orderTrack="select*from ordertrack where itemId=$id";
+$orderTrack="select*from ordertrack where itemName like '%$itemName%'";
 $orderTrackRes=mysqli_query($connection,$orderTrack);
 $numberOfRecords=mysqli_num_rows($orderTrackRes);
 // means update success to + 1
@@ -316,8 +317,8 @@ $pending=$orderTrackData["pending"];
 $ids=$orderTrackData["id"];
 ++$success;
 --$pending;
-$insertOrderTrack="update ordertrack set success=$success,pending=$pending where id=$ids";
-	// $executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
+$insertOrderTrack="update ordertrack set success=$success,pending=$pending where itemName like '%$itemName%'";
+	$executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
 
 
 
@@ -503,13 +504,13 @@ if($row> 0){
 
   $price=$data['itemPrice'];
   $mainOrderID=$data['mainOrderId'];
- 
+  $itemName=$data['itemName'];
   
 $query="update itemlist set orderstatus='reject',paymentstatus='reject', amountreceived='0' where id=$id";
 $res=mysqli_query($connection,$query);
 
 // !  update in orderTrack DB
-$orderTrack="select*from ordertrack where itemId=$id";
+$orderTrack="select*from ordertrack where itemName like '%$itemName%'";
 $orderTrackRes=mysqli_query($connection,"$orderTrack");
 $numberOfRecords=mysqli_num_rows($orderTrackRes);
 // means update reject to + 1
@@ -519,7 +520,7 @@ $pending=$orderTrackData["pending"];
 $ids=$orderTrackData["id"];
 ++$reject;
 --$pending;
-$insertOrderTrack="update ordertrack set reject=$reject,pending=$pending where id=$ids";
+$insertOrderTrack="update ordertrack set reject=$reject,pending=$pending where itemName like '%$itemName%'";
 $executeOrderTrack=mysqli_query($connection, $insertOrderTrack);
 
 

@@ -277,7 +277,7 @@ function processOrderMenuClose(id){
 
 function sendOrderForProcess(id){
 
-console.log(id)
+
 
   let orderStatus=document.getElementById(`orderStatus${id}`).value;
   let maincategory=document.getElementById(`maincategory${id}`).value;
@@ -354,8 +354,8 @@ let password="";
                 },
                 // return data
                 success: function(res) {
-                  console.log(res)
-                  // document.location.reload();
+                
+                  document.location.reload();
                 }
 
               })
@@ -426,9 +426,9 @@ $.ajax({
               },
               // return data
               success: function(res) {
-               
+               console.log(res)
 
-                document.location.reload();
+                // document.location.reload();
                
               }
 
