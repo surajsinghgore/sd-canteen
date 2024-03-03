@@ -355,7 +355,7 @@ let password="";
                 // return data
                 success: function(res) {
                 
-                  document.location.reload();
+                 
                 }
 
               })
@@ -426,9 +426,8 @@ $.ajax({
               },
               // return data
               success: function(res) {
-               console.log(res)
 
-                // document.location.reload();
+                document.location.reload();
                
               }
 
