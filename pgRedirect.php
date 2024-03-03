@@ -201,7 +201,7 @@ if($cartItemMainCategory=="food"){
 	$getIdOfItem=$foodDataFromDb['id'];
 }
 if($cartItemMainCategory=="coffee"){
-	$getFoodDEtails="select*from coffeeitems where coffeeitemsname like '%$cartItemName%'";
+	$getFoodDEtails="select*from coffeeitems where coffeename like '%$cartItemName%'";
 	$foodResDb=mysqli_query($connection, $getFoodDEtails);
 	$foodDataFromDb=mysqli_fetch_assoc($foodResDb);
 	$getIdOfItem=$foodDataFromDb['id'];

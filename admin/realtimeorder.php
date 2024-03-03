@@ -525,7 +525,10 @@ $.ajax({
                 function searchByItemCategory(){
 
 let input=document.getElementById('itemCategory').value.toLowerCase();
-
+if(input=="null"){
+document.location.reload();
+  return;
+}
 $.ajax({
 type: "POST", //type of method
 url: "http://localhost/sd-canteen/api/RealtimeOrdersApi.php", //your page
@@ -605,7 +608,6 @@ function rejectOrderLoad(){
                 },
                 // return data
                 success: function(res) {
-          
                   document.getElementById('table_sections').innerHTML=res;
                 }
 

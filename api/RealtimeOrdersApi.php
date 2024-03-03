@@ -285,7 +285,7 @@ else{
 // process Order to complete
 if (isset($_POST['processOrder']) && isset($_POST['id'])){
   $id=$_POST['id'];
-  
+  echo $id;
 $GetQuery="select*from itemlist where id=$id";
 $res=mysqli_query($connection,$GetQuery);
 
