@@ -219,7 +219,10 @@ if($mainCount>0){
 
             document.getElementById('cooking1').style.display="none";
         }
-        // search bar client_logout_click
+
+
+
+        //main Search Bar
         function searchMainBar() {
             let searchInput = document.getElementById('searchBarMain').value;
 

@@ -46,7 +46,7 @@ if (isset($_REQUEST['searchBarInput'])) {
     // fetch coffee data
     while ($FoodData = mysqli_fetch_array($res2)) { ?>
 
-        <a href="/sd-canteen/items.php?item=<?php echo $FoodData['coffeename']; ?>">
+        <a href="/sd-canteen/items.php?itemname=<?php echo $FoodData['coffeename']; ?>">
             <li onclick='searchClick("<?php echo $FoodData['coffeename']; ?>")'><i class="fa-solid fa-magnifying-glass fixed"></i><?php echo $FoodData['coffeename']; ?></li>
         </a>
 
@@ -60,7 +60,7 @@ if (isset($_REQUEST['searchBarInput'])) {
 
     while ($FoodData = mysqli_fetch_array($res3)) { ?>
 
-        <a href="/sd-canteen/items.php?item=<?php echo $FoodData['drinkname']; ?>">
+        <a href="/sd-canteen/items.php?itemname=<?php echo $FoodData['drinkname']; ?>">
             <li onclick='searchClick("<?php echo $FoodData['drinkname']; ?>")'><i class="fa-solid fa-magnifying-glass fixed"></i><?php echo $FoodData['drinkname']; ?></li>
         </a>
 
@@ -73,7 +73,7 @@ if (isset($_REQUEST['searchBarInput'])) {
 
     while ($FoodData = mysqli_fetch_array($res4)) { ?>
 
-        <a href="/sd-canteen/items.php?item=<?php echo $FoodData['juicename']; ?>">
+        <a href="/sd-canteen/items.php?itemname=<?php echo $FoodData['juicename']; ?>">
             <li onclick='searchClick("<?php echo $FoodData['juicename']; ?>")'><i class="fa-solid fa-magnifying-glass fixed"></i><?php echo $FoodData['juicename']; ?></li>
         </a>
 

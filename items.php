@@ -69,6 +69,8 @@ border-radius:5px;
 <?php 
 
 $itemname=$_GET['itemname'];
+
+
 require('./middleware/ConnectToDatabase.php');
 $totals=0;
 // first check item in food
@@ -88,8 +90,15 @@ $foodCount = mysqli_num_rows($foodCountRes);
 $coffeeCount = mysqli_num_rows($coffeeCountRes);
 $drinkCount = mysqli_num_rows($drinkCountRes);
 $juiceCount = mysqli_num_rows($juiceCountRes);
+echo "<h1>$foodCount</h1>";
+echo "<h1>$coffeeCount</h1>";
+echo "<h1>$drinkCount</h1>";
+echo "<h1>$juiceCount</h1>";
+echo "<h1>$itemname</h1>";
 
-// load data
+
+
+// food data load
 if ($foodCount > 0) {
     $totals=1;
     while ($data = mysqli_fetch_array($foodCountRes)) {
@@ -272,7 +281,7 @@ if($data['smallprice']!=0){
                     name="size"
                     id="smallsize"
                     onclick='changeSize("<?php echo $data['smallprice'];?>","smallsize")'
-                    value="<?php echo $$data['smallprice'];?>"
+                    value="<?php echo $data['smallprice'];?>"
               checked
                   />
                 small
@@ -305,7 +314,7 @@ if($data['mediumprice']!=0){
                     name="size"
                     id="mediumsize"
                     onclick='changeSize("<?php echo $data['mediumprice'];?>","mediumsize")'
-                    value="<?php echo $$data['mediumprice'];?>"
+                    value="<?php echo $data['mediumprice'];?>"
              
                   />
                 medium
@@ -337,7 +346,7 @@ if($data['largeprice']!=0){
                     id="largesize"
                     onclick='changeSize("<?php echo $data['largeprice'];?>","largesize")'
                     
-                    value="<?php echo $$data['largeprice'];?>"
+                    value="<?php echo $data['largeprice'];?>"
             
                   />
                 large
@@ -367,13 +376,13 @@ onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['foodname'
       Remove From Cart
     </button>
 
-    <button class="btn1" onclick='addToCart("<?php echo $data['id'];?>","<?php echo $data['foodname'];?>")' id="addToCartBtn<?php echo $data['id'];?>">
+    <button class="btn1" onclick='addToCart("<?php echo $data['id'];?>","<?php echo $data['foodname'];?>","FoodItem")' id="addToCartBtn<?php echo $data['id'];?>">
       Add To Cart
     </button>
 
 
     <!-- buy now btn -->
-  <button class="btn2" onclick='addToCartAndBuy("<?php echo $data['id'];?>","<?php echo $data['foodname'];?>")'>
+  <button class="btn2" onclick='addToCartAndBuy("<?php echo $data['id'];?>","<?php echo $data['foodname'];?>","FoodItem")'>
     Buy Now
   </button>
   </div>
@@ -1208,6 +1217,1139 @@ else{
 <?php
 }   
 
+
+// coffee data load
+
+else if ($coffeeCount > 0) {
+  $totals=1;
+  while ($data = mysqli_fetch_array($coffeeCountRes)) {
+  // check items rating
+    $ProductId=$data['id'];
+
+
+    $itemRating="select*from itemsrating where itemId=$ProductId";
+    $executeItemRating=mysqli_query($connection,$itemRating);
+    $ratingLenCount=mysqli_num_rows($executeItemRating);
+
+$itemRateData=mysqli_fetch_assoc($executeItemRating);
+
+    ?>
+
+ <div class="searchSection">
+
+
+<div class="topSection">
+<div class="left">
+<div class="mainImage">
+
+
+
+<img
+  src="<?php 
+  $modifiedString = substr($data['imagepath'], 1);
+  echo $modifiedString;?>"
+  alt="items"
+ 
+/>
+</div>    </div>
+
+
+
+<div class="right">
+<h1 id="itemNameCurrent">
+<?php echo $data['coffeename'];?>
+  <span
+    class="activeBtn"
+  >
+ <input type="text" name="itemname" id="itemnameofcurrent" value="<?php echo $data['coffeename'];?>" readonly style="display:none">
+ <?php 
+ if(isset($_SESSION['activeClientId'])){
+?>
+<input type="text" name="userid" id="userId" value="<?php echo $_SESSION['activeClientId'];?>" readonly style="display:none">
+
+<?php   }
+ ?>
+ 
+  </span>
+</h1>
+
+
+
+<div class="star">
+
+<!-- rating section top  -->
+<?php 
+//! no review found
+if($ratingLenCount==0){
+         ?>
+            <div class="startSection">
+
+<div class="starRatingBox" >
+  <span id="priceMenu">
+   
+ 5
+  </span>
+  <span class="fa fa-star checked"></span>
+</div>
+
+
+<h5>(0 Customer Review)</h5>
+</div>
+         
+         <?php
+        }
+        //! review finds
+        else{
+?>
+       <div class="startSection">
+
+<div class="starRatingBox" >
+  <span id="priceMenu">
+   
+ <?php 
+ echo $itemRateData['rating'];?>
+ 
+  </span>
+  <span class="fa fa-star checked"></span>
+</div>
+
+
+<h5>(<?php 
+ echo $itemRateData['numberofrating'];?>
+ Customer Review)</h5>
+</div>
+<?php        }
+        ?>
+
+</div>
+<h3>₹ <span id="price">
+
+<?php 
+if($data['smallprice']!=0){
+
+echo $data['smallprice'];
+  
+}
+
+  else{
+
+      echo $data['normalprice'];
+  }
+?>
+
+</span></h3>
+<div class="subSection">
+  <div class="subHeading">Qty :</div>
+  <div class="subData">1</div>
+  <div class="subHeading">Category :</div>
+  <div class="subData" style="margin-top:2px"><?php 
+  echo $data['category'];?></div>
+</div>
+<hr />
+
+<div class="filterItem">
+  <h1>Select Size</h1>
+
+  <div class="form">
+
+
+   <!-- normal size -->
+   <?php
+
+if($data['normalprice']!=0){
+
+  ?>
+
+
+<div class="radioCard">
+          <li>
+            <label>
+              <span>
+                <input
+                  type="radio"
+                  name="size"
+                  
+                  id="normalsize"
+                  onclick='changeSize("<?php echo $data['normalprice'];?>","normalsize")'
+                  value="<?php echo $data['normalprice'];?>"
+            checked
+                />
+              normal
+              </span>
+            </label>
+          </li>
+
+         
+        </div>
+  <?php
+}
+?>
+
+    <!-- small size -->
+<?php
+
+if($data['smallprice']!=0){
+
+  ?>
+
+
+<div class="radioCard">
+          <li>
+            <label>
+              <span>
+                <input
+                  type="radio"
+                  name="size"
+                  id="smallsize"
+                  onclick='changeSize("<?php echo $data['smallprice'];?>","smallsize")'
+                  value="<?php echo $data['smallprice'];?>"
+            checked
+                />
+              small
+              </span>
+            </label>
+          </li>
+
+         
+        </div>
+  <?php
+}
+?>
+
+   
+
+   <!-- medium size -->
+   <?php
+
+if($data['mediumprice']!=0){
+
+  ?>
+
+
+<div class="radioCard">
+          <li>
+            <label>
+              <span>
+                <input
+                  type="radio"
+                  name="size"
+                  id="mediumsize"
+                  onclick='changeSize("<?php echo $data['mediumprice'];?>","mediumsize")'
+                  value="<?php echo $data['mediumprice'];?>"
+           
+                />
+              medium
+              </span>
+            </label>
+          </li>
+
+         
+        </div>
+  <?php
+}
+?>
+   
+   <!-- large size -->
+   <?php
+
+if($data['largeprice']!=0){
+
+  ?>
+
+
+<div class="radioCard">
+          <li>
+            <label>
+              <span>
+                <input
+                  type="radio"
+                  name="size"
+                  id="largesize"
+                  onclick='changeSize("<?php echo $data['largeprice'];?>","largesize")'
+                  
+                  value="<?php echo $data['largeprice'];?>"
+          
+                />
+              large
+              </span>
+            </label>
+          </li>
+
+         
+        </div>
+  <?php
+}
+?>
+      
+  </div>
+</div>
+
+
+
+<div class="btnSection">
+<!-- remove cart btn -->
+  
+  <button
+    class="btn3"
+    id="removeToCartBtn<?php echo $data['id'];?>" style="display:none"
+onclick='removeFromCart("<?php echo $data['id'];?>","<?php echo $data['coffeename'];?>")'
+  >
+    Remove From Cart
+  </button>
+
+  <button class="btn1" onclick='addToCart("<?php echo $data['id'];?>","<?php echo $data['coffeename'];?>","CoffeeItem")' id="addToCartBtn<?php echo $data['id'];?>">
+    Add To Cart
+  </button>
+
+
+  <!-- buy now btn -->
+<button class="btn2" onclick='addToCartAndBuy("<?php echo $data['id'];?>","<?php echo $data['coffeename'];?>","CoffeeItem")'>
+  Buy Now
+</button>
+</div>
+</div>
+</div>
+<div class="description"><?php  echo $data['description'];?></div>
+
+<div class="reviews" id="reviews">
+<div class="heading">Rating & Reviews</div>
+
+<div class="box">
+<div class="top">
+  <div class="avgRate">
+    <h1>
+    <?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "5/5";
+}
+// ! review found
+else{
+
+echo $itemRateData['rating']."/5";
+}
+?>
+
+    </h1>
+    <div class="rates">
+
+    <!-- star -->
+    <div class="starRatingBox" style="margin-bottom:10px;margin-left:8px">
+      <span>
+     
+
+      <?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "4.5";
+}
+// ! review found
+else{
+
+echo $itemRateData['rating'];
+}
+?>
+      </span>
+      <span class="fa fa-star checked"></span>
+  </div>
+      <p>Based On   <?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "0";
+}
+// ! review found
+else{
+
+echo $itemRateData['numberofrating'];
+}
+?> rating</p>
+    </div>
+  </div>
+
+  <div class="totalStar">
+    <li>
+      <div class="headings">Quality</div>
+      <div class="progress">
+        <div
+          class="pro"
+          style="width: <?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "100%";
+}
+// ! review found
+else{
+$percentageOfQuality=($itemRateData['QualityRate']/5)*100;
+
+echo $percentageOfQuality."%";
+}
+?>"
+        ></div>
+      </div>
+      <div class="percent"><?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "100%";
+}
+// ! review found
+else{
+$percentageOfQuality=($itemRateData['QualityRate']/5)*100;
+
+echo $percentageOfQuality."%";
+}
+?></div>
+    </li>
+    <li>
+      <div class="headings">Price</div>
+      <div class="progress">
+        <div
+          class="pro"
+          style="width:<?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "100%";
+}
+// ! review found
+else{
+
+$percentageOfQuality=($itemRateData['PriceRate']/5)*100;
+
+echo $percentageOfQuality."%";
+}
+?>"
+        ></div>
+      </div>
+      <div class="percent"><?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "100%";
+}
+// ! review found
+else{
+$percentageOfQuality=($itemRateData['PriceRate']/5)*100;
+
+echo $percentageOfQuality."%";
+}
+?></div>
+    </li>
+    <li>
+      <div class="headings">Service</div>
+      <div class="progress">
+        <div
+          class="pro"
+          style="width:<?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "100%";
+}
+// ! review found
+else{
+$percentageOfQuality=($itemRateData['ServiceRate']/5)*100;
+
+echo $percentageOfQuality."%";
+
+}
+?>"
+        ></div>
+      </div>
+      <div class="percent"><?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "100%";
+}
+// ! review found
+else{
+$percentageOfQuality=($itemRateData['ServiceRate']/5)*100;
+
+echo $percentageOfQuality."%";
+}
+?></div>
+    </li>
+  </div>
+</div>
+<!-- filter logic -->
+<div class="filterReview">
+  <div class="titles">Reviewed by <?php 
+//! no review found
+if($ratingLenCount==0){
+
+echo "0";
+}
+// ! review found
+else{
+
+echo $itemRateData['numberofrating'];
+}
+?> user</div>
+  <div class="filterSection">
+    <div class="sections">
+      <h1>
+      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 320 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z"></path></svg> Sort :
+      </h1>
+      <select
+        value="All Reviews"
+        
+      >
+        <option value="all">All Reviews</option>
+        <option value="latest">Latest Order</option>
+        <option value="oldest">Oldest Order</option>
+      </select>
+    </div>
+
+    <div class="sections">
+      <h1>
+      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"></path></svg> Filter :
+      </h1>
+      <select
+        value="All star"
+    
+      >
+        <option value="all">All Star</option>
+        <option value="5">5 Star</option>
+        <option value="4.5">4.5 Star</option>
+        <option value="4">4 Star</option>
+        <option value="3.5">3.5 Star</option>
+        <option value="3">3 Star</option>
+        <option value="2.5">2.5 Star</option>
+        <option value="2">2 Star</option>
+        <option value="1.5">1.5 Star</option>
+        <option value="1">1 Star</option>
+        <option value="0.5">0.5 Star</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
+<div class="reviewsSectionField">
+  <div class="childs" >
+ <?php 
+
+ if(isset($itemRateData['numberofrating'])){
+ if($itemRateData['numberofrating']>0){
+?>
+
+
+<!-- fetch comments -->
+<?php 
+
+$itemIDs=$itemRateData['id'];
+$subQuery="select*from itemratingcomments where ratingId=$itemIDs";
+$resSubQuery=mysqli_query($connection,$subQuery);
+
+while($subDatas=mysqli_fetch_array($resSubQuery)){
+?>
+<div class="reviewSection" >
+              <div class="topSection">
+                <div class="starSection" >
+                <div class="starRatingBox" >
+      <span style="font-size:15px;">
+      <?php echo $subDatas['QualityRate'];?>
+      </span>
+      <span class="fa fa-star checked"></span>
+  </div>
+                  <p></p>
+                 
+                </div>
+                <div class="userDetails">
+                  <h2><?php echo $subDatas['username'];?></h2>
+                </div>
+
+                <div class="icons">
+                <svg stroke="currentColor" class="icon" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg>
+                  <p><?php echo $subDatas['commentdate'];?></p>
+
+
+                  <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6h6v-2h-4z"></path></svg>
+                  <p><?php echo $subDatas['commenttime'];?></p>
+                </div>
+              </div>
+
+              <div class="commentStyle">
+                <p><?php echo $subDatas['message'];?></p>
+              </div>
+
+
+
+              <svg class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
+              
+        
+
+        
+
+
+
+  
+  </div>
+<?php }
+}
+
+
+// no reviews
+ else{
+?>
+
+<div class="reviewSection" >
+              <div class="topSection">
+                <div class="starSection" >
+                <div class="starRatingBox" >
+      <span style="font-size:15px;">
+      5
+      </span>
+      <span class="fa fa-star checked"></span>
+  </div>
+                  <p></p>
+                 
+                </div>
+                <div class="userDetails">
+                  <h2>admin</h2>
+                </div>
+
+                <div class="icons">
+                <svg stroke="currentColor" class="icon" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg>
+                  <p>0-0-0000</p>
+
+
+                  <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6h6v-2h-4z"></path></svg>
+                  <p>0-00 Am</p>
+                </div>
+              </div>
+
+              <div class="commentStyle">
+                <p>No Comments Found</p>
+              </div>
+
+
+
+              <svg class="reportBtn" stroke="currentColor" fill="currentColor"  title="Report This Comment" stroke-width="0" viewBox="0 0 16 16" class="SearchBar_reportBtn__lu33e" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title>Report This Comment</title><path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H7l-4 4v-4H1a1 1 0 0 1-1-1V2zm1 0h14v9H6.5L4 13.5V11H1V2zm6 6h2v2H7V8zm0-5h2v4H7V3z" ></path></svg>
+              
+        
+
+        
+
+
+
+  
+  </div>
+
+<?php }
+
+
+// comments
+}else{
+?>
+<div class="reviewSection">
+              <div class="topSection">
+                <div class="starSection" >
+                <div class="starRatingBox" >
+      <span style="font-size:15px;">
+      5
+      </span>
+      <span class="fa fa-star checked"></span>
+  </div>
+                  <p></p>
+                 
+                </div>
+                <div class="userDetails">
+                  <h2>admin</h2>
+                </div>
+
+                <div class="icons">
+                <svg stroke="currentColor" class="icon" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg>
+                  <p>0-0-0000</p>
+
+
+                  <svg class="icon" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="SearchBar_icon__og2Jy" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"></path><path d="M13 7h-2v6h6v-2h-4z"></path></svg>
+                  <p>0-00 Am</p>
+                </div>
+              </div>
+
+              <div class="commentStyle">
+                <p>No Comments Found</p>
+              </div>
+
+
+        
+
+        
+
+
+
+  
+  </div>
+<?php }
+ ?>
+          
+</div>
+</div>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<?php
+} 
+
+
+
+
+
+
+
+
+
+
+// review box
+?>
+<!-- check wether rating is allowed to post or not -->
+<?php 
+
+// only check after login
+if(isset($_SESSION['activeClientId'])){
+$clientIdActive=$_SESSION['activeClientId'];
+
+//check weather try this food or not 
+$checkQuery="select*from itemlist where userID=$clientIdActive and orderstatus='complete' and itemName like '%$itemname%'";
+$result = mysqli_query($connection,$checkQuery);
+$reviewCheck=mysqli_num_rows($result);
+
+if($reviewCheck> 0){
+// check weather first time giving or already giving
+$itemsratingRes="select*from itemsrating where itemName like '%$itemname%'";
+$itemRatingDataRes=mysqli_query($connection,$itemsratingRes);
+$itemRatingDataResCount=mysqli_num_rows($itemRatingDataRes);
+
+// update 
+if($itemRatingDataResCount> 0){
+
+
+$itemRatingData=mysqli_fetch_assoc($itemRatingDataRes);
+$itemId=$itemRatingData['id'];
+
+$checkUpdateQuery="select*from itemratingcomments where userId=$clientIdActive and ratingId=$itemId";
+$updateResQuery=mysqli_query($connection,$checkUpdateQuery);
+$updateRowQuery=mysqli_num_rows($updateResQuery);
+$updateData=mysqli_fetch_assoc($updateResQuery);
+
+// update because rating already given by user
+if($updateRowQuery>0){
+?>
+<div class="reviews">
+
+<div class="box">
+
+
+<!-- client review -->
+<div class="clientReview">
+            
+         <h1> Update your feedback</h1> 
+         
+            
+<!-- user message -->
+          
+               <input type="text" placeholder="Client Name"   value="<?php echo $_SESSION['activeClientFullname'];?>"
+               
+                 readonly >
+               <textarea
+                 name="message"
+                 id="commentMessage"
+                 
+                 placeholder="Write Your Reviews*"
+               ><?php echo $updateData['message'];?>
+              
+             </textarea>
+
+               <!-- Quality Rate  -->
+               <div class="rateSection">
+             
+                 <h2>Quality Rate of Item: </h2>
+                 <div class="rateClient">
+                 <div class="starRatingBox1" >
+      <span id="qualityRateStar">
+      <?php echo $updateData['QualityRate'];?>
+      </span>
+      <span class="fa fa-star starIcon"></span>
+  </div>
+  <select name="itemRate" id="qualityRate">
+   <option value="<?php echo $updateData['QualityRate'];?>" selected ><?php echo $updateData['QualityRate'];?></option>
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+    <option value="2.5">2.5</option>
+    <option value="3">3</option>
+    <option value="3.5">3.5</option>
+    <option value="4">4</option>
+    <option value="4.5">4.5</option>
+    <option value="5">5</option>
+  </select>
+                 </div>
+               </div>
+
+           <!-- service rate -->
+               <div class="rateSection">
+              
+                 <h2>Service Rate: </h2>
+                 <div class="rateClient">
+                   <!-- star -->
+
+                   <div class="starRatingBox1" >
+      <span id="serviceRateStar" >
+      <?php echo $updateData['ServiceRate'];?>
+      </span>
+      <span class="fa fa-star starIcon"></span>
+  </div>
+  <select name="itemRate" id="serviceRate">
+
+    <option value="<?php echo $updateData['ServiceRate'];?>" selected><?php echo $updateData['ServiceRate'];?></option>
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+    <option value="2.5">2.5</option>
+    <option value="3">3</option>
+    <option value="3.5">3.5</option>
+    <option value="4">4</option>
+    <option value="4.5">4.5</option>
+    <option value="5">5</option>
+  </select>
+ 
+                 </div>
+               </div>
+               <!-- price rate  -->
+               <div class="rateSection">
+                 
+                 <h2>Price Rate of Item: </h2>
+                 <div class="rateClient">
+                 <div class="starRatingBox1" >
+      <span id="priceRateStar">
+      <?php echo $updateData['PriceRate'];?>
+      </span>
+      <span class="fa fa-star starIcon"></span>
+  </div>
+
+  <select name="itemRate" id="priceRate">
+  <option value="<?php echo $updateData['PriceRate'];?>" selected>  <?php echo $updateData['PriceRate'];?></option>
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+    <option value="2.5">2.5</option>
+    <option value="3">3</option>
+    <option value="3.5">3.5</option>
+    <option value="4">4</option>
+    <option value="4.5">4.5</option>
+    <option value="5" >5</option>
+ 
+  </select>
+                 </div>
+               </div>
+
+         
+               
+               <button onclick="updateReview()">Update Review</button>
+               
+               
+              
+             
+             
+           </div>
+
+           </div>
+</div>
+<?php }
+
+
+// new comment
+else{
+?>
+<div class="reviews">
+
+<div class="box">
+
+
+
+<div class="clientReview">
+            
+    
+              <h1> Leave feedback about this item for others</h1>
+       
+
+          
+               <input type="text" placeholder="Client Name"   value="<?php echo $_SESSION['activeClientFullname'];?>"
+               
+                 readonly >
+               <textarea
+                 name="message"
+                 id="commentMessage"
+                 placeholder="Write Your Reviews*"
+               ></textarea>
+
+           
+               <div class="rateSection">
+             
+                 <h2>Quality Rate of Item: </h2>
+                 <div class="rateClient">
+                 <div class="starRatingBox1" >
+      <span id="qualityRateStar">
+      5
+      </span>
+      <span class="fa fa-star starIcon"></span>
+  </div>
+  <select name="itemRate" id="qualityRate">
+   
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+    <option value="2.5">2.5</option>
+    <option value="3">3</option>
+    <option value="3.5">3.5</option>
+    <option value="4">4</option>
+    <option value="4.5">4.5</option>
+    <option value="5" selected>5</option>
+  </select>
+                 </div>
+               </div>
+
+          
+               <div class="rateSection">
+              
+                 <h2>Service Rate: </h2>
+                 <div class="rateClient">
+                   <!-- star -->
+
+                   <div class="starRatingBox1" >
+      <span id="serviceRateStar" >
+     5
+      </span>
+      <span class="fa fa-star starIcon"></span>
+  </div>
+  <select name="itemRate" id="serviceRate">
+
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+    <option value="2.5">2.5</option>
+    <option value="3">3</option>
+    <option value="3.5">3.5</option>
+    <option value="4">4</option>
+    <option value="4.5">4.5</option>
+    <option value="5" selected>5</option>
+  </select>
+ 
+                 </div>
+               </div>
+               <!-- price rate  -->
+               <div class="rateSection">
+                 
+                 <h2>Price Rate of Item: </h2>
+                 <div class="rateClient">
+                 <div class="starRatingBox1" >
+      <span id="priceRateStar">
+5
+      </span>
+      <span class="fa fa-star starIcon"></span>
+  </div>
+
+  <select name="itemRate" id="priceRate">
+   
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+    <option value="2.5">2.5</option>
+    <option value="3">3</option>
+    <option value="3.5">3.5</option>
+    <option value="4">4</option>
+    <option value="4.5">4.5</option>
+    <option value="5" selected>5</option>
+  </select>
+                 </div>
+               </div>
+
+         
+               
+        
+               
+               <button onclick="sendRatingNew()">Submit Review</button>
+          
+             
+             
+           </div>
+
+           </div>
+</div>
+<?php }
+
+
+
+
+}
+else{
+
+?>
+
+
+<!-- new review -->
+<div class="reviews">
+
+<div class="box">
+
+
+
+<div class="clientReview">
+            
+    
+              <h1> Leave feedback about this item for others</h1>
+       
+
+          
+               <input type="text" placeholder="Client Name"   value="<?php echo $_SESSION['activeClientFullname'];?>"
+               
+                 readonly >
+               <textarea
+                 name="message"
+                 id="commentMessage"
+                 placeholder="Write Your Reviews*"
+               ></textarea>
+
+           
+               <div class="rateSection">
+             
+                 <h2>Quality Rate of Item: </h2>
+                 <div class="rateClient">
+                 <div class="starRatingBox1" >
+      <span id="qualityRateStar">
+      5
+      </span>
+      <span class="fa fa-star starIcon"></span>
+  </div>
+  <select name="itemRate" id="qualityRate">
+   
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+    <option value="2.5">2.5</option>
+    <option value="3">3</option>
+    <option value="3.5">3.5</option>
+    <option value="4">4</option>
+    <option value="4.5">4.5</option>
+    <option value="5" selected>5</option>
+  </select>
+                 </div>
+               </div>
+
+          
+               <div class="rateSection">
+              
+                 <h2>Service Rate: </h2>
+                 <div class="rateClient">
+                   <!-- star -->
+
+                   <div class="starRatingBox1" >
+      <span id="serviceRateStar" >
+     5
+      </span>
+      <span class="fa fa-star starIcon"></span>
+  </div>
+  <select name="itemRate" id="serviceRate">
+
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+    <option value="2.5">2.5</option>
+    <option value="3">3</option>
+    <option value="3.5">3.5</option>
+    <option value="4">4</option>
+    <option value="4.5">4.5</option>
+    <option value="5" selected>5</option>
+  </select>
+ 
+                 </div>
+               </div>
+               <!-- price rate  -->
+               <div class="rateSection">
+                 
+                 <h2>Price Rate of Item: </h2>
+                 <div class="rateClient">
+                 <div class="starRatingBox1" >
+      <span id="priceRateStar">
+5
+      </span>
+      <span class="fa fa-star starIcon"></span>
+  </div>
+
+  <select name="itemRate" id="priceRate">
+   
+    <option value="0.5">0.5</option>
+    <option value="1">1</option>
+    <option value="1.5">1.5</option>
+    <option value="2">2</option>
+    <option value="2.5">2.5</option>
+    <option value="3">3</option>
+    <option value="3.5">3.5</option>
+    <option value="4">4</option>
+    <option value="4.5">4.5</option>
+    <option value="5" selected>5</option>
+  </select>
+                 </div>
+               </div>
+
+         
+               
+        
+               
+               <button onclick="sendRatingNew()">Submit Review</button>
+          
+             
+             
+           </div>
+
+           </div>
+</div>
+<?php }
+}
+
+
+}
+
+?>
+
+
+<?php
+}   
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 
 
@@ -1281,7 +2423,7 @@ else{
         }
         // ! add to cart functionality
 
-        const addToCart = (id, name) => {
+        const addToCart = (id, name,category) => {
             let itemId = id;
             let currentCategorySelected=null ;
             // calculate selected category
@@ -1316,7 +2458,7 @@ if(document.getElementById('largesize').checked){
                 url: "http://localhost/sd-canteen/clientApi/calculatePrices.php", //your page
                 data: {
                     id: itemId,
-                    category: 'FoodItem',
+                    category: category,
                     size: currentCategorySelected
                 },
                 // return data
@@ -1373,7 +2515,7 @@ if(document.getElementById('largesize').checked){
         // ! add to cart and buy
 
 
-        const addToCartAndBuy = (id, name, image) => {
+        const addToCartAndBuy = (id, name, category) => {
             let itemId = id;
             let currentCategorySelected=null ;
             // calculate selected category
@@ -1408,7 +2550,7 @@ if(document.getElementById('largesize').checked){
                 url: "http://localhost/sd-canteen/clientApi/calculatePrices.php", //your page
                 data: {
                     id: itemId,
-                    category: 'FoodItem',
+                    category: category,
                     size: currentCategorySelected
                 },
                 // return data
@@ -1490,15 +2632,26 @@ document.getElementById('price').innerText =cartDataConvert1.items[i].price;
         }, 500)
 
 
-        
-   
+        if(document.getElementById('qualityRate')){
+
+          document.getElementById('qualityRate').addEventListener('change',()=>{
+            let serviceRateStar=document.getElementById('qualityRateStar').innerText=document.getElementById('qualityRate').value;
+          })
+        }
+
+        if(document.getElementById('serviceRate')){
+
+      
         document.getElementById('serviceRate').addEventListener('change',()=>{
           let serviceRateStar=document.getElementById('serviceRateStar').innerText=document.getElementById('serviceRate').value;
         })
+      }
+
+      if(document.getElementById('priceRate')){
         document.getElementById('priceRate').addEventListener('change',()=>{
           let priceRateStar=document.getElementById('priceRateStar').innerText=document.getElementById('priceRate').value;
         })
-   
+      }
 
 
 
