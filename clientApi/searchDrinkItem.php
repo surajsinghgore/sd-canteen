@@ -7,7 +7,7 @@ if (isset($_REQUEST['loadPage'])) {
     $res_food_item_count = mysqli_query($connection, $food_item_count);
     $FoodItemsCount = mysqli_num_rows($res_food_item_count);
 
-
+ 
     
 if($FoodItemsCount>0){
 
@@ -15,7 +15,7 @@ if($FoodItemsCount>0){
 
 <div class="card" loading="lazy">
    <div class="FoodImg">
-  <a href="">
+  <a href="/sd-canteen/items.php?itemname=<?php echo $allFoodData['drinkname'];?>">
     <img src="<?php 
     $modifiedString = substr($allFoodData['imagepath'], 1);
     echo $modifiedString;?>"  alt="<?php 
@@ -23,7 +23,7 @@ if($FoodItemsCount>0){
     echo $modifiedString;?>"></a>
    </div>
    <div class="deatils">
-   <a href=""><h1><?php echo $allFoodData['drinkname'];?></h1></a>
+   <a href="/sd-canteen/items.php?itemname=<?php echo $allFoodData['drinkname'];?>"><h1><?php echo $allFoodData['drinkname'];?></h1></a>
 <h3>Qty: <span>1</span></h3>
 
 <h6>Category: <span><?php echo $allFoodData['category'];?></span></h6>
@@ -166,7 +166,7 @@ while ($allFoodData = mysqli_fetch_array($res_food_item_count)) { ?>
 
 <div class="card" loading="lazy">
 <div class="FoodImg">
-<a href="">
+<a href="/sd-canteen/items.php?itemname=<?php echo $allFoodData['drinkname'];?>">
 <img src="<?php 
 $modifiedString = substr($allFoodData['imagepath'], 1);
 echo $modifiedString;?>"  alt="<?php 
@@ -174,7 +174,7 @@ $modifiedString = substr($allFoodData['imagepath'], 1);
 echo $modifiedString;?>"></a>
 </div>
 <div class="deatils">
-<a href=""><h1><?php echo $allFoodData['drinkname'];?></h1></a>
+<a href="/sd-canteen/items.php?itemname=<?php echo $allFoodData['drinkname'];?>"><h1><?php echo $allFoodData['drinkname'];?></h1></a>
 <h3>Qty: <span>1</span></h3>
 
 <h6>Category: <span><?php echo $allFoodData['category'];?></span></h6>
