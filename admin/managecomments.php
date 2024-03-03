@@ -98,14 +98,27 @@ function toxicCommentFunction(id,commentId){
                 },
                 // return data
                 success: function(res) {
-                    console.log(res)
+            document.location.reload();
                 }})
 }
 
 
 
-function notToxicCommentFunction(id){
-
+function notToxicCommentFunction(id,commentId){
+    console.log(id,commentId)
+    $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/managecomments.php", //your page
+                data: {
+                    id: id,
+                    commentId:commentId,
+                    notoxic: 'notoxic',
+               
+                },
+                // return data
+                success: function(res) {
+            document.location.reload();
+                }})
 }
 
 

@@ -6,12 +6,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
     require('../middleware/ConnectToDatabase.php');
 
+
+    // toxic comment handle
     if ((isset($_POST['toxic']))&& (isset($_POST['id']))&&(isset($_POST['commentId']))){
 
 
 $id=$_POST['id'];
 $commentId=$_POST['commentId'];
-echo $commentId;
+
 // fetch toxic text user for email
 $fetchDataQuery="select*from itemratingcomments where id=$commentId";
 $fetchFromItemRatingCommentData=mysqli_query($connection, $fetchDataQuery);
@@ -79,12 +81,33 @@ $message = "
     
                         $result = mail($to, $subject, $message, $headers);
                         if ($result == true) {
-                           echo "success";
+                          
                         }
 
     }
 
+// no toxic comment handle
+if ((isset($_POST['notoxic']))&& (isset($_POST['id']))&&(isset($_POST['commentId']))){
 
+
+    $id=$_POST['id'];
+    $commentId=$_POST['commentId'];
+ 
+
+    
+
+    //remove from comment report
+    $deleteCommentFromCommentReport="delete from commentreports where id=$id";
+    mysqli_query($connection, $deleteCommentFromCommentReport);
+    // remove from commentreportusers
+    $deleteCommentFromCommentUserReport="delete from commentreportusers where maincommentid=$id";
+    mysqli_query($connection, $deleteCommentFromCommentUserReport);
+    
+    
+    
+    
+        }
+    
 }
 
 
