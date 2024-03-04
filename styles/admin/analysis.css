@@ -38,9 +38,19 @@
     margin-top: 2%;
     color: rgb(109, 108, 108);
     padding-left: 2%;
+    position: relative;
+    display: flex;
   }
+  .allAnaylsis .charjs h4 p{
+    margin-left: 1%;
+    color: rgb(222, 49, 2);
+  }
+
   .allAnaylsis .charjs h4 span {
     float: right;
+position: absolute;
+right: 0;
+top: 0;
     color: rgb(102, 102, 102);
     padding-right: 5%;
   }
@@ -51,9 +61,9 @@
     height: auto;
   }
   .allAnaylsis .charjs .chart canvas{
-    height: 270px !important;
-width: 90% !important;
-margin-top: 3%;
+    height: 350px !important;
+width:100% !important;
+margin-top: 10%;
   }
   .allAnaylsis .charjs .chartPie {
     width: 650px;
@@ -63,7 +73,8 @@ margin-top: 3%;
   }
   .allAnaylsis .charjs .chartPie canvas{
 height: 350px !important;
-width: 90% !important;
+width: 100% !important;
+margin-top: 5%charjs;
 
   }
   
@@ -203,7 +214,7 @@ margin-left: 13%;
     .allAnaylsis .charjs h4 {
       font-size: 3vw;
       margin-top: 2%;
-  
+  display: flex;
       padding-left: 3%;
     }
   

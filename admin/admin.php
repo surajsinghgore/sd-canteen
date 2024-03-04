@@ -107,7 +107,7 @@ if ($result) {
                 <!-- Monthwise Website Visits -->
                 <div class="charjs">
                     <h4>
-                        Monthwise Website Visits
+                        Monthwise Website Visits 
                         <span id="monthwisetotal">Total: 23</span>
                     </h4>
                     <div class="chart">
@@ -119,8 +119,8 @@ if ($result) {
                 <!--  Browser Used To Access Sd Website -->
                 <div class="charjs">
                     <h4>
-                        Browser Used To Access Sd Website In <span id="year11">2024</span>
-                        <span>Total: 22</span>
+                        Browser Used To Access Sd Website In<p id="year1">2024</p>
+                        <span id="browserused">Total: 0</span>
                     </h4>
                     <div class="chartPie">
                     <canvas id="myChart10"></canvas>
@@ -131,8 +131,8 @@ if ($result) {
                 <!--Total Orders Place  -->
                 <div class="charjs">
                     <h4>
-                        Total Orders Placed In <span id="year12">2024</span>
-                        <span>Total : 23</span>
+                        Total Orders Placed In <p id="year2">2024</p>
+                        <span id="totalOrder">Total : 23</span>
                     </h4>
                     <div class="chart">
                     <canvas id="myChart9"></canvas>
@@ -142,7 +142,7 @@ if ($result) {
                 <!-- {/* top 10 trending */} -->
                 <div class="charjs">
                     <h4>
-                        Top 10 Trending Items Of All Times <span>Top 10</span>
+                        Top 10 Trending Items Of All Times <span id="trendingItem">Top 10</span>
                     </h4>
                     <div class="chartPie">
                     <canvas id="myChart8"></canvas>
@@ -153,8 +153,8 @@ if ($result) {
                 <!--Total Earning   -->
                 <div class="charjs">
                     <h4>
-                        Total Earning In <span id="year13">2024</span>
-                        <span>Total ₹: 2322</span>
+                        Total Earning In <p id="year3">2024</p>
+                        <span id="totalEarning">Total ₹: 2322</span>
                     </h4>
                     <div class="chart">
                     <canvas id="myChart7"></canvas>
@@ -165,18 +165,18 @@ if ($result) {
                 <!--  Monthwise New Clients Register -->
                 <div class="charjs">
                     <h4>
-                        Monthwise New Clients Register
-                        <span>Total: 23</span>
+                        Monthwise New Clients Register In  <p id="year4"></p>
+                        <span id="monthwiseclientId">Total: 23</span>
                     </h4>
                     <div class="chart">
                     <canvas id="myChart6"></canvas>
                     </div>
                 </div>
 
-                <!--   Top 10 Most Ordered Food In <span id="year1">2024</span> -->
+            <!-- trending items -->
                 <div class="charjs">
                     <h4>
-                        Top 10 Most Ordered Food In <span id="year14">2024</span> <span>Total: 10</span>
+                        Top 10 Most Ordered Food In <p id="year5">2024</p> <span id="trendingFood">Top: 10</span>
                     </h4>
                     <div class="chartPie">
                     <canvas id="myChart5"></canvas>
@@ -186,7 +186,7 @@ if ($result) {
                 <!-- Top 10 Most Ordered Coffee   -->
                 <div class="charjs">
                     <h4>
-                        Top 10 Most Ordered Coffee In 23 <span>Top 10</span>
+                        Top 10 Most Ordered Coffee In 23 <p id="year6">0</p>
                     </h4>
                     <div class="chartPie">
                     <canvas id="myChart4"></canvas>
@@ -196,7 +196,7 @@ if ($result) {
                 <!-- Top 10 Most Ordered Juice In 23 -->
                 <div class="charjs">
                     <h4>
-                        Top 10 Most Ordered Juice In <span id="year15">2024</span> <span>Top 10</span>
+                        Top 10 Most Ordered Juice In <p id="year7">0</p><span>Top 10</span>
                     </h4>
                     <div class="chartPie">
                     <canvas id="myChart3"></canvas>
@@ -205,7 +205,7 @@ if ($result) {
                 <!--  Top 10 Most Ordered Drink -->
                 <div class="charjs">
                     <h4>
-                        Top 10 Most Ordered Drink In <span id="year16">2024</span> <span>Top 10</span>
+                        Top 10 Most Ordered Drink In <p id="year8">2024</p> <span>Top 10</span>
                     </h4>
                     <div class="chartPie">
                         <canvas id="myChart2"></canvas>
@@ -239,7 +239,7 @@ let selectedYear=document.getElementById('selectedYear').value;
            
                 success: function(res) {
 
-                    console.log(res)
+                 
                     let data=JSON.parse(res);
 
                  
@@ -250,6 +250,9 @@ let selectedYear=document.getElementById('selectedYear').value;
 // monthwise website visits
 const xValues11 = ['january','february','march','april','may','june','july','august','september','october','november','december'];
 const yValues11 = data.monthwisevisit;
+// sum total
+let sum =  data.monthwisevisit.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+document.getElementById('monthwisetotal').innerText="Total: "+sum;
 
 new Chart("myChart11", {
   type: "line",
@@ -276,6 +279,13 @@ new Chart("myChart11", {
 
 const xMyChart10 = ["chrome", "firefox", "safari", "opera","edge","ie", "other"];
         const yMyChart10 = data.browserUse;
+        // year select
+        document.getElementById('year1').innerText=document.getElementById('selectedYear').value;
+        // sum total
+ sum =  data.browserUse.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+document.getElementById('browserused').innerText="Total: "+sum;
+
+
         const barColorsMyChart10 = [
             "#378A29",
             "#29718A",
@@ -308,6 +318,11 @@ const xMyChart10 = ["chrome", "firefox", "safari", "opera","edge","ie", "other"]
 const xValues9 = ['january','february','march','april','may','june','july','august','september','october','november','december'];
 const yValues9 = data.totalOrders;
 const barColors9 = ["red", "green","blue","orange","brown","#05FA87","#FA6D05","#05D9FA","#B705FA","#E3C506","#48FA05","#FA0587"];
+// year select
+document.getElementById('year2').innerText=document.getElementById('selectedYear').value;
+        // sum total
+ sum =  data.totalOrders.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+document.getElementById('totalOrder').innerText="Total: "+sum;
 
 
 // top trending items of all times
@@ -334,6 +349,14 @@ new Chart("myChart9", {
 
 const xMyChart8 = data.trendingItemName;
         const yMyChart8 = data.trendingItemData;
+
+
+
+  
+        // sum total
+ sum =  data.trendingItemData.reduce((accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue), 0);
+document.getElementById('trendingItem').innerText="Total: "+sum;
+
         const barColorsMyChart8 = [
             "#378A29",
             "#29718A",
@@ -367,7 +390,16 @@ const xMyChart8 = data.trendingItemName;
 // 7 total earnings
 
 const xValues7 = ['january','february','march','april','may','june','july','august','september','october','november','december'];
-const yValues7 = data.totalOrders;
+const yValues7 = data.totalEarning;
+
+
+// year select
+document.getElementById('year3').innerText=document.getElementById('selectedYear').value;
+        // sum total
+ sum =  data.totalEarning.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+document.getElementById('totalEarning').innerText="Total: "+sum;
+
+
 const barColors7 = ["red", "green","blue","orange","brown","#05FA87","#FA6D05","#05D9FA","#B705FA","#E3C506","#48FA05","#FA0587"];
 
 new Chart("myChart7", {
@@ -393,6 +425,14 @@ new Chart("myChart7", {
  const xValues6 = ['january','february','march','april','may','june','july','august','september','october','november','december'];
 const yValues6 = data.monthwiseclient;
 
+// year select
+document.getElementById('year4').innerText=document.getElementById('selectedYear').value;
+        // sum total
+ sum =  data.monthwiseclient.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+document.getElementById('monthwiseclientId').innerText="Total: "+sum;
+
+
+
 new Chart("myChart6", {
   type: "line",
   data: {
@@ -412,9 +452,14 @@ new Chart("myChart6", {
     }
   }
 });
-
+// food items
 const xMyChart5 = data.topFoodName;
         const yMyChart5 = data.topFoodData;
+// year select
+document.getElementById('year5').innerText=document.getElementById('selectedYear').value;
+
+
+        
         const barColorsMyChart5 = [
             "#378A29",
             "#29718A",
@@ -446,6 +491,9 @@ const xMyChart5 = data.topFoodName;
         });
 
 
+        document.getElementById('year6').innerText=document.getElementById('selectedYear').value;
+        document.getElementById('year7').innerText=document.getElementById('selectedYear').value;
+        document.getElementById('year8').innerText=document.getElementById('selectedYear').value;
 
  // 10 most ordered coffee
  const xMyChart4 = data.topCoffeeName;

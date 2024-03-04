@@ -90,8 +90,6 @@ $decCountRes=mysqli_num_rows($websiteVisitCountRes);
 if($decCountRes> 0){$decCount=$decCountRes;}
 
 
-// calculate 
-$totalMonthwise="$janCount+$febCount+$marCount+$aprCount+$mayCount+$junCount+$julCount+$augCount+$sepCount+$octCount+$novCount+$decCount";
 
 $data.= "{\"monthwisevisit\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
 
@@ -364,8 +362,8 @@ $janCountRes=mysqli_fetch_assoc($websiteVisitCountRes);
     }
 
 // calculate
-$data.= ",\"totalOrders\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
-$data3.= "\"totalOrders\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
+
+$data3.= "\"totalEarning\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
 echo $data3;
 
 
@@ -468,7 +466,7 @@ while($data=mysqli_fetch_array($topTrendingRes)){
     $itemName=$data['itemName'];
     $numberofsearch=$data['totalOrder'];
     ++$count;
-    if($count<9){
+    if($count<10){
         $subDataHeading.="\"$itemName\",";
         $subData.="\"$numberofsearch\",";
     }else{
