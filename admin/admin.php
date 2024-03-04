@@ -42,7 +42,7 @@
             <div class="allAnaylsis">
                 <!-- filter by year wise -->
                 <div class="filter">
-                    <select name="year" id="selectedYear">
+                    <select name="year" id="selectedYear" onclick="yearChange()">
 
                      <!-- year fetch -->
                         
@@ -108,7 +108,7 @@ if ($result) {
                 <div class="charjs">
                     <h4>
                         Monthwise Website Visits
-                        <span>Total: 23</span>
+                        <span id="monthwisetotal">Total: 23</span>
                     </h4>
                     <div class="chart">
 
@@ -119,7 +119,7 @@ if ($result) {
                 <!--  Browser Used To Access Sd Website -->
                 <div class="charjs">
                     <h4>
-                        Browser Used To Access Sd Website In 2024
+                        Browser Used To Access Sd Website In <span id="year11">2024</span>
                         <span>Total: 22</span>
                     </h4>
                     <div class="chartPie">
@@ -131,7 +131,7 @@ if ($result) {
                 <!--Total Orders Place  -->
                 <div class="charjs">
                     <h4>
-                        Total Orders Placed In 2024
+                        Total Orders Placed In <span id="year12">2024</span>
                         <span>Total : 23</span>
                     </h4>
                     <div class="chart">
@@ -153,7 +153,7 @@ if ($result) {
                 <!--Total Earning   -->
                 <div class="charjs">
                     <h4>
-                        Total Earning In 2024
+                        Total Earning In <span id="year13">2024</span>
                         <span>Total ₹: 2322</span>
                     </h4>
                     <div class="chart">
@@ -173,10 +173,10 @@ if ($result) {
                     </div>
                 </div>
 
-                <!--   Top 10 Most Ordered Food In 2024 -->
+                <!--   Top 10 Most Ordered Food In <span id="year1">2024</span> -->
                 <div class="charjs">
                     <h4>
-                        Top 10 Most Ordered Food In 2024 <span>Total: 10</span>
+                        Top 10 Most Ordered Food In <span id="year14">2024</span> <span>Total: 10</span>
                     </h4>
                     <div class="chartPie">
                     <canvas id="myChart5"></canvas>
@@ -196,7 +196,7 @@ if ($result) {
                 <!-- Top 10 Most Ordered Juice In 23 -->
                 <div class="charjs">
                     <h4>
-                        Top 10 Most Ordered Juice In 2024 <span>Top 10</span>
+                        Top 10 Most Ordered Juice In <span id="year15">2024</span> <span>Top 10</span>
                     </h4>
                     <div class="chartPie">
                     <canvas id="myChart3"></canvas>
@@ -205,7 +205,7 @@ if ($result) {
                 <!--  Top 10 Most Ordered Drink -->
                 <div class="charjs">
                     <h4>
-                        Top 10 Most Ordered Drink In 2024 <span>Top 10</span>
+                        Top 10 Most Ordered Drink In <span id="year16">2024</span> <span>Top 10</span>
                     </h4>
                     <div class="chartPie">
                         <canvas id="myChart2"></canvas>
@@ -556,6 +556,12 @@ const xMyChart5 = data.topFoodName;
 
     
                 }})
+
+
+
+                function yearChange(){
+                   let yearInput=document.getElementById('selectedYear').value; 
+                }
     </script>
 
 

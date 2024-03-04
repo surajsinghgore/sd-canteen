@@ -221,10 +221,6 @@ if(Dates.getDay()==0){
 
 
 
-  let datass=data.filter((items)=>{
-return items.time>=times;
-
-})
 
 if(datass.length==0){
   document.getElementById('BottomMessage').innerHTML=`<div class="message">
@@ -257,7 +253,7 @@ datass.map((item,index)=>{
                       name="time"
                       id="box${item.time1}"
                    onclick='setTimeForOrder("${item.time}","${item.time1}")'
-                    />
+                    >
                 
                  
             
@@ -318,7 +314,7 @@ datass.map((item,index)=>{
                       name="time"
                       id="box${item.time1}"
                    onclick='setTimeForOrder("${item.time}","${item.time1}")'
-                    />
+                    >
                 
                  
             

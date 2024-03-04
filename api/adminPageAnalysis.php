@@ -88,7 +88,11 @@ if($novCountRes> 0){$novCount=$novCountRes;}
 $websiteVisitCountRes=mysqli_query($connection,"SELECT * FROM websitecounter where visitDate like '%___12-$year%'");
 $decCountRes=mysqli_num_rows($websiteVisitCountRes);
 if($decCountRes> 0){$decCount=$decCountRes;}
-// calculate
+
+
+// calculate 
+$totalMonthwise="$janCount+$febCount+$marCount+$aprCount+$mayCount+$junCount+$julCount+$augCount+$sepCount+$octCount+$novCount+$decCount";
+
 $data.= "{\"monthwisevisit\":[$janCount,$febCount,$marCount,$aprCount,$mayCount,$junCount,$julCount,$augCount,$sepCount,$octCount,$novCount,$decCount]";
 
 
@@ -464,7 +468,7 @@ while($data=mysqli_fetch_array($topTrendingRes)){
     $itemName=$data['itemName'];
     $numberofsearch=$data['totalOrder'];
     ++$count;
-    if($count<10){
+    if($count<9){
         $subDataHeading.="\"$itemName\",";
         $subData.="\"$numberofsearch\",";
     }else{

@@ -187,10 +187,13 @@ $mainQuery="select* from orderitems where userId=$activeUserId and orderdate lik
 $resMain=mysqli_query($connection,$mainQuery);
 $mainCount=mysqli_num_rows($resMain);
 if($mainCount>0){
-   ?> <div class='cookingMain' id="cooking">
+
+   ?>
+   
+   <div class='cookingMain' id="cooking">
     <div class='cookingSection'>
     <a href="/sd-canteen/ordercomplete.php"><h6>Order Cooking</h6></a>
-      <button title='Hide' onclick="sessionStorage.removeItem('cooking','disabled');document.location.reload()">x</button>
+      <button title='Hide' onclick="hideCooking()">x</button>
       <a href="/sd-canteen/ordercomplete.php"><div class="cookImage">
       <img src="https://res.cloudinary.com/dnxv21hr0/image/upload/v1681014402/cooking_ggqydy.gif"  alt="cooking image" />
       </div>
@@ -199,11 +202,7 @@ if($mainCount>0){
       <?php
 }else{
     ?>
-<script>
-    if(sessionStorage.getItem('cooking')){
-        sessionStorage.removeItem('cooking');
-    }
-</script>
+
     <?php
 }
 }
@@ -215,11 +214,19 @@ if($mainCount>0){
 
 
     <script>
-        if(sessionStorage.getItem('cooking')){
 
-            document.getElementById('cooking').style.display="none";
-        }
+// sessionStorage.removeItem('cooking')
+function hideCooking(){
 
+    sessionStorage.setItem('cooking','disable');
+    document.getElementById('cooking').style.display="none";
+
+}
+    
+if(sessionStorage.getItem('cooking')=="disable"){
+    document.getElementById('cooking').style.display="none";
+
+}
 
 
         //main Search Bar
