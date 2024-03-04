@@ -42,11 +42,15 @@
                 <div class="filters">
                     <li>
                         <select>
-                            <option value="no">compare with 1 year</option>
-
-                            <option>
-                                2023
-                            </option>
+                        <?php 
+ require('../middleware/ConnectToDatabase.php');
+ $sql="SELECT DISTINCT(YEAR(createat)) as Year from orderitems ";
+    $result = mysqli_query($connection,$sql);
+  while( $data = mysqli_fetch_array($result) ) {
+   ?>
+<option><?php echo $data['Year'];?></option>
+  <?php }
+?>
 
                         </select>
                     </li>
@@ -89,6 +93,7 @@
                             <li>
                                 <div class="title">
                                     Total In 2023
+                             
                                 </div>
 
                             </li>

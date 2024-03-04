@@ -486,10 +486,9 @@ echo $data5;
 
 // most ordered food item
 $data6="";
-// ! top 10 trending items
 $subDataHeading="";
 $subData="";
-$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='coffee' order by totalOrder desc LIMIT 10");
+$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='coffee' and year like '$year' order by totalOrder desc LIMIT 10");
 $count=0;
 while($data=mysqli_fetch_array($topTrendingRes)){
     $itemName=$data['itemName'];
@@ -517,7 +516,7 @@ $data7="";
 
 $subDataHeading="";
 $subData="";
-$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='juice' order by totalOrder desc LIMIT 10");
+$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='juice' and year like '$year' order by totalOrder desc LIMIT 10");
 $count=0;
 while($data=mysqli_fetch_array($topTrendingRes)){
     $itemName=$data['itemName'];
@@ -544,7 +543,7 @@ echo $data7;
 $data8="";
 $subDataHeading="";
 $subData="";
-$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='drink' order by totalOrder desc LIMIT 10");
+$topTrendingRes=mysqli_query($connection,"select*from ordertrack where maincategory='drink' and year like '$year' order by totalOrder desc LIMIT 10");
 $count=0;
 while($data=mysqli_fetch_array($topTrendingRes)){
     $itemName=$data['itemName'];
