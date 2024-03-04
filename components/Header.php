@@ -189,7 +189,21 @@ $mainCount=mysqli_num_rows($resMain);
 if($mainCount>0){
 
    ?>
-   
+   <script>
+    if(sessionStorage.getItem('cooking')){
+
+       
+        setTimeout(()=>{
+            if(sessionStorage.getItem('cooking')=="disable"){
+
+}else{
+    sessionStorage.setItem('cooking','enable');
+
+}
+        },100)
+    }
+
+   </script>
    <div class='cookingMain' id="cooking">
     <div class='cookingSection'>
     <a href="/sd-canteen/ordercomplete.php"><h6>Order Cooking</h6></a>
@@ -217,16 +231,19 @@ if($mainCount>0){
 
 // sessionStorage.removeItem('cooking')
 function hideCooking(){
-
+    if(sessionStorage.getItem('cooking')){
     sessionStorage.setItem('cooking','disable');
     document.getElementById('cooking').style.display="none";
-
+    }
 }
-    
-if(sessionStorage.getItem('cooking')=="disable"){
+    if(sessionStorage.getItem('cooking')){
+
+        if(sessionStorage.getItem('cooking')=="disable"){
     document.getElementById('cooking').style.display="none";
 
 }
+
+    }
 
 
         //main Search Bar

@@ -200,7 +200,7 @@ $txn_token=$data['txn_token'];
 $dataQuery="select*from itemlist where userId=$activeUserId and ordertoken='$orderToken' and txn_token='$txn_token'";
 
 $resItemList=mysqli_query($connection,$dataQuery);
-
+$itemLen=mysqli_num_rows($resItemList);
 
 while($itemData=mysqli_fetch_array($resItemList)){
   ?>
@@ -296,7 +296,7 @@ while($itemData=mysqli_fetch_array($resItemList)){
                               Total Item Order:
                             </div>
                             <div class="data">
-                             1
+                             <?php echo $itemLen;?>
                             </div>
                           </div>
                           <div class="detailsInner">
