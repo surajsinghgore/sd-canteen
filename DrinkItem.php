@@ -337,6 +337,7 @@ $.ajax({
                     // return data
                     success: function(res) {
 
+console.log(res)
 
 // load all cart data  
 let cartData=localStorage.getItem("cartItem");

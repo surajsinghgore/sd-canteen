@@ -13,7 +13,7 @@ if (isset($_REQUEST['id'])&&isset($_REQUEST['category'])) {
         $food_item_count = "select * from fooditems where id=$foodId";
         $res_food_item_count = mysqli_query($connection, $food_item_count);
         $FoodItemsCount = mysqli_num_rows($res_food_item_count);
-        if($FoodItemsCount>0){
+ 
   while ($allFoodData = mysqli_fetch_array($res_food_item_count)) { 
 $foodId=$allFoodData['id'];
 $foodname=$allFoodData['foodname'];
@@ -43,7 +43,7 @@ $data="{\"id\":$foodId,\"itemName\":\"$foodname\",\"image\":\"$image\",\"qty\":\
 echo $data;
 
 
-            }
+            
         }
 
     }
@@ -56,7 +56,7 @@ echo $data;
         $food_item_count = "select * from drinkitems where id=$foodId";
         $res_food_item_count = mysqli_query($connection, $food_item_count);
         $FoodItemsCount = mysqli_num_rows($res_food_item_count);
-        if($FoodItemsCount>0){
+
   while ($allFoodData = mysqli_fetch_array($res_food_item_count)) { 
 $foodId=$allFoodData['id'];
 $foodname=$allFoodData['drinkname'];
@@ -87,7 +87,7 @@ echo $data;
 
 
             }
-        }
+        
 
     }
 
@@ -100,7 +100,7 @@ echo $data;
         $food_item_count = "select * from coffeeitems where id=$foodId";
         $res_food_item_count = mysqli_query($connection, $food_item_count);
         $FoodItemsCount = mysqli_num_rows($res_food_item_count);
-        if($FoodItemsCount>0){
+   
   while ($allFoodData = mysqli_fetch_array($res_food_item_count)) { 
 $foodId=$allFoodData['id'];
 $foodname=$allFoodData['coffeename'];
@@ -130,7 +130,7 @@ $data="{\"id\":$foodId,\"itemName\":\"$foodname\",\"image\":\"$image\",\"qty\":\
 echo $data;
 
 
-            }
+            
         }
 
     }
@@ -143,7 +143,7 @@ echo $data;
         $food_item_count = "select * from juiceitems where id=$foodId";
         $res_food_item_count = mysqli_query($connection, $food_item_count);
         $FoodItemsCount = mysqli_num_rows($res_food_item_count);
-        if($FoodItemsCount>0){
+   
   while ($allFoodData = mysqli_fetch_array($res_food_item_count)) { 
 $foodId=$allFoodData['id'];
 $foodname=$allFoodData['juicename'];
@@ -174,7 +174,7 @@ echo $data;
 
 
             }
-        }
+        
 
     }
 }
