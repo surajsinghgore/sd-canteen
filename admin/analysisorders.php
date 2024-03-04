@@ -6,6 +6,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=2">
 <link rel="stylesheet" href="../styles/admin/analysis.css?v=7">
+  <!-- ajax added -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     window.document.title = "SD CANTEEN | Analysis Order";
 </script>
@@ -41,7 +45,8 @@
                 <h4>Select Years to Compare records</h4>
                 <div class="filters">
                     <li>
-                        <select>
+                        <select onchange="year1Selected()" id="year1">
+                        <option value="no">compare with 2 year</option>
                         <?php 
  require('../middleware/ConnectToDatabase.php');
  $sql="SELECT DISTINCT(YEAR(createat)) as Year from orderitems ";
@@ -57,23 +62,35 @@
 
 
                     <li>
-                        <select>
+                        <select  onchange="year2Selected()" id="year2">
                             <option value="no">compare with 2 year</option>
 
-                            <option value="item">
-                                2024
-                            </option>
+                            <?php 
+ require('../middleware/ConnectToDatabase.php');
+ $sql="SELECT DISTINCT(YEAR(createat)) as Year from orderitems ";
+    $result = mysqli_query($connection,$sql);
+  while( $data = mysqli_fetch_array($result) ) {
+   ?>
+<option><?php echo $data['Year'];?></option>
+  <?php }
+?>
 
                         </select>
                     </li>
 
                     <li>
-                        <select value="year3">
+                        <select value="year3" onchange="year3Selected()" id="year3">
                             <option value="no">compare with 3 year</option>
 
-                            <option value={item} key={index}>
-                                2022
-                            </option>
+                            <?php 
+ require('../middleware/ConnectToDatabase.php');
+ $sql="SELECT DISTINCT(YEAR(createat)) as Year from orderitems ";
+    $result = mysqli_query($connection,$sql);
+  while( $data = mysqli_fetch_array($result) ) {
+   ?>
+<option><?php echo $data['Year'];?></option>
+  <?php }
+?>
 
                         </select>
                     </li>
@@ -199,31 +216,63 @@
     <script>
      
 
+
+     
+
         // total order placed
 
-        const xValues1 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const yValues1 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
-        const barColors1 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+    //     const xValues1 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    //     const yValues1 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+    //     const barColors1 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
-        new Chart("myChart1", {
-            type: "bar",
-            data: {
-                labels: xValues1,
-                datasets: [{
-                    backgroundColor: barColors1,
-                    data: yValues1
-                }]
-            },
-            options: {
-                legend: {
-                    display: false
-                },
-                title: {
-                    display: true,
-                    //   text: "World Wine Production 2018"
-                }
-            }
-        });
+    //     new Chart("myChart1", {
+    //         type: "bar",
+    //         data: {
+    //             labels: xValues1,
+    //             datasets: [{
+    //                 label:'2022',
+    //   data: [860,1140,1060,1060,1070,1110,1330,2210,7830,23,245,2478],
+    //   backgroundColor: 'red',
+     
+    // },{
+    //     label:'2023',
+    //   data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,23,245,7000],
+    //   backgroundColor: "green",
+     
+    // },{label:'2024',
+    //   data: [300,700,2000,5000,6000,4000,2000,1000,200,23,452,100],
+    //   backgroundColor: "blue",
+     
+    // }]
+    //         },
+    //         options: {
+    //             legend: {
+    //                 display: true
+    //             },
+    //             title: {
+    //                 display: true,
+    //                 //   text: "World Wine Production 2018"
+    //             }
+    //         }
+    //     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -341,6 +390,196 @@
                 }
             }
         });
+
+
+
+
+
+
+        // compare with 1 year
+function year1Selected(){
+    let year1=document.getElementById('year1').value;
+  
+    $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/analysisOrder.php", 
+                data: {
+                   year1:year1,
+                   onlyOne:'onlyOne'
+               
+                },
+           
+                success: function(res) {
+                 
+                   console.log(res)
+
+let data=JSON.parse(res);
+
+
+
+
+
+                   const xValues1 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues1 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const barColors1 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart1", {
+            type: "bar",
+            data: {
+                labels: xValues1,
+                datasets: [{
+                    label:year1,
+      data: data.totalOrdersYear1,
+      backgroundColor: 'red',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                    //   text: "World Wine Production 2018"
+                }
+            }
+        });
+
+
+
+                }})
+}
+
+
+        // compare with two year
+        function year2Selected(){
+    let year1=document.getElementById('year1').value;
+    let year2=document.getElementById('year2').value;
+ 
+    $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/analysisOrder.php", 
+                data: {
+                   year1:year1,
+                   year2:year2,
+               SecondYear2:'secondYear'
+                },
+           
+                success: function(res) {
+                 
+                   console.log(res)
+
+let data=JSON.parse(res);
+
+
+
+
+
+                   const xValues1 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues1 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const barColors1 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart1", {
+            type: "bar",
+            data: {
+                labels: xValues1,
+                datasets: [{
+                    label:year1,
+      data: data.totalOrdersYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalOrdersYear2,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                 
+                }
+            }
+        });
+
+
+
+                }})
+}
+
+
+        // compare with three year
+ // compare with two year
+ function year3Selected(){
+    let year1=document.getElementById('year1').value;
+    let year2=document.getElementById('year2').value;
+    let year3=document.getElementById('year3').value;
+ 
+    $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/analysisOrder.php", 
+                data: {
+                   year1:year1,
+                   year3:year3,
+                   year2:year2,
+               SecondYear3:'secondYear'
+                },
+           
+                success: function(res) {
+                 
+                   console.log(res)
+
+let data=JSON.parse(res);
+
+
+
+
+
+                   const xValues1 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues1 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const barColors1 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart1", {
+            type: "bar",
+            data: {
+                labels: xValues1,
+                datasets: [{
+                    label:year1,
+      data: data.totalOrdersYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalOrdersYear2,
+      backgroundColor: 'blue',
+     
+    },{
+                    label:year3,
+      data: data.totalOrdersYear3,
+      backgroundColor: 'green',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                 
+                }
+            }
+        });
+
+
+
+                }})
+}
+
 
 
     </script>
