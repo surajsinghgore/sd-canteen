@@ -333,7 +333,7 @@ $userData=mysqli_fetch_assoc($userDataRes);
 
 $email=$userData['email'];
 $paymentinfo=$userData['paymentinfo'];
-$userId=$userData['id'];
+$userId=$userData['userId'];
 $fullname=$userData['fullname'];
 $orderId=$userData['orderId'];
 
@@ -532,7 +532,7 @@ $mainQuery="select*from orderitems where id=$mainOrderID";
 $userDataRes=mysqli_query($connection,$mainQuery);
 $userData=mysqli_fetch_assoc($userDataRes);
 $email=$userData['email'];
-$userId=$userData['id'];
+$userId=$userData['userId'];
 $paymentinfo=$userData['paymentinfo'];
 $fullname=$userData['fullname'];
 $orderId=$userData['orderId'];
