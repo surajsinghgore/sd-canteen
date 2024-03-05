@@ -318,7 +318,6 @@
              
 let data=JSON.parse(res);
 
-console.log(data)
 
 
 
@@ -334,13 +333,14 @@ console.log(data)
             data: {
                 labels: xValues1,
                 datasets: [{
-                    backgroundColor: barColors1,
+                    label:year1,
+                    backgroundColor: 'red',
                     data: yValues1
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
@@ -363,17 +363,18 @@ console.log(data)
             data: {
                 labels: xValues2,
                 datasets: [{
-                    backgroundColor: barColors2,
+                    label:year1,
+                    backgroundColor: 'red',
                     data: yValues2
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
-                    //   text: "World Wine Production 2018"
+                   
                 }
             }
         });
@@ -390,17 +391,18 @@ console.log(data)
             data: {
                 labels: xValues3,
                 datasets: [{
-                    backgroundColor: barColors3,
+                    label:year1,
+                    backgroundColor: 'red',
                     data: yValues3
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
-                    //   text: "World Wine Production 2018"
+                   
                 }
             }
         });
@@ -418,13 +420,14 @@ console.log(data)
             data: {
                 labels: xValues4,
                 datasets: [{
-                    backgroundColor: barColors4,
+                    label:year1,
+                    backgroundColor: 'red',
                     data: yValues4
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
@@ -449,13 +452,14 @@ console.log(data)
             data: {
                 labels: xValues5,
                 datasets: [{
-                    backgroundColor: barColors5,
+                    label:year1,
+                    backgroundColor:'red',
                     data: yValues5
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
@@ -478,13 +482,14 @@ console.log(data)
             data: {
                 labels: xValues6,
                 datasets: [{
-                    backgroundColor: barColors6,
+                    label:year1,
+                    backgroundColor: 'red',
                     data: yValues6
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
@@ -507,13 +512,14 @@ console.log(data)
             data: {
                 labels: xValues7,
                 datasets: [{
-                    backgroundColor: barColors7,
+                    label:year1,
+                    backgroundColor:'red',
                     data: yValues7
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
@@ -537,13 +543,14 @@ console.log(data)
             data: {
                 labels: xValues8,
                 datasets: [{
-                    backgroundColor: barColors8,
+                    label:year1,
+                    backgroundColor: 'red',
                     data: yValues8
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
@@ -563,13 +570,364 @@ console.log(data)
             data: {
                 labels: xValues9,
                 datasets: [{
-                    backgroundColor: barColors9,
+                    label:year1,
+                    backgroundColor: 'red',
                     data: yValues9
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
+                },
+                title: {
+                    display: true,
+                   
+                }
+            }
+        });
+
+
+                }
+
+
+            })
+        }
+
+
+
+        // year 2
+        function year2Selected(){
+    let year1=document.getElementById('year1').value;
+    let year2=document.getElementById('year2').value;
+  
+    $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/analysisPayment.php", 
+                data: {
+                   year1:year1,
+                   year2:year2,
+                   SecondYear2:'onlyOne'
+               
+                },
+           
+                success: function(res) {
+             console.log(res)
+let data=JSON.parse(res);
+
+
+
+
+
+    // total earings
+
+    const xValues1 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues1 = data.totalEarningYear1;
+        const barColors1 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart1", {
+            type: "bar",
+            data: {
+                labels: xValues1,
+                datasets: [{
+                    label:year1,
+      data: data.totalEarningYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalEarningYear2,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                   
+                }
+            }
+        });
+
+
+
+
+        // TOTAL NUMBER OF PAYMENTS INITIATED ONLINE
+
+        const xValues2 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues2 = data.totalPaymentInitiatedYear1;
+        const barColors2 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart2", {
+            type: "bar",
+            data: {
+                labels: xValues2,
+                datasets: [{
+                    label:year1,
+      data: data.totalPaymentInitiatedYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalPaymentInitiatedYear1,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                   
+                }
+            }
+        });
+
+
+   //REVENUE GENERATED USING ONLY ONLINE PAYMENTS
+
+   const xValues3 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues3 =  data.totalRevenueOnlineYear1;
+        const barColors3 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart3", {
+            type: "bar",
+            data: {
+                labels: xValues3,
+                datasets: [{
+                    label:year1,
+      data: data.totalRevenueOnlineYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalRevenueOnlineYear1,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                   
+                }
+            }
+        });
+
+
+
+        // TOTAL SUCCESS PAYMENTS
+
+        const xValues4 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues4 = data.totalSuccessPaymentYear1;
+        const barColors4 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart4", {
+            type: "bar",
+            data: {
+                labels: xValues4,
+                datasets: [{
+                    label:year1,
+      data: data.totalSuccessPaymentYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalSuccessPaymentYear1,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                    
+                }
+            }
+        });
+
+
+ 
+
+
+
+            // TOTAL FAILED  PAYMENTS
+
+            const xValues5 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues5 = data.totalFailedPaymentYear1;
+        const barColors5 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart5", {
+            type: "bar",
+            data: {
+                labels: xValues5,
+                datasets: [{
+                    label:year1,
+      data: data.totalFailedPaymentYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalFailedPaymentYear1,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                    
+                }
+            }
+        });
+
+
+
+
+            // TOTAL PENDING  PAYMENTS
+
+            const xValues6 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues6 = data.totalPendingPaymentYear1;
+        const barColors6 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart6", {
+            type: "bar",
+            data: {
+                labels: xValues6,
+                datasets: [{
+                    label:year1,
+      data: data.totalPendingPaymentYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalPendingPaymentYear1,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                 
+                }
+            }
+        });
+
+
+
+
+            // TOTAL REVENUE USING COD PAYMENTS
+
+            const xValues7 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues7 = data.totalRevenueCODYear1;
+        const barColors7 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart7", {
+            type: "bar",
+            data: {
+                labels: xValues7,
+                datasets: [{
+                    label:year1,
+      data: data.totalRevenueCODYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalRevenueCODYear1,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                   
+                }
+            }
+        });
+
+
+
+
+            // TOTAL NUMBER OF COD PAYMENTS
+
+
+            const xValues8 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues8 =  data.totalCodOrderYear1;
+        const barColors8 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart8", {
+            type: "bar",
+            data: {
+                labels: xValues8,
+                datasets: [{
+                    label:year1,
+      data: data.totalCodOrderYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalCodOrderYear1,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                   
+                }
+            }
+        });
+
+// total payment using online
+
+        const xValues9 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues9 = data.totalOnlineOrderYear1;
+        const barColors9 = ["red", "green", "blue", "orange", "brown", "#05FA97", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart9", {
+            type: "bar",
+            data: {
+                labels: xValues9,
+                datasets: [{
+                    label:year1,
+      data: data.totalOnlineOrderYear1,
+      backgroundColor: 'red',
+     
+    },{
+                    label:year2,
+      data: data.totalOnlineOrderYear1,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
                 },
                 title: {
                     display: true,
