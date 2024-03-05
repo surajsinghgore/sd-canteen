@@ -109,7 +109,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                    
                              
                                 </div>
 
@@ -130,7 +130,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                               
                                 </div>
 
                             </li>
@@ -150,7 +150,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                    
                                 </div>
 
                             </li>
@@ -170,7 +170,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                    
                                 </div>
 
                             </li>
@@ -191,7 +191,8 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                  
+
                                 </div>
 
                             </li>
@@ -219,42 +220,6 @@
 
      
 
-        // total order placed
-
-    //     const xValues1 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-    //     const yValues1 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
-    //     const barColors1 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
-
-    //     new Chart("myChart1", {
-    //         type: "bar",
-    //         data: {
-    //             labels: xValues1,
-    //             datasets: [{
-    //                 label:'2022',
-    //   data: [860,1140,1060,1060,1070,1110,1330,2210,7830,23,245,2478],
-    //   backgroundColor: 'red',
-     
-    // },{
-    //     label:'2023',
-    //   data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,23,245,7000],
-    //   backgroundColor: "green",
-     
-    // },{label:'2024',
-    //   data: [300,700,2000,5000,6000,4000,2000,1000,200,23,452,100],
-    //   backgroundColor: "blue",
-     
-    // }]
-    //         },
-    //         options: {
-    //             legend: {
-    //                 display: true
-    //             },
-    //             title: {
-    //                 display: true,
-    //                 //   text: "World Wine Production 2018"
-    //             }
-    //         }
-    //     });
 
 
 
@@ -273,44 +238,7 @@
 
 
 
-
-
-
-
-
-
-        const xMyChart5 = ["Americano", "Cappuccino", "Espresso", "Macchiato", "Mocha", "Latte", "Doppio", "Café au lait", "Cold brew", "Affogato"];
-        const yMyChart5 = [20, 1, 34, 5, 5, 10, 3, 4, 12, 22];
-        const barColorsMyChart5 = [
-            "#378A29",
-            "#29718A",
-            "#0F29AC",
-            "#AC350F",
-            "#0FACA0",
-            "#11D7F3",
-            "#F311DE",
-            "#F7506C",
-            "#5AB3F9",
-            "#F69405"
-        ];
-
-        new Chart("myChart5", {
-            type: "pie",
-            data: {
-                labels: xMyChart5,
-                datasets: [{
-                    backgroundColor: barColorsMyChart5,
-                    data: yMyChart5
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    //   text: "World Wide Wine Production 2018"
-                }
-            }
-        });
-
+       
 
 
 
@@ -378,14 +306,14 @@ let data=JSON.parse(res);
             type: "bar",
             data: {
                 labels: xValues2,
-                datasets: [{
-                    backgroundColor: barColors2,
+                datasets: [{     label:year1,
+                    backgroundColor: 'red',
                     data: yValues2
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
@@ -408,18 +336,18 @@ let data=JSON.parse(res);
             type: "bar",
             data: {
                 labels: xValues3,
-                datasets: [{
-                    backgroundColor: barColors3,
+                datasets: [{     label:year1,
+                    backgroundColor: 'red',
                     data: yValues3
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
-                    //   text: "World Wine Production 2018"
+                    
                 }
             }
         });
@@ -436,14 +364,14 @@ let data=JSON.parse(res);
             type: "bar",
             data: {
                 labels: xValues4,
-                datasets: [{
-                    backgroundColor: barColors4,
+                datasets: [{     label:year1,
+                    backgroundColor: 'red',
                     data: yValues4
                 }]
             },
             options: {
                 legend: {
-                    display: false
+                    display: true
                 },
                 title: {
                     display: true,
@@ -451,6 +379,41 @@ let data=JSON.parse(res);
                 }
             }
         });
+
+
+        // most ordered rated item
+        const xMyChart5 = data.bestRatedItemName;
+        const yMyChart5 = data.bestRatedItemData;
+        const barColorsMyChart5 = [
+            "#378A29",
+            "#29718A",
+            "#0F29AC",
+            "#AC350F",
+            "#0FACA0",
+            "#11D7F3",
+            "#F311DE",
+            "#F7506C",
+            "#5AB3F9",
+            "#F69405"
+        ];
+
+        new Chart("myChart5", {
+            type: "pie",
+            data: {
+                labels: xMyChart5,
+                datasets: [{
+                    backgroundColor: barColorsMyChart5,
+                    data: yMyChart5
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                 
+                }
+            }
+        });
+
 
                 }})
 }
@@ -472,7 +435,7 @@ let data=JSON.parse(res);
            
                 success: function(res) {
                  
-            console.log(res)
+
 
 let data=JSON.parse(res);
 
@@ -485,6 +448,7 @@ let data=JSON.parse(res);
         const barColors1 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
         new Chart("myChart1", {
+            
             type: "bar",
             data: {
                 labels: xValues1,
@@ -514,6 +478,38 @@ let data=JSON.parse(res);
 
 
 
+        // most ordered rated item
+        const xMyChart5 = data.bestRatedItemName;
+        const yMyChart5 = data.bestRatedItemData;
+        const barColorsMyChart5 = [
+            "#378A29",
+            "#29718A",
+            "#0F29AC",
+            "#AC350F",
+            "#0FACA0",
+            "#11D7F3",
+            "#F311DE",
+            "#F7506C",
+            "#5AB3F9",
+            "#F69405"
+        ];
+
+        new Chart("myChart5", {
+            type: "pie",
+            data: {
+                labels: xMyChart5,
+                datasets: [{
+                    backgroundColor: barColorsMyChart5,
+                    data: yMyChart5
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                 
+                }
+            }
+        });
 
          // total order complete
 
@@ -680,6 +676,163 @@ let data=JSON.parse(res);
                 title: {
                     display: true,
                  
+                }
+            }
+        });
+
+
+
+        // most ordered rated item
+        const xMyChart5 = data.bestRatedItemName;
+        const yMyChart5 = data.bestRatedItemData;
+        const barColorsMyChart5 = [
+            "#378A29",
+            "#29718A",
+            "#0F29AC",
+            "#AC350F",
+            "#0FACA0",
+            "#11D7F3",
+            "#F311DE",
+            "#F7506C",
+            "#5AB3F9",
+            "#F69405"
+        ];
+
+        new Chart("myChart5", {
+            type: "pie",
+            data: {
+                labels: xMyChart5,
+                datasets: [{
+                    backgroundColor: barColorsMyChart5,
+                    data: yMyChart5
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                 
+                }
+            }
+        });
+
+
+
+
+
+
+         // total order complete
+
+         const xValues2 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues2 = data.totalOrdersCompleteYear1;
+        const barColors2 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart2", {
+            type: "bar",
+            data: {
+                labels: xValues2,
+                datasets: [{
+                    label:year1,
+                    backgroundColor: barColors2,
+                    data: yValues2
+                },{
+                    label:year2,
+      data: data.totalOrdersCompleteYear2,
+      backgroundColor: 'blue',
+     
+    },{
+                    label:year3,
+      data: data.totalOrdersCompleteYear3,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                    //   text: "World Wine Production 2018"
+                }
+            }
+        });
+
+
+
+        
+
+   // total reject complete
+
+   const xValues3 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues3 = data.totalOrdersRejectYear1;
+        const barColors3 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart3", {
+            type: "bar",
+            data: {
+                labels: xValues3,
+                datasets: [{
+                    label:year2,
+                    backgroundColor: barColors3,
+                    data: yValues3
+                },{
+                    label:year2,
+      data: data.totalOrdersRejectYear2,
+      backgroundColor: 'blue',
+     
+    },{
+                    label:year3,
+      data: data.totalOrdersRejectYear3,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                   
+                }
+            }
+        });
+
+
+
+        // order pending
+
+        const xValues4 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues4 = data.totalOrdersPendingYear1;
+        const barColors4 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart4", {
+            type: "bar",
+            data: {
+                labels: xValues4,
+                datasets: [{
+                    label:year1,
+                    backgroundColor: barColors4,
+                    data: yValues4
+                },{
+                    label:year2,
+      data: data.totalOrdersPendingYear1,
+      backgroundColor: 'blue',
+     
+    },{
+                    label:year3,
+      data: data.totalOrdersPendingYear3,
+      backgroundColor: 'blue',
+     
+    }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                    //   text: "World Wine Production 2018"
                 }
             }
         });
