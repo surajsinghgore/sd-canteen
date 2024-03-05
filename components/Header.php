@@ -201,6 +201,8 @@ if($mainCount>0){
 
 }
         },100)
+    }else{
+        sessionStorage.setItem('cooking','enable');
     }
 
    </script>
