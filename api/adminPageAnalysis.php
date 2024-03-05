@@ -241,7 +241,7 @@ echo $data2;
 
 $data3= "";
 
-// total order placed
+// total earing placed
 
 $janCount="0";
 $febCount="0";

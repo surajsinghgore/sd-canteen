@@ -259,7 +259,6 @@ function year1Selected(){
            
                 success: function(res) {
                  
-                   console.log(res)
 
 let data=JSON.parse(res);
 
@@ -636,7 +635,6 @@ let data=JSON.parse(res);
            
                 success: function(res) {
                  
-                   console.log(res)
 
 let data=JSON.parse(res);
 

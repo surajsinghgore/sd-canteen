@@ -6,6 +6,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <link rel="stylesheet" href="../styles/admin/admin.css?v=2">
 <link rel="stylesheet" href="../styles/admin/analysis.css?v=7">
+  <!-- ajax added -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <script>
     window.document.title = "SD CANTEEN | Analysis Payment";
 </script>
@@ -41,41 +44,61 @@
                 <h4>Select Years to Compare records</h4>
                 <div class="filters">
                     <li>
-                        <select>
-                            <option value="no">compare with 1 year</option>
-
-                            <option>
-                                2023
-                            </option>
+                        <select onchange="year1Selected()" id="year1">
+                        <option value="no">compare with 2 year</option>
+                        <?php 
+ require('../middleware/ConnectToDatabase.php');
+ $sql="SELECT DISTINCT(YEAR(createat)) as Year from orderitems ";
+    $result = mysqli_query($connection,$sql);
+  while( $data = mysqli_fetch_array($result) ) {
+   ?>
+<option><?php echo $data['Year'];?></option>
+  <?php }
+?>
 
                         </select>
                     </li>
 
 
                     <li>
-                        <select>
+                        <select  onchange="year2Selected()" id="year2">
                             <option value="no">compare with 2 year</option>
 
-                            <option value="item">
-                                2024
-                            </option>
+                            <?php 
+ require('../middleware/ConnectToDatabase.php');
+ $sql="SELECT DISTINCT(YEAR(createat)) as Year from orderitems ";
+    $result = mysqli_query($connection,$sql);
+  while( $data = mysqli_fetch_array($result) ) {
+   ?>
+<option><?php echo $data['Year'];?></option>
+  <?php }
+?>
 
                         </select>
                     </li>
 
                     <li>
-                        <select value="year3">
+                        <select value="year3" onchange="year3Selected()" id="year3">
                             <option value="no">compare with 3 year</option>
 
-                            <option value={item} key={index}>
-                                2022
-                            </option>
+                            <?php 
+ require('../middleware/ConnectToDatabase.php');
+ $sql="SELECT DISTINCT(YEAR(createat)) as Year from orderitems ";
+    $result = mysqli_query($connection,$sql);
+  while( $data = mysqli_fetch_array($result) ) {
+   ?>
+<option><?php echo $data['Year'];?></option>
+  <?php }
+?>
 
                         </select>
                     </li>
                 </div>
 
 
+             
+             
+             
                 <div class="chartSection">
                     <!-- TOTAL EARNINGS placed -->
                     <div class="chartSigle">
@@ -88,7 +111,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                   
                                 </div>
 
                             </li>
@@ -108,7 +131,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                   
                                 </div>
 
                             </li>
@@ -128,7 +151,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                   
                                 </div>
 
                             </li>
@@ -148,7 +171,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                   
                                 </div>
 
                             </li>
@@ -170,7 +193,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                   
                                 </div>
 
                             </li>
@@ -190,7 +213,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                   
                                 </div>
 
                             </li>
@@ -210,7 +233,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                   
                                 </div>
 
                             </li>
@@ -232,7 +255,7 @@
 
                             <li>
                                 <div class="title">
-                                    Total In 2023
+                                   
                                 </div>
 
                             </li>
@@ -241,6 +264,26 @@
                     </div>
                   
                     
+
+                    <!-- total online payments -->
+                    <div class="chartSigle">
+                        <h5>TOTAL NUMBER OF ONLINE PAYMENTS</h5>
+                        <div class="chartARea">
+                        <canvas id="myChart9"></canvas>
+
+                        </div>
+                        <div class="allDatas">
+
+                            <li>
+                                <div class="title">
+                                   
+                                </div>
+
+                            </li>
+
+                        </div>
+                    </div>
+                  
                 </div>
             </div>
 
@@ -257,10 +300,33 @@
     <script>
      
 
-        // total earings
+    
 
-        const xValues1 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const yValues1 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        function year1Selected(){
+    let year1=document.getElementById('year1').value;
+  
+    $.ajax({
+                type: "POST", //type of method
+                url: "http://localhost/sd-canteen/api/analysisPayment.php", 
+                data: {
+                   year1:year1,
+                   onlyOne:'onlyOne'
+               
+                },
+           
+                success: function(res) {
+             
+let data=JSON.parse(res);
+
+console.log(data)
+
+
+
+
+    // total earings
+
+    const xValues1 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues1 = data.totalEarningYear1;
         const barColors1 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
         new Chart("myChart1", {
@@ -278,7 +344,7 @@
                 },
                 title: {
                     display: true,
-                    //   text: "World Wine Production 2018"
+                   
                 }
             }
         });
@@ -289,7 +355,7 @@
         // TOTAL NUMBER OF PAYMENTS INITIATED ONLINE
 
         const xValues2 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const yValues2 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const yValues2 = data.totalPaymentInitiatedYear1;
         const barColors2 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
         new Chart("myChart2", {
@@ -316,7 +382,7 @@
    //REVENUE GENERATED USING ONLY ONLINE PAYMENTS
 
    const xValues3 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const yValues3 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const yValues3 =  data.totalRevenueOnlineYear1;
         const barColors3 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
         new Chart("myChart3", {
@@ -344,7 +410,7 @@
         // TOTAL SUCCESS PAYMENTS
 
         const xValues4 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const yValues4 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const yValues4 = data.totalSuccessPaymentYear1;
         const barColors4 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
         new Chart("myChart4", {
@@ -362,7 +428,7 @@
                 },
                 title: {
                     display: true,
-                    //   text: "World Wine Production 2018"
+                    
                 }
             }
         });
@@ -375,7 +441,7 @@
             // TOTAL FAILED  PAYMENTS
 
             const xValues5 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const yValues5 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const yValues5 = data.totalFailedPaymentYear1;
         const barColors5 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
         new Chart("myChart5", {
@@ -393,7 +459,7 @@
                 },
                 title: {
                     display: true,
-                    //   text: "World Wine Production 2018"
+                    
                 }
             }
         });
@@ -404,7 +470,7 @@
             // TOTAL PENDING  PAYMENTS
 
             const xValues6 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const yValues6 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const yValues6 = data.totalPendingPaymentYear1;
         const barColors6 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
         new Chart("myChart6", {
@@ -422,7 +488,7 @@
                 },
                 title: {
                     display: true,
-                    //   text: "World Wine Production 2018"
+                 
                 }
             }
         });
@@ -433,7 +499,7 @@
             // TOTAL REVENUE USING COD PAYMENTS
 
             const xValues7 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const yValues7 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const yValues7 = data.totalRevenueCODYear1;
         const barColors7 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
         new Chart("myChart7", {
@@ -451,7 +517,7 @@
                 },
                 title: {
                     display: true,
-                    //   text: "World Wine Production 2018"
+                   
                 }
             }
         });
@@ -463,7 +529,7 @@
 
 
             const xValues8 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-        const yValues8 = [55, 49, 44, 24, 15, 23, 23, 23, 45, 45, 12, 34];
+        const yValues8 =  data.totalCodOrderYear1;
         const barColors8 = ["red", "green", "blue", "orange", "brown", "#05FA87", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
 
         new Chart("myChart8", {
@@ -481,14 +547,43 @@
                 },
                 title: {
                     display: true,
-                    //   text: "World Wine Production 2018"
+                   
+                }
+            }
+        });
+
+// total payment using online
+
+        const xValues9 = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+        const yValues9 = data.totalOnlineOrderYear1;
+        const barColors9 = ["red", "green", "blue", "orange", "brown", "#05FA97", "#FA6D05", "#05D9FA", "#B705FA", "#E3C506", "#48FA05", "#FA0587"];
+
+        new Chart("myChart9", {
+            type: "bar",
+            data: {
+                labels: xValues9,
+                datasets: [{
+                    backgroundColor: barColors9,
+                    data: yValues9
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                   
                 }
             }
         });
 
 
+                }
 
 
+            })
+        }
 
     </script>
 
