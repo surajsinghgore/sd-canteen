@@ -100,22 +100,21 @@ require('./middleware/ConnectToDatabase.php');
 $totals=0;
 
 // first check item in food
-$sql_query1 = "select * from fooditems where foodname like '$itemname' and active='on'";
-$sql_query2 = "select * from coffeeitems where coffeename like '$itemname' and active='on'";
-$sql_query3 = "select * from drinkitems where drinkname like '$itemname' and active='on'";
-$sql_query4 = "select * from juiceitems where juicename like '$itemname' and active='on'";
+$sql_query1 = "select * from fooditems where foodname like '%$itemname%' and active='on'";
+$sql_query2 = "select * from coffeeitems where coffeename like '%$itemname%' and active='on'";
+$sql_query3 = "select * from drinkitems where drinkname like '%$itemname%' and active='on'";
+$sql_query4 = "select * from juiceitems where juicename like '%$itemname%' and active='on'";
 
 $foodCountRes = mysqli_query($connection, $sql_query1);
 $coffeeCountRes = mysqli_query($connection, $sql_query2);
 $drinkCountRes = mysqli_query($connection, $sql_query3);
 $juiceCountRes = mysqli_query($connection, $sql_query4);
 
-
-
 $foodCount = mysqli_num_rows($foodCountRes);
 $coffeeCount = mysqli_num_rows($coffeeCountRes);
 $drinkCount = mysqli_num_rows($drinkCountRes);
 $juiceCount = mysqli_num_rows($juiceCountRes);
+
 
 
 

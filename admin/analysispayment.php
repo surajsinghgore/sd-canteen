@@ -1245,7 +1245,7 @@ let data=JSON.parse(res);
     },{
                     label:year3,
       data: data.totalRevenueCODYear3,
-      backgroundColor: 'blue',
+      backgroundColor: 'green',
      
     }]
             },
@@ -1287,7 +1287,7 @@ let data=JSON.parse(res);
     },{
                     label:year3,
       data: data.totalCodOrderYear3,
-      backgroundColor: 'blue',
+      backgroundColor: 'green',
      
     }]
             },
@@ -1325,7 +1325,7 @@ let data=JSON.parse(res);
     },{
                     label:year3,
       data: data.totalOnlineOrderYear3,
-      backgroundColor: 'blue',
+      backgroundColor: 'green',
      
     }]
             },
