@@ -217,8 +217,15 @@ if($mainCount>0){
       </div>
       <?php
 }else{
-    ?>
 
+
+    
+    ?>
+<script>
+     if(sessionStorage.getItem('cooking')){
+    localStorage.removeItem('cooking');
+     }
+</script>
     <?php
 }
 }
@@ -231,21 +238,6 @@ if($mainCount>0){
 
     <script>
 
-// sessionStorage.removeItem('cooking')
-function hideCooking(){
-    if(sessionStorage.getItem('cooking')){
-    sessionStorage.setItem('cooking','disable');
-    document.getElementById('cooking').style.display="none";
-    }
-}
-    if(sessionStorage.getItem('cooking')){
-
-        if(sessionStorage.getItem('cooking')=="disable"){
-    document.getElementById('cooking').style.display="none";
-
-}
-
-    }
 
 
         //main Search Bar
@@ -405,6 +397,34 @@ function hideCooking(){
                 }
             });
         }
+
+
+
+
+
+
+
+
+
+
+
+        
+// sessionStorage.removeItem('cooking')
+function hideCooking(){
+    if(sessionStorage.getItem('cooking')){
+    sessionStorage.setItem('cooking','disable');
+    document.getElementById('cooking').style.display="none";
+    }
+}
+    if(sessionStorage.getItem('cooking')){
+
+        if(sessionStorage.getItem('cooking')=="disable"){
+
+    document.getElementById('cooking').style.display="none";
+
+}
+
+    }
     </script>
 
 

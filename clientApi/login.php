@@ -38,7 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // verify password
                 // success
                 if (password_verify($password, $data['password'])) {
-                    session_start();
+                    if (!isset($_SESSION)) {
+                        session_start();
+                      }
                     $_SESSION['activeClientId'] = $data['id'];
                     $_SESSION['activeClientEmail'] = $data['email'];
                     $_SESSION['activeClientMobile'] = $data['mobile'];
