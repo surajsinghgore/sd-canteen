@@ -100,10 +100,10 @@ require('./middleware/ConnectToDatabase.php');
 $totals=0;
 
 // first check item in food
-$sql_query1 = "select * from fooditems where foodname like '%$itemname%' and active='on'";
-$sql_query2 = "select * from coffeeitems where coffeename like '%$itemname%' and active='on'";
-$sql_query3 = "select * from drinkitems where drinkname like '%$itemname%' and active='on'";
-$sql_query4 = "select * from juiceitems where juicename like '%$itemname%' and active='on'";
+$sql_query1 = "select * from fooditems where foodname like '$itemname%' and active='on'";
+$sql_query2 = "select * from coffeeitems where coffeename like '$itemname%' and active='on'";
+$sql_query3 = "select * from drinkitems where drinkname like '$itemname%' and active='on'";
+$sql_query4 = "select * from juiceitems where juicename like '$itemname%' and active='on'";
 
 $foodCountRes = mysqli_query($connection, $sql_query1);
 $coffeeCountRes = mysqli_query($connection, $sql_query2);
@@ -224,17 +224,27 @@ $itemRateData=mysqli_fetch_assoc($executeItemRating);
   </div>
   <h3>₹ <span id="price">
 
+
   <?php 
 if($data['smallprice']!=0){
 
 echo $data['smallprice'];
-    
+  
 }
 
-    else{
+  else if($data['normalprice']!=0){
 
-        echo $data['normalprice'];
-    }
+      echo $data['normalprice'];
+  }
+  else if($data['mediumprice']!=0){
+
+    echo $data['mediumprice'];
+}
+
+else if($data['largeprice']!=0){
+
+  echo $data['largeprice'];
+}
 ?>
 
   </span></h3>
@@ -253,134 +263,136 @@ echo $data['smallprice'];
     <div class="form">
 
 
-     <!-- normal size -->
-     <?php
+   <!-- normal size -->
+   <?php
 
 if($data['normalprice']!=0){
-
-    ?>
+  
+  ?>
 
 
 <div class="radioCard">
-            <li>
-              <label>
-                <span>
-                  <input
-                    type="radio"
-                    name="size"
-                    
-                    id="normalsize"
-                    onclick='changeSize("<?php echo $data['normalprice'];?>","normalsize")'
-                    value="<?php echo $data['normalprice'];?>"
-              checked
-                  />
-                normal
-                </span>
-              </label>
-            </li>
+          <li>
+            <label>
+              <span>
+                <input
+                  type="radio"
+                  name="size"
+                  id="normalsize"
+               
+                  onclick='changeSize("<?php echo $data['normalprice'];?>","normalsize")'
+                  value="<?php echo $data['normalprice'];?>"
+                  checked
+                />
+              normal
+              </span>
+            </label>
+          </li>
 
-           
-          </div>
-    <?php
+         
+        </div>
+  <?php
 }
 ?>
 
-      <!-- small size -->
+    <!-- small size -->
 <?php
-
+$check=0;
 if($data['smallprice']!=0){
-
-    ?>
+ 
+  ?>
 
 
 <div class="radioCard">
-            <li>
-              <label>
-                <span>
-                  <input
-                    type="radio"
-                    name="size"
-                    id="smallsize"
-                    onclick='changeSize("<?php echo $data['smallprice'];?>","smallsize")'
-                    value="<?php echo $data['smallprice'];?>"
-              checked
-                  />
-                small
-                </span>
-              </label>
-            </li>
+          <li>
+            <label>
+              <span>
+                <input
+                  type="radio"
+                  name="size1"
+                  id="smallsize"
+                  onclick='changeSize("<?php echo $data['smallprice'];?>","smallsize")'
+                  value="<?php echo $data['smallprice'];?>"
+            checked
+                />
+              small
+              </span>
+            </label>
+          </li>
 
-           
-          </div>
-    <?php
+         
+        </div>
+  <?php
+
+$check=1;
 }
 ?>
 
-     
+   
 
-     <!-- medium size -->
-     <?php
+   <!-- medium size -->
+   <?php
 
 if($data['mediumprice']!=0){
-
-    ?>
+ 
+  ?>
 
 
 <div class="radioCard">
-            <li>
-              <label>
-                <span>
-                  <input
-                    type="radio"
-                    name="size"
-                    id="mediumsize"
-                    onclick='changeSize("<?php echo $data['mediumprice'];?>","mediumsize")'
-                    value="<?php echo $data['mediumprice'];?>"
-             
-                  />
-                medium
-                </span>
-              </label>
-            </li>
+          <li>
+            <label>
+              <span>
+                <input
+                  type="radio"
+                  name="size1"
+                  id="mediumsize"
+                  onclick='changeSize("<?php echo $data['mediumprice'];?>","mediumsize")'
+                  value="<?php echo $data['mediumprice'];?>"
+                  <?php if($check==0){ echo "checked";}?>
+                />
+              medium
+              </span>
+            </label>
+          </li>
 
-           
-          </div>
-    <?php
+         
+        </div>
+  <?php
+   $check=1;
 }
 ?>
-     
-     <!-- large size -->
-     <?php
+   
+   <!-- large size -->
+   <?php
 
 if($data['largeprice']!=0){
 
-    ?>
+  ?>
 
 
 <div class="radioCard">
-            <li>
-              <label>
-                <span>
-                  <input
-                    type="radio"
-                    name="size"
-                    id="largesize"
-                    onclick='changeSize("<?php echo $data['largeprice'];?>","largesize")'
-                    
-                    value="<?php echo $data['largeprice'];?>"
-            
-                  />
-                large
-                </span>
-              </label>
-            </li>
+          <li>
+            <label>
+              <span>
+                <input
+                  type="radio"
+                  name="size1"
+                  id="largesize"
+                  onclick='changeSize("<?php echo $data['largeprice'];?>","largesize")'
+                  
+                  value="<?php echo $data['largeprice'];?>"
+          <?php if($check==0){ echo "checked";}?>
+                />
+              large
+              </span>
+            </label>
+          </li>
 
-           
-          </div>
-    <?php
+         
+        </div>
+  <?php
 }
-?>
-        
+?>   
     </div>
   </div>
   
@@ -1262,7 +1274,7 @@ else{
 
 // coffee data load
 
-else if ($coffeeCount > 0) {
+ else if ($coffeeCount > 0) {
   $totals=1;
   while ($data = mysqli_fetch_array($coffeeCountRes)) {
   // check items rating
@@ -1366,6 +1378,7 @@ if($ratingLenCount==0){
 </div>
 <h3>₹ <span id="price">
 
+
 <?php 
 if($data['smallprice']!=0){
 
@@ -1373,10 +1386,19 @@ echo $data['smallprice'];
   
 }
 
-  else{
+  else if($data['normalprice']!=0){
 
       echo $data['normalprice'];
   }
+  else if($data['mediumprice']!=0){
+
+    echo $data['mediumprice'];
+}
+
+else if($data['largeprice']!=0){
+
+  echo $data['largeprice'];
+}
 ?>
 
 </span></h3>
@@ -1394,12 +1416,11 @@ echo $data['smallprice'];
 
   <div class="form">
 
-
-   <!-- normal size -->
-   <?php
+ <!-- normal size -->
+ <?php
 
 if($data['normalprice']!=0){
-
+  
   ?>
 
 
@@ -1410,11 +1431,11 @@ if($data['normalprice']!=0){
                 <input
                   type="radio"
                   name="size"
-                  
                   id="normalsize"
+               
                   onclick='changeSize("<?php echo $data['normalprice'];?>","normalsize")'
                   value="<?php echo $data['normalprice'];?>"
-            checked
+                  checked
                 />
               normal
               </span>
@@ -1429,9 +1450,9 @@ if($data['normalprice']!=0){
 
     <!-- small size -->
 <?php
-
+$check=0;
 if($data['smallprice']!=0){
-
+ 
   ?>
 
 
@@ -1441,7 +1462,7 @@ if($data['smallprice']!=0){
               <span>
                 <input
                   type="radio"
-                  name="size"
+                  name="size1"
                   id="smallsize"
                   onclick='changeSize("<?php echo $data['smallprice'];?>","smallsize")'
                   value="<?php echo $data['smallprice'];?>"
@@ -1455,6 +1476,8 @@ if($data['smallprice']!=0){
          
         </div>
   <?php
+
+$check=1;
 }
 ?>
 
@@ -1464,7 +1487,7 @@ if($data['smallprice']!=0){
    <?php
 
 if($data['mediumprice']!=0){
-
+ 
   ?>
 
 
@@ -1474,11 +1497,11 @@ if($data['mediumprice']!=0){
               <span>
                 <input
                   type="radio"
-                  name="size"
+                  name="size1"
                   id="mediumsize"
                   onclick='changeSize("<?php echo $data['mediumprice'];?>","mediumsize")'
                   value="<?php echo $data['mediumprice'];?>"
-           
+                  <?php if($check==0){ echo "checked";}?>
                 />
               medium
               </span>
@@ -1488,6 +1511,7 @@ if($data['mediumprice']!=0){
          
         </div>
   <?php
+   $check=1;
 }
 ?>
    
@@ -1505,12 +1529,12 @@ if($data['largeprice']!=0){
               <span>
                 <input
                   type="radio"
-                  name="size"
+                  name="size1"
                   id="largesize"
                   onclick='changeSize("<?php echo $data['largeprice'];?>","largesize")'
                   
                   value="<?php echo $data['largeprice'];?>"
-          
+          <?php if($check==0){ echo "checked";}?>
                 />
               large
               </span>
@@ -2509,10 +2533,19 @@ echo $data['smallprice'];
   
 }
 
-  else{
+  else if($data['normalprice']!=0){
 
       echo $data['normalprice'];
   }
+  else if($data['mediumprice']!=0){
+
+    echo $data['mediumprice'];
+}
+
+else if($data['largeprice']!=0){
+
+  echo $data['largeprice'];
+}
 ?>
 
 </span></h3>
@@ -2535,7 +2568,7 @@ echo $data['smallprice'];
    <?php
 
 if($data['normalprice']!=0){
-
+  
   ?>
 
 
@@ -2546,11 +2579,11 @@ if($data['normalprice']!=0){
                 <input
                   type="radio"
                   name="size"
-                  
                   id="normalsize"
+               
                   onclick='changeSize("<?php echo $data['normalprice'];?>","normalsize")'
                   value="<?php echo $data['normalprice'];?>"
-            checked
+                  checked
                 />
               normal
               </span>
@@ -2565,9 +2598,9 @@ if($data['normalprice']!=0){
 
     <!-- small size -->
 <?php
-
+$check=0;
 if($data['smallprice']!=0){
-
+ 
   ?>
 
 
@@ -2577,7 +2610,7 @@ if($data['smallprice']!=0){
               <span>
                 <input
                   type="radio"
-                  name="size"
+                  name="size1"
                   id="smallsize"
                   onclick='changeSize("<?php echo $data['smallprice'];?>","smallsize")'
                   value="<?php echo $data['smallprice'];?>"
@@ -2591,6 +2624,8 @@ if($data['smallprice']!=0){
          
         </div>
   <?php
+
+$check=1;
 }
 ?>
 
@@ -2600,7 +2635,7 @@ if($data['smallprice']!=0){
    <?php
 
 if($data['mediumprice']!=0){
-
+ 
   ?>
 
 
@@ -2610,11 +2645,11 @@ if($data['mediumprice']!=0){
               <span>
                 <input
                   type="radio"
-                  name="size"
+                  name="size1"
                   id="mediumsize"
                   onclick='changeSize("<?php echo $data['mediumprice'];?>","mediumsize")'
                   value="<?php echo $data['mediumprice'];?>"
-           
+                  <?php if($check==0){ echo "checked";}?>
                 />
               medium
               </span>
@@ -2624,6 +2659,7 @@ if($data['mediumprice']!=0){
          
         </div>
   <?php
+   $check=1;
 }
 ?>
    
@@ -2641,12 +2677,12 @@ if($data['largeprice']!=0){
               <span>
                 <input
                   type="radio"
-                  name="size"
+                  name="size1"
                   id="largesize"
                   onclick='changeSize("<?php echo $data['largeprice'];?>","largesize")'
                   
                   value="<?php echo $data['largeprice'];?>"
-          
+          <?php if($check==0){ echo "checked";}?>
                 />
               large
               </span>
@@ -3648,10 +3684,19 @@ echo $data['smallprice'];
   
 }
 
-  else{
+  else if($data['normalprice']!=0){
 
       echo $data['normalprice'];
   }
+  else if($data['mediumprice']!=0){
+
+    echo $data['mediumprice'];
+}
+
+else if($data['largeprice']!=0){
+
+  echo $data['largeprice'];
+}
 ?>
 
 </span></h3>
@@ -3674,7 +3719,7 @@ echo $data['smallprice'];
    <?php
 
 if($data['normalprice']!=0){
-
+  
   ?>
 
 
@@ -3685,11 +3730,11 @@ if($data['normalprice']!=0){
                 <input
                   type="radio"
                   name="size"
-                  
                   id="normalsize"
+               
                   onclick='changeSize("<?php echo $data['normalprice'];?>","normalsize")'
                   value="<?php echo $data['normalprice'];?>"
-            checked
+                  checked
                 />
               normal
               </span>
@@ -3704,9 +3749,9 @@ if($data['normalprice']!=0){
 
     <!-- small size -->
 <?php
-
+$check=0;
 if($data['smallprice']!=0){
-
+ 
   ?>
 
 
@@ -3716,7 +3761,7 @@ if($data['smallprice']!=0){
               <span>
                 <input
                   type="radio"
-                  name="size"
+                  name="size1"
                   id="smallsize"
                   onclick='changeSize("<?php echo $data['smallprice'];?>","smallsize")'
                   value="<?php echo $data['smallprice'];?>"
@@ -3730,6 +3775,8 @@ if($data['smallprice']!=0){
          
         </div>
   <?php
+
+$check=1;
 }
 ?>
 
@@ -3739,7 +3786,7 @@ if($data['smallprice']!=0){
    <?php
 
 if($data['mediumprice']!=0){
-
+ 
   ?>
 
 
@@ -3749,11 +3796,11 @@ if($data['mediumprice']!=0){
               <span>
                 <input
                   type="radio"
-                  name="size"
+                  name="size1"
                   id="mediumsize"
                   onclick='changeSize("<?php echo $data['mediumprice'];?>","mediumsize")'
                   value="<?php echo $data['mediumprice'];?>"
-           
+                  <?php if($check==0){ echo "checked";}?>
                 />
               medium
               </span>
@@ -3763,6 +3810,7 @@ if($data['mediumprice']!=0){
          
         </div>
   <?php
+   $check=1;
 }
 ?>
    
@@ -3780,12 +3828,12 @@ if($data['largeprice']!=0){
               <span>
                 <input
                   type="radio"
-                  name="size"
+                  name="size1"
                   id="largesize"
                   onclick='changeSize("<?php echo $data['largeprice'];?>","largesize")'
                   
                   value="<?php echo $data['largeprice'];?>"
-          
+          <?php if($check==0){ echo "checked";}?>
                 />
               large
               </span>

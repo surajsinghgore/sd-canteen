@@ -58,12 +58,17 @@ echo $data;
         $FoodItemsCount = mysqli_num_rows($res_food_item_count);
 
   while ($allFoodData = mysqli_fetch_array($res_food_item_count)) { 
+
+
+    // check weather size is available or not
+
+    
 $foodId=$allFoodData['id'];
 $foodname=$allFoodData['drinkname'];
 $category=$allFoodData['category'];
 $image=$allFoodData['imagepath'];
 $normalprice=$allFoodData['normalprice'];
-$normalprice=$allFoodData['normalprice'];
+
 $price=0;
 if($currentSize=="small size"){
     $price=$allFoodData['smallprice'];
