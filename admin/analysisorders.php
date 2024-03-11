@@ -401,7 +401,7 @@ let data=JSON.parse(res);
             data: {
                 labels: xMyChart5,
                 datasets: [{
-                    backgroundColor: barColorsMyChart5,
+                    backgroundColor: 'red',
                     data: yMyChart5
                 }]
             },
@@ -522,7 +522,7 @@ let data=JSON.parse(res);
                 labels: xValues2,
                 datasets: [{
                     label:year1,
-                    backgroundColor: barColors2,
+                    backgroundColor: 'red',
                     data: yValues2
                 },{
                     label:year2,
@@ -558,7 +558,7 @@ let data=JSON.parse(res);
                 labels: xValues3,
                 datasets: [{
                     label:year2,
-                    backgroundColor: barColors3,
+                    backgroundColor: 'red',
                     data: yValues3
                 },{
                     label:year2,
@@ -592,7 +592,7 @@ let data=JSON.parse(res);
                 labels: xValues4,
                 datasets: [{
                     label:year1,
-                    backgroundColor: barColors4,
+                    backgroundColor: 'red',
                     data: yValues4
                 },{
                     label:year2,
@@ -730,8 +730,9 @@ let data=JSON.parse(res);
                 labels: xValues2,
                 datasets: [{
                     label:year1,
-                    backgroundColor: barColors2,
-                    data: yValues2
+              
+                    data: yValues2,
+                    backgroundColor: 'red',
                 },{
                     label:year2,
       data: data.totalOrdersCompleteYear2,
@@ -740,7 +741,7 @@ let data=JSON.parse(res);
     },{
                     label:year3,
       data: data.totalOrdersCompleteYear3,
-      backgroundColor: 'blue',
+      backgroundColor: 'green',
      
     }]
             },
@@ -771,7 +772,7 @@ let data=JSON.parse(res);
                 labels: xValues3,
                 datasets: [{
                     label:year2,
-                    backgroundColor: barColors3,
+                    backgroundColor: 'red',
                     data: yValues3
                 },{
                     label:year2,
@@ -781,7 +782,7 @@ let data=JSON.parse(res);
     },{
                     label:year3,
       data: data.totalOrdersRejectYear3,
-      backgroundColor: 'blue',
+      backgroundColor: 'green',
      
     }]
             },
@@ -810,7 +811,7 @@ let data=JSON.parse(res);
                 labels: xValues4,
                 datasets: [{
                     label:year1,
-                    backgroundColor: barColors4,
+                    backgroundColor: 'red',
                     data: yValues4
                 },{
                     label:year2,
@@ -820,7 +821,7 @@ let data=JSON.parse(res);
     },{
                     label:year3,
       data: data.totalOrdersPendingYear3,
-      backgroundColor: 'blue',
+      backgroundColor: 'green',
      
     }]
             },
