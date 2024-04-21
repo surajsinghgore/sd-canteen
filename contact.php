@@ -147,7 +147,7 @@ require('./middleware/VerifyClientLogin.php');?>
 <form  action="" method="post">
 <input type="text" name="Full Name" placeholder="Full Name" class="Names" value="<?php if(isset($_SESSION['activeClientFullname'])){echo $_SESSION['activeClientFullname'];}?>" readOnly/>
 
-<input type="email" name="Email" placeholder="Email Id" class="Email" value="<?php if(isset($_SESSION['activeClientEmail'])){echo $_SESSION['activeClientEmail'];}?>"/>
+<input type="email" name="Email" placeholder="Email Id" class="Email" value="<?php if(isset($_SESSION['activeClientEmail'])){echo $_SESSION['activeClientEmail'];}?>" readOnly/>
 
 <input type="number" name="Mobile" placeholder="Mobile Number" value="<?php if(isset($_SESSION['activeClientMobile'])){echo $_SESSION['activeClientMobile'];}?>" class="Number" readOnly/>
 

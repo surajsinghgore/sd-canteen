@@ -401,7 +401,7 @@ let data=JSON.parse(res);
             data: {
                 labels: xMyChart5,
                 datasets: [{
-                    backgroundColor: 'red',
+                    backgroundColor: barColorsMyChart5,
                     data: yMyChart5
                 }]
             },

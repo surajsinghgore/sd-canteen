@@ -119,7 +119,7 @@ require('./middleware/clientProfilePhotoRedirect.php');
         <div class="pages" id="pages">
             <div class="page">
                 <h1>Pages</h1>
-                <li><a href="/">Home</a></li>
+                <li><a href="/sd-canteen">Home</a></li>
                 <li><a href="/sd-canteen/contact.php">Contact</a> </li>
                 <li><a href="/sd-canteen/about.php">About Us</a></li>
                 <li><a href="/sd-canteen/gallery.php">Gallery</a></li>
