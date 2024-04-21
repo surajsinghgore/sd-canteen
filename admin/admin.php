@@ -143,7 +143,7 @@
                 <!-- Top 10 Most Ordered Coffee   -->
                 <div class="charjs">
                     <h4>
-                        Top 10 Most Ordered Coffee In 23 <p id="year6">0</p>
+                        Top 10 Most Ordered Coffee In <p id="year6">2024</p> <span id="trendingFood">Top: 10</span>
                     </h4>
                     <div class="chartPie">
                     <canvas id="myChart4"></canvas>
