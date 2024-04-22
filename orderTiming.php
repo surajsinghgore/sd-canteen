@@ -217,7 +217,7 @@ m = m + 10;
 
 // check weather today is sunday or not
 // 0 means sunday
-if(Dates.getDay()==1){
+if(Dates.getDay()==0){
 
 
 
